@@ -1,9 +1,9 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class GameManager : MonoBehaviour
+public class WaveText : MonoBehaviour
 {
-    public Camera mainCamera;
-    public GameObject celebrity;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,6 +14,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GetComponent<TMPro.TextMeshProUGUI>().text = "Wave: " + EnemyManager.waveNumber;
     }
 }
