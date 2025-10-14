@@ -5,7 +5,7 @@ public class EnemyBehavior : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Transform target;
-    public GameObject player;
+    private GameObject player;
     private Rigidbody2D rb;
     private Vector2 movement;
     private float health;
@@ -13,9 +13,11 @@ public class EnemyBehavior : MonoBehaviour
     private string color = "default";
     private float invincibilityTimer = 0f;
     private float speed = 3f;
+    private GameManagement gameManager;
 
     void Start()
     {
+        gameManager = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0];
         player = GameObject.Find("Player");
         target = player.transform;
         rb = this.GetComponent<Rigidbody2D>();
@@ -27,7 +29,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (health < 1)
         {
-            EnemyManager.enemyNumber -= 1;
+            gameManager.enemyNumber -= 1;
             Destroy(gameObject);
         }
 
@@ -72,6 +74,7 @@ public class EnemyBehavior : MonoBehaviour
                 colorTime = Time.time + 0.3f;
                 invincibilityTimer = Time.time + 0.01f;
             }
+            Destroy(other);
         }
     }
 }
