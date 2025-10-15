@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TestText1 : MonoBehaviour
+public class TestText1 : MonoBehaviour, IDataPersistance
 {
     public static int testingVariableOne = 0;
     
@@ -8,6 +8,16 @@ public class TestText1 : MonoBehaviour
     void Start()
     {
         
+    }
+
+    public void LoadData(GameData data)
+    {
+        testingVariableOne = data.testVarOne;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.testVarOne = testingVariableOne;
     }
 
     // Update is called once per frame
