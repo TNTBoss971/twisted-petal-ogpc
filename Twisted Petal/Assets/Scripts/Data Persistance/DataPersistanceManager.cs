@@ -5,8 +5,12 @@ using System.Linq;
 
 public class DataPersistanceManager : MonoBehaviour
 {
+    [Header("File Storage Config")]
+    [SerializeField] private string fileName;
+
     private GameData gameData;
     private List<IDataPersistance> dataPersistanceObjects;
+    private FileDataHandler dataHandler;
 
     public static DataPersistanceManager instance { get; private set; }
 
@@ -22,6 +26,7 @@ public class DataPersistanceManager : MonoBehaviour
 
     private void Start()
     {
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataPersistanceObjects = FindAllDataPersistanceObjects();
         LoadGame();
     }
@@ -33,6 +38,9 @@ public class DataPersistanceManager : MonoBehaviour
 
     public void LoadGame()
     {
+        // load any saved data from a file using the data handler
+        this.gameData = dataHandler.Load();
+
         // if no data is loaded, it makes a new game
         if (this.gameData == null)
         {
@@ -46,7 +54,7 @@ public class DataPersistanceManager : MonoBehaviour
             dataPersistanceObj.LoadData(gameData);
         }
     }
-    
+
     public void SaveGame()
     {
         // pass the data to other scripts so they can update it
@@ -55,13 +63,16 @@ public class DataPersistanceManager : MonoBehaviour
             dataPersistanceObj.SaveData(ref gameData);
         }
 
-        Debug.Log("Loaded variables = " + gameData.testVarOne + " and " + gameData.testVarTwo);
+        // save that data to a file using the data handler
+        dataHandler.Save(gameData);
     }
-
-    private void OnApplicationQuit()
-    {
-        SaveGame();
-    }
+    
+    // if we want it to save every time you quit: this is the code for that.
+    
+    //private void OnApplicationQuit()
+    //{
+        //SaveGame();
+    //}
 
     private List<IDataPersistance> FindAllDataPersistanceObjects()
     {
