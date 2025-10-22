@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class GameManagement : MonoBehaviour
 {
-    public static float enemyNumber;
-    public static float waveNumber = 0f;
+    public int enemyNumber;
+    public int waveNumber = 0;
     public GameObject enemy;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,8 +20,7 @@ public class EnemyManager : MonoBehaviour
             waveNumber += 1;
             for (int i = 0; i < 4; i++)
             {
-                GameObject clone;
-                clone = Instantiate(enemy, new Vector2(5, -1), transform.rotation);
+                GameObject clone = Instantiate(enemy, new Vector2(5, -1), transform.rotation);
                 enemyNumber++;
             }
         }
