@@ -54,15 +54,20 @@ public class MapManager : MonoBehaviour, IDataPersistance
                 moveCooldown = Time.time + 0.2f;
             }
         }
+
+        if (Input.GetKey("enter"))
+        {
+            levelsBeaten = 0;
+        }
     }
 
     public void LoadData(GameData data)
     {
-        mapPosition = data.testVarOne;
+        levelsBeaten = data.levelsBeaten;
     }
 
     public void SaveData(ref GameData data)
     {
-        data.testVarOne = mapPosition;
+        data.levelsBeaten = levelsBeaten;
     }
 }

@@ -5,6 +5,7 @@ public class GameData
 {
     public int testVarOne;
     public int testVarTwo;
+    public int levelsBeaten;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -13,5 +14,6 @@ public class GameData
     {
         this.testVarOne = 0;
         this.testVarTwo = 0;
+        this.levelsBeaten = 0;
     }
 }
