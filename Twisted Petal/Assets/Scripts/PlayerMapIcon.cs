@@ -35,32 +35,32 @@ public class PlayerMapIcon : MonoBehaviour
 
         if (MapManager.mapPosition == 2)
         {
-            transform.position = new Vector2(pos2X, pos1Y);
+            transform.position = new Vector2(pos2X, pos2Y);
         }
 
         if (MapManager.mapPosition == 3)
         {
-            transform.position = new Vector2(pos3X, pos1Y);
+            transform.position = new Vector2(pos3X, pos3Y);
         }
 
         if (MapManager.mapPosition == 4)
         {
-            transform.position = new Vector2(pos4X, pos1Y);
+            transform.position = new Vector2(pos4X, pos4Y);
         }
 
         if (MapManager.mapPosition == 5)
         {
-            transform.position = new Vector2(pos5X, pos1Y);
+            transform.position = new Vector2(pos5X, pos5Y);
         }
 
         if (MapManager.mapPosition == 6)
         {
-            transform.position = new Vector2(pos6X, pos1Y);
+            transform.position = new Vector2(pos6X, pos6Y);
         }
 
         if (MapManager.mapPosition == 7)
         {
-            transform.position = new Vector2(pos7X, pos1Y);
+            transform.position = new Vector2(pos7X, pos7Y);
         }
     }
 }
