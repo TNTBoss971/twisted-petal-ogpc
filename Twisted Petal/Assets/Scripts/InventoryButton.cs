@@ -3,16 +3,12 @@ using UnityEngine.UI;
 
 public class InventoryButton : MonoBehaviour
 {
-    public static int buttonNumber = 0;
-    private int buttonID = 0;
+    public int buttonID = 0;
     public Button button;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        buttonNumber += 1;
-        buttonID = buttonNumber;
-        Debug.Log(buttonID);
         button.onClick.AddListener(TaskOnClick);
     }
 
