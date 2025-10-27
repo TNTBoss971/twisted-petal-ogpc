@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorldMap.unity
     guid: 1316c7e2367766946827e31f2d6e72ef
+  - enabled: 1
+    path: Assets/Scenes/Inventory.unity
+    guid: 2d2480db3b0b35f49abe90f708de6287
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
