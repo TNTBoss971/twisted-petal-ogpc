@@ -3,6 +3,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour, IDataPersistance
 {
     public static int mapPosition = 1;
+    public static int levelsBeaten = 0;
     private float moveCooldown = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,8 +21,15 @@ public class MapManager : MonoBehaviour, IDataPersistance
             {
                 if (moveCooldown <= Time.time)
                 {
-                    mapPosition += 1;
-                    moveCooldown = Time.time + 0.2f;
+                    if (levelsBeaten <= mapPosition - 1)
+                    {
+
+                    }
+                    else
+                    {
+                        mapPosition += 1;
+                        moveCooldown = Time.time + 0.2f;
+                    }
                 }
             }
         }
@@ -35,6 +43,15 @@ public class MapManager : MonoBehaviour, IDataPersistance
                     mapPosition -= 1;
                     moveCooldown = Time.time + 0.2f;
                 }
+            }
+        }
+
+        if (Input.GetKey("space"))
+        {
+            if (moveCooldown <= Time.time)
+            {
+                levelsBeaten += 1;
+                moveCooldown = Time.time + 0.2f;
             }
         }
     }
