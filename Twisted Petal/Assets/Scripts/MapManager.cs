@@ -47,7 +47,7 @@ public class MapManager : MonoBehaviour, IDataPersistance
             }
         }
 
-        if (Input.GetKey("space"))
+        if (Input.GetKey("return"))
         {
             SceneManager.LoadScene("Combat");
         }
