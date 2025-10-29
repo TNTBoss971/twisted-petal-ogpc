@@ -17,6 +17,7 @@ public class GunController : MonoBehaviour
     public float targetAngle; // the "goal" angle
     public float currentAngle; // easier to work with then transform.rotation.z
     public Vector3 targetPos; // the target, as cordinates
+    public Vector3 directionVec; // the target as a normalized vector
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,9 +32,10 @@ public class GunController : MonoBehaviour
         Targeting();
 
 
-        if (nextFirePoint <= Time.time)
+        if (nextFirePoint <= Time.time && Input.GetKey("space"))
         {
             GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
+            clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
             nextFirePoint = Time.time + firingDelay;
         }
     }
@@ -49,6 +51,8 @@ public class GunController : MonoBehaviour
         Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
         targetPos.x = targetPos.x - objectPos.x;
         targetPos.y = targetPos.y - objectPos.y;
+
+        directionVec = targetPos.normalized;
 
         // find target angle
         targetAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - currentAngle;
