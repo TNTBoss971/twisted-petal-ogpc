@@ -3,15 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour, IDataPersistance
 {
-    public static float enemyNumber;
-    public static float waveNumber = 0f;
+    public static int enemyNumber;
+    public static int waveNumber;
     public GameObject enemy;
     public DataPersistanceManager dataManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        waveNumber = 0f;
+        waveNumber = 0;
+        enemyNumber = 0;
     }
 
     // Update is called once per frame

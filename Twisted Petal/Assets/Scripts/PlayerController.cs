@@ -7,14 +7,14 @@ public class PlayerController : MonoBehaviour
     public GameObject projectile;
     private float gunCooldown = 0f;
     private float invincibilityTimer = 0f;
-    public static float playerHealth = 5;
+    public static int playerHealth = 5;
     private float colorTime = 0f;
     private string color = "default";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        playerHealth = 5;
     }
 
     // Update is called once per frame
