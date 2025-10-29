@@ -21,8 +21,8 @@ public class PlayButton : MonoBehaviour
 
     void TaskOnClick()
     {
-        // When pressed, takes the player to combat
-        // Will probably change to another scene later
-        SceneManager.LoadScene("Combat");
+        // When pressed, takes the player to the world map
+        // Might change to another scene later
+        SceneManager.LoadScene("WorldMap");
     }
 }

@@ -1,15 +1,17 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour, IDataPersistance
 {
     public static float enemyNumber;
     public static float waveNumber = 0f;
     public GameObject enemy;
+    public DataPersistanceManager dataManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        waveNumber = 0f;
     }
 
     // Update is called once per frame
@@ -25,5 +27,23 @@ public class EnemyManager : MonoBehaviour
                 enemyNumber++;
             }
         }
+
+        if (waveNumber == 4)
+        {
+            MapManager.levelsBeaten += 1;
+            dataManager.SaveGame();
+            Debug.Log(MapManager.levelsBeaten);
+            SceneManager.LoadScene("WorldMap");
+        }
+    }
+
+    public void LoadData(GameData data)
+    {
+        MapManager.levelsBeaten = data.levelsBeaten;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.levelsBeaten = MapManager.levelsBeaten;
     }
 }

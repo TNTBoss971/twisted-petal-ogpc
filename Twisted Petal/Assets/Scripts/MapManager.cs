@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MapManager : MonoBehaviour, IDataPersistance
 {
@@ -48,16 +49,7 @@ public class MapManager : MonoBehaviour, IDataPersistance
 
         if (Input.GetKey("space"))
         {
-            if (moveCooldown <= Time.time)
-            {
-                levelsBeaten += 1;
-                moveCooldown = Time.time + 0.2f;
-            }
-        }
-
-        if (Input.GetKey("enter"))
-        {
-            levelsBeaten = 0;
+            SceneManager.LoadScene("Combat");
         }
     }
 
