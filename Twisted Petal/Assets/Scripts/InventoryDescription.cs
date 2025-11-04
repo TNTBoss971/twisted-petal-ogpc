@@ -11,6 +11,9 @@ public class InventoryDescription : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // We should probably change this to a dictionary or something instead of if statement spam
+        // Maybe even classes or smth idk.
+
         if (InventoryManager.selectedItem == 0)
         {
             GetComponent<TMPro.TextMeshProUGUI>().text = "No Item Selected";

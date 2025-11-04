@@ -16,6 +16,7 @@ public class MapManager : MonoBehaviour, IDataPersistance
     // Update is called once per frame
     void Update()
     {
+        // Pressing d on the map moves you forward as long as you have beaten enough levels.
         if (Input.GetKey("d"))
         {
             if (mapPosition != 7)
@@ -35,6 +36,7 @@ public class MapManager : MonoBehaviour, IDataPersistance
             }
         }
 
+        // Pressing a on the map moves you back as long as you don't go past level 1
         if (Input.GetKey("a"))
         {
             if (mapPosition != 1)
@@ -47,6 +49,7 @@ public class MapManager : MonoBehaviour, IDataPersistance
             }
         }
 
+        // Pressing enter on the map takes you into a level
         if (Input.GetKey("return"))
         {
             SceneManager.LoadScene("Combat");

@@ -15,6 +15,9 @@ public class InventoryButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Changes item to green if it's selected.
+        // Later on we're gonna need to implement the ability to select multiple items.
+
         if (InventoryManager.selectedItem == buttonID)
         {
             gameObject.GetComponent<Image>().color = Color.green;
