@@ -63,18 +63,18 @@ public class EnemyBehavior : MonoBehaviour
         rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    // called by projectiles
+    // the reason why we're doing it this way is becuase it offers more control on how enemies are damaged
+    public void DamageSelf(float damage)
     {
-        if (other.CompareTag("Projectile"))
+        if (invincibilityTimer <= Time.time)
         {
-            if (invincibilityTimer <= Time.time)
-            {
-                health -= 1;
-                color = "red";
-                colorTime = Time.time + 0.3f;
-                invincibilityTimer = Time.time + 0.01f;
-            }
-            Destroy(other);
+            health -= damage;
+            color = "red";
+            colorTime = Time.time + 0.3f;
+            invincibilityTimer = Time.time + 0.01f;
         }
     }
+
+    
 }

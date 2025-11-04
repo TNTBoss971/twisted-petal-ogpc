@@ -61,7 +61,7 @@ public class GunController : MonoBehaviour
         if (Mathf.Abs(targetAngle) > 180)
         {
             currentAngle = currentAngle * -1;
-            targetAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - currentAngle;
+            targetAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - currentAngle; // I made this awhile ago, its black magic to me now
         }
 
         // start rotating
