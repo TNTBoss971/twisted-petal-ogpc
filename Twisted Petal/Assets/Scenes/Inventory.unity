@@ -685,6 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 3
+  itemDesc: Blue  Item - It's Blue!
   button: {fileID: 494568194}
 --- !u!1 &501298695
 GameObject:
@@ -820,6 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 1
+  itemDesc: Red Item - It's Red!
   button: {fileID: 501298698}
 --- !u!1 &646638765
 GameObject:
@@ -955,6 +957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 9
+  itemDesc: Unknown Item - It's Unknown!
   button: {fileID: 646638767}
 --- !u!1 &711716753
 GameObject:
@@ -1090,6 +1093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 8
+  itemDesc: Unknown Item - It's Unknown!
   button: {fileID: 711716755}
 --- !u!1 &870500267
 GameObject:
@@ -1225,6 +1229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 7
+  itemDesc: Unknown Item - It's Unknown!
   button: {fileID: 870500269}
 --- !u!1 &939574324
 GameObject:
@@ -1360,6 +1365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 4
+  itemDesc: Unknown Item - It's Unknown!
   button: {fileID: 939574326}
 --- !u!1 &997361694
 GameObject:
@@ -1630,6 +1636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 6
+  itemDesc: Unknown Item - It's Unknown!
   button: {fileID: 1023197642}
 --- !u!1 &1196614630
 GameObject:
@@ -1765,6 +1772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 2
+  itemDesc: Greeb Item - It's Green!
   button: {fileID: 1196614632}
 --- !u!1 &1284180969
 GameObject:
@@ -1979,6 +1987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 5
+  itemDesc: Unknown Item - It's Unknown!
   button: {fileID: 1306701184}
 --- !u!1 &1679651230
 GameObject:
@@ -2114,6 +2123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 10
+  itemDesc: Unknown Item - It's Unknown!
   button: {fileID: 1679651232}
 --- !u!1 &1700319886
 GameObject:
@@ -2398,6 +2408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 12
+  itemDesc: Unknown Item - It's Unknown!
   button: {fileID: 1727873561}
 --- !u!1 &1786674650
 GameObject:
@@ -2533,6 +2544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 11
+  itemDesc: Unknown Item - It's Unknown!
   button: {fileID: 1786674652}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
