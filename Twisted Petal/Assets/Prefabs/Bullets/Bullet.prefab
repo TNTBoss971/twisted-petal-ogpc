@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8659506722767122404}
   - component: {fileID: -8613349550398707102}
   - component: {fileID: 5639989058606751104}
-  - component: {fileID: 1376396669409293157}
+  - component: {fileID: 1041296257133150329}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Projectile
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
---- !u!114 &1376396669409293157
+--- !u!114 &1041296257133150329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
