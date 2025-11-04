@@ -11,6 +11,9 @@ public class LevelText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // XXX FIXME USE A HASMAP BROCHACHO
+        
         // Updates the level text depending on the player's currently selected level on the map
 
         if (MapManager.mapPosition == 1)
