@@ -1,7 +1,13 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManagement : MonoBehaviour
 {
+    InputAction cycleAction;
+    public float cycleValue;
+    InputAction nextAction;
+    InputAction previousAction;
+
     [Header("Player")]
     public float playerHealth;
     public float playerMaxHealth;
@@ -26,6 +32,12 @@ public class GameManagement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // assign actions
+        cycleAction = InputSystem.actions.FindAction("Cycle");
+
+
+
+
         nextWaveTime = waveLength;
         waveProgressionBar.maxValue = waveLength;
 
@@ -37,6 +49,8 @@ public class GameManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cycleValue = cycleAction.ReadValue<float>();
+
         WeaponManagement();
 
         if (enemyNumber == 0)
@@ -113,6 +127,27 @@ public class GameManagement : MonoBehaviour
             pastActiveWeaponId = activeWeaponId; // deactivate old active weapon
             activeWeaponId = 3;
         }
+
+        if (cycleValue > 0)
+        {
+            pastActiveWeaponId = activeWeaponId; // deactivate old active weapon
+            activeWeaponId += 1;
+            if (activeWeaponId > 3)
+            {
+                activeWeaponId = 0;
+            }
+        }
+        if (cycleValue < 0)
+        {
+            pastActiveWeaponId = activeWeaponId; // deactivate old active weapon
+            activeWeaponId -= 1;
+            if (activeWeaponId < 0)
+            {
+                activeWeaponId = 3;
+            }
+        }
+
+
 
 
 
