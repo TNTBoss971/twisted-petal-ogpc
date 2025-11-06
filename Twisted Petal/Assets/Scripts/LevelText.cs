@@ -1,7 +1,21 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelText : MonoBehaviour
 {
+    // contains every level description
+    Dictionary<int, string> mapDesc = new Dictionary<int, string>
+    {
+        {1, "Level 1: Flee the City"},
+        {2, "Level 2: On the Open Road"},
+        {3, "Level 3: Driving Some More"},
+        {4, "Level 4: Wow It's Mount Hood"},
+        {5, "Level 5: The 3/4 Mark "},
+        {6, "Level 6: Im running out of names"},
+        {7, "Level 7: Wow we're almost at the island"}
+    };
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,43 +25,13 @@ public class LevelText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // XXX FIXME USE A HASMAP BROCHACHO
-        
-        // Updates the level text depending on the player's currently selected level on the map
-
-        if (MapManager.mapPosition == 1)
+        if (MapManager.mapPosition < 1 || MapManager.mapPosition > 7)
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "Level 1: Flee the City";
-        }
-        else if (MapManager.mapPosition == 2)
-        {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "Level 2: On the Open Road";
-        }
-        else if (MapManager.mapPosition == 3)
-        {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "Level 3: Driving Some More";
-        }
-        else if (MapManager.mapPosition == 4)
-        {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "Level 4: Wow It's Mount Hood";
-        }
-        else if (MapManager.mapPosition == 5)
-        {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "Level 5: The 3/4 Mark ";
-        }
-        else if (MapManager.mapPosition == 6)
-        {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "Level 6: Im running out of names";
-        }
-        else if (MapManager.mapPosition == 7)
-        {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "Level 7: Wow we're almost at the island";
+            GetComponent<TMPro.TextMeshProUGUI>().text = "Level ?: How did we get here?";
         }
         else
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "Level ?: how did u get here lol";
+            GetComponent<TMPro.TextMeshProUGUI>().text = mapDesc[MapManager.mapPosition];
         }
-        
     }
 }
