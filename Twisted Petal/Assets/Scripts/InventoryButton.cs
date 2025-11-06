@@ -17,7 +17,6 @@ public class InventoryButton : MonoBehaviour
     void Update()
     {
         // Changes item to green if it's selected.
-        // Later on we're gonna need to implement the ability to select multiple items.
         if (InventoryManager.selectedItems.Contains(buttonID))
         {
             selected = true;
