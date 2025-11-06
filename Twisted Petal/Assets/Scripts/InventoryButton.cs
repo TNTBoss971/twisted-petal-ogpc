@@ -4,9 +4,8 @@ using UnityEngine.UI;
 public class InventoryButton : MonoBehaviour
 {
     public int buttonID;
-    public string itemDesc;
-    public static string currentDesc;
     public Button button;
+    private bool selected;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,26 +16,29 @@ public class InventoryButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Changes the item description to that of the currently selected item.
-        if (InventoryManager.selectedItem == buttonID)
-        {
-            currentDesc = itemDesc;
-        }
-
         // Changes item to green if it's selected.
         // Later on we're gonna need to implement the ability to select multiple items.
-        if (InventoryManager.selectedItem == buttonID)
+        if (InventoryManager.selectedItems.Contains(buttonID))
         {
+            selected = true;
             gameObject.GetComponent<Image>().color = Color.green;
         }
         else
         {
+            selected = false;
             gameObject.GetComponent<Image>().color = Color.white;
         }
     }
 
     void TaskOnClick()
     {
-        InventoryManager.selectedItem = buttonID;
+        if (selected == true)
+        {
+            InventoryManager.selectedItems.Remove(buttonID);
+        }
+        else
+        {
+            InventoryManager.selectedItems.Add(buttonID);
+        }
     }
 }

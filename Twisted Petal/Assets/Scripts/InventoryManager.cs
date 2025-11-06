@@ -1,9 +1,9 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static int selectedItem = 0;
-
+    public static List<int> selectedItems = new List<int>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
