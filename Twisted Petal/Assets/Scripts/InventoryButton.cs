@@ -38,7 +38,10 @@ public class InventoryButton : MonoBehaviour
         }
         else
         {
-            InventoryManager.selectedItems.Add(buttonID);
+            if (InventoryManager.selectedItems.Count < 3)
+            {
+                InventoryManager.selectedItems.Add(buttonID);
+            }
         }
     }
 }
