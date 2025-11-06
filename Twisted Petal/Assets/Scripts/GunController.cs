@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GunController : MonoBehaviour
 {
+    InputAction attackAction;
     /*
     [Header("Outside Objects")]
     public GameManagement gameManager;
@@ -23,7 +25,9 @@ public class GunController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        // assign actions
+        attackAction = InputSystem.actions.FindAction("Attack");
+
     }
 
     // Update is called once per frame
@@ -32,7 +36,7 @@ public class GunController : MonoBehaviour
         Targeting();
 
 
-        if (nextFirePoint <= Time.time && Input.GetKey("space"))
+        if (nextFirePoint <= Time.time && attackAction.IsPressed())
         {
             GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
             clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;

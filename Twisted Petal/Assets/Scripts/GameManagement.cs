@@ -97,10 +97,10 @@ public class GameManagement : MonoBehaviour
 
         foreach (GameObject weaponButton in weaponButtons)
         {
-            weaponButton.transform.position = new Vector2(weaponButton.transform.position.x, 0);
+            weaponButton.transform.position = new Vector2(weaponButton.transform.position.x, 30);
         }
 
-        weaponButtons[activeWeaponId].transform.position = new Vector2(weaponButtons[activeWeaponId].transform.position.x, 20);
+        weaponButtons[activeWeaponId].transform.position = new Vector2(weaponButtons[activeWeaponId].transform.position.x, 50);
     }
 
     // use scroll wheel and number keys to cycle through weapons
@@ -152,8 +152,8 @@ public class GameManagement : MonoBehaviour
 
 
         // update weapons
-        weaponButtons[pastActiveWeaponId].transform.position = new Vector2(weaponButtons[pastActiveWeaponId].transform.position.x, 0);
-        weaponButtons[activeWeaponId].transform.position = new Vector2(weaponButtons[activeWeaponId].transform.position.x, 20);
+        weaponButtons[pastActiveWeaponId].transform.position = new Vector2(weaponButtons[pastActiveWeaponId].transform.position.x, 30);
+        weaponButtons[activeWeaponId].transform.position = new Vector2(weaponButtons[activeWeaponId].transform.position.x, 50);
 
         weapons[pastActiveWeaponId].SetActive(false);
         weapons[activeWeaponId].SetActive(true);
