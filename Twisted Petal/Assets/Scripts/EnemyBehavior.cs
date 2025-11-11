@@ -29,10 +29,10 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (health < 1)
         {
-            gameManager.enemyNumber -= 1;
+            gameManager.enemyCount -= 1;
             Destroy(gameObject);
         }
-
+        /*
         if (color == "default")
         {
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
@@ -46,7 +46,7 @@ public class EnemyBehavior : MonoBehaviour
                 color = "default";
             }
         }
-    
+        */
         Vector3 direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rb.rotation = angle;

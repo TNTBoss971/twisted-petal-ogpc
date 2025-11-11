@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManagement : MonoBehaviour
 {
@@ -18,13 +19,15 @@ public class GameManagement : MonoBehaviour
     public int pastActiveWeaponId = 1; // for turning off previously active weapons
 
     [Header("Wave Logic")]
-    public int enemyNumber;
+    public int enemyCount;
+    public int enemyCountMax;
     public int waveNumber = 0;
-    public GameObject enemy;
 
     public float waveLength;
     public float nextWaveTime;
 
+    public WaveData[] waves; // a list of all the waves
+    public WaveData currentWave; 
     [Header("Status Bars")]
     public BarBehavior waveProgressionBar;
     public BarBehavior healthBar;
@@ -36,9 +39,8 @@ public class GameManagement : MonoBehaviour
         cycleAction = InputSystem.actions.FindAction("Cycle");
 
 
+        StartWave();
 
-
-        nextWaveTime = waveLength;
         waveProgressionBar.maxValue = waveLength;
 
         healthBar.maxValue = playerMaxHealth;
@@ -49,40 +51,70 @@ public class GameManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cycleValue = cycleAction.ReadValue<float>();
+        cycleValue = cycleAction.ReadValue<float>(); // read the value of the scroll wheel
 
         WeaponManagement();
 
-        if (enemyNumber == 0)
+        
+        ActiveWave();
+    }
+    void ActiveWave()
+    {
+        // continuouslly spawn enemies while wave is active
+        // rarely spawn "loot" enemy
+        if (enemyCount < enemyCountMax)
         {
-            waveNumber += 1;
-            for (int i = 0; i < 4; i++)
+            // spawn enemy
+
+            // decide enemy to spawn
+            float selectedFreq = Random.Range(0.001f, 1);
+            Debug.Log(selectedFreq);
+        
+            float[] frequencies = currentWave.enemyFrequency;
+            int enemyIndex = 0;
+
+            float totalFreq = 0;
+            foreach (float freq in frequencies)
             {
-                GameObject clone = Instantiate(enemy, new Vector2(5, -1), transform.rotation);
-                enemyNumber++;
+                totalFreq += freq;
+                // if totalFreq is withen the selected range
+                if (selectedFreq <= totalFreq)
+                {
+                    break;
+                } else {
+                    enemyIndex++;
+                }
             }
+
+            GameObject clone = Instantiate(currentWave.enemiesInWave[enemyIndex], new Vector2(5, -1), transform.rotation);
+            enemyCount++;
         }
 
-        // wave timer
+
+        // go to game over screen if hp reaches 0
+        if (playerHealth <= 0)
+        {
+            SceneManager.LoadScene(0);
+        }
+        // update player health bar
+        healthBar.value = playerHealth;
+
+        // check the wave timer
         if (nextWaveTime < Time.time)
         {
             nextWaveTime = Time.time + waveLength;
         }
         waveProgressionBar.value = waveLength + (Time.time - nextWaveTime);
+        // if its at the end, go to loot screen
 
-        // update player health bar
-        healthBar.value = playerHealth;
     }
-    void ActiveWave()
+    
+    void StartWave()
     {
-        // continuouslly spawn enemies while wave is active
-            // rarely spawn "loot" enemy
+        currentWave = waves[waveNumber];
 
-        // go to game over screen if hp reaches 0
-
-        // check the wave timer
-            // if its at the end, go to loot screen
-
+        waveLength = currentWave.length;
+        nextWaveTime = Time.time + waveLength;
     }
 
     // sets up weapons when the scene starts

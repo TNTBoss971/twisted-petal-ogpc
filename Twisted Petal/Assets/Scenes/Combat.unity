@@ -1017,8 +1017,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7586dd51d5ee3469d610c648d1bd8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 5
-  playerMaxHealth: 5
+  cycleValue: 0
+  playerHealth: 100
+  playerMaxHealth: 100
   weaponButtons:
   - {fileID: 258731248}
   - {fileID: 1212523319}
@@ -1031,11 +1032,14 @@ MonoBehaviour:
   - {fileID: 1204072048}
   activeWeaponId: 0
   pastActiveWeaponId: 1
-  enemyNumber: 0
+  enemyCount: 0
+  enemyCountMax: 20
   waveNumber: 0
-  enemy: {fileID: 1859193798442875194, guid: da10f828601be214fb62227136b37c6f, type: 3}
   waveLength: 5
   nextWaveTime: 0
+  waves:
+  - {fileID: 9122227014563279572, guid: e7e8eddd741d43740a2e67b4613eec4b, type: 3}
+  currentWave: {fileID: 9122227014563279572, guid: e7e8eddd741d43740a2e67b4613eec4b, type: 3}
   waveProgressionBar: {fileID: 1722427373}
   healthBar: {fileID: 275496887}
 --- !u!1 &421250703
