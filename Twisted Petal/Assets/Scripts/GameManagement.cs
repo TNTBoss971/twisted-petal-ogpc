@@ -94,7 +94,7 @@ public class GameManagement : MonoBehaviour
         // go to game over screen if hp reaches 0
         if (playerHealth <= 0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Combat");
         }
         // update player health bar
         healthBar.value = playerHealth;
@@ -102,7 +102,11 @@ public class GameManagement : MonoBehaviour
         // check the wave timer
         if (nextWaveTime < Time.time)
         {
-            nextWaveTime = Time.time + waveLength;
+            // this wave/level is over, go to world map
+            SceneManager.LoadScene("WorldMap");
+
+
+            // nextWaveTime = Time.time + waveLength;
         }
         waveProgressionBar.value = waveLength + (Time.time - nextWaveTime);
         // if its at the end, go to loot screen
