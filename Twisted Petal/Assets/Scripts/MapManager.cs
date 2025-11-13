@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MapManager : MonoBehaviour, IDataPersistance
+public class MapManager : MonoBehaviour
 {
     public static int mapPosition = 1;
-    public static int levelsBeaten = 0;
     private float moveCooldown = 0f;
+    private DataManagement saveData;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        saveData = this.GetComponent<DataManagement>();
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class MapManager : MonoBehaviour, IDataPersistance
             {
                 if (moveCooldown <= Time.time)
                 {
-                    if (levelsBeaten <= mapPosition - 1)
+                    if (saveData.levelsBeaten <= mapPosition - 1)
                     {
 
                     }
@@ -54,15 +54,5 @@ public class MapManager : MonoBehaviour, IDataPersistance
         {
             SceneManager.LoadScene("Combat");
         }
-    }
-
-    public void LoadData(GameData data)
-    {
-        levelsBeaten = data.levelsBeaten;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.levelsBeaten = levelsBeaten;
     }
 }

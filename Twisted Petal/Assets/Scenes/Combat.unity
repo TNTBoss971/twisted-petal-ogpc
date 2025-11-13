@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 2414848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.5, z: 0}
+  m_LocalPosition: {x: 1, y: 1.5, z: -0.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -886,6 +886,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &279707652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 279707654}
+  - component: {fileID: 279707653}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &279707653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279707652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92abf9d330ec8034cb7429c960715f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: saved_data.json
+--- !u!4 &279707654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279707652}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.798759, y: -0.15422928, z: -2.171172}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &348365862
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +1028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 359535018}
   - component: {fileID: 359535019}
+  - component: {fileID: 359535020}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1042,6 +1088,21 @@ MonoBehaviour:
   currentWave: {fileID: 9122227014563279572, guid: e7e8eddd741d43740a2e67b4613eec4b, type: 3}
   waveProgressionBar: {fileID: 1722427373}
   healthBar: {fileID: 275496887}
+  dataManager: {fileID: 279707653}
+  saveData: {fileID: 359535020}
+--- !u!114 &359535020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359535016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab286be09ea58c94ba6b577a25e435ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelsBeaten: 0
 --- !u!1 &421250703
 GameObject:
   m_ObjectHideFlags: 0
@@ -3934,3 +3995,4 @@ SceneRoots:
   - {fileID: 278306114}
   - {fileID: 1281863860}
   - {fileID: 1557907284}
+  - {fileID: 279707654}

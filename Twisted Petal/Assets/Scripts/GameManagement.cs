@@ -31,7 +31,9 @@ public class GameManagement : MonoBehaviour
     [Header("Status Bars")]
     public BarBehavior waveProgressionBar;
     public BarBehavior healthBar;
-    
+    [Header("Save Data")]
+    public DataPersistanceManager dataManager;
+    public DataManagement saveData;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -68,7 +70,6 @@ public class GameManagement : MonoBehaviour
 
             // decide enemy to spawn
             float selectedFreq = Random.Range(0.001f, 1);
-            Debug.Log(selectedFreq);
         
             float[] frequencies = currentWave.enemyFrequency;
             int enemyIndex = 0;
@@ -104,6 +105,8 @@ public class GameManagement : MonoBehaviour
         {
             // this wave/level is over, go to world map
             SceneManager.LoadScene("WorldMap");
+            saveData.levelsBeaten += 1;
+            dataManager.SaveGame();    
 
 
             // nextWaveTime = Time.time + waveLength;
