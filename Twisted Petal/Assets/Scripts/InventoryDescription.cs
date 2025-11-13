@@ -6,10 +6,10 @@ public class InventoryDescription : MonoBehaviour
     // contains descriptions for each item ID.
     Dictionary<int, string> itemDesc = new Dictionary<int, string>
     {
-        {1, "Red Item - It's Red!"},
-        {2, "Greeb Item - It's Green!"},
+        {1, "White Item - It's White!"},
+        {2, "Red Item - It's Red!"},
         {3, "Blue Item - It's Blue!"},
-        {4, "Unknown Item - It's Unknown!"},
+        {4, "Greeb Item - It's Green!"},
         {5, "Unknown Item - It's Unknown!"},
         {6, "Unknown Item - It's Unknown!"},
         {7, "Unknown Item - It's Unknown!"},
