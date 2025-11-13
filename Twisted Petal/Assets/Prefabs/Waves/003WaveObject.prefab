@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 282040474871025790}
   - component: {fileID: 9122227014563279572}
   m_Layer: 0
-  m_Name: WaveObject000
+  m_Name: 003WaveObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920e8f5dac2a9ad44b18daf2e69d50f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 2
+  length: 70
   enemiesInWave:
   - {fileID: 1859193798442875194, guid: da10f828601be214fb62227136b37c6f, type: 3}
   - {fileID: 1859193798442875194, guid: 0fd52fa7d1269324e954f5bc7a4a211c, type: 3}

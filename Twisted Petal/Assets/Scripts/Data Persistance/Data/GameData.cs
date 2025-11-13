@@ -13,8 +13,6 @@ public class GameData
 
     public GameData()
     {
-        this.testVarOne = 0;
-        this.testVarTwo = 0;
         this.levelsBeaten = 0;
     }
 }
