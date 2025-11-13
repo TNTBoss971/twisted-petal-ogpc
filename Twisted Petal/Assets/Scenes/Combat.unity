@@ -1085,6 +1085,13 @@ MonoBehaviour:
   nextWaveTime: 0
   waves:
   - {fileID: 9122227014563279572, guid: e7e8eddd741d43740a2e67b4613eec4b, type: 3}
+  - {fileID: 9122227014563279572, guid: b1b126bab42e223498306c84a32df667, type: 3}
+  - {fileID: 9122227014563279572, guid: bd4052d48952092489ef2cec1ff66bb6, type: 3}
+  - {fileID: 9122227014563279572, guid: e8ed3fc429dfe774a9f2eadcea56a0f6, type: 3}
+  - {fileID: 9122227014563279572, guid: c418e4801ea1fa4478e38ddb0e2ec7ab, type: 3}
+  - {fileID: 9122227014563279572, guid: af52120d52e70f74f854229913aaf488, type: 3}
+  - {fileID: 9122227014563279572, guid: 0e4e374640378764fac60cea1b4580fb, type: 3}
+  - {fileID: 9122227014563279572, guid: 5fb5373ad909de346bf32e7382174422, type: 3}
   currentWave: {fileID: 9122227014563279572, guid: e7e8eddd741d43740a2e67b4613eec4b, type: 3}
   waveProgressionBar: {fileID: 1722427373}
   healthBar: {fileID: 275496887}

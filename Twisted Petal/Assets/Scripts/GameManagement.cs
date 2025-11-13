@@ -15,6 +15,7 @@ public class GameManagement : MonoBehaviour
 
     public GameObject[] weaponButtons; // list of weapon buttons
     public GameObject[] weapons; // list of weapons
+    public GameObject[] equipedWeapons; // equiped weapons
     public int activeWeaponId;  // active weapon
     public int pastActiveWeaponId = 1; // for turning off previously active weapons
 
@@ -37,6 +38,7 @@ public class GameManagement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        dataManager.LoadGame();
         // assign actions
         cycleAction = InputSystem.actions.FindAction("Cycle");
 
@@ -104,12 +106,9 @@ public class GameManagement : MonoBehaviour
         if (nextWaveTime < Time.time)
         {
             // this wave/level is over, go to world map
+            saveData.levelsBeaten = waveNumber + 1;
+            dataManager.SaveGame();
             SceneManager.LoadScene("WorldMap");
-            saveData.levelsBeaten += 1;
-            dataManager.SaveGame();    
-
-
-            // nextWaveTime = Time.time + waveLength;
         }
         waveProgressionBar.value = waveLength + (Time.time - nextWaveTime);
         // if its at the end, go to loot screen
@@ -118,6 +117,8 @@ public class GameManagement : MonoBehaviour
     
     void StartWave()
     {
+        waveNumber = saveData.levelsBeaten;
+
         currentWave = waves[waveNumber];
 
         waveLength = currentWave.length;
