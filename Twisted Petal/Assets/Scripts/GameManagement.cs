@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -48,7 +50,12 @@ public class GameManagement : MonoBehaviour
         waveProgressionBar.maxValue = waveLength;
 
         healthBar.maxValue = playerMaxHealth;
-
+        
+        for (int i = 0; i < saveData.selectedItems.Count; i++)
+        {
+            equipedWeapons[i] = weapons[saveData.selectedItems[i]];
+        }
+        
         WeaponInitialization();
     }
 

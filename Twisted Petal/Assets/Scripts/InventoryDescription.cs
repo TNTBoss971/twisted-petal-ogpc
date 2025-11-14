@@ -6,10 +6,11 @@ public class InventoryDescription : MonoBehaviour
     // contains descriptions for each item ID.
     Dictionary<int, string> itemDesc = new Dictionary<int, string>
     {
-        {1, "White Item - It's White!"},
-        {2, "Red Item - It's Red!"},
-        {3, "Blue Item - It's Blue!"},
-        {4, "Greeb Item - It's Green!"},
+        {0, "White Item - It's White!"},
+        {1, "Red Item - It's Red!"},
+        {2, "Blue Item - It's Blue!"},
+        {3, "Greeb Item - It's Green!"},
+        {4, "Unknown Item - It's Unknown!"},
         {5, "Unknown Item - It's Unknown!"},
         {6, "Unknown Item - It's Unknown!"},
         {7, "Unknown Item - It's Unknown!"},
@@ -20,8 +21,7 @@ public class InventoryDescription : MonoBehaviour
         {12, "Unknown Item - It's Unknown!"},
         {13, "Unknown Item - It's Unknown!"},
         {14, "Unknown Item - It's Unknown!"},
-        {15, "Unknown Item - It's Unknown!"},
-        {16, "Unknown Item - It's Unknown!"}
+        {15, "Unknown Item - It's Unknown!"}
     };
     public int descriptionID;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -61,6 +61,17 @@ public class InventoryDescription : MonoBehaviour
             if (InventoryManager.selectedItems.Count >= 3)
             {
                 GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedItems[2]];
+            }
+            else
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = "None Selected";
+            }
+        }
+        if (descriptionID == 4)
+        {
+            if (InventoryManager.selectedItems.Count >= 4)
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedItems[3]];
             }
             else
             {
