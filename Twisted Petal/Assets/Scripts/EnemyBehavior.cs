@@ -29,10 +29,10 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (health < 1)
         {
-            gameManager.enemyNumber -= 1;
+            gameManager.enemyCount -= 1;
             Destroy(gameObject);
         }
-
+        /*
         if (color == "default")
         {
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
@@ -46,7 +46,7 @@ public class EnemyBehavior : MonoBehaviour
                 color = "default";
             }
         }
-    
+        */
         Vector3 direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
@@ -63,18 +63,18 @@ public class EnemyBehavior : MonoBehaviour
         rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    // called by projectiles
+    // the reason why we're doing it this way is becuase it offers more control on how enemies are damaged
+    public void DamageSelf(float damage)
     {
-        if (other.CompareTag("Projectile"))
+        if (invincibilityTimer <= Time.time)
         {
-            if (invincibilityTimer <= Time.time)
-            {
-                health -= 1;
-                color = "red";
-                colorTime = Time.time + 0.3f;
-                invincibilityTimer = Time.time + 0.01f;
-            }
-            Destroy(other);
+            health -= damage;
+            color = "red";
+            colorTime = Time.time + 0.3f;
+            invincibilityTimer = Time.time + 0.01f;
         }
     }
+
+    
 }

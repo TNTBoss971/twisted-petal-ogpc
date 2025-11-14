@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GunController : MonoBehaviour
 {
+    InputAction attackAction;
     /*
     [Header("Outside Objects")]
     public GameManagement gameManager;
@@ -17,12 +19,15 @@ public class GunController : MonoBehaviour
     public float targetAngle; // the "goal" angle
     public float currentAngle; // easier to work with then transform.rotation.z
     public Vector3 targetPos; // the target, as cordinates
+    public Vector3 directionVec; // the target as a normalized vector
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        // assign actions
+        attackAction = InputSystem.actions.FindAction("Attack");
+
     }
 
     // Update is called once per frame
@@ -31,9 +36,10 @@ public class GunController : MonoBehaviour
         Targeting();
 
 
-        if (nextFirePoint <= Time.time)
+        if (nextFirePoint <= Time.time && attackAction.IsPressed())
         {
             GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
+            clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
             nextFirePoint = Time.time + firingDelay;
         }
     }
@@ -50,6 +56,8 @@ public class GunController : MonoBehaviour
         targetPos.x = targetPos.x - objectPos.x;
         targetPos.y = targetPos.y - objectPos.y;
 
+        directionVec = targetPos.normalized;
+
         // find target angle
         targetAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - currentAngle;
 
@@ -57,7 +65,7 @@ public class GunController : MonoBehaviour
         if (Mathf.Abs(targetAngle) > 180)
         {
             currentAngle = currentAngle * -1;
-            targetAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - currentAngle;
+            targetAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - currentAngle; // I made this awhile ago, its black magic to me now
         }
 
         // start rotating
