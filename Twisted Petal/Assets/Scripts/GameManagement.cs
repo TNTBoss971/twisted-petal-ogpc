@@ -50,11 +50,8 @@ public class GameManagement : MonoBehaviour
         waveProgressionBar.maxValue = waveLength;
 
         healthBar.maxValue = playerMaxHealth;
+
         
-        for (int i = 0; i < saveData.selectedItems.Count; i++)
-        {
-            equipedWeapons[i] = weapons[saveData.selectedItems[i]];
-        }
         
         WeaponInitialization();
     }
@@ -135,6 +132,13 @@ public class GameManagement : MonoBehaviour
     // sets up weapons when the scene starts
     void WeaponInitialization()
     {
+        // load weapons in
+        for (int i = 0; i < saveData.selectedItems.Count; i++)
+        {
+            equipedWeapons[i] = weapons[saveData.selectedItems[i]];
+        }
+
+        // set active state
         foreach (GameObject weapon in weapons)
         {
             weapon.SetActive(false);
