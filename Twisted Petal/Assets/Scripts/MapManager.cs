@@ -16,37 +16,10 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Pressing d on the map moves you forward as long as you have beaten enough levels.
-        if (Input.GetKey("d"))
+        mapPosition = saveData.levelsBeaten + 1;
+        if (mapPosition > 7)
         {
-            if (mapPosition != 7)
-            {
-                if (moveCooldown <= Time.time)
-                {
-                    if (saveData.levelsBeaten <= mapPosition - 1)
-                    {
-
-                    }
-                    else
-                    {
-                        mapPosition += 1;
-                        moveCooldown = Time.time + 0.2f;
-                    }
-                }
-            }
-        }
-
-        // Pressing a on the map moves you back as long as you don't go past level 1
-        if (Input.GetKey("a"))
-        {
-            if (mapPosition != 1)
-            {
-                if (moveCooldown <= Time.time)
-                {
-                    mapPosition -= 1;
-                    moveCooldown = Time.time + 0.2f;
-                }
-            }
+            mapPosition = 7;
         }
 
         // Pressing enter on the map takes you into a level

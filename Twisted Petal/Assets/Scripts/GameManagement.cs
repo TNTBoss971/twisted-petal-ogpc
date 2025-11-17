@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -49,6 +51,8 @@ public class GameManagement : MonoBehaviour
 
         healthBar.maxValue = playerMaxHealth;
 
+        
+        
         WeaponInitialization();
     }
 
@@ -128,6 +132,13 @@ public class GameManagement : MonoBehaviour
     // sets up weapons when the scene starts
     void WeaponInitialization()
     {
+        // load weapons in
+        for (int i = 0; i < saveData.selectedItems.Count; i++)
+        {
+            equipedWeapons[i] = weapons[saveData.selectedItems[i]];
+        }
+
+        // set active state
         foreach (GameObject weapon in weapons)
         {
             weapon.SetActive(false);
