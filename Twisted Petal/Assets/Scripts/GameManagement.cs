@@ -17,7 +17,9 @@ public class GameManagement : MonoBehaviour
 
     public GameObject[] weaponButtons; // list of weapon buttons
     public GameObject[] weapons; // list of weapons
-    public GameObject[] equipedWeapons; // equiped weapons
+    public GameObject[] equippedWeapons; // equipped weapons
+    public Transform weaponParent; // parent of the weapons
+    public int numOfEquippedWeapons; // number of equipped weapons
     public int activeWeaponId;  // active weapon
     public int pastActiveWeaponId = 1; // for turning off previously active weapons
 
@@ -132,26 +134,34 @@ public class GameManagement : MonoBehaviour
     // sets up weapons when the scene starts
     void WeaponInitialization()
     {
-        // load weapons in
-        for (int i = 0; i < saveData.selectedItems.Count; i++)
-        {
-            equipedWeapons[i] = weapons[saveData.selectedItems[i]];
-        }
-
-        // set active state
-        foreach (GameObject weapon in weapons)
-        {
-            weapon.SetActive(false);
-        }
-        weapons[activeWeaponId].SetActive(true);
-
 
         foreach (GameObject weaponButton in weaponButtons)
         {
             weaponButton.transform.position = new Vector2(weaponButton.transform.position.x, 30);
+            weaponButton.SetActive(false);
+        }
+        weaponButtons[activeWeaponId].transform.position = new Vector2(weaponButtons[activeWeaponId].transform.position.x, 50);
+
+        // load weapons in
+        for (int i = 0; i < saveData.selectedItems.Count; i++)
+        {
+            equippedWeapons[i] = Instantiate(weapons[saveData.selectedItems[i]]);
+            equippedWeapons[i].transform.SetParent(weaponParent);
+            equippedWeapons[i].transform.localPosition = new Vector3(0, 0, 1);
+            numOfEquippedWeapons += 1;
+            weaponButtons[i].SetActive(true);
         }
 
-        weaponButtons[activeWeaponId].transform.position = new Vector2(weaponButtons[activeWeaponId].transform.position.x, 50);
+        // set active state
+        for (int i = 0; i < numOfEquippedWeapons; i++)
+        {
+            equippedWeapons[i].SetActive(false);
+        }
+        equippedWeapons[activeWeaponId].SetActive(true);
+
+
+        
+
     }
 
     // use scroll wheel and number keys to cycle through weapons
@@ -183,7 +193,7 @@ public class GameManagement : MonoBehaviour
         {
             pastActiveWeaponId = activeWeaponId; // deactivate old active weapon
             activeWeaponId += 1;
-            if (activeWeaponId > 3)
+            if (activeWeaponId > numOfEquippedWeapons - 1)
             {
                 activeWeaponId = 0;
             }
@@ -194,7 +204,7 @@ public class GameManagement : MonoBehaviour
             activeWeaponId -= 1;
             if (activeWeaponId < 0)
             {
-                activeWeaponId = 3;
+                activeWeaponId = numOfEquippedWeapons - 1;
             }
         }
 
@@ -206,8 +216,8 @@ public class GameManagement : MonoBehaviour
         weaponButtons[pastActiveWeaponId].transform.position = new Vector2(weaponButtons[pastActiveWeaponId].transform.position.x, 30);
         weaponButtons[activeWeaponId].transform.position = new Vector2(weaponButtons[activeWeaponId].transform.position.x, 50);
 
-        weapons[pastActiveWeaponId].SetActive(false);
-        weapons[activeWeaponId].SetActive(true);
+        equippedWeapons[pastActiveWeaponId].SetActive(false);
+        equippedWeapons[activeWeaponId].SetActive(true);
     }
 
     // function that can be called by the weapon buttons that swaps the weapon to the given id

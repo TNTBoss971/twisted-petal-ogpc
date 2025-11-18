@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         saveData = this.GetComponent<DataManagement>();
+        selectedItems = saveData.selectedItems;
     }
 
     // Update is called once per frame
