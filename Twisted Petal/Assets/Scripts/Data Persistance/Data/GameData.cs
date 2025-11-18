@@ -7,7 +7,8 @@ public class GameData
     public int testVarOne;
     public int testVarTwo;
     public int levelsBeaten;
-    public List<int> selectedItems;
+    public List<GameObject> selectedItems;
+    public List<GameObject> weaponTypes;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -16,5 +17,6 @@ public class GameData
     {
         this.levelsBeaten = 0;
         this.selectedItems = null;
+        weaponTypes = null;
     }
 }

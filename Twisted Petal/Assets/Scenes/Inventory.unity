@@ -722,7 +722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 264655451}
-  - component: {fileID: 264655452}
+  - component: {fileID: 264655454}
   - component: {fileID: 264655453}
   m_Layer: 0
   m_Name: InventoryManager
@@ -746,18 +746,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &264655452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264655450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 580cf1e5a97425841ac1edeb1e202906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &264655453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -771,7 +759,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelsBeaten: 0
-  selectedItems: 
+  selectedItems: []
+  weaponTypes: []
+--- !u!114 &264655454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264655450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 580cf1e5a97425841ac1edeb1e202906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponTypes:
+  - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
+  - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
+  - {fileID: 6144256074545822952, guid: 8842cd7145240bb4e8f895e77940b36e, type: 3}
+  - {fileID: 3108472696131321336, guid: c5994ef2baf0118409ecd921431edf14, type: 3}
 --- !u!1 &494568192
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 2
   button: {fileID: 494568194}
+  itemStored: {fileID: 0}
 --- !u!1 &501298695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,6 +1049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 0
   button: {fileID: 501298698}
+  itemStored: {fileID: 0}
 --- !u!1 &508188826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 14
   button: {fileID: 508188829}
+  itemStored: {fileID: 0}
 --- !u!114 &508188829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1448,6 +1457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 3
   button: {fileID: 939574326}
+  itemStored: {fileID: 0}
 --- !u!1 &949005783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,6 +1511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 10
   button: {fileID: 949005786}
+  itemStored: {fileID: 0}
 --- !u!114 &949005786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,6 +1865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 5
   button: {fileID: 1023197642}
+  itemStored: {fileID: 0}
 --- !u!1 &1119918981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +2069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 7
   button: {fileID: 1135483171}
+  itemStored: {fileID: 0}
 --- !u!114 &1135483171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2274,6 +2287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 1
   button: {fileID: 1196614632}
+  itemStored: {fileID: 0}
 --- !u!1 &1266479395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2638,6 +2652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 4
   button: {fileID: 1306701184}
+  itemStored: {fileID: 0}
 --- !u!1 &1330981007
 GameObject:
   m_ObjectHideFlags: 0
@@ -2827,6 +2842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 13
   button: {fileID: 1477506152}
+  itemStored: {fileID: 0}
 --- !u!114 &1477506152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2962,6 +2978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 6
   button: {fileID: 1527707151}
+  itemStored: {fileID: 0}
 --- !u!114 &1527707151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3247,6 +3264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 15
   button: {fileID: 1701628949}
+  itemStored: {fileID: 0}
 --- !u!114 &1701628949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3382,6 +3400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 9
   button: {fileID: 1744618879}
+  itemStored: {fileID: 0}
 --- !u!114 &1744618879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3653,6 +3672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 11
   button: {fileID: 1951573330}
+  itemStored: {fileID: 0}
 --- !u!114 &1951573330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3788,6 +3808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 12
   button: {fileID: 2011032573}
+  itemStored: {fileID: 0}
 --- !u!114 &2011032573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3923,6 +3944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonID: 8
   button: {fileID: 2137415749}
+  itemStored: {fileID: 0}
 --- !u!114 &2137415749
 MonoBehaviour:
   m_ObjectHideFlags: 0

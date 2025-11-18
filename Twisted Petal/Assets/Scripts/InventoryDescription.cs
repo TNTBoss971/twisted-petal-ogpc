@@ -38,7 +38,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 1)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedItems[0]];
+                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedIDs[0]];
             }
             else
             {
@@ -49,7 +49,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 2)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedItems[1]];
+                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedIDs[1]];
             }
             else
             {
@@ -60,7 +60,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 3)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedItems[2]];
+                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedIDs[2]];
             }
             else
             {
@@ -71,7 +71,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 4)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedItems[3]];
+                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedIDs[3]];
             }
             else
             {
