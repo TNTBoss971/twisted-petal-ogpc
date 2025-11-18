@@ -103,7 +103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5501027255894764194
 Transform:
   m_ObjectHideFlags: 0
@@ -139,3 +139,4 @@ MonoBehaviour:
   currentAngle: 0
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
+  displayImage: {fileID: 375807072183942001, guid: a784882050e852044aefb851247d7d19, type: 3}

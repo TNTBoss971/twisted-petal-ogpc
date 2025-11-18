@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManagement : MonoBehaviour
 {
@@ -150,6 +151,7 @@ public class GameManagement : MonoBehaviour
             equippedWeapons[i].transform.localPosition = new Vector3(0, 0, 1);
             numOfEquippedWeapons += 1;
             weaponButtons[i].SetActive(true);
+            weaponButtons[i].GetComponent<Image>().sprite = equippedWeapons[i].GetComponent<GunController>().displayImage;
         }
 
         // set active state
