@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5639989058606751104}
   - component: {fileID: 1041296257133150329}
   m_Layer: 0
-  m_Name: CannonShell
+  m_Name: ExplosiveShell
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.9194028, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.65654284, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   player: {fileID: 0}
   damage: 5
   pierce: 3
-  type: 1
+  type: 2
   targetPosition: {x: 0, y: 0}
 --- !u!114 &1041296257133150329
 MonoBehaviour:

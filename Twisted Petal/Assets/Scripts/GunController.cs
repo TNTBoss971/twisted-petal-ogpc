@@ -13,6 +13,7 @@ public class GunController : MonoBehaviour
     public float firingDelay;
     private float nextFirePoint = 0;
     public GameObject ammoObject;
+    public ProjectileBehavior ammoBehavior;
     public float speedRot = 0.5f; // less then or equal to 1
 
     [Header("Personal Rotational Variables")]
@@ -41,10 +42,29 @@ public class GunController : MonoBehaviour
 
         if (nextFirePoint <= Time.time && attackAction.IsPressed())
         {
-            GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
-            clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
-            nextFirePoint = Time.time + firingDelay;
+            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Basic)
+            {
+                FireBasic();
+            }
+            else if (ammoBehavior.type == ProjectileBehavior.MunitionType.Explosive)
+            {
+                FireExplosive();
+            }
         }
+    }
+
+    void FireBasic()
+    {
+        GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
+        clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
+        nextFirePoint = Time.time + firingDelay;
+    }
+    void FireExplosive()
+    {
+        GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
+        clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
+        nextFirePoint = Time.time + firingDelay;
+        clone.GetComponent<ProjectileBehavior>().targetPosition = targetPos;
     }
 
 

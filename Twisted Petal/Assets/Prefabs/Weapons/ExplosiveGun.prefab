@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 8613358239077186588}
   - component: {fileID: 2311516628993323382}
   m_Layer: 0
-  m_Name: Gun (2)
+  m_Name: ExplosiveGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingDelay: 1
-  ammoObject: {fileID: 4898352103702244452, guid: 5980a175d1654fc42acf30561b702900, type: 3}
+  ammoObject: {fileID: 4898352103702244452, guid: cc2bcfd76dc382841a2e2df515d0354e, type: 3}
+  ammoBehavior: {fileID: 0}
   speedRot: 0.5
   targetAngle: 0
   currentAngle: 0

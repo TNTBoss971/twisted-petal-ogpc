@@ -7,6 +7,20 @@ public class ProjectileBehavior : MonoBehaviour
     public GameObject player;
     public float damage;
     public int pierce; // decreased by one every time it hits an enemy, once it reaches zero, the projectile is destroyed
+
+    public enum MunitionType
+    {
+        None,
+        Basic,
+        Explosive, // explosive effects
+        Laser,
+        Gas, // persistent effects
+        Arcing // chain lightning and the lke
+    }
+    public MunitionType type;
+
+    [Header("Explosive")]
+    public Vector2 targetPosition;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +31,13 @@ public class ProjectileBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (type == MunitionType.Explosive)
+        {
+            if (transform.position.y > targetPosition.y)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
