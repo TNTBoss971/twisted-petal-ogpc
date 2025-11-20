@@ -23,6 +23,7 @@ public class InventoryDescription : MonoBehaviour
         {14, "Unknown Item - It's Unknown!"},
         {15, "Unknown Item - It's Unknown!"}
     };
+    
     public int descriptionID;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

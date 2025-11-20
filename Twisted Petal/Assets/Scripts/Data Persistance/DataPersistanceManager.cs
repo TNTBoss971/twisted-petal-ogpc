@@ -66,13 +66,15 @@ public class DataPersistanceManager : MonoBehaviour
         // save that data to a file using the data handler
         dataHandler.Save(gameData);
     }
-    
+
     // if we want it to save every time you quit: this is the code for that.
     
-    //private void OnApplicationQuit()
-    //{
-        //SaveGame();
-    //}
+    /*
+    private void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+    */
 
     private List<IDataPersistance> FindAllDataPersistanceObjects()
     {

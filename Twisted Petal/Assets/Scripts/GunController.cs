@@ -23,7 +23,7 @@ public class GunController : MonoBehaviour
 
     [Header("Personal Display Variables")]
     public Sprite displayImage;
-    public int descriptionID;
+    public int descriptionID;  // tells the inventory what description to show
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
