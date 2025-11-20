@@ -44,8 +44,11 @@ public class InventoryButton : MonoBehaviour
             selected = false;
             gameObject.GetComponent<Image>().color = Color.white;
         }
-        buttonImage.sprite = itemStored.GetComponent<GunController>().displayImage;
-        descriptionID = itemStored.GetComponent<GunController>().descriptionID;
+        if (itemStored != null)
+        {
+            buttonImage.sprite = itemStored.GetComponent<GunController>().displayImage;
+            descriptionID = itemStored.GetComponent<GunController>().descriptionID;
+        }
     }
 
     void TaskOnClick()
