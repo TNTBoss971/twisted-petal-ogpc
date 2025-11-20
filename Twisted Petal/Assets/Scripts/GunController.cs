@@ -32,7 +32,7 @@ public class GunController : MonoBehaviour
     {
         // assign actions
         attackAction = InputSystem.actions.FindAction("Attack");
-
+        ammoBehavior = ammoObject.GetComponent<ProjectileBehavior>();
     }
 
     // Update is called once per frame
@@ -65,7 +65,7 @@ public class GunController : MonoBehaviour
         GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
         clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
         nextFirePoint = Time.time + firingDelay;
-        clone.GetComponent<ProjectileBehavior>().targetPosition = targetPos;
+        clone.GetComponent<ProjectileBehavior>().targetPosition = Camera.main.ScreenToWorldPoint(targetPos);
     }
 
 

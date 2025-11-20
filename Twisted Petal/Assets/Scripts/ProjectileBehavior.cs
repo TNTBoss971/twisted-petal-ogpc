@@ -33,7 +33,7 @@ public class ProjectileBehavior : MonoBehaviour
     {
         if (type == MunitionType.Explosive)
         {
-            if (transform.position.y > targetPosition.y)
+            if (transform.position.x > targetPosition.x)
             {
                 Destroy(gameObject);
             }
