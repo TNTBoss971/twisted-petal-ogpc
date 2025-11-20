@@ -23,6 +23,7 @@ public class InventoryDescription : MonoBehaviour
         {14, "Unknown Item - It's Unknown!"},
         {15, "Unknown Item - It's Unknown!"}
     };
+    
     public int descriptionID;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,7 +39,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 1)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedItems[0]];
+                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedDescriptions[0]];
             }
             else
             {
@@ -49,7 +50,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 2)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedItems[1]];
+                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedDescriptions[1]];
             }
             else
             {
@@ -60,7 +61,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 3)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedItems[2]];
+                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedDescriptions[2]];
             }
             else
             {
@@ -71,7 +72,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 4)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedItems[3]];
+                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedDescriptions[3]];
             }
             else
             {

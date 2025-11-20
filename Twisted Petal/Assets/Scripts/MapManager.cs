@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class MapManager : MonoBehaviour
 {
     public static int mapPosition = 1;
-    private float moveCooldown = 0f;
     private DataManagement saveData;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

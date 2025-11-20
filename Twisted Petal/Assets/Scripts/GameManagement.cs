@@ -146,7 +146,7 @@ public class GameManagement : MonoBehaviour
         // load weapons in
         for (int i = 0; i < saveData.selectedItems.Count; i++)
         {
-            equippedWeapons[i] = Instantiate(weapons[saveData.selectedItems[i]]);
+            equippedWeapons[i] = Instantiate(saveData.selectedItems[i]);
             equippedWeapons[i].transform.SetParent(weaponParent);
             equippedWeapons[i].transform.localPosition = new Vector3(0, 0, 1);
             numOfEquippedWeapons += 1;
