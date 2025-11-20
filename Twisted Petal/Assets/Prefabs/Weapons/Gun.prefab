@@ -52,6 +52,8 @@ MonoBehaviour:
   currentAngle: 0
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
+  displayImage: {fileID: 0}
+  descriptionID: 0
 --- !u!1 &4666619886083391244
 GameObject:
   m_ObjectHideFlags: 0

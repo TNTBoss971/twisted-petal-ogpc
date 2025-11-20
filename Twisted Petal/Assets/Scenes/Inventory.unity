@@ -760,7 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsBeaten: 0
   selectedItems: []
-  weaponTypes: []
+  ownedItems: []
 --- !u!114 &264655454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580cf1e5a97425841ac1edeb1e202906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponTypes:
+  ownedItems:
   - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
   - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
   - {fileID: 6144256074545822952, guid: 8842cd7145240bb4e8f895e77940b36e, type: 3}
@@ -912,6 +912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 2
+  descriptionID: 0
   button: {fileID: 494568194}
   itemStored: {fileID: 0}
 --- !u!1 &501298695
@@ -1048,6 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 0
+  descriptionID: 0
   button: {fileID: 501298698}
   itemStored: {fileID: 0}
 --- !u!1 &508188826
@@ -1102,6 +1104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 14
+  descriptionID: 0
   button: {fileID: 508188829}
   itemStored: {fileID: 0}
 --- !u!114 &508188829
@@ -1456,6 +1459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 3
+  descriptionID: 0
   button: {fileID: 939574326}
   itemStored: {fileID: 0}
 --- !u!1 &949005783
@@ -1510,6 +1514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 10
+  descriptionID: 0
   button: {fileID: 949005786}
   itemStored: {fileID: 0}
 --- !u!114 &949005786
@@ -1864,6 +1869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 5
+  descriptionID: 0
   button: {fileID: 1023197642}
   itemStored: {fileID: 0}
 --- !u!1 &1119918981
@@ -2068,6 +2074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 7
+  descriptionID: 0
   button: {fileID: 1135483171}
   itemStored: {fileID: 0}
 --- !u!114 &1135483171
@@ -2286,6 +2293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 1
+  descriptionID: 0
   button: {fileID: 1196614632}
   itemStored: {fileID: 0}
 --- !u!1 &1266479395
@@ -2651,6 +2659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 4
+  descriptionID: 0
   button: {fileID: 1306701184}
   itemStored: {fileID: 0}
 --- !u!1 &1330981007
@@ -2841,6 +2850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 13
+  descriptionID: 0
   button: {fileID: 1477506152}
   itemStored: {fileID: 0}
 --- !u!114 &1477506152
@@ -2977,6 +2987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 6
+  descriptionID: 0
   button: {fileID: 1527707151}
   itemStored: {fileID: 0}
 --- !u!114 &1527707151
@@ -3263,6 +3274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 15
+  descriptionID: 0
   button: {fileID: 1701628949}
   itemStored: {fileID: 0}
 --- !u!114 &1701628949
@@ -3399,6 +3411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 9
+  descriptionID: 0
   button: {fileID: 1744618879}
   itemStored: {fileID: 0}
 --- !u!114 &1744618879
@@ -3671,6 +3684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 11
+  descriptionID: 0
   button: {fileID: 1951573330}
   itemStored: {fileID: 0}
 --- !u!114 &1951573330
@@ -3807,6 +3821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 12
+  descriptionID: 0
   button: {fileID: 2011032573}
   itemStored: {fileID: 0}
 --- !u!114 &2011032573
@@ -3943,6 +3958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonID: 8
+  descriptionID: 0
   button: {fileID: 2137415749}
   itemStored: {fileID: 0}
 --- !u!114 &2137415749

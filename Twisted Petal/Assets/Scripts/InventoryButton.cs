@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class InventoryButton : MonoBehaviour
 {
     public int buttonID;
+    public int descriptionID;
     public Button button;
     private bool selected;
     public GameObject itemStored;
@@ -29,7 +30,7 @@ public class InventoryButton : MonoBehaviour
             itemStored = InventoryManager.inventoryWeaponTypes[buttonID];
         }
         // Changes item to green if it's selected.
-        if (InventoryManager.selectedItems.Contains(itemStored))
+        if (InventoryManager.selectedIDs.Contains(buttonID))
         {
             selected = true;
             gameObject.GetComponent<Image>().color = Color.green;
@@ -43,6 +44,8 @@ public class InventoryButton : MonoBehaviour
             selected = false;
             gameObject.GetComponent<Image>().color = Color.white;
         }
+        buttonImage.sprite = itemStored.GetComponent<GunController>().displayImage;
+        descriptionID = itemStored.GetComponent<GunController>().descriptionID;
     }
 
     void TaskOnClick()
@@ -51,6 +54,7 @@ public class InventoryButton : MonoBehaviour
         {
             InventoryManager.selectedItems.Remove(itemStored);
             InventoryManager.selectedIDs.Remove(buttonID);
+            InventoryManager.selectedDescriptions.Remove(descriptionID);
         }
         else
         {
@@ -58,6 +62,7 @@ public class InventoryButton : MonoBehaviour
             {
                 InventoryManager.selectedItems.Add(itemStored);
                 InventoryManager.selectedIDs.Add(buttonID);
+                InventoryManager.selectedDescriptions.Add(descriptionID);
             }
         }
     }

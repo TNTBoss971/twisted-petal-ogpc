@@ -23,6 +23,7 @@ public class GunController : MonoBehaviour
 
     [Header("Personal Display Variables")]
     public Sprite displayImage;
+    public int descriptionID;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
