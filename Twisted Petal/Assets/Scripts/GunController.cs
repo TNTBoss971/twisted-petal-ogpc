@@ -21,6 +21,9 @@ public class GunController : MonoBehaviour
     public Vector3 targetPos; // the target, as cordinates
     public Vector3 directionVec; // the target as a normalized vector
 
+    [Header("Personal Display Variables")]
+    public Sprite displayImage;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
