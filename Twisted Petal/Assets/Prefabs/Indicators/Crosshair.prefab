@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4245291441736193167
+--- !u!1 &3330607687534335024
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7054173657431207258}
-  - component: {fileID: 8352113478665100651}
+  - component: {fileID: 1277925317605436271}
+  - component: {fileID: 6204533280041019906}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7054173657431207258
+--- !u!4 &1277925317605436271
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4245291441736193167}
+  m_GameObject: {fileID: 3330607687534335024}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8613358239077186588}
+  m_Father: {fileID: 4859078000238267132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8352113478665100651
+--- !u!212 &6204533280041019906
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4245291441736193167}
+  m_GameObject: {fileID: 3330607687534335024}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1101952043, guid: 4886c794934350a4d987c45188b472c5, type: 3}
-  m_Color: {r: 0, g: 0.036759853, b: 1, a: 1}
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &6144256074545822952
+--- !u!1 &3578250175648416519
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,51 +95,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8613358239077186588}
-  - component: {fileID: 2311516628993323382}
+  - component: {fileID: 4859078000238267132}
   m_Layer: 0
-  m_Name: ExplosiveGun
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8613358239077186588
+--- !u!4 &4859078000238267132
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6144256074545822952}
+  m_GameObject: {fileID: 3578250175648416519}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7054173657431207258}
+  - {fileID: 1277925317605436271}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2311516628993323382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6144256074545822952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 044e6e2a6445ba44ab5a7331ccde94ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firingDelay: 1
-  ammoObject: {fileID: 4898352103702244452, guid: cc2bcfd76dc382841a2e2df515d0354e, type: 3}
-  ammoBehavior: {fileID: 0}
-  speedRot: 0.5
-  targetAngle: 0
-  currentAngle: 0
-  targetPos: {x: 0, y: 0, z: 0}
-  directionVec: {x: 0, y: 0, z: 0}
-  displayImage: {fileID: -2248588054835376049, guid: eb600b9bb04f9da47bb1914c4c75194f, type: 3}
-  descriptionID: 2
-  targetingIndicator: {fileID: 3578250175648416519, guid: 42a7c9f2b50b32d41a49197623ac3727, type: 3}

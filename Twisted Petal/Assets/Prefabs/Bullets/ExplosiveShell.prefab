@@ -180,6 +180,8 @@ MonoBehaviour:
   player: {fileID: 0}
   damage: 5
   pierce: 3
+  targetIndicator: {fileID: 0}
+  effect: {fileID: 2983715408215267663, guid: 4eb40bee1e5109848945c7c830d8dc48, type: 3}
   type: 2
   targetPosition: {x: 0, y: 0}
 --- !u!114 &1041296257133150329

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5181034740998668783}
   - component: {fileID: 4118980773611697474}
   - component: {fileID: 8942829205161027995}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -105,7 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  player: {fileID: 0}
 --- !u!50 &5426400630366098533
 Rigidbody2D:
   serializedVersion: 5

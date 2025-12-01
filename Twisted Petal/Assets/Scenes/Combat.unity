@@ -943,7 +943,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelsBeaten: 0
-  selectedItems: 
+  selectedItems: []
+  ownedItems: []
 --- !u!1 &421250703
 GameObject:
   m_ObjectHideFlags: 0

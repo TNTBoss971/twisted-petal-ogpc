@@ -15,6 +15,7 @@ public class GunController : MonoBehaviour
     public GameObject ammoObject;
     public ProjectileBehavior ammoBehavior;
     public float speedRot = 0.5f; // less then or equal to 1
+    public GameObject persistentProjectile;
 
     [Header("Personal Rotational Variables")]
     public float targetAngle; // the "goal" angle
@@ -25,6 +26,7 @@ public class GunController : MonoBehaviour
     [Header("Personal Display Variables")]
     public Sprite displayImage;
     public int descriptionID;  // tells the inventory what description to show
+    public GameObject targetingIndicator; // marks the target of projectiles
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,9 +49,20 @@ public class GunController : MonoBehaviour
             {
                 FireBasic();
             }
-            else if (ammoBehavior.type == ProjectileBehavior.MunitionType.Explosive)
+            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Explosive)
             {
                 FireExplosive();
+            }
+            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
+            {
+                FireLaser();
+            }
+        }
+        if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser && !attackAction.IsPressed())
+        {
+            if (persistentProjectile != null)
+            {
+                Destroy(persistentProjectile);
             }
         }
     }
@@ -65,7 +78,20 @@ public class GunController : MonoBehaviour
         GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
         clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
         nextFirePoint = Time.time + firingDelay;
-        clone.GetComponent<ProjectileBehavior>().targetPosition = Camera.main.ScreenToWorldPoint(targetPos);
+
+        targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        targetPos = new Vector3(targetPos.x, targetPos.y, 1); // so that the indicator isnt at the same z position as the camera
+        clone.GetComponent<ProjectileBehavior>().targetPosition = targetPos;
+        clone.GetComponent<ProjectileBehavior>().targetIndicator = Instantiate(targetingIndicator, targetPos, transform.rotation);
+    }
+    void FireLaser()
+    {
+        if (persistentProjectile == null)
+        {
+            persistentProjectile = Instantiate(ammoObject, transform.position, transform.rotation);
+        }
+        persistentProjectile.GetComponent<ProjectileBehavior>().targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        persistentProjectile.transform.rotation = transform.rotation;
     }
 
 
