@@ -74,13 +74,12 @@ public class ProjectileBehavior : MonoBehaviour
         if (type == MunitionType.Laser)
         {
             LayerMask layerMask = LayerMask.GetMask("Enemies");
-            RaycastHit2D[] results;
             // Does the ray intersect any objects excluding the player layer
             if (Physics2D.Raycast(startingPosition, transform.TransformDirection(Vector3.right), targetLength, layerMask))
             {
                 Debug.DrawRay(startingPosition, transform.TransformDirection(Vector3.right) * targetLength, Color.yellow);
                 // find the closest colliding enemy
-                results = Physics2D.RaycastAll(startingPosition, transform.TransformDirection(Vector3.right), targetLength, layerMask);
+                RaycastHit2D[] results = Physics2D.RaycastAll(startingPosition, transform.TransformDirection(Vector3.right), targetLength, layerMask);
 
                 // take the enemy's position and find how far away it is
                 float enemyDistance = Vector2.Distance(startingPosition, results[0].transform.position);
