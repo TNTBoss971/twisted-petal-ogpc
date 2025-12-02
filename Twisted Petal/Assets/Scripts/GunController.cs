@@ -58,11 +58,23 @@ public class GunController : MonoBehaviour
                 FireLaser();
             }
         }
-        if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser && !attackAction.IsPressed())
+        if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
         {
-            if (persistentProjectile != null)
+            if (attackAction.IsPressed())
             {
-                Destroy(persistentProjectile);
+                if (persistentProjectile == null)
+                {
+                    persistentProjectile = Instantiate(ammoObject, transform.position, transform.rotation);
+                }
+                persistentProjectile.GetComponent<ProjectileBehavior>().targetLength = Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position);
+                persistentProjectile.transform.rotation = transform.rotation;
+            }
+            else
+            {
+                if (persistentProjectile != null)
+                {
+                    Destroy(persistentProjectile);
+                }
             }
         }
     }
@@ -86,12 +98,11 @@ public class GunController : MonoBehaviour
     }
     void FireLaser()
     {
-        if (persistentProjectile == null)
+        if (persistentProjectile != null)
         {
-            persistentProjectile = Instantiate(ammoObject, transform.position, transform.rotation);
+            persistentProjectile.GetComponent<ProjectileBehavior>().damagePulse = true;
         }
-        persistentProjectile.GetComponent<ProjectileBehavior>().targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        persistentProjectile.transform.rotation = transform.rotation;
+        nextFirePoint = Time.time + firingDelay;
     }
 
 

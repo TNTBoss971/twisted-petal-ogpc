@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -24,10 +25,12 @@ public class ProjectileBehavior : MonoBehaviour
     [Header("Effect Objects")]
     public GameObject effect;
 
-    [Header("Extras")]
-    public Vector2 targetPosition;
-    public Vector2 startingPosition;
-    public bool atTarget = false;
+    [Header("Extras")] // I have included notes on which types use what
+    public Vector2 targetPosition; // Explosive, Laser
+    public Vector2 startingPosition; // Laser
+    public bool atTarget = false; // Explosive
+    public float targetLength; // Laser
+    public bool damagePulse; // Laser
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,19 +52,21 @@ public class ProjectileBehavior : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+
         if (type == MunitionType.Laser)
         {
             if (atTarget)
             {
-                transform.position = startingPosition;
+                transform.position = new Vector3(startingPosition.x, startingPosition.y, 2);
                 atTarget = false;
-            } 
+            }
             else
             {
-                transform.position = targetPosition;
+                transform.position = new Vector3(targetPosition.x, targetPosition.y, 2);
                 atTarget = true;
             }
-
+            effect.transform.position = new Vector3(targetPosition.x, targetPosition.y, 1.95f);
         }
     }
     void FixedUpdate()
@@ -69,17 +74,33 @@ public class ProjectileBehavior : MonoBehaviour
         if (type == MunitionType.Laser)
         {
             LayerMask layerMask = LayerMask.GetMask("Enemies");
-            RaycastHit hit;
+            RaycastHit2D[] results;
             // Does the ray intersect any objects excluding the player layer
-            if (Physics2D.Raycast(startingPosition, transform.TransformDirection(Vector3.right) * 100, 100, layerMask))
+            if (Physics2D.Raycast(startingPosition, transform.TransformDirection(Vector3.right), targetLength, layerMask))
             {
-                Debug.DrawRay(startingPosition, transform.TransformDirection(Vector3.right) * 100, Color.yellow);
-                Debug.Log("Did Hit");
+                Debug.DrawRay(startingPosition, transform.TransformDirection(Vector3.right) * targetLength, Color.yellow);
+                // find the closest colliding enemy
+                results = Physics2D.RaycastAll(startingPosition, transform.TransformDirection(Vector3.right), targetLength, layerMask);
+
+                // take the enemy's position and find how far away it is
+                float enemyDistance = Vector2.Distance(startingPosition, results[0].transform.position);
+                // then, apply the distance to a normalized vector of the direction the laser object is facing
+                Vector2 directionVector = transform.right;
+                Vector2 destinationVector = directionVector * enemyDistance;
+                // finally, add the starting positon to give us our final vector
+                targetPosition = destinationVector + startingPosition;
+
+                // damage enemy
+                if (damagePulse)
+                {
+                    results[0].transform.GetComponent<EnemyBehavior>().DamageSelf(damage);
+                    damagePulse = false;
+                }
             }
             else
             {
-                Debug.DrawRay(startingPosition, transform.TransformDirection(Vector3.right) * 1000, Color.white);
-                Debug.Log("Did not Hit");
+                Debug.DrawRay(startingPosition, transform.TransformDirection(Vector3.right) * targetLength, Color.white);
+                targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
         }
     }
