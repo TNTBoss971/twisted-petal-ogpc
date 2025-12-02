@@ -31,6 +31,7 @@ public class GameManagement : MonoBehaviour
 
     public float waveLength;
     public float nextWaveTime;
+    public static int itemsLooted;
 
     public WaveData[] waves; // a list of all the waves
     public WaveData currentWave; 
@@ -44,6 +45,7 @@ public class GameManagement : MonoBehaviour
     void Start()
     {
         dataManager.LoadGame();
+        itemsLooted = 0;
         // assign actions
         cycleAction = InputSystem.actions.FindAction("Cycle");
 
@@ -113,7 +115,9 @@ public class GameManagement : MonoBehaviour
         if (nextWaveTime < Time.time)
         {
             // this wave/level is over, go to world map
+
             saveData.levelsBeaten = waveNumber + 1;
+            saveData.itemsLooted = itemsLooted;
             dataManager.SaveGame();
             SceneManager.LoadScene("WorldMap");
         }

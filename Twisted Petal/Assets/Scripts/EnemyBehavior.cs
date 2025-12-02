@@ -14,6 +14,9 @@ public class EnemyBehavior : MonoBehaviour
     private float invincibilityTimer = 0f;
     private float speed = 3f;
     private GameManagement gameManager;
+    private bool hasLoot = false;
+    private int lootFrequency = 5; // the higher this number is the less likely it is for a loot drop
+    private ParticleSystem lootSparkles;
 
     void Start()
     {
@@ -22,16 +25,32 @@ public class EnemyBehavior : MonoBehaviour
         target = player.transform;
         rb = this.GetComponent<Rigidbody2D>();
         health = 2f;
+        if (Random.Range(0, lootFrequency) == (lootFrequency - 1))
+        {
+            hasLoot = true;
+        }
+        lootSparkles = this.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health < 1)
+        if (hasLoot == false)
         {
-            gameManager.enemyCount -= 1;
-            Destroy(gameObject);
+            if (lootSparkles != null)
+            {
+                Destroy(lootSparkles);
+            }
         }
+        if (health < 1)
+            {
+                if (hasLoot == true)
+                {
+                    GameManagement.itemsLooted += 1;
+                }
+                gameManager.enemyCount -= 1;
+                Destroy(gameObject);
+            }
         /*
         if (color == "default")
         {

@@ -6,6 +6,7 @@ public class DataManagement : MonoBehaviour, IDataPersistance
     public int levelsBeaten = 0;
     public List<GameObject> selectedItems;
     public List<GameObject> ownedItems;
+    public int itemsLooted;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +25,7 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         levelsBeaten = data.levelsBeaten;
         selectedItems = data.selectedItems;
         ownedItems = data.ownedItems;
+        itemsLooted = data.itemsLooted;
     }
 
     public void SaveData(ref GameData data)
@@ -31,5 +33,6 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         data.levelsBeaten = levelsBeaten;
         data.selectedItems = selectedItems;
         data.ownedItems = ownedItems;
+        data.itemsLooted = itemsLooted;
     }
 }

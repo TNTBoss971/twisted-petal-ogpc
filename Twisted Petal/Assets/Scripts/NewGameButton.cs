@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.IO;
+using System.Collections.Generic;
 
 public class NewGameButton : MonoBehaviour
 {
