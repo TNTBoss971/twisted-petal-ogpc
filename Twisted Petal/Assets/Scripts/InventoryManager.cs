@@ -17,6 +17,7 @@ public class InventoryManager : MonoBehaviour
     // This list is just so other objects in the scene can acess ownedItems without having to mess with savedata
     public static List<GameObject> inventoryWeaponTypes;
     public List<GameObject> weaponTypes;
+    public List<GameObject> lootedItems;
     private int itemsLooted;
     private int lootLoop; // a temp variable used to keep track of how many loops to use when adding items
 
@@ -24,10 +25,6 @@ public class InventoryManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (saveData.ownedItems.Count == 0)
-        {
-            ownedItems = startingWeapons;
-        }
         saveData = this.GetComponent<DataManagement>();
         itemsLooted = saveData.itemsLooted;
         lootLoop = itemsLooted;
@@ -36,18 +33,33 @@ public class InventoryManager : MonoBehaviour
             for (int i = 0; i < lootLoop; i++)
             {
                 itemsLooted -= 1;
-                ownedItems.Add(weaponTypes[Random.Range(0, weaponTypes.Count)]);
+                lootedItems.Add(weaponTypes[Random.Range(0, weaponTypes.Count)]);
             }
         }
         saveData.itemsLooted = itemsLooted;
-        saveData.ownedItems = ownedItems;
+        if (saveData.ownedItems.Count <= 0)
+        {
+            ownedItems = startingWeapons;
+            saveData.ownedItems = ownedItems;
+        }
+        else
+        {
+            ownedItems = saveData.ownedItems;
+            saveData.ownedItems = ownedItems;
+        }
+        lootLoop = lootedItems.Count;
+        Debug.Log(lootedItems.Count);
+        for (int i = 0; i < lootLoop; i++)
+        {
+            ownedItems.Add(lootedItems[i]);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         saveData.selectedItems = selectedItems;
-        ownedItems = saveData.ownedItems;
         inventoryWeaponTypes = ownedItems;
+        saveData.ownedItems = ownedItems;
     }
 }
