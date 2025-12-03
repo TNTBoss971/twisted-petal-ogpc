@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8088979065578101632}
   - component: {fileID: 2483006655279719242}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: TentaMissiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingDelay: 1
-  ammoObject: {fileID: 4898352103702244452, guid: 5980a175d1654fc42acf30561b702900, type: 3}
+  ammoObject: {fileID: 4898352103702244452, guid: d957cb421c5bb4b43b4346fa08e9fbf1, type: 3}
   ammoBehavior: {fileID: 0}
   speedRot: 0.5
   persistentProjectile: {fileID: 0}
@@ -54,8 +54,8 @@ MonoBehaviour:
   currentAngle: 0
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
-  displayImage: {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  descriptionID: 0
+  displayImage: {fileID: -970146014054310643, guid: ea009a957a9d8314c854d871a56e13a7, type: 3}
+  descriptionID: 4
   targetingIndicator: {fileID: 0}
 --- !u!1 &4666619886083391244
 GameObject:
@@ -134,7 +134,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1101952043, guid: 4886c794934350a4d987c45188b472c5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9479667, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

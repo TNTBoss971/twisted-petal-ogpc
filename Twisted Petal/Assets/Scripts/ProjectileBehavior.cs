@@ -18,7 +18,8 @@ public class ProjectileBehavior : MonoBehaviour
         Explosive, // explosive effects
         Laser,
         Gas, // persistent effects
-        Arcing // chain lightning and the lke
+        Arcing, // chain lightning and the like
+        Missile // multiple projectiles at once / arcing projectiles
     }
     public MunitionType type;
     
@@ -27,17 +28,22 @@ public class ProjectileBehavior : MonoBehaviour
 
     [Header("Extras")] // I have included notes on which types use what
     public Vector2 targetPosition; // Explosive, Laser
-    public Vector2 startingPosition; // Laser
+    public Vector2 startingPosition; // Laser, Missile
+    public Quaternion startingRotation; // Missile
     public bool atTarget = false; // Explosive
     public float targetLength; // Laser
     public bool damagePulse; // Laser
-    
+    public float maxWiggle; // Missile
+    public float currentWiggle = 0; // Missile
+    public bool isWiggleAscending; // Missile
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.Find("Player");
         startingPosition = transform.position;
+        startingRotation = transform.rotation;
     }
 
     // Update is called once per frame
@@ -53,7 +59,7 @@ public class ProjectileBehavior : MonoBehaviour
             }
         }
 
-
+        // rapidly teleport back and forth to make the trail effect attached look like a laser beam
         if (type == MunitionType.Laser)
         {
             if (atTarget)
@@ -66,6 +72,7 @@ public class ProjectileBehavior : MonoBehaviour
                 transform.position = new Vector3(targetPosition.x, targetPosition.y, 2);
                 atTarget = true;
             }
+            // position the laser endpoint
             effect.transform.position = new Vector3(targetPosition.x, targetPosition.y, 1.95f);
         }
     }
@@ -74,7 +81,7 @@ public class ProjectileBehavior : MonoBehaviour
         if (type == MunitionType.Laser)
         {
             LayerMask layerMask = LayerMask.GetMask("Enemies");
-            // Does the ray intersect any objects excluding the player layer
+            // Does the ray intersect any enemies
             if (Physics2D.Raycast(startingPosition, transform.TransformDirection(Vector3.right), targetLength, layerMask))
             {
                 Debug.DrawRay(startingPosition, transform.TransformDirection(Vector3.right) * targetLength, Color.yellow);
@@ -102,13 +109,20 @@ public class ProjectileBehavior : MonoBehaviour
                 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
         }
+        if (type == MunitionType.Missile)
+        {
+            float zRotation = startingRotation.z;
+            float rotationModifier = Mathf.Sin(Time.time) * maxWiggle;
+
+            zRotation = zRotation + rotationModifier;
+            Debug.Log(zRotation);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Boundary"))
         {
-            
             Destroy(gameObject);
         }
 

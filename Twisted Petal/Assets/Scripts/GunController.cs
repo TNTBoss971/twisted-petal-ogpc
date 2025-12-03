@@ -12,6 +12,7 @@ public class GunController : MonoBehaviour
     [Header("Gameplay Variables")]
     public float firingDelay;
     private float nextFirePoint = 0;
+    public int numberOfProjectiles = 1; // on utilized by missiles so far
     public GameObject ammoObject;
     public ProjectileBehavior ammoBehavior;
     public float speedRot = 0.5f; // less then or equal to 1
@@ -57,6 +58,10 @@ public class GunController : MonoBehaviour
             {
                 FireLaser();
             }
+            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Missile)
+            {
+                FireMissile();
+            }
         }
         if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
         {
@@ -101,6 +106,15 @@ public class GunController : MonoBehaviour
         if (persistentProjectile != null)
         {
             persistentProjectile.GetComponent<ProjectileBehavior>().damagePulse = true;
+        }
+        nextFirePoint = Time.time + firingDelay;
+    }
+    void FireMissile()
+    {
+        for (int i = 0; i < numberOfProjectiles; i++)
+        {
+            GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
+            clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 2;
         }
         nextFirePoint = Time.time + firingDelay;
     }
