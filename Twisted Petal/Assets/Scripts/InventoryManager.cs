@@ -6,19 +6,15 @@ using UnityEditor.Overlays;
 public class InventoryManager : MonoBehaviour
 {
     public List<GameObject> startingWeapons = new List<GameObject>(); //if there are no weapons when loaded
-    public static List<GameObject> selectedItems = new List<GameObject>();
-    // This list contains the ids of all the currently selected items
-    public static List<int> selectedIDs = new List<int>();
-    // This list contains the descriptions of all currently selected buttons
-    public static List<int> selectedDescriptions = new List<int>();
-    // This list contains the items the player currently has. Can be modified.
-    public List<GameObject> ownedItems;
+    public static List<GameObject> selectedItems = new List<GameObject>(); // This list contains the ids of all the currently selected items
+    public static List<int> selectedIDs = new List<int>(); // This list contains the ids of all the currently selected item ids
+    public static List<int> selectedDescriptions = new List<int>(); // This list contains the descriptions of all currently selected buttons
+    public List<GameObject> ownedItems; // This list contains the items the player currently has. Can be modified.
     private DataManagement saveData;
-    // This list is just so other objects in the scene can acess ownedItems without having to mess with savedata
-    public static List<GameObject> inventoryWeaponTypes;
+    public static List<GameObject> inventoryWeaponTypes; // This list is just so other objects in the scene can acess ownedItems without having to mess with savedata
     public List<GameObject> weaponTypes;
-    public List<GameObject> lootedItems;
-    private int itemsLooted;
+    public List<GameObject> lootedItems; // I don't know why we need this but everything breaks if you take it out
+    private int itemsLooted; // how many items a player has looted
     private int lootLoop; // a temp variable used to keep track of how many loops to use when adding items
 
 
@@ -28,6 +24,7 @@ public class InventoryManager : MonoBehaviour
         saveData = this.GetComponent<DataManagement>();
         itemsLooted = saveData.itemsLooted;
         lootLoop = itemsLooted;
+        //adds looted items to the lootedItems list
         if (itemsLooted > 0)
         {
             for (int i = 0; i < lootLoop; i++)
@@ -49,6 +46,8 @@ public class InventoryManager : MonoBehaviour
         }
         lootLoop = lootedItems.Count;
         Debug.Log(lootedItems.Count);
+        // adds items from lootedItems into the player's inventory.
+        // this seems unnecessary but it doesn't work if you add them
         for (int i = 0; i < lootLoop; i++)
         {
             ownedItems.Add(lootedItems[i]);
