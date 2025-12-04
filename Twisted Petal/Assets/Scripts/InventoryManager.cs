@@ -16,6 +16,8 @@ public class InventoryManager : MonoBehaviour
     public List<GameObject> lootedItems; // I don't know why we need this but everything breaks if you take it out
     private int itemsLooted; // how many items a player has looted
     private int lootLoop; // a temp variable used to keep track of how many loops to use when adding items
+    private GameObject itemLooted; // the item that will be added to the player's inventory
+    private bool hasAllItems = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,7 +32,25 @@ public class InventoryManager : MonoBehaviour
             for (int i = 0; i < lootLoop; i++)
             {
                 itemsLooted -= 1;
-                lootedItems.Add(weaponTypes[Random.Range(0, weaponTypes.Count)]);
+                itemLooted = weaponTypes[Random.Range(0, weaponTypes.Count)];
+                // check if the player has every possible item
+                hasAllItems = true;
+                for (int k = 0; k < weaponTypes.Count; k++)
+                {
+                    if (saveData.ownedItems.Contains(weaponTypes[k]) == false)
+                    {
+                        hasAllItems = false;
+                    }
+                }
+                // if they don't have every item, give them one that isn't a duplicate
+                if (hasAllItems == false)
+                {
+                    while (saveData.ownedItems.Contains(itemLooted))
+                    {
+                        itemLooted = weaponTypes[Random.Range(0, weaponTypes.Count)];
+                    }
+                }
+                lootedItems.Add(itemLooted);
             }
         }
         saveData.itemsLooted = itemsLooted;
@@ -47,7 +67,7 @@ public class InventoryManager : MonoBehaviour
         lootLoop = lootedItems.Count;
         Debug.Log(lootedItems.Count);
         // adds items from lootedItems into the player's inventory.
-        // this seems unnecessary but it doesn't work if you add them
+        // this seems unnecessary but it doesn't work if you add them directly
         for (int i = 0; i < lootLoop; i++)
         {
             ownedItems.Add(lootedItems[i]);
