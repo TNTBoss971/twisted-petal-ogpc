@@ -8,6 +8,7 @@ public class ProjectileBehavior : MonoBehaviour
     public float damage;
     public int pierce; // decreased by one every time it hits an enemy, once it reaches zero, the projectile is destroyed
     public GameObject targetIndicator;
+    private Rigidbody2D rb;
 
     
 
@@ -29,21 +30,31 @@ public class ProjectileBehavior : MonoBehaviour
     [Header("Extras")] // I have included notes on which types use what
     public Vector2 targetPosition; // Explosive, Laser
     public Vector2 startingPosition; // Laser, Missile
-    public Quaternion startingRotation; // Missile
     public bool atTarget = false; // Explosive
     public float targetLength; // Laser
     public bool damagePulse; // Laser
+
+    public float startingVelocityDegrees; // Missile
+    public float startingSpeed; // Missile
     public float maxWiggle; // Missile
     public float currentWiggle = 0; // Missile
-    public bool isWiggleAscending; // Missile
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
+        rb = GetComponent<Rigidbody2D>();
+
         player = GameObject.Find("Player");
         startingPosition = transform.position;
-        startingRotation = transform.rotation;
+
+        if (type == MunitionType.Missile)
+        {
+            // convert velocity to degrees
+            startingVelocityDegrees = (Mathf.Atan2(rb.linearVelocity.normalized.x, rb.linearVelocity.normalized.y) * Mathf.Rad2Deg);
+            startingSpeed = rb.linearVelocity.magnitude;
+        }
     }
 
     // Update is called once per frame
@@ -111,11 +122,15 @@ public class ProjectileBehavior : MonoBehaviour
         }
         if (type == MunitionType.Missile)
         {
-            float zRotation = startingRotation.z;
-            float rotationModifier = Mathf.Sin(Time.time) * maxWiggle;
+            // alter the velocity so it reflects what it should be in terms of time
+            float alteredVelocity = startingVelocityDegrees + 45 * Mathf.Sin(Time.time);
 
-            zRotation = zRotation + rotationModifier;
-            Debug.Log(zRotation);
+
+            float velocityX = startingSpeed;
+            float velocityY = Mathf.Sin(alteredVelocity) * startingSpeed;
+            rb.linearVelocity = new Vector2(velocityX, velocityY);
+            Debug.Log(rb.linearVelocity);
+            
         }
     }
 
@@ -123,7 +138,7 @@ public class ProjectileBehavior : MonoBehaviour
     {
         if (other.CompareTag("Boundary"))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         if (other.CompareTag("Enemy") && type == MunitionType.Basic)

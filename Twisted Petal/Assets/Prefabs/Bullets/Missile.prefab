@@ -189,7 +189,7 @@ MonoBehaviour:
   atTarget: 0
   targetLength: 0
   damagePulse: 0
-  maxWiggle: 10
+  maxWiggle: 3
   currentWiggle: 0
   isWiggleAscending: 0
 --- !u!114 &1041296257133150329
