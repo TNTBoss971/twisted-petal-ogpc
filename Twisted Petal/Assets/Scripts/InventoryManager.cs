@@ -39,7 +39,10 @@ public class InventoryManager : MonoBehaviour
                 {
                     if (saveData.ownedItems.Contains(weaponTypes[k]) == false)
                     {
-                        hasAllItems = false;
+                        if (lootedItems.Contains(weaponTypes[k]) == false)
+                        {
+                            hasAllItems = false;
+                        }
                     }
                 }
                 // if they don't have every item, give them one that isn't a duplicate
