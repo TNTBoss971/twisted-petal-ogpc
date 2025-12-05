@@ -34,10 +34,9 @@ public class ProjectileBehavior : MonoBehaviour
     public float targetLength; // Laser
     public bool damagePulse; // Laser
 
-    public float startingVelocityDegrees; // Missile
-    public float startingSpeed; // Missile
-    public float maxWiggle; // Missile
-    public float currentWiggle = 0; // Missile
+    public Vector2 startingVelocity; // Missile
+    public float offset; // Missile
+    public float frequency; // Missile
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -52,8 +51,9 @@ public class ProjectileBehavior : MonoBehaviour
         if (type == MunitionType.Missile)
         {
             // convert velocity to degrees
-            startingVelocityDegrees = (Mathf.Atan2(rb.linearVelocity.normalized.x, rb.linearVelocity.normalized.y) * Mathf.Rad2Deg);
-            startingSpeed = rb.linearVelocity.magnitude;
+            startingVelocity = rb.linearVelocity;
+            offset = Random.Range(0, 10);
+            frequency = Random.Range(1, 10);
         }
     }
 
@@ -122,14 +122,14 @@ public class ProjectileBehavior : MonoBehaviour
         }
         if (type == MunitionType.Missile)
         {
-            // alter the velocity so it reflects what it should be in terms of time
-            float alteredVelocity = startingVelocityDegrees + 45 * Mathf.Sin(Time.time);
-
-
-            float velocityX = startingSpeed;
-            float velocityY = Mathf.Sin(alteredVelocity) * startingSpeed;
-            rb.linearVelocity = new Vector2(velocityX, velocityY);
-            Debug.Log(rb.linearVelocity);
+            // find the perpendicular vector
+            Vector2 perpendicularVelocity = new Vector2(-startingVelocity.y, startingVelocity.x);
+            // get the mult modifier
+            float mult = Mathf.Sin((Time.time + offset) * frequency) * 0.2f;
+            // use mult to scale the perpdenicular vector appropriately
+            perpendicularVelocity = new Vector2(perpendicularVelocity.x * mult, perpendicularVelocity.y * mult);
+            // apply velocity
+            rb.linearVelocity = (perpendicularVelocity + startingVelocity) / 2.0f;
             
         }
     }
@@ -138,7 +138,7 @@ public class ProjectileBehavior : MonoBehaviour
     {
         if (other.CompareTag("Boundary"))
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
 
         if (other.CompareTag("Enemy") && type == MunitionType.Basic)

@@ -12,7 +12,8 @@ public class GunController : MonoBehaviour
     [Header("Gameplay Variables")]
     public float firingDelay;
     private float nextFirePoint = 0;
-    public int numberOfProjectiles = 1; // on utilized by missiles so far
+    public int numberOfProjectiles = 1; // only utilized by missiles so far
+    public int projectilesInBurst; // only utilized by missiles so far
     public GameObject ammoObject;
     public ProjectileBehavior ammoBehavior;
     public float speedRot = 0.5f; // less then or equal to 1
@@ -63,6 +64,17 @@ public class GunController : MonoBehaviour
                 FireMissile();
             }
         }
+        // resest missile if the player lets go of the mouse
+        if (!attackAction.IsPressed() && ammoBehavior.type == ProjectileBehavior.MunitionType.Missile)
+        {
+            if (projectilesInBurst > 0)
+            {
+                nextFirePoint = Time.time + firingDelay;
+            }
+            projectilesInBurst = 0;
+        }
+
+        // advanced laser logic
         if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
         {
             if (attackAction.IsPressed())
@@ -111,12 +123,19 @@ public class GunController : MonoBehaviour
     }
     void FireMissile()
     {
-        for (int i = 0; i < numberOfProjectiles; i++)
+        if (projectilesInBurst < numberOfProjectiles)
         {
             GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
-            clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 2;
+            clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
+
+            projectilesInBurst++;
+            nextFirePoint = Time.time + 0.1f;
         }
-        nextFirePoint = Time.time + firingDelay;
+        else
+        {
+            projectilesInBurst = 0;
+            nextFirePoint = Time.time + firingDelay;
+        }
     }
 
 
