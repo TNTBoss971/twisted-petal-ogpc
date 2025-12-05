@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingDelay: 1
-  numberOfProjectiles: 4
+  numberOfProjectiles: 10
+  projectilesInBurst: 0
   ammoObject: {fileID: 4898352103702244452, guid: d957cb421c5bb4b43b4346fa08e9fbf1, type: 3}
   ammoBehavior: {fileID: 0}
   speedRot: 0.5
