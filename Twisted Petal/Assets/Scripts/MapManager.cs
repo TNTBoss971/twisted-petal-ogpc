@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,11 +27,18 @@ public class MapManager : MonoBehaviour
         // Pressing enter on the map takes you into a level
         if (Input.GetKey("return"))
         {
-            if (saveData.selectedItems.Count >= 2)
+            try
             {
-                SceneManager.LoadScene("Combat");
+                if (saveData.selectedItems.Count >= 2 || saveData.selectedItems == null)
+                {
+                    SceneManager.LoadScene("Combat");
+                }
+                else
+                {
+                    errorText.GetComponent<MapErrorText>().cannotEnter();
+                }
             }
-            else
+            catch (NullReferenceException)
             {
                 errorText.GetComponent<MapErrorText>().cannotEnter();
             }
