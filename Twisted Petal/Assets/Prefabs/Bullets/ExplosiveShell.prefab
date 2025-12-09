@@ -179,10 +179,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   damage: 5
-  pierce: 3
+  pierce: 0
   targetIndicator: {fileID: 0}
   type: 2
-  effect: {fileID: 2983715408215267663, guid: 046f28397cd8e164188a90a4031f54d9, type: 3}
+  effect: {fileID: 2983715408215267663, guid: 4eb40bee1e5109848945c7c830d8dc48, type: 3}
   targetPosition: {x: 0, y: 0}
   startingPosition: {x: 0, y: 0}
   atTarget: 0

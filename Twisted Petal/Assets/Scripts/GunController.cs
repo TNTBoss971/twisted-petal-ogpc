@@ -63,6 +63,10 @@ public class GunController : MonoBehaviour
             {
                 FireMissile();
             }
+            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Arcing)
+            {
+                FireArcing();
+            }
         }
         // resest missile if the player lets go of the mouse
         if (!attackAction.IsPressed() && ammoBehavior.type == ProjectileBehavior.MunitionType.Missile && false)
@@ -137,7 +141,15 @@ public class GunController : MonoBehaviour
             nextFirePoint = Time.time + firingDelay;
         }
     }
-
+    void FireArcing()
+    {
+        if (persistentProjectile == null)
+        {
+            persistentProjectile = Instantiate(ammoObject, transform.position, transform.rotation);
+            persistentProjectile.GetComponent<ProjectileBehavior>().targetIndicator = Instantiate(targetingIndicator, transform.position, transform.rotation);
+            nextFirePoint = Time.time + firingDelay;
+        }
+    }
 
     void Targeting() {
 

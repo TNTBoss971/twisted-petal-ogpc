@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5639989058606751104}
   - component: {fileID: 1041296257133150329}
   m_Layer: 0
-  m_Name: Missile
+  m_Name: GasShell
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.2, z: 0.2988}
+  m_LocalScale: {x: 0.38399684, y: 0.2988, z: 0.2988}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6497661736538385623}
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6132076, g: 0.05924549, b: 0, a: 1}
+  m_Color: {r: 0.12705672, g: 0.6226415, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -178,11 +178,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  damage: 1
+  damage: 5
   pierce: 0
   targetIndicator: {fileID: 0}
-  type: 5
-  effect: {fileID: 2983715408215267663, guid: 594792d548aaed44cad387e1706d3f2d, type: 3}
+  type: 2
+  effect: {fileID: 2983715408215267663, guid: 046f28397cd8e164188a90a4031f54d9, type: 3}
   targetPosition: {x: 0, y: 0}
   startingPosition: {x: 0, y: 0}
   atTarget: 0
@@ -218,7 +218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5361568067586973759, guid: b0e56c84d1069424b9631d0d33a43aed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.507
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5361568067586973759, guid: b0e56c84d1069424b9631d0d33a43aed, type: 3}
       propertyPath: m_LocalPosition.y
@@ -268,38 +268,6 @@ PrefabInstance:
       propertyPath: ShapeModule.m_Scale.z
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 9160588273683040356, guid: b0e56c84d1069424b9631d0d33a43aed, type: 3}
-      propertyPath: UVModule.startFrame.scalar
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160588273683040356, guid: b0e56c84d1069424b9631d0d33a43aed, type: 3}
-      propertyPath: UVModule.sprites.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160588273683040356, guid: b0e56c84d1069424b9631d0d33a43aed, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160588273683040356, guid: b0e56c84d1069424b9631d0d33a43aed, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160588273683040356, guid: b0e56c84d1069424b9631d0d33a43aed, type: 3}
-      propertyPath: UVModule.sprites.Array.data[2].sprite
-      value: 
-      objectReference: {fileID: -967977847, guid: 1693acbab80cc5c418041b4b175283bf, type: 3}
-    - target: {fileID: 9160588273683040356, guid: b0e56c84d1069424b9631d0d33a43aed, type: 3}
-      propertyPath: UVModule.sprites.Array.data[3].sprite
-      value: 
-      objectReference: {fileID: -967977847, guid: 1693acbab80cc5c418041b4b175283bf, type: 3}
-    - target: {fileID: 9160588273683040356, guid: b0e56c84d1069424b9631d0d33a43aed, type: 3}
-      propertyPath: UVModule.sprites.Array.data[4].sprite
-      value: 
-      objectReference: {fileID: -967977847, guid: 1693acbab80cc5c418041b4b175283bf, type: 3}
-    - target: {fileID: 9160588273683040356, guid: b0e56c84d1069424b9631d0d33a43aed, type: 3}
-      propertyPath: UVModule.sprites.Array.data[5].sprite
-      value: 
-      objectReference: {fileID: -967977847, guid: 1693acbab80cc5c418041b4b175283bf, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

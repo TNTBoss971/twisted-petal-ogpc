@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ProjectileBehavior : MonoBehaviour
 {
@@ -16,9 +19,8 @@ public class ProjectileBehavior : MonoBehaviour
     {
         None,
         Basic,
-        Explosive, // explosive effects
+        Explosive, // explosive effects & persistent effects
         Laser,
-        Gas, // persistent effects
         Arcing, // chain lightning and the like
         Missile // multiple projectiles at once / arcing projectiles
     }
@@ -29,7 +31,7 @@ public class ProjectileBehavior : MonoBehaviour
 
     [Header("Extras")] // I have included notes on which types use what
     public Vector2 targetPosition; // Explosive, Laser
-    public Vector2 startingPosition; // Laser, Missile
+    public Vector2 startingPosition; // Laser, Missile, Arcing
     public bool atTarget = false; // Explosive
     public float targetLength; // Laser
     public bool damagePulse; // Laser
@@ -38,6 +40,11 @@ public class ProjectileBehavior : MonoBehaviour
     public float offset; // Missile
     public float frequency; // Missile
 
+    public List<GameObject> pastTargets; // Arcing
+    public int positionInTargets; // Arcing
+    public int positionModifier = 1; // Arcing
+
+    public float timer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -55,6 +62,8 @@ public class ProjectileBehavior : MonoBehaviour
             offset = Random.Range(0, 10);
             frequency = Random.Range(1, 10);
         }
+
+        
     }
 
     // Update is called once per frame
@@ -85,6 +94,52 @@ public class ProjectileBehavior : MonoBehaviour
             }
             // position the laser endpoint
             effect.transform.position = new Vector3(targetPosition.x, targetPosition.y, 1.95f);
+        }
+
+        if (type == MunitionType.Arcing)
+        {
+            if (pierce == 0)
+            {
+                int reps = 0; // repitions
+
+                if (positionInTargets < 0)
+                {
+                    positionModifier = 1;
+                }
+                if (positionInTargets >= pastTargets.Count)
+                {
+                    positionModifier = -1;
+                }
+                positionInTargets += positionModifier;
+
+                // skip over any deleted enemies
+                while (pastTargets[positionInTargets] == null)
+                {
+                    if (positionInTargets < 0)
+                    {
+                        positionModifier = 1;
+                    }
+                    if (positionInTargets >= pastTargets.Count)
+                    {
+                        positionModifier = -1;
+                    }
+                    positionInTargets += positionModifier;
+
+                    reps++;
+                    if (reps > 100)
+                    {
+                        break;
+                    }
+
+                }
+                transform.position = pastTargets[positionInTargets].transform.position;
+
+
+                if (timer < Time.time)
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
     }
     void FixedUpdate()
@@ -131,6 +186,40 @@ public class ProjectileBehavior : MonoBehaviour
             // apply velocity
             rb.linearVelocity = (perpendicularVelocity + startingVelocity) / 2.0f;
             
+        }
+
+        if (type == MunitionType.Arcing)
+        {
+            if (pierce > 0)
+            {
+                GameObject[] possibleTargets = GameObject.FindGameObjectsWithTag("Enemy");
+                GameObject targetEnemy = null;
+                float distance = 10000;
+                for (int i = 0; i < possibleTargets.Length; i++)
+                {
+                    bool distanceCondition = Vector2.Distance(possibleTargets[i].transform.position, transform.position) < distance;
+                    bool iFramesCondition = possibleTargets[i].GetComponent<EnemyBehavior>().invincibilityTimer < Time.time;
+                    bool pastTargetsCondition = !pastTargets.Contains(possibleTargets[i]);
+
+
+                    // if i is closer than the current target and isnt invunlerable and its not already targeted
+                    if (distanceCondition && iFramesCondition && pastTargetsCondition)
+                    {
+                        targetEnemy = possibleTargets[i];
+                        distance = Vector2.Distance(possibleTargets[i].transform.position, transform.position);
+                    }
+                }
+                pastTargets.Add(targetEnemy);
+                transform.position = targetEnemy.transform.position;
+                targetEnemy.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
+
+                pierce--;
+                if (pierce == 0)
+                {
+                    timer = Time.time + 0.5f;
+                    pastTargets.Add(targetIndicator);
+                }
+            }
         }
     }
 

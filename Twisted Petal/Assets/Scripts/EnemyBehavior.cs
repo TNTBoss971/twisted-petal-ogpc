@@ -11,8 +11,8 @@ public class EnemyBehavior : MonoBehaviour
         Unknown,
         Bullet, // for most interactions, includes i-frames
         Tick, // tick damage ignores i-frames, preventing poison from making an enemy invincible
-        Fire // burn the world! >:D
-
+        Fire, // burn the world! >:D
+        Energy // slower i-frames
     }
 
     [Header("Targeting")]
@@ -55,6 +55,10 @@ public class EnemyBehavior : MonoBehaviour
         rb.rotation = angle;
         direction.Normalize();
         movement = direction;
+
+
+
+        
     }
 
     private void FixedUpdate()
@@ -68,6 +72,7 @@ public class EnemyBehavior : MonoBehaviour
             hasNotTickedDamage = false;
             DamageTick();
         }
+
         if (Time.time % 0.1f >= 0.09f)
         {
             hasNotTickedDamage = true;
@@ -118,9 +123,16 @@ public class EnemyBehavior : MonoBehaviour
         if (invincibilityTimer <= Time.time || type == DamageType.Tick)
         {
             health -= damage;
-            if (type != DamageType.Tick)
+            if (type != DamageType.Tick) // tick damage doesnt give i-frames
             {
-                invincibilityTimer = Time.time + 0.01f;
+                if (type == DamageType.Energy)
+                {
+                    invincibilityTimer = Time.time + 0.2f;
+                } 
+                else
+                {
+                    invincibilityTimer = Time.time + 0.01f;
+                }
             }
         }
     }
