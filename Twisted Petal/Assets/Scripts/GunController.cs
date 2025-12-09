@@ -65,7 +65,7 @@ public class GunController : MonoBehaviour
             }
         }
         // resest missile if the player lets go of the mouse
-        if (!attackAction.IsPressed() && ammoBehavior.type == ProjectileBehavior.MunitionType.Missile)
+        if (!attackAction.IsPressed() && ammoBehavior.type == ProjectileBehavior.MunitionType.Missile && false)
         {
             if (projectilesInBurst > 0)
             {

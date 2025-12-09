@@ -110,7 +110,7 @@ public class ProjectileBehavior : MonoBehaviour
                 // damage enemy
                 if (damagePulse)
                 {
-                    results[0].transform.GetComponent<EnemyBehavior>().DamageSelf(damage);
+                    results[0].transform.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
                     damagePulse = false;
                 }
             }
@@ -141,17 +141,25 @@ public class ProjectileBehavior : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.CompareTag("Enemy") && type == MunitionType.Basic)
+        if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyBehavior>().DamageSelf(damage);
-
-            if (pierce > 0)
+            if (type == MunitionType.Missile) 
             {
-                pierce -= 1;
-            }
-            else
-            {
+                GameObject explosion = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
                 Destroy(gameObject);
+            } 
+            else if (type == MunitionType.Basic)
+            {
+                other.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Bullet);
+
+                if (pierce > 0)
+                {
+                    pierce -= 1;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
 

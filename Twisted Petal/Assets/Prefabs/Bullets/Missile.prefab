@@ -182,16 +182,15 @@ MonoBehaviour:
   pierce: 0
   targetIndicator: {fileID: 0}
   type: 6
-  effect: {fileID: 0}
+  effect: {fileID: 2983715408215267663, guid: 594792d548aaed44cad387e1706d3f2d, type: 3}
   targetPosition: {x: 0, y: 0}
   startingPosition: {x: 0, y: 0}
-  startingRotation: {x: 0, y: 0, z: 0, w: 0}
   atTarget: 0
   targetLength: 0
   damagePulse: 0
-  maxWiggle: 3
-  currentWiggle: 0
-  isWiggleAscending: 0
+  startingVelocity: {x: 0, y: 0}
+  offset: 0
+  frequency: 0
 --- !u!114 &1041296257133150329
 MonoBehaviour:
   m_ObjectHideFlags: 0
