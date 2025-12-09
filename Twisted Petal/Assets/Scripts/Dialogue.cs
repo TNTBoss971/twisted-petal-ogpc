@@ -10,10 +10,12 @@ public class Dialogue : MonoBehaviour
     private bool talking = false;
     private int currentLine = 0;
     private float dialogueDelay = 0f;
+    private int currentCharacter = 0;
+    public static float textSpeed = 0.05f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DisplayText();
+        talking = true;
     }
 
     // Update is called once per frame
@@ -31,38 +33,28 @@ public class Dialogue : MonoBehaviour
             {
                 if (currentLine < dialogueLines.Count - 1)
                 {
+                    currentCharacter = 0;
+                    talking = false;
                     currentLine += 1;
                     displayedDialogue = "";
-                    DisplayText();
+                    talking = true;
                 }
             }
         }
-    }
-    
-    public IEnumerator DisplayCharacter(char character)
-    {
-        displayedDialogue += character;
-    }
-
-
-    public void DisplayText()
-    {
-        talking = true;
-        dialogueLength = dialogueLines[currentLine].Length;
-        for (int i = 0; i < dialogueLength; i++)
+        if (talking == true)
         {
-            bool characterPrinted = false;
-            dialogueDelay = Time.time + 0.3f;
-            DisplayCharacter(dialogueLines[currentLine][i]);
-            StartCoroutine("DisplayDelayFunction", dialogueDelay * i);
-            while (characterPrinted != true)
+            dialogueLength = dialogueLines[currentLine].Length;
+            if (dialogueDelay <= Time.time)
             {
-                if (dialogueDelay <= Time.time)
-                {
-                    characterPrinted = true;
-                }
+                displayedDialogue += dialogueLines[currentLine][currentCharacter];
+                currentCharacter++;
+                dialogueDelay = Time.time + textSpeed;
+            }
+            if (displayedDialogue.Length == dialogueLength)
+            {
+                currentCharacter = 0;
+                talking = false;
             }
         }
-        talking = false;
     }
 }
