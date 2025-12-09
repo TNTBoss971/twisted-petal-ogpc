@@ -323,7 +323,6 @@ GameObject:
   - component: {fileID: 481480332}
   - component: {fileID: 481480336}
   - component: {fileID: 481480335}
-  - component: {fileID: 481480334}
   - component: {fileID: 481480333}
   m_Layer: 5
   m_Name: ErrorText
@@ -361,18 +360,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6147b31f7e021244b93683413e268dc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &481480334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481480331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 718b1c6e67bea2c4a88a4fa92d122b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &481480335
