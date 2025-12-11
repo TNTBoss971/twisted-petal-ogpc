@@ -120,9 +120,10 @@ public class GameManagement : MonoBehaviour
 
             saveData.levelsBeaten = waveNumber + 1;
             saveData.itemsLooted = itemsLooted;
-            saveData.itemsLootedOverall += itemsLooted;
             saveData.enemiesBeaten = enemiesBeaten;
+            saveData.itemsLootedOverall += itemsLooted;
             saveData.enemiesBeatenOverall += enemiesBeaten;
+            Debug.Log(enemiesBeaten);
             dataManager.SaveGame();
             SceneManager.LoadScene("CombatResolution");
         }

@@ -15,8 +15,8 @@ public class JournalStats : MonoBehaviour
         statDisplayed.Add(1, "Day: " + saveData.levelsBeaten);
         statDisplayed.Add(2, "Found " + saveData.itemsLooted + " item(s)");
         statDisplayed.Add(3, "Defeated " + saveData.enemiesBeaten + " enemies");
-        statDisplayed.Add(4, "Found " + saveData.itemsLooted + " item(s) so far");
-        statDisplayed.Add(5, "Defeated " + saveData.itemsLooted + " enemies so far");
+        statDisplayed.Add(4, "Found " + saveData.itemsLootedOverall + " item(s) so far");
+        statDisplayed.Add(5, "Defeated " + saveData.enemiesBeatenOverall + " enemies so far");
     }
 
     // Update is called once per frame
