@@ -7,7 +7,6 @@ public class MapManager : MonoBehaviour
 {
     public static int mapPosition = 1;
     private DataManagement saveData;
-    public GameObject errorText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,21 +26,7 @@ public class MapManager : MonoBehaviour
         // Pressing enter on the map takes you into a level
         if (Input.GetKey("return"))
         {
-            try
-            {
-                if (saveData.selectedItems.Count >= 2 || saveData.selectedItems == null)
-                {
-                    SceneManager.LoadScene("Combat");
-                }
-                else
-                {
-                    errorText.GetComponent<MapErrorText>().cannotEnter();
-                }
-            }
-            catch (NullReferenceException)
-            {
-                errorText.GetComponent<MapErrorText>().cannotEnter();
-            }
+            SceneManager.LoadScene("Combat");
         }
     }
 }
