@@ -5,10 +5,6 @@ public class JournalManager : MonoBehaviour
 {
     public static Dictionary<int, string> statDisplayed = new Dictionary<int, string>();
     private DataManagement saveData;
-    private int itemsFound;
-    private int enemiesBeaten;
-    private int itemsFoundOverall;
-    private int enemiesBeatenOverall;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
