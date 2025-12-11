@@ -48,6 +48,7 @@ public class EnemyBehavior : MonoBehaviour
                 {
                     GameManagement.itemsLooted += 1;
                 }
+                GameManagement.enemiesBeaten += 1;
                 gameManager.enemyCount -= 1;
                 Destroy(gameObject);
             }

@@ -32,6 +32,7 @@ public class GameManagement : MonoBehaviour
     public float waveLength;
     public float nextWaveTime;
     public static int itemsLooted;
+    public static int enemiesBeaten;
 
     public WaveData[] waves; // a list of all the waves
     public WaveData currentWave; 
@@ -46,6 +47,7 @@ public class GameManagement : MonoBehaviour
     {
         dataManager.LoadGame();
         itemsLooted = 0;
+        enemiesBeaten = 0;
         // assign actions
         cycleAction = InputSystem.actions.FindAction("Cycle");
 
@@ -118,8 +120,11 @@ public class GameManagement : MonoBehaviour
 
             saveData.levelsBeaten = waveNumber + 1;
             saveData.itemsLooted = itemsLooted;
+            saveData.itemsLootedOverall += itemsLooted;
+            saveData.enemiesBeaten = enemiesBeaten;
+            saveData.enemiesBeatenOverall += enemiesBeaten;
             dataManager.SaveGame();
-            SceneManager.LoadScene("WorldMap");
+            SceneManager.LoadScene("CombatResolution");
         }
         waveProgressionBar.value = waveLength + (Time.time - nextWaveTime);
         // if its at the end, go to loot screen
