@@ -29,6 +29,7 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         selectedItems = data.selectedItems;
         ownedItems = data.ownedItems;
         itemsLooted = data.itemsLooted;
+        itemsLootedOverall = data.itemsLootedOverall;
         enemiesBeaten = data.enemiesBeaten;
         enemiesBeatenOverall = data.enemiesBeatenOverall;
     }
@@ -39,6 +40,7 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         data.selectedItems = selectedItems;
         data.ownedItems = ownedItems;
         data.itemsLooted = itemsLooted;
+        data.itemsLootedOverall = itemsLootedOverall;
         data.enemiesBeaten = enemiesBeaten;
         data.enemiesBeatenOverall = enemiesBeatenOverall;
     }

@@ -116,14 +116,14 @@ public class GameManagement : MonoBehaviour
         // check the wave timer
         if (nextWaveTime < Time.time)
         {
-            // this wave/level is over, go to world map
+            // this wave/level is over, go to combat resolution
 
             saveData.levelsBeaten = waveNumber + 1;
-            saveData.itemsLooted = itemsLooted;
-            saveData.enemiesBeaten = enemiesBeaten;
+            Debug.Log(itemsLooted);
             saveData.itemsLootedOverall += itemsLooted;
+            saveData.enemiesBeaten = enemiesBeaten;
             saveData.enemiesBeatenOverall += enemiesBeaten;
-            Debug.Log(enemiesBeaten);
+            saveData.itemsLooted = itemsLooted;
             dataManager.SaveGame();
             SceneManager.LoadScene("CombatResolution");
         }

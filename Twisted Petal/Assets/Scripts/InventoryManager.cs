@@ -68,7 +68,6 @@ public class InventoryManager : MonoBehaviour
             saveData.ownedItems = ownedItems;
         }
         lootLoop = lootedItems.Count;
-        Debug.Log(lootedItems.Count);
         // adds items from lootedItems into the player's inventory.
         // this seems unnecessary but it doesn't work if you add them directly
         for (int i = 0; i < lootLoop; i++)
