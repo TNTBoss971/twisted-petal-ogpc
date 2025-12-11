@@ -133,11 +133,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingDelay: 0.1
+  numberOfProjectiles: 1
+  projectilesInBurst: 0
   ammoObject: {fileID: 4898352103702244452, guid: d8b1c728f7552bb47a5ede21d90c98fd, type: 3}
+  ammoBehavior: {fileID: 0}
   speedRot: 0.5
+  persistentProjectile: {fileID: 0}
   targetAngle: 0
   currentAngle: 0
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
   displayImage: {fileID: 375807072183942001, guid: a784882050e852044aefb851247d7d19, type: 3}
   descriptionID: 1
+  description: Ever wanted to fire FASTER?
+  name: Rapid Gun
+  targetingIndicator: {fileID: 0}

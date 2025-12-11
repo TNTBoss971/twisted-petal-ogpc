@@ -145,4 +145,6 @@ MonoBehaviour:
   directionVec: {x: 0, y: 0, z: 0}
   displayImage: {fileID: -2248588054835376049, guid: eb600b9bb04f9da47bb1914c4c75194f, type: 3}
   descriptionID: 2
+  description: It goes boom
+  name: Explosive Gun
   targetingIndicator: {fileID: 3578250175648416519, guid: 42a7c9f2b50b32d41a49197623ac3727, type: 3}

@@ -58,6 +58,8 @@ MonoBehaviour:
   directionVec: {x: 0, y: 0, z: 0}
   displayImage: {fileID: -970146014054310643, guid: ea009a957a9d8314c854d871a56e13a7, type: 3}
   descriptionID: 4
+  description: It does what it says on the can (fires ten missiles)
+  name: Tenta Missiles
   targetingIndicator: {fileID: 0}
 --- !u!1 &4666619886083391244
 GameObject:

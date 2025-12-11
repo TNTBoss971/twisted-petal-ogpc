@@ -28,6 +28,8 @@ public class GunController : MonoBehaviour
     [Header("Personal Display Variables")]
     public Sprite displayImage;
     public int descriptionID;  // tells the inventory what description to show
+    public string description;
+    public string name;
     public GameObject targetingIndicator; // marks the target of projectiles
 
 

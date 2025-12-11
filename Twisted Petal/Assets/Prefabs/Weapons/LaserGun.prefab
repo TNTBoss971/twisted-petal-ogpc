@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingDelay: 0.1
+  numberOfProjectiles: 1
+  projectilesInBurst: 0
   ammoObject: {fileID: 8538451525303065180, guid: fd103923655339c4aba26727f16c84d8, type: 3}
   ammoBehavior: {fileID: 0}
   speedRot: 0.5
@@ -56,6 +58,8 @@ MonoBehaviour:
   directionVec: {x: 0, y: 0, z: 0}
   displayImage: {fileID: -790151542688815544, guid: c1659740120d72d4eac3a3e8267fe5b5, type: 3}
   descriptionID: 3
+  description: Pew Pew!
+  name: Laser Gun
   targetingIndicator: {fileID: 0}
 --- !u!1 &6419158796951734646
 GameObject:

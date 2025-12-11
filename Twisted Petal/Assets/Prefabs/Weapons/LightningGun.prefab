@@ -58,6 +58,8 @@ MonoBehaviour:
   directionVec: {x: 0, y: 0, z: 0}
   displayImage: {fileID: -4542106424281798416, guid: 43c5214fe40baac45a50846e5e4154b6, type: 3}
   descriptionID: 5
+  description: This weapons attack is rather shocking!
+  name: Lightning Gun
   targetingIndicator: {fileID: 3654990897623919181, guid: eff04fd1d0d6ee64f818dfa9b6ef54e3, type: 3}
 --- !u!1 &6419158796951734646
 GameObject:
