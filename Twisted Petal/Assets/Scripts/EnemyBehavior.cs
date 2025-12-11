@@ -64,8 +64,7 @@ public class EnemyBehavior : MonoBehaviour
     private void FixedUpdate()
     {
         MoveCharacter(movement);
-
-        Debug.Log(Time.time % 10f);
+        
         // in my testing, Time.time % 10f will never be exactly zero
         if (Time.time % 10f <= 10f && hasNotTickedDamage)
         {

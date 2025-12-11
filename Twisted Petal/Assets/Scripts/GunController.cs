@@ -37,6 +37,12 @@ public class GunController : MonoBehaviour
         // assign actions
         attackAction = InputSystem.actions.FindAction("Attack");
         ammoBehavior = ammoObject.GetComponent<ProjectileBehavior>();
+
+
+        if (attackAction == null)
+        {
+            Debug.Log("Attack action not assigned");
+        }
     }
 
     // Update is called once per frame

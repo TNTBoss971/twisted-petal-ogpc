@@ -910,7 +910,7 @@ MonoBehaviour:
   weaponParent: {fileID: 2414849}
   numOfEquippedWeapons: 0
   activeWeaponId: 0
-  pastActiveWeaponId: 1
+  pastActiveWeaponId: 0
   enemyCount: 0
   enemyCountMax: 20
   waveNumber: 0

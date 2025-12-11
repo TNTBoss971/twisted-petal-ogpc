@@ -209,6 +209,7 @@ public class ProjectileBehavior : MonoBehaviour
                         distance = Vector2.Distance(possibleTargets[i].transform.position, transform.position);
                     }
                 }
+                
                 pastTargets.Add(targetEnemy);
                 transform.position = targetEnemy.transform.position;
                 targetEnemy.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
