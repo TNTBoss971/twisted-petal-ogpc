@@ -54,7 +54,7 @@ public class InventoryManager : MonoBehaviour
             if (selectedItems.Count > i)
             {
                 displays[i].displayImage = selectedItems[i].GetComponent<GunController>().displayImage;
-                displays[i].displayName = selectedItems[i].GetComponent<GunController>().name;
+                displays[i].displayName = selectedItems[i].GetComponent<GunController>().weaponName;
                 displays[i].displayDiscription = selectedItems[i].GetComponent<GunController>().description;
             }
             else
