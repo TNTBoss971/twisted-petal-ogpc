@@ -25,6 +25,7 @@ public class InventoryDescription : MonoBehaviour
     };
     
     public int descriptionID;
+    public string description;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,7 +40,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 1)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedDescriptions[0]];
+                //GetComponent<TMPro.TextMeshProUGUI>().text = InventoryManager.selectedDescriptions[0];
             }
             else
             {
@@ -50,7 +51,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 2)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedDescriptions[1]];
+                //GetComponent<TMPro.TextMeshProUGUI>().text = InventoryManager.selectedDescriptions[1];
             }
             else
             {
@@ -61,7 +62,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 3)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedDescriptions[2]];
+                //GetComponent<TMPro.TextMeshProUGUI>().text = InventoryManager.selectedDescriptions[2];
             }
             else
             {
@@ -72,7 +73,7 @@ public class InventoryDescription : MonoBehaviour
         {
             if (InventoryManager.selectedItems.Count >= 4)
             {
-                GetComponent<TMPro.TextMeshProUGUI>().text = itemDesc[InventoryManager.selectedDescriptions[3]];
+                //GetComponent<TMPro.TextMeshProUGUI>().text = InventoryManager.selectedDescriptions[3];
             }
             else
             {

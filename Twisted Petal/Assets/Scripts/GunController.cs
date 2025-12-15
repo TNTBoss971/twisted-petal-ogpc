@@ -12,8 +12,12 @@ public class GunController : MonoBehaviour
     [Header("Gameplay Variables")]
     public float firingDelay;
     private float nextFirePoint = 0;
+    public int numberOfProjectiles = 1; // only utilized by missiles so far
+    public int projectilesInBurst; // only utilized by missiles so far
     public GameObject ammoObject;
+    public ProjectileBehavior ammoBehavior;
     public float speedRot = 0.5f; // less then or equal to 1
+    public GameObject persistentProjectile;
 
     [Header("Personal Rotational Variables")]
     public float targetAngle; // the "goal" angle
@@ -24,6 +28,9 @@ public class GunController : MonoBehaviour
     [Header("Personal Display Variables")]
     public Sprite displayImage;
     public int descriptionID;  // tells the inventory what description to show
+    public string description;
+    public string weaponName;
+    public GameObject targetingIndicator; // marks the target of projectiles
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,7 +38,13 @@ public class GunController : MonoBehaviour
     {
         // assign actions
         attackAction = InputSystem.actions.FindAction("Attack");
+        ammoBehavior = ammoObject.GetComponent<ProjectileBehavior>();
 
+
+        if (attackAction == null)
+        {
+            Debug.Log("Attack action not assigned");
+        }
     }
 
     // Update is called once per frame
@@ -42,12 +55,109 @@ public class GunController : MonoBehaviour
 
         if (nextFirePoint <= Time.time && attackAction.IsPressed())
         {
-            GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
-            clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
-            nextFirePoint = Time.time + firingDelay;
+            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Basic)
+            {
+                FireBasic();
+            }
+            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Explosive)
+            {
+                FireExplosive();
+            }
+            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
+            {
+                FireLaser();
+            }
+            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Missile)
+            {
+                FireMissile();
+            }
+            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Arcing)
+            {
+                FireArcing();
+            }
+        }
+        // resest missile if the player lets go of the mouse
+        if (!attackAction.IsPressed() && ammoBehavior.type == ProjectileBehavior.MunitionType.Missile && false)
+        {
+            if (projectilesInBurst > 0)
+            {
+                nextFirePoint = Time.time + firingDelay;
+            }
+            projectilesInBurst = 0;
+        }
+
+        // advanced laser logic
+        if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
+        {
+            if (attackAction.IsPressed())
+            {
+                if (persistentProjectile == null)
+                {
+                    persistentProjectile = Instantiate(ammoObject, transform.position, transform.rotation);
+                }
+                persistentProjectile.GetComponent<ProjectileBehavior>().targetLength = Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position);
+                persistentProjectile.transform.rotation = transform.rotation;
+            }
+            else
+            {
+                if (persistentProjectile != null)
+                {
+                    Destroy(persistentProjectile);
+                }
+            }
         }
     }
 
+    void FireBasic()
+    {
+        GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
+        clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
+        nextFirePoint = Time.time + firingDelay;
+    }
+    void FireExplosive()
+    {
+        GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
+        clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
+        nextFirePoint = Time.time + firingDelay;
+
+        targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        targetPos = new Vector3(targetPos.x, targetPos.y, 1); // so that the indicator isnt at the same z position as the camera
+        clone.GetComponent<ProjectileBehavior>().targetPosition = targetPos;
+        clone.GetComponent<ProjectileBehavior>().targetIndicator = Instantiate(targetingIndicator, targetPos, transform.rotation);
+    }
+    void FireLaser()
+    {
+        if (persistentProjectile != null)
+        {
+            persistentProjectile.GetComponent<ProjectileBehavior>().damagePulse = true;
+        }
+        nextFirePoint = Time.time + firingDelay;
+    }
+    void FireMissile()
+    {
+        if (projectilesInBurst < numberOfProjectiles)
+        {
+            GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
+            clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
+
+            projectilesInBurst++;
+            nextFirePoint = Time.time + 0.1f;
+        }
+        else
+        {
+            projectilesInBurst = 0;
+            nextFirePoint = Time.time + firingDelay;
+        }
+    }
+    void FireArcing()
+    {
+        if (persistentProjectile == null)
+        {
+            persistentProjectile = Instantiate(ammoObject, transform.position, transform.rotation);
+            persistentProjectile.GetComponent<ProjectileBehavior>().targetIndicator = Instantiate(targetingIndicator, transform.position, transform.rotation);
+            nextFirePoint = Time.time + firingDelay;
+        }
+    }
 
     void Targeting() {
 

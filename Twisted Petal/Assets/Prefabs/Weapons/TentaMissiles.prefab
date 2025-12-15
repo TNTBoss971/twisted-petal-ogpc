@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3108472696131321336
+--- !u!1 &815084102267353062
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,53 +8,60 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8993663797122041990}
-  - component: {fileID: 562727849288900419}
+  - component: {fileID: 8088979065578101632}
+  - component: {fileID: 2483006655279719242}
   m_Layer: 0
-  m_Name: Gun (3)
+  m_Name: TentaMissiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8993663797122041990
+--- !u!4 &8088979065578101632
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3108472696131321336}
+  m_GameObject: {fileID: 815084102267353062}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1711202246100128595}
+  - {fileID: 5364165735875746023}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &562727849288900419
+--- !u!114 &2483006655279719242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3108472696131321336}
+  m_GameObject: {fileID: 815084102267353062}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 044e6e2a6445ba44ab5a7331ccde94ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firingDelay: 1
-  ammoObject: {fileID: 4898352103702244452, guid: 5980a175d1654fc42acf30561b702900, type: 3}
+  numberOfProjectiles: 10
+  projectilesInBurst: 0
+  ammoObject: {fileID: 4898352103702244452, guid: d957cb421c5bb4b43b4346fa08e9fbf1, type: 3}
+  ammoBehavior: {fileID: 0}
   speedRot: 0.5
+  persistentProjectile: {fileID: 0}
   targetAngle: 0
   currentAngle: 0
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
-  displayImage: {fileID: -790151542688815544, guid: c1659740120d72d4eac3a3e8267fe5b5, type: 3}
-  descriptionID: 3
---- !u!1 &6419158796951734646
+  displayImage: {fileID: -970146014054310643, guid: ea009a957a9d8314c854d871a56e13a7, type: 3}
+  descriptionID: 4
+  description: It does what it says on the can (fires ten missiles)
+  name: Tenta Missiles
+  targetingIndicator: {fileID: 0}
+--- !u!1 &4666619886083391244
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,8 +69,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1711202246100128595}
-  - component: {fileID: 1420397170518610634}
+  - component: {fileID: 5364165735875746023}
+  - component: {fileID: 3096444493003797456}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -71,28 +78,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1711202246100128595
+--- !u!4 &5364165735875746023
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6419158796951734646}
+  m_GameObject: {fileID: 4666619886083391244}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8993663797122041990}
+  m_Father: {fileID: 8088979065578101632}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1420397170518610634
+--- !u!212 &3096444493003797456
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6419158796951734646}
+  m_GameObject: {fileID: 4666619886083391244}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -131,7 +138,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1101952043, guid: 4886c794934350a4d987c45188b472c5, type: 3}
-  m_Color: {r: 0.048704147, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.9479667, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

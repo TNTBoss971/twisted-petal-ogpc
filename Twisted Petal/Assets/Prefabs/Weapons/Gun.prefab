@@ -46,14 +46,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingDelay: 1
+  numberOfProjectiles: 1
+  projectilesInBurst: 0
   ammoObject: {fileID: 4898352103702244452, guid: 5980a175d1654fc42acf30561b702900, type: 3}
+  ammoBehavior: {fileID: 0}
   speedRot: 0.5
+  persistentProjectile: {fileID: 0}
   targetAngle: 0
   currentAngle: 0
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
   displayImage: {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   descriptionID: 0
+  description: Fires a cannon shell
+  name: Basic Gun
+  targetingIndicator: {fileID: 0}
 --- !u!1 &4666619886083391244
 GameObject:
   m_ObjectHideFlags: 0

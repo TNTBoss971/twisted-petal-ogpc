@@ -180,6 +180,8 @@ MonoBehaviour:
   player: {fileID: 0}
   damage: 5
   pierce: 3
+  type: 1
+  targetPosition: {x: 0, y: 0}
 --- !u!114 &1041296257133150329
 MonoBehaviour:
   m_ObjectHideFlags: 0

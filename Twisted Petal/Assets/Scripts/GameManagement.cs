@@ -42,6 +42,7 @@ public class GameManagement : MonoBehaviour
     [Header("Save Data")]
     public DataPersistanceManager dataManager;
     public DataManagement saveData;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -70,7 +71,7 @@ public class GameManagement : MonoBehaviour
 
         WeaponManagement();
 
-        
+
         ActiveWave();
     }
     void ActiveWave()
@@ -145,7 +146,7 @@ public class GameManagement : MonoBehaviour
     // sets up weapons when the scene starts
     void WeaponInitialization()
     {
-
+        // load buttons in
         foreach (GameObject weaponButton in weaponButtons)
         {
             weaponButton.transform.position = new Vector2(weaponButton.transform.position.x, 30);
@@ -159,6 +160,7 @@ public class GameManagement : MonoBehaviour
             equippedWeapons[i] = Instantiate(saveData.selectedItems[i]);
             equippedWeapons[i].transform.SetParent(weaponParent);
             equippedWeapons[i].transform.localPosition = new Vector3(0, 0, 1);
+            equippedWeapons[i].SetActive(true);
             numOfEquippedWeapons += 1;
             weaponButtons[i].SetActive(true);
             weaponButtons[i].GetComponent<Image>().sprite = equippedWeapons[i].GetComponent<GunController>().displayImage;
@@ -228,7 +230,10 @@ public class GameManagement : MonoBehaviour
         weaponButtons[pastActiveWeaponId].transform.position = new Vector2(weaponButtons[pastActiveWeaponId].transform.position.x, 30);
         weaponButtons[activeWeaponId].transform.position = new Vector2(weaponButtons[activeWeaponId].transform.position.x, 50);
 
-        equippedWeapons[pastActiveWeaponId].SetActive(false);
+        if (pastActiveWeaponId != activeWeaponId)
+        {
+            equippedWeapons[pastActiveWeaponId].SetActive(false);
+        }
         equippedWeapons[activeWeaponId].SetActive(true);
     }
 

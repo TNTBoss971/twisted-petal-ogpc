@@ -15,9 +15,7 @@ GameObject:
   - component: {fileID: 5181034740998668783}
   - component: {fileID: 4118980773611697474}
   - component: {fileID: 8942829205161027995}
-  - component: {fileID: 1748683012961437541}
-  - component: {fileID: -3168383948166791283}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -108,6 +106,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   lootFrequency: 5
+  speed: 3
+  maxHealth: 2
+  health: 2
+  poisonPerTick: 0.1
+  poison: 0
+  hasNotTickedDamage: 1
+  invincibilityTimer: 0
 --- !u!50 &5426400630366098533
 Rigidbody2D:
   serializedVersion: 5
