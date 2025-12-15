@@ -4,16 +4,33 @@ using static UnityEngine.GraphicsBuffer;
 public class EnemyBehavior : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public enum DamageType
+    {
+        None,
+        Unknown,
+        Bullet, // for most interactions, includes i-frames
+        Tick, // tick damage ignores i-frames, preventing poison from making an enemy invincible
+        Fire, // burn the world! >:D
+        Energy // slower i-frames
+    }
+
+    [Header("Targeting")]
     public Transform target;
     private GameObject player;
+    private GameManagement gameManager;
     private Rigidbody2D rb;
     private Vector2 movement;
-    private float health;
-    private float colorTime = 0f;
-    private string color = "default";
-    private float invincibilityTimer = 0f;
-    private float speed = 3f;
-    private GameManagement gameManager;
+
+    [Header("Attributes")]
+    public float speed = 3f;
+    public float maxHealth = 2f;
+    public float health = 2f;
+    public float poisonPerTick = 1f; // how much damage the enemy takes from poison each tick
+    [Header("Status")]
+    public float poison = 0;
+    public bool hasNotTickedDamage = true;
+    public float invincibilityTimer = 0f;
 
     void Start()
     {
@@ -21,7 +38,7 @@ public class EnemyBehavior : MonoBehaviour
         player = GameObject.Find("Player");
         target = player.transform;
         rb = this.GetComponent<Rigidbody2D>();
-        health = 2f;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -29,52 +46,93 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (health < 1)
         {
-            gameManager.enemyNumber -= 1;
+            gameManager.enemyCount -= 1;
             Destroy(gameObject);
         }
 
-        if (color == "default")
-        {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        }
-
-        if (color == "red")
-        {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-            if (colorTime <= Time.time)
-            {
-                color = "default";
-            }
-        }
-    
         Vector3 direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
         direction.Normalize();
         movement = direction;
+
+
+
+        
     }
 
-    private void FixedUpdate() {
-        moveCharacter(movement);
+    private void FixedUpdate()
+    {
+        MoveCharacter(movement);
+        
+        // in my testing, Time.time % 10f will never be exactly zero
+        if (Time.time % 10f <= 10f && hasNotTickedDamage)
+        {
+            hasNotTickedDamage = false;
+            DamageTick();
+        }
+
+        if (Time.time % 0.1f >= 0.09f)
+        {
+            hasNotTickedDamage = true;
+        }
     }
 
-    void moveCharacter(Vector2 direction)
+    void MoveCharacter(Vector2 direction)
     {
         rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    // for all your tick damage related needs
+    private void DamageTick()
     {
-        if (other.CompareTag("Projectile"))
+        // check for and apply poison
+        if (poison > 0)
         {
-            if (invincibilityTimer <= Time.time)
+            // poison cap
+            if (poison >= maxHealth * 10)
             {
-                health -= 1;
-                color = "red";
-                colorTime = Time.time + 0.3f;
-                invincibilityTimer = Time.time + 0.01f;
+                DamageSelf(poison, DamageType.Tick);
             }
-            Destroy(other);
+
+            if (poison >= poisonPerTick)
+            {
+                poison -= poisonPerTick;
+                DamageSelf(poisonPerTick, DamageType.Tick);
+            }
+            else
+            {
+                DamageSelf(poison, DamageType.Tick);
+                poison = 0;
+            }
+        }
+    }
+
+
+    // called by projectiles and the like
+    // the reason why we're doing it this way is becuase it offers more control on how enemies are damaged
+    public void DamageSelf(float damage, DamageType type = DamageType.Unknown)
+    {
+        if (type == DamageType.Unknown)
+        {
+            Debug.Log("Something has gone wrong and damage type wasn't assigned");
+            return;
+        }
+
+        if (invincibilityTimer <= Time.time || type == DamageType.Tick)
+        {
+            health -= damage;
+            if (type != DamageType.Tick) // tick damage doesnt give i-frames
+            {
+                if (type == DamageType.Energy)
+                {
+                    invincibilityTimer = Time.time + 0.2f;
+                } 
+                else
+                {
+                    invincibilityTimer = Time.time + 0.01f;
+                }
+            }
         }
     }
 }
