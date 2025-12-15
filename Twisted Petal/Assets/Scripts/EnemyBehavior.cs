@@ -21,6 +21,15 @@ public class EnemyBehavior : MonoBehaviour
     private GameManagement gameManager;
     private Rigidbody2D rb;
     private Vector2 movement;
+    private float health;
+    private float colorTime = 0f;
+    private string color = "default";
+    private float invincibilityTimer = 0f;
+    private float speed = 3f;
+    private GameManagement gameManager;
+    private bool hasLoot = false;
+    public int lootFrequency; // the higher this number is the less likely it is for a loot drop
+    private ParticleSystem lootSparkles;
 
     [Header("Attributes")]
     public float speed = 3f;
@@ -38,18 +47,41 @@ public class EnemyBehavior : MonoBehaviour
         player = GameObject.Find("Player");
         target = player.transform;
         rb = this.GetComponent<Rigidbody2D>();
+        health = 2f;
+        if (Random.Range(0, lootFrequency) == (lootFrequency - 1))
+        {
+            hasLoot = true;
+        }
+        lootSparkles = this.GetComponent<ParticleSystem>();
         health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health < 1)
+        if (hasLoot == false)
         {
-            gameManager.enemyCount -= 1;
-            Destroy(gameObject);
+            if (lootSparkles != null)
+            {
+                Destroy(lootSparkles);
+            }
         }
-
+        if (health < 1)
+            {
+                if (hasLoot == true)
+                {
+                    GameManagement.itemsLooted += 1;
+                }
+                GameManagement.enemiesBeaten += 1;
+                gameManager.enemyCount -= 1;
+                Destroy(gameObject);
+            }
+        /*
+        if (color == "default")
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        */
         Vector3 direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rb.rotation = angle;

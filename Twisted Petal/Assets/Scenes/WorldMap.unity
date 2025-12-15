@@ -550,6 +550,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelsBeaten: 0
+  selectedItems: []
+  ownedItems: []
+  itemsLooted: 0
 --- !u!1 &954091736
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,6 +688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 954091739}
+  dataManager: {fileID: 513334422}
 --- !u!1 &958554077
 GameObject:
   m_ObjectHideFlags: 0

@@ -688,6 +688,7 @@ MonoBehaviour:
   levelsBeaten: 0
   selectedItems: []
   ownedItems: []
+  itemsLooted: 0
 --- !u!114 &264655454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,11 +701,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580cf1e5a97425841ac1edeb1e202906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownedItems:
+  startingWeapons:
+  - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
+  - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
+  ownedItems: []
+  weaponTypes:
   - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
   - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
   - {fileID: 6144256074545822952, guid: 8842cd7145240bb4e8f895e77940b36e, type: 3}
   - {fileID: 3108472696131321336, guid: c5994ef2baf0118409ecd921431edf14, type: 3}
+  dataManager: {fileID: 6608530}
+--- !u!1 &494568192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 494568193}
+  - component: {fileID: 494568196}
+  - component: {fileID: 494568195}
+  - component: {fileID: 494568194}
+  - component: {fileID: 494568197}
+  m_Layer: 5
+  m_Name: Button (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &494568193
   - {fileID: 815084102267353062, guid: 66ad71816d2714e41bb11e0020be3d07, type: 3}
   - {fileID: 3108472696131321336, guid: 0c9d3e00a5c288b438ca4554c64ec154, type: 3}
   - {fileID: 6144256074545822952, guid: e8b4810b7dc207d41b78e94fe245018f, type: 3}

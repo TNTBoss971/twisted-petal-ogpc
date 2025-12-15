@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MapInventoryButton : MonoBehaviour
+public class JournalStatsButton : MonoBehaviour
 {
     public Button button;
-    public DataPersistanceManager dataManager;
+    public int buttonID;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,11 +16,16 @@ public class MapInventoryButton : MonoBehaviour
     {
 
     }
-    
+
     void TaskOnClick()
     {
-        // When pressed, exits the inventory to the map screen
-        dataManager.SaveGame();
-        SceneManager.LoadScene("Inventory");
+        if (buttonID == 1)
+        {
+            JournalStats.currentStats = true;
+        }
+        else
+        {
+            JournalStats.currentStats = false;
+        }
     }
 }
