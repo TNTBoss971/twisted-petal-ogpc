@@ -15,7 +15,7 @@ public class EnemyBehavior : MonoBehaviour
     private float speed = 3f;
     private GameManagement gameManager;
     private bool hasLoot = false;
-    private int lootFrequency = 5; // the higher this number is the less likely it is for a loot drop
+    public int lootFrequency; // the higher this number is the less likely it is for a loot drop
     private ParticleSystem lootSparkles;
 
     void Start()
