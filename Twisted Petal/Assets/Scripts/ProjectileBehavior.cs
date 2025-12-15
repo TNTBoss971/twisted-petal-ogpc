@@ -100,7 +100,6 @@ public class ProjectileBehavior : MonoBehaviour
         {
             if (pierce == 0)
             {
-                int reps = 0; // repitions
 
                 if (positionInTargets < 0)
                 {
@@ -112,6 +111,7 @@ public class ProjectileBehavior : MonoBehaviour
                 }
                 positionInTargets += positionModifier;
 
+                int reps = 0; // repitions
                 // skip over any deleted enemies
                 while (pastTargets[positionInTargets] == null)
                 {
