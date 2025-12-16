@@ -26,10 +26,11 @@ public class InventoryDescription : MonoBehaviour
     
     public int descriptionID;
     public string description;
+    private InventoryManager inventoryManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        inventoryManager = FindAnyObjectByType<InventoryManager>();     
     }
 
     // Update is called once per frame
@@ -38,7 +39,7 @@ public class InventoryDescription : MonoBehaviour
         // Changes the text to the description of the corresponding selected item
         if (descriptionID == 1)
         {
-            if (InventoryManager.selectedItems.Count >= 1)
+            if (inventoryManager.selectedItems.Count >= 1)
             {
                 //GetComponent<TMPro.TextMeshProUGUI>().text = InventoryManager.selectedDescriptions[0];
             }
@@ -49,7 +50,7 @@ public class InventoryDescription : MonoBehaviour
         }
         if (descriptionID == 2)
         {
-            if (InventoryManager.selectedItems.Count >= 2)
+            if (inventoryManager.selectedItems.Count >= 2)
             {
                 //GetComponent<TMPro.TextMeshProUGUI>().text = InventoryManager.selectedDescriptions[1];
             }
@@ -60,7 +61,7 @@ public class InventoryDescription : MonoBehaviour
         }
         if (descriptionID == 3)
         {
-            if (InventoryManager.selectedItems.Count >= 3)
+            if (inventoryManager.selectedItems.Count >= 3)
             {
                 //GetComponent<TMPro.TextMeshProUGUI>().text = InventoryManager.selectedDescriptions[2];
             }
@@ -71,7 +72,7 @@ public class InventoryDescription : MonoBehaviour
         }
         if (descriptionID == 4)
         {
-            if (InventoryManager.selectedItems.Count >= 4)
+            if (inventoryManager.selectedItems.Count >= 4)
             {
                 //GetComponent<TMPro.TextMeshProUGUI>().text = InventoryManager.selectedDescriptions[3];
             }

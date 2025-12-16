@@ -7,8 +7,8 @@ using UnityEngine.Rendering;
 public class InventoryManager : MonoBehaviour
 {
     public List<GameObject> startingWeapons = new List<GameObject>(); //if there are no weapons when loaded
-    public static List<GameObject> selectedItems = new List<GameObject>(); // This list contains the ids of all the currently selected items
-    public static List<int> selectedIDs = new List<int>(); // This list contains the ids of all the currently selected item ids
+    public List<GameObject> selectedItems = new List<GameObject>(); // This list contains the ids of all the currently selected items
+    public List<int> selectedIDs = new List<int>(); // This list contains the ids of all the currently selected item ids
     public static List<int> selectedDescriptions = new List<int>(); // This list contains the descriptions of all currently selected buttons
     public List<GameObject> ownedItems; // This list contains the items the player currently has. Can be modified.
     private DataManagement saveData;
@@ -19,16 +19,8 @@ public class InventoryManager : MonoBehaviour
     private int lootLoop; // a temp variable used to keep track of how many loops to use when adding items
     private GameObject itemLooted; // the item that will be added to the player's inventory
     private bool hasAllItems = false;
-    public static List<GameObject> selectedItems = new List<GameObject>();
-     // This list contains the ids of all the currently selected buttons
-    public static List<int> selectedIDs = new List<int>();
-    // This list contains the items the player currently has. Can be modified.
-    public List<GameObject> ownedItems;
     public GameObject buttonPrefab;
     public Canvas canvas;
-    private DataManagement saveData;
-    // This list is just so other objects in the scene can acess ownedItems without having to mess with savedata
-    public static List<GameObject> inventoryWeaponTypes;
 
     public SlotDisplayLogic[] displays;
     
@@ -77,7 +69,6 @@ public class InventoryManager : MonoBehaviour
         else
         {
             ownedItems = saveData.ownedItems;
-            saveData.ownedItems = ownedItems;
         }
         lootLoop = lootedItems.Count;
         // adds items from lootedItems into the player's inventory.
@@ -87,17 +78,24 @@ public class InventoryManager : MonoBehaviour
             ownedItems.Add(lootedItems[i]);
         }
 
+        // create the buttons that display the weapons
         int row = 0;
         int col = 0;
 
         for (int i = 0; i < ownedItems.Count; i++)
         {
+            // clone the prefab
             GameObject clone = Instantiate(buttonPrefab, transform.position, transform.rotation);
+            // set the parent
             clone.transform.parent = canvas.transform;
+            // set the id
             clone.GetComponent<InventoryButton>().buttonID = i;
-
-
+            // set the item stored
+            clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
+            // set the position
             clone.transform.position = new Vector2(row * 175 + 100f, col * -175 + 750);
+
+            // 
             row++;
             if (row > 10)
             {
@@ -111,7 +109,7 @@ public class InventoryManager : MonoBehaviour
     void Update()
     {
         saveData.selectedItems = selectedItems;
-        inventoryWeaponTypes = ownedItems;
+
         saveData.ownedItems = ownedItems;
 
         for (int i = 0; i < 4; i++)

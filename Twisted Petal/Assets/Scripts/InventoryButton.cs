@@ -10,32 +10,34 @@ public class InventoryButton : MonoBehaviour
     public string description;
     public Button button;
     private bool selected;
-     // This variable is the actual item the button corresponds to
+    // This variable is the actual item the button corresponds to
     public GameObject itemStored;
     private Image buttonImage;
+    private InventoryManager inventoryManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         button.onClick.AddListener(TaskOnClick);
         buttonImage = this.GetComponent<Image>();
+        inventoryManager = FindAnyObjectByType<InventoryManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // If the cell doesn't correspond to an item, it destroys itself
-        if (InventoryManager.inventoryWeaponTypes.Count <= buttonID)
+        if (inventoryManager.ownedItems.Count <= buttonID)
         {
             gameObject.SetActive(false);
         }
         else
         {
-            itemStored = InventoryManager.inventoryWeaponTypes[buttonID];
+            itemStored = inventoryManager.ownedItems[buttonID];
             gameObject.SetActive(true);
         }
         // Sets selected to true if the button has been pressed
-        if (InventoryManager.selectedIDs.Contains(buttonID))
+        if (inventoryManager.selectedIDs.Contains(buttonID))
         {
             selected = true;
             gameObject.GetComponent<Image>().color = Color.green;
@@ -44,7 +46,7 @@ public class InventoryButton : MonoBehaviour
         {
             selected = false;
             gameObject.GetComponent<Image>().color = Color.white;
-        }
+        }   
         if (itemStored != null)
         {
             buttonImage.sprite = itemStored.GetComponent<GunController>().displayImage;
@@ -56,15 +58,15 @@ public class InventoryButton : MonoBehaviour
     {
         if (selected == true)
         {
-            InventoryManager.selectedItems.Remove(itemStored);
-            InventoryManager.selectedIDs.Remove(buttonID);
+            inventoryManager.selectedItems.Remove(itemStored);
+            inventoryManager.selectedIDs.Remove(buttonID);
         }
         else
         {
-            if (InventoryManager.selectedItems.Count < 4)
+            if (inventoryManager.selectedItems.Count < 4)
             {
-                InventoryManager.selectedItems.Add(itemStored);
-                InventoryManager.selectedIDs.Add(buttonID);
+                inventoryManager.selectedItems.Add(itemStored);
+                inventoryManager.selectedIDs.Add(buttonID);
             }
         }
     }
