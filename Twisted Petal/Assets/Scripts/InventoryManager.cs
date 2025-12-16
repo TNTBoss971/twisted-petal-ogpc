@@ -37,26 +37,6 @@ public class InventoryManager : MonoBehaviour
             {
                 itemsLooted -= 1;
                 itemLooted = weaponTypes[Random.Range(0, weaponTypes.Count)];
-                // check if the player has every possible item
-                hasAllItems = true;
-                for (int k = 0; k < weaponTypes.Count; k++)
-                {
-                    if (saveData.ownedItems.Contains(weaponTypes[k]) == false)
-                    {
-                        if (lootedItems.Contains(weaponTypes[k]) == false)
-                        {
-                            hasAllItems = false;
-                        }
-                    }
-                }
-                // if they don't have every item, give them one that isn't a duplicate
-                if (hasAllItems == false)
-                {
-                    while (saveData.ownedItems.Contains(itemLooted))
-                    {
-                        itemLooted = weaponTypes[Random.Range(0, weaponTypes.Count)];
-                    }
-                }
                 lootedItems.Add(itemLooted);
             }
         }

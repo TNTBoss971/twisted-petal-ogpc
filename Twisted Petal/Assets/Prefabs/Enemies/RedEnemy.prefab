@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5181034740998668783}
   - component: {fileID: 4118980773611697474}
   - component: {fileID: 8942829205161027995}
+  - component: {fileID: 1748683012961437541}
+  - component: {fileID: -3168383948166791283}
   m_Layer: 6
   m_Name: RedEnemy
   m_TagString: Enemy
@@ -105,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  lootFrequency: 5
+  lootFrequency: 100
   speed: 3
   maxHealth: 2
   health: 2
