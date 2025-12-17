@@ -32,6 +32,8 @@ public class GunController : MonoBehaviour
     public string weaponName;
     public GameObject targetingIndicator; // marks the target of projectiles
 
+    private AudioSource audioSource;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,6 +41,7 @@ public class GunController : MonoBehaviour
         // assign actions
         attackAction = InputSystem.actions.FindAction("Attack");
         ammoBehavior = ammoObject.GetComponent<ProjectileBehavior>();
+        audioSource = gameObject.GetComponent<AudioSource>();
 
 
         if (attackAction == null)
@@ -113,6 +116,7 @@ public class GunController : MonoBehaviour
         GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
         clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
         nextFirePoint = Time.time + firingDelay;
+        audioSource.Play();
     }
     void FireExplosive()
     {
