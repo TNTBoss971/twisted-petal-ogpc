@@ -146,5 +146,5 @@ MonoBehaviour:
   displayImage: {fileID: 375807072183942001, guid: a784882050e852044aefb851247d7d19, type: 3}
   descriptionID: 1
   description: Ever wanted to fire FASTER?
-  name: Rapid Gun
+  weaponName: Minigun
   targetingIndicator: {fileID: 0}

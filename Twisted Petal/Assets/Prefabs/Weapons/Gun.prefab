@@ -59,7 +59,7 @@ MonoBehaviour:
   displayImage: {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   descriptionID: 0
   description: Fires a cannon shell
-  name: Basic Gun
+  weaponName: Tank Cannon
   targetingIndicator: {fileID: 0}
 --- !u!1 &4666619886083391244
 GameObject:
