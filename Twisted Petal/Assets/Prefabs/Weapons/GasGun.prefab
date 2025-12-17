@@ -146,5 +146,5 @@ MonoBehaviour:
   displayImage: {fileID: -8022194467504591970, guid: 3b43e2e4e60e77d4baaf11ae964d4e02, type: 3}
   descriptionID: 6
   description: Emmits a poisonous gas that damages enemies over time
-  name: Gas Gun
+  weaponName: Gas Gun
   targetingIndicator: {fileID: 3578250175648416519, guid: 42a7c9f2b50b32d41a49197623ac3727, type: 3}
