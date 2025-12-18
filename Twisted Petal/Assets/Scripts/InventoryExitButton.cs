@@ -6,6 +6,7 @@ public class InventoryExitButton : MonoBehaviour
 {
     public Button button;
     public DataPersistanceManager dataManager;
+    public string destination;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,6 +23,6 @@ public class InventoryExitButton : MonoBehaviour
     {
         // When pressed, exits the inventory to the map screen
         dataManager.SaveGame();
-        SceneManager.LoadScene("WorldMap");
+        SceneManager.LoadScene(destination);
     }
 }

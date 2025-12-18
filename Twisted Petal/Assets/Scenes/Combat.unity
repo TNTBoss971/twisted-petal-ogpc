@@ -945,6 +945,10 @@ MonoBehaviour:
   levelsBeaten: 0
   selectedItems: []
   ownedItems: []
+  itemsLooted: 0
+  itemsLootedOverall: 0
+  enemiesBeaten: 0
+  enemiesBeatenOverall: 0
 --- !u!1 &421250703
 GameObject:
   m_ObjectHideFlags: 0

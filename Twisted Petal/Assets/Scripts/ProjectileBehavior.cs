@@ -46,11 +46,13 @@ public class ProjectileBehavior : MonoBehaviour
 
     public float timer;
 
+    private AudioSource audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
         rb = GetComponent<Rigidbody2D>();
+        audioSource = gameObject.GetComponent<AudioSource>();
 
         player = GameObject.Find("Player");
         startingPosition = transform.position;
@@ -61,7 +63,10 @@ public class ProjectileBehavior : MonoBehaviour
             startingVelocity = rb.linearVelocity;
             offset = Random.Range(0, 10);
             frequency = Random.Range(1, 10);
+            audioSource.Play();
+
         }
+        
 
         
     }
@@ -128,6 +133,7 @@ public class ProjectileBehavior : MonoBehaviour
                     reps++;
                     if (reps > 100)
                     {
+                        Destroy(gameObject);
                         break;
                     }
 

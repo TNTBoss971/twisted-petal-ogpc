@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 using static ProjectileBehavior;
 
 public class ExplosionBehavior : MonoBehaviour
 {
     public float lifetime;
+    public float collisionTime; // how long the collider will remain active
     private float deathTime;
+    private float colliderDeathTime;
     public float maxSize;
     public float growthTime; // not utilized yet, the animations will have a growing explosion, so it will look wierd if the collision box also doen't grow
     public float damage;
@@ -15,7 +18,8 @@ public class ExplosionBehavior : MonoBehaviour
         Stun
     }
     public AreaType type = AreaType.Explosive;
-    
+    private AudioSource audioSource;
+
 
     // might also make a timer that deletes the collider before deleting the gameobject, this would also us to make the end part of the animation (smoke or something) not damage the enemies
 
@@ -23,6 +27,10 @@ public class ExplosionBehavior : MonoBehaviour
     void Start()
     {
         deathTime = Time.time + lifetime;
+        colliderDeathTime = Time.time + collisionTime;
+        audioSource = gameObject.GetComponent<AudioSource>();
+
+        audioSource.Play();
     }
 
     // Update is called once per frame
@@ -31,6 +39,10 @@ public class ExplosionBehavior : MonoBehaviour
         if (deathTime < Time.time)
         {
             Destroy(gameObject);
+        }
+        if (colliderDeathTime < Time.time)
+        {
+            this.GetComponent<Collider2D>().enabled = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

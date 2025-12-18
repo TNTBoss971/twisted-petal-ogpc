@@ -707,6 +707,13 @@ MonoBehaviour:
   startingWeapons:
   - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
   - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
+  - {fileID: 6144256074545822952, guid: 8842cd7145240bb4e8f895e77940b36e, type: 3}
+  - {fileID: 6144256074545822952, guid: e8b4810b7dc207d41b78e94fe245018f, type: 3}
+  - {fileID: 3108472696131321336, guid: c5994ef2baf0118409ecd921431edf14, type: 3}
+  - {fileID: 3108472696131321336, guid: 0c9d3e00a5c288b438ca4554c64ec154, type: 3}
+  - {fileID: 815084102267353062, guid: 66ad71816d2714e41bb11e0020be3d07, type: 3}
+  selectedItems: []
+  selectedIDs: 
   ownedItems: []
   weaponTypes:
   - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
@@ -842,6 +849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 997361697}
   dataManager: {fileID: 6608530}
+  destination: WorldMap
 --- !u!114 &997361697
 MonoBehaviour:
   m_ObjectHideFlags: 0

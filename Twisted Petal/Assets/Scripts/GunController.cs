@@ -128,6 +128,7 @@ public class GunController : MonoBehaviour
         targetPos = new Vector3(targetPos.x, targetPos.y, 1); // so that the indicator isnt at the same z position as the camera
         clone.GetComponent<ProjectileBehavior>().targetPosition = targetPos;
         clone.GetComponent<ProjectileBehavior>().targetIndicator = Instantiate(targetingIndicator, targetPos, transform.rotation);
+        audioSource.Play();
     }
     void FireLaser()
     {
@@ -160,6 +161,7 @@ public class GunController : MonoBehaviour
             persistentProjectile = Instantiate(ammoObject, transform.position, transform.rotation);
             persistentProjectile.GetComponent<ProjectileBehavior>().targetIndicator = Instantiate(targetingIndicator, transform.position, transform.rotation);
             nextFirePoint = Time.time + firingDelay;
+            audioSource.Play();
         }
     }
 
