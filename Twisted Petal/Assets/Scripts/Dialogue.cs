@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Dialogue : MonoBehaviour
 {
@@ -55,17 +56,24 @@ public class Dialogue : MonoBehaviour
         if (talking == true)
         {
             // print text gradually according to text speed
-            dialogueLength = dialogueLines[currentLine].Length;
-            if (dialogueDelay <= Time.time)
+            try
             {
-                displayedDialogue += dialogueLines[currentLine][currentCharacter];
-                currentCharacter++;
-                dialogueDelay = Time.time + textSpeed;
+                dialogueLength = dialogueLines[currentLine].Length;
+                if (dialogueDelay <= Time.time)
+                {
+                    displayedDialogue += dialogueLines[currentLine][currentCharacter];
+                    currentCharacter++;
+                    dialogueDelay = Time.time + textSpeed;
+                }
+                if (displayedDialogue.Length == dialogueLength)
+                {
+                    currentCharacter = 0;
+                    talking = false;
+                }
             }
-            if (displayedDialogue.Length == dialogueLength)
+            catch (ArgumentOutOfRangeException)
             {
-                currentCharacter = 0;
-                talking = false;
+
             }
         }
     }
