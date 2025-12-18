@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Dialogue : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         talking = true;
+        currentLine = 0;
+        dialogueDelay = 0f;
+        currentCharacter = 0;
+        textSpeed = 0.05f;
     }
 
     // Update is called once per frame
@@ -26,11 +31,13 @@ public class Dialogue : MonoBehaviour
         {
             if (talking == true)
             {
+                // skip to the end of the line if the player clicks
                 displayedDialogue = dialogueLines[currentLine];
                 talking = false;
             }
             else
             {
+                // checking if the cutscene is out of dialogue
                 if (currentLine < dialogueLines.Count - 1)
                 {
                     currentCharacter = 0;
@@ -39,10 +46,15 @@ public class Dialogue : MonoBehaviour
                     displayedDialogue = "";
                     talking = true;
                 }
+                else
+                {
+                    SceneManager.LoadScene("CombatResolution");
+                }
             }
         }
         if (talking == true)
         {
+            // print text gradually according to text speed
             dialogueLength = dialogueLines[currentLine].Length;
             if (dialogueDelay <= Time.time)
             {

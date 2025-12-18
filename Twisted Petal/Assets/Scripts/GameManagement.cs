@@ -120,13 +120,12 @@ public class GameManagement : MonoBehaviour
             // this wave/level is over, go to combat resolution
 
             saveData.levelsBeaten = waveNumber + 1;
-            Debug.Log(itemsLooted);
             saveData.itemsLootedOverall += itemsLooted;
             saveData.enemiesBeaten = enemiesBeaten;
             saveData.enemiesBeatenOverall += enemiesBeaten;
             saveData.itemsLooted = itemsLooted;
             dataManager.SaveGame();
-            SceneManager.LoadScene("CombatResolution");
+            SceneManager.LoadScene("Cutscene");
         }
         waveProgressionBar.value = waveLength + (Time.time - nextWaveTime);
         // if its at the end, go to loot screen
