@@ -37,7 +37,7 @@ public class ProjectileBehavior : MonoBehaviour
     public bool damagePulse; // Laser
 
     public Vector2 startingVelocity; // Missile
-    public float offset; // Missile
+    public float magnitude; // Missile
     public float frequency; // Missile
 
     public List<GameObject> pastTargets; // Arcing
@@ -61,7 +61,7 @@ public class ProjectileBehavior : MonoBehaviour
         {
             // convert velocity to degrees
             startingVelocity = rb.linearVelocity;
-            offset = Random.Range(0, 10);
+            magnitude = Random.Range(0, 10);
             frequency = Random.Range(1, 10);
             audioSource.Play();
 
@@ -186,7 +186,7 @@ public class ProjectileBehavior : MonoBehaviour
             // find the perpendicular vector
             Vector2 perpendicularVelocity = new Vector2(-startingVelocity.y, startingVelocity.x);
             // get the mult modifier
-            float mult = Mathf.Sin((Time.time + offset) * frequency) * 0.2f;
+            float mult = Mathf.Sin((Time.time + magnitude) * frequency) * 0.2f;
             // use mult to scale the perpdenicular vector appropriately
             perpendicularVelocity = new Vector2(perpendicularVelocity.x * mult, perpendicularVelocity.y * mult);
             // apply velocity
