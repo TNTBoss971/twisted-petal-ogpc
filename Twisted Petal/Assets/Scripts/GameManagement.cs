@@ -233,6 +233,7 @@ public class GameManagement : MonoBehaviour
         if (pastActiveWeaponId != activeWeaponId)
         {
             equippedWeapons[pastActiveWeaponId].SetActive(false);
+            Destroy(equippedWeapons[pastActiveWeaponId].GetComponent<GunController>().persistentProjectile);
         }
         equippedWeapons[activeWeaponId].SetActive(true);
     }
