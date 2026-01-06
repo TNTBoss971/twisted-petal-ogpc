@@ -35,7 +35,7 @@ public class GameManagement : MonoBehaviour
     public static int enemiesBeaten;
 
     public WaveData[] waves; // a list of all the waves
-    public WaveData currentWave; 
+    public WaveData currentWave;
     [Header("Status Bars")]
     public BarBehavior waveProgressionBar;
     public BarBehavior healthBar;
@@ -78,7 +78,7 @@ public class GameManagement : MonoBehaviour
     {
         // continuouslly spawn enemies while wave is active
         // rarely spawn "loot" enemy
-        if (enemyCount < enemyCountMax)
+        if (enemyCount < enemyCountMax && !currentWave.isBossBattle)
         {
             // spawn enemy
 

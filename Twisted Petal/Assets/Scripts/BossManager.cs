@@ -1,4 +1,3 @@
-using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,9 +15,11 @@ public class BossManager : MonoBehaviour
     public Canvas canvasObject;
     public GameObject[] weakpoints;
     public GameObject[] bossParts;
+    public GameManagement gameManager;
 
     [Header("Spawnables")]
     public GameObject[] projectiles;
+    public GameObject[] minions;
 
     // enums
     public enum BossStates // comments in this denote which states are used by which bosses
@@ -41,6 +42,7 @@ public class BossManager : MonoBehaviour
     public BossStates[] attackPattern; // what should the boss do?
     public int positionInAttackPattern; // what was the last thing the boss did?
     public float attackStartTime; // for attacks that last a certain period of time
+    private bool damageApplied;
 
 
 
@@ -58,6 +60,8 @@ public class BossManager : MonoBehaviour
             weakpoints = GameObject.FindGameObjectsWithTag("Weakpoint");
             bossParts = GameObject.FindGameObjectsWithTag("Boss");
         }
+
+        gameManager = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0];
     }
 
     // Update is called once per frame
@@ -71,6 +75,9 @@ public class BossManager : MonoBehaviour
             {
                 PlaceholderBehavior();
             }
+        } else
+        {
+            PlaceholderChecks();
         }
     }
 
@@ -92,52 +99,118 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.Slam;
             attackStartTime = Time.time;
 
-            GameObject arm = bossParts[0];
+            GameObject arm = bossParts[1];
             arm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
-            // play slam wind up animation
+            damageApplied = false;
+            // play slam animation
             bossObject.GetComponent<Animator>().Play("PlaceholderBossSlam");
-            //FinishAttack();
         }
         
         // projectile attack
         if (currentAttack == BossStates.FireProjectile)
         {
             bossState = BossStates.FireProjectile;
-            FinishAttack();
+            attackStartTime = Time.time;
+
+            GameObject arm = bossParts[1];
+            arm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            damageApplied = false;
+            // play firing animation
+            Debug.Log("Firing Projectiles");
+            bossObject.GetComponent<Animator>().Play("PlaceholderBossFireProjectile");
+            //FinishAttack();
         }
-        
+
         // minion attack
         if (currentAttack == BossStates.SpawnMinions)
         {
             bossState = BossStates.SpawnMinions;
-            FinishAttack();
+            attackStartTime = Time.time;
+
+            GameObject arm = bossParts[1];
+            arm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            damageApplied = false;
+            // play spawing animation
+            Debug.Log("Spawing Minions");
+            bossObject.GetComponent<Animator>().Play("PlaceholderBossSpawnMinions");
+            //FinishAttack();
         }
 
         // exposed
         if (currentAttack == BossStates.Exposed)
         {
             bossState = BossStates.Exposed;
-            FinishAttack();
+            attackStartTime = Time.time;
+
+            GameObject arm = bossParts[1];
+            arm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            damageApplied = false;
+            // play exposed animation
+            Debug.Log("Exposed");
+            bossObject.GetComponent<Animator>().Play("PlaceholderBossExposed");
+            //FinishAttack();
         }
     }
     // determines if the current attack should be over
     void PlaceholderChecks()
     {
+        // slam
         if (bossState == BossStates.Slam)
         {
-            GameObject arm = bossParts[0];
+            GameObject arm = bossParts[1];
             if (arm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
             {
                 // cancel the attack
+
             } 
-            else if (attackStartTime + 15f <= Time.time)
+            else if (attackStartTime + 2.05f <= Time.time)
+            {
+                FinishAttack();
+            }
+            else if (attackStartTime + 1.45f <= Time.time && !damageApplied)
             {
                 // deal the damage of the attack
-                FinishAttack();
-            } 
-            else if (attackStartTime + 10f <= Time.time)
+                gameManager.playerHealth -= 10;
+                damageApplied = true;
+            }
+        }
+
+        // exposed
+        if (bossState == BossStates.Exposed)
+        {
+            if (attackStartTime + 2.30f <= Time.time)
             {
-                
+
+                FinishAttack();
+            }
+        }
+
+        // spawn minions
+        if (bossState == BossStates.SpawnMinions)
+        {
+            if (attackStartTime + 1.40f <= Time.time)
+            {
+
+                FinishAttack();
+            }
+            else if (attackStartTime + 1.00f <= Time.time && !damageApplied)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    GameObject newMinion = Instantiate(minions[0]);
+                    newMinion.transform.position = new Vector3(-1 + 0.25f * i, -3, 0);
+                }
+                damageApplied = true;
+            }
+        }
+
+        // fire projectile
+        if (bossState == BossStates.FireProjectile)
+        {
+            if (attackStartTime + 1.35f <= Time.time)
+            {
+
+                FinishAttack();
             }
         }
     }
