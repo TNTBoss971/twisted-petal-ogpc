@@ -95,8 +95,8 @@ public class BossManager : MonoBehaviour
             GameObject arm = bossParts[0];
             arm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
             // play slam wind up animation
-
-            FinishAttack();
+            bossObject.GetComponent<Animator>().Play("PlaceholderBossSlam");
+            //FinishAttack();
         }
         
         // projectile attack
@@ -137,8 +137,7 @@ public class BossManager : MonoBehaviour
             } 
             else if (attackStartTime + 10f <= Time.time)
             {
-                // play full slam animation
-                // deal the damage of the attack
+                
             }
         }
     }
