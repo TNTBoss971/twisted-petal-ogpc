@@ -8,6 +8,7 @@ public class CutsceneManager : MonoBehaviour
     public DialogueSprite portrait;
     public List<string> cutsceneDialogueLines; // every dialogue line
     public List<Sprite> cutsceneDialoguePortraits; // every dialogue portrait
+    public List<int> cutsceneDecisions; // every cutscene decision
     // a dictionary containing the start point for dialogue in a given cutscene
     Dictionary<int, int> cutsceneLinesStart = new Dictionary<int, int>
     {
