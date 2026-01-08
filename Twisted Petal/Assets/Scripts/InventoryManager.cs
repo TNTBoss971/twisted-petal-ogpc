@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour
 {
     public List<GameObject> startingWeapons = new List<GameObject>(); //if there are no weapons when loaded
     public List<GameObject> selectedItems = new List<GameObject>(); // This list contains the ids of all the currently selected items
-    public List<int> selectedIDs = new List<int>(); // This list contains the ids of all the currently selected item ids
+    public List<int> selectedIDs = new List<int>(); // This list contains the ids of all the currently selected button ids
     public static List<int> selectedDescriptions = new List<int>(); // This list contains the descriptions of all currently selected buttons
     public List<GameObject> ownedItems; // This list contains the items the player currently has. Can be modified.
     private DataManagement saveData;
@@ -28,6 +28,8 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         saveData = this.GetComponent<DataManagement>();
+        selectedItems = saveData.selectedItems;
+        selectedIDs = saveData.selectedButtonIDs;
         itemsLooted = saveData.itemsLooted;
         lootLoop = itemsLooted;
         //adds looted items to the lootedItems list
@@ -89,6 +91,8 @@ public class InventoryManager : MonoBehaviour
     void Update()
     {
         saveData.selectedItems = selectedItems;
+
+        saveData.selectedButtonIDs = selectedIDs;
 
         saveData.ownedItems = ownedItems;
 
