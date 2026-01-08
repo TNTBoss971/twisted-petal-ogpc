@@ -4,7 +4,7 @@ public class BossPartDamageTracker : MonoBehaviour
 {
     private float totalDamage;
     public float damageThisAttack;
-    private BossManager manager;
+    public BossManager manager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,6 +14,12 @@ public class BossPartDamageTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+    public void DamageSelf(float damage)
+    {
+        totalDamage += damage;
+        damageThisAttack += damage;
+        manager.health -= damage;
     }
 }

@@ -21,6 +21,8 @@ public class BossManager : MonoBehaviour
     public GameObject[] projectiles;
     public GameObject[] minions;
 
+
+
     // enums
     public enum BossStates // comments in this denote which states are used by which bosses
     {
@@ -44,7 +46,10 @@ public class BossManager : MonoBehaviour
     public float attackStartTime; // for attacks that last a certain period of time
     private bool damageApplied;
 
-
+    [Header("Properties")]
+    public float maxHealth;
+    public float health;
+    public float poison;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -154,15 +159,16 @@ public class BossManager : MonoBehaviour
     // determines if the current attack should be over
     void PlaceholderChecks()
     {
+        
+        GameObject arm = bossParts[1];
         // slam
         if (bossState == BossStates.Slam)
         {
-            GameObject arm = bossParts[1];
-            if (arm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
+            if (arm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 2)
             {
                 // cancel the attack
-
-            } 
+                FinishAttack();
+            }
             else if (attackStartTime + 2.05f <= Time.time)
             {
                 FinishAttack();
@@ -188,6 +194,11 @@ public class BossManager : MonoBehaviour
         // spawn minions
         if (bossState == BossStates.SpawnMinions)
         {
+            if (arm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
+            {
+                // cancel the attack
+                FinishAttack();
+            }
             if (attackStartTime + 1.40f <= Time.time)
             {
 
@@ -207,6 +218,11 @@ public class BossManager : MonoBehaviour
         // fire projectile
         if (bossState == BossStates.FireProjectile)
         {
+            if (arm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
+            {
+                // cancel the attack
+                FinishAttack();
+            }
             if (attackStartTime + 1.35f <= Time.time)
             {
 

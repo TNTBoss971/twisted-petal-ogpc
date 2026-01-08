@@ -237,7 +237,7 @@ public class ProjectileBehavior : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
         {
             if (type == MunitionType.Missile) 
             {
@@ -246,7 +246,14 @@ public class ProjectileBehavior : MonoBehaviour
             } 
             else if (type == MunitionType.Basic)
             {
-                other.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Bullet);
+                if (other.CompareTag("Enemy"))
+                {
+                    other.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Bullet);
+                }
+                else
+                {
+                    other.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+                }
 
                 if (pierce > 0)
                 {

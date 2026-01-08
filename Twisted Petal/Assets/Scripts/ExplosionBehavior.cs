@@ -63,6 +63,17 @@ public class ExplosionBehavior : MonoBehaviour
                 other.GetComponent<EnemyBehavior>().poison += damage;
             }
         }
+        if (other.CompareTag("Boss"))
+        {
+            if (type == AreaType.Explosive)
+            {
+                other.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+            }
+            if (type == AreaType.Poison)
+            {
+                other.GetComponent<BossPartDamageTracker>().manager.poison += damage;
+            }
+        }
 
     }
 }
