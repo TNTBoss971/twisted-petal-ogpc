@@ -14,7 +14,6 @@ public class CutsceneDecisionButton : MonoBehaviour
     public int scenarioID;
     public List<GameObject> itemsIndex;
     public bool decisionAllowed;
-    public GameObject otherButton;
     public Dialogue dialogue;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
