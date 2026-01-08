@@ -5,6 +5,7 @@ public class BossPartDamageTracker : MonoBehaviour
     private float totalDamage;
     public float damageThisAttack;
     public BossManager manager;
+    public bool isWeakPoint;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +21,13 @@ public class BossPartDamageTracker : MonoBehaviour
     {
         totalDamage += damage;
         damageThisAttack += damage;
-        manager.health -= damage;
+        if (isWeakPoint)
+        {
+            manager.health -= damage;
+        } 
+        else
+        {
+            manager.health -= damage / 2;
+        }
     }
 }

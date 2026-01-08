@@ -55,7 +55,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   gameManager: {fileID: 0}
-  projectiles: []
+  projectiles:
+  - {fileID: 6684092658235471012, guid: 026256fb7004c464e9877766939c8f38, type: 3}
   minions:
   - {fileID: 1859193798442875194, guid: da10f828601be214fb62227136b37c6f, type: 3}
   boss: 1
@@ -63,6 +64,6 @@ MonoBehaviour:
   attackPattern: 0100000002000000010000000300000004000000
   positionInAttackPattern: 0
   attackStartTime: 0
-  maxHealth: 0
-  health: 0
+  maxHealth: 100
+  health: 100
   poison: 0

@@ -79,7 +79,10 @@ public class GameManagement : MonoBehaviour
     {
         if (currentWave.isBossBattle)
         {
-            
+            if (bossManager.health <= 0)
+            {
+                EndWave();
+            }
         }
         else
         {
@@ -117,16 +120,7 @@ public class GameManagement : MonoBehaviour
             // check the wave timer
             if (nextWaveTime < Time.time)
             {
-                // this wave/level is over, go to combat resolution
-
-                saveData.levelsBeaten = waveNumber + 1;
-                Debug.Log(itemsLooted);
-                saveData.itemsLootedOverall += itemsLooted;
-                saveData.enemiesBeaten = enemiesBeaten;
-                saveData.enemiesBeatenOverall += enemiesBeaten;
-                saveData.itemsLooted = itemsLooted;
-                dataManager.SaveGame();
-                SceneManager.LoadScene("CombatResolution");
+                EndWave();
             }
             waveProgressionBar.value = waveLength + (Time.time - nextWaveTime);
 
@@ -253,6 +247,19 @@ public class GameManagement : MonoBehaviour
             Destroy(equippedWeapons[pastActiveWeaponId].GetComponent<GunController>().persistentProjectile);
         }
         equippedWeapons[activeWeaponId].SetActive(true);
+    }
+    public void EndWave()
+    {
+        // this wave/level is over, go to combat resolution
+
+        saveData.levelsBeaten = waveNumber + 1;
+        Debug.Log(itemsLooted);
+        saveData.itemsLootedOverall += itemsLooted;
+        saveData.enemiesBeaten = enemiesBeaten;
+        saveData.enemiesBeatenOverall += enemiesBeaten;
+        saveData.itemsLooted = itemsLooted;
+        dataManager.SaveGame();
+        SceneManager.LoadScene("CombatResolution");
     }
 
     // function that can be called by the weapon buttons that swaps the weapon to the given id

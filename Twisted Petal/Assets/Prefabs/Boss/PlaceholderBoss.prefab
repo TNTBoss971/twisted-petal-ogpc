@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageThisAttack: 0
   manager: {fileID: 0}
+  isWeakPoint: 0
 --- !u!61 &2704736668686052700
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -104,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 74664605202161001}
   - component: {fileID: 8879369984995393781}
+  - component: {fileID: 6886542259373700403}
   m_Layer: 0
   m_Name: Weakpoint
   m_TagString: Weakpoint
@@ -181,6 +183,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6886542259373700403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141779041903588418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60533752fe68dbd4e8eef5ee1570ce3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageThisAttack: 0
+  manager: {fileID: 0}
+  isWeakPoint: 1
 --- !u!1 &4409383312838680287
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4798412413352286269}
   - component: {fileID: 36133659159353270}
+  - component: {fileID: 6368590883151079409}
   m_Layer: 0
   m_Name: MainSprite
   m_TagString: Boss
@@ -260,6 +278,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1.0043217}
   m_EdgeRadius: 0
+--- !u!114 &6368590883151079409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4409383312838680287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60533752fe68dbd4e8eef5ee1570ce3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageThisAttack: 0
+  manager: {fileID: 0}
+  isWeakPoint: 0
 --- !u!1 &6524599650443359845
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,6 +45,7 @@ public class BossManager : MonoBehaviour
     public int positionInAttackPattern; // what was the last thing the boss did?
     public float attackStartTime; // for attacks that last a certain period of time
     private bool damageApplied;
+    private float fireTime;
 
     [Header("Properties")]
     public float maxHealth;
@@ -66,6 +67,9 @@ public class BossManager : MonoBehaviour
             bossParts = GameObject.FindGameObjectsWithTag("Boss");
         }
 
+        BarBehavior bossHealthBar = canvasObject.GetComponentInChildren<BarBehavior>();
+        bossHealthBar.maxValue = maxHealth;
+
         gameManager = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0];
     }
 
@@ -84,12 +88,14 @@ public class BossManager : MonoBehaviour
         {
             PlaceholderChecks();
         }
+        HealthLogic();
     }
 
     // controls health, the health bar, and what to do upon health reaching 0
     void HealthLogic()
     {
-        
+        BarBehavior bossHealthBar = canvasObject.GetComponentInChildren<BarBehavior>();
+        bossHealthBar.value = health;
     }
 
     // for unique behavior for different bosses. (dont want all bosses to be the exact same.)
@@ -120,6 +126,7 @@ public class BossManager : MonoBehaviour
             GameObject arm = bossParts[1];
             arm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
             damageApplied = false;
+            fireTime = 0;
             // play firing animation
             Debug.Log("Firing Projectiles");
             bossObject.GetComponent<Animator>().Play("PlaceholderBossFireProjectile");
@@ -206,7 +213,7 @@ public class BossManager : MonoBehaviour
             }
             else if (attackStartTime + 1.00f <= Time.time && !damageApplied)
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < Random.Range(1, 3); i++)
                 {
                     GameObject newMinion = Instantiate(minions[0]);
                     newMinion.transform.position = new Vector3(-1 + 0.25f * i, -3, 0);
@@ -227,6 +234,13 @@ public class BossManager : MonoBehaviour
             {
 
                 FinishAttack();
+            } 
+            else if (attackStartTime + 0.27f + fireTime <= Time.time && attackStartTime + 1.00f >= Time.time)
+            {
+                fireTime += 0.10f;
+                GameObject projectile = Instantiate(projectiles[0]);
+                projectile.transform.position = new Vector3(3.5f, -0.75f, 0);
+                projectile.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 10;
             }
         }
     }
