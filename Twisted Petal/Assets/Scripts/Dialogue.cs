@@ -16,6 +16,7 @@ public class Dialogue : MonoBehaviour
     public static float textSpeed = 0.05f; // The delay in between characters getting printed (in seconds)
     public CutsceneDecisionButton decision;
     public DataPersistanceManager dataManager;
+    public int cutsceneDialogueCount; // current dialogue line in the context of every dialogue line ingame
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,6 +51,7 @@ public class Dialogue : MonoBehaviour
                         currentCharacter = 0;
                         talking = false;
                         currentLine += 1;
+                        cutsceneDialogueCount += 1;
                         displayedDialogue = "";
                         talking = true;
                     }

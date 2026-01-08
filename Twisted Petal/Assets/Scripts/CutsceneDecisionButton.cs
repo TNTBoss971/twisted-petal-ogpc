@@ -16,6 +16,7 @@ public class CutsceneDecisionButton : MonoBehaviour
     public List<GameObject> itemsIndex;
     public bool decisionAllowed;
     public GameObject otherButton;
+    public Dialogue dialogue;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,7 +43,7 @@ public class CutsceneDecisionButton : MonoBehaviour
         if (dialogueLocked == false)
         {
             // checks if there's a decision
-            if (cutscenes.cutsceneDecisions[Dialogue.currentLine] != 0)
+            if (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount] != 0)
             {
                 if (decisionAllowed == true)
                 {
@@ -50,7 +51,7 @@ public class CutsceneDecisionButton : MonoBehaviour
                     canvasGroup.interactable = true;
                     dialogueLocked = true;
                     // checks the cutscenemanager list to see which decision we're doing
-                    switch (cutscenes.cutsceneDecisions[Dialogue.currentLine])
+                    switch (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount])
                     {
                         case 1:
                             scenarioID = 1;
@@ -96,9 +97,12 @@ public class CutsceneDecisionButton : MonoBehaviour
                 {
                     GiveItem(itemsIndex[4]);
                 }
-                if (buttonID == 2)
+                else if (buttonID == 2)
                 {
-
+                    decisionAllowed = false;
+                    dialogueLocked = false;
+                    canvasGroup.alpha = 0f;
+                    canvasGroup.interactable = false;
                 }
                 break;
         }

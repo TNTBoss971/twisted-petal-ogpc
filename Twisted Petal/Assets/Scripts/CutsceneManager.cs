@@ -41,6 +41,7 @@ public class CutsceneManager : MonoBehaviour
         // I HAVE TO DO THIS NONSENSE. WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY!?!?!?!?!?!?
         if (linesLoaded != true)
         {
+            dialogue.cutsceneDialogueCount = cutsceneLinesStart[saveData.levelsBeaten];
             // take text from this script into the dialogue script
             for (int i = cutsceneLinesStart[saveData.levelsBeaten]; i < cutsceneLinesEnd[saveData.levelsBeaten]; i++)
             {

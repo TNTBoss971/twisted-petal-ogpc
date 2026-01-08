@@ -277,6 +277,7 @@ MonoBehaviour:
   - Line 4
   decision: {fileID: 406763047}
   dataManager: {fileID: 935132565}
+  cutsceneDialogueCount: 0
 --- !u!1 &166885730
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +472,7 @@ MonoBehaviour:
   - {fileID: 815084102267353062, guid: 66ad71816d2714e41bb11e0020be3d07, type: 3}
   decisionAllowed: 0
   otherButton: {fileID: 561514258}
+  dialogue: {fileID: 61325680}
 --- !u!114 &406763048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,6 +656,7 @@ MonoBehaviour:
   - {fileID: 815084102267353062, guid: 66ad71816d2714e41bb11e0020be3d07, type: 3}
   decisionAllowed: 0
   otherButton: {fileID: 406763044}
+  dialogue: {fileID: 61325680}
 --- !u!114 &561514262
 MonoBehaviour:
   m_ObjectHideFlags: 0
