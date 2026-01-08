@@ -14,7 +14,7 @@ public class Dialogue : MonoBehaviour
     private float dialogueDelay = 0f; // used to keep track of when new characters can be printed
     private int currentCharacter = 0; // the id of the current character being printed
     public static float textSpeed = 0.05f; // The delay in between characters getting printed (in seconds)
-    public CutsceneDecisionButton decision;
+    public bool dialogueLocked;
     public DataPersistanceManager dataManager;
     public int cutsceneDialogueCount; // current dialogue line in the context of every dialogue line ingame
 
@@ -43,7 +43,7 @@ public class Dialogue : MonoBehaviour
             else
             {
                 // checking if there is a decision ongoing
-                if (decision.dialogueLocked == false)
+                if (dialogueLocked == false)
                 {
                     // checking if the cutscene is out of dialogue
                     if (currentLine < dialogueLines.Count - 1)

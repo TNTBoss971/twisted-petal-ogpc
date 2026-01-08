@@ -9,7 +9,6 @@ public class CutsceneDecisionButton : MonoBehaviour
     public CutsceneManager cutscenes;
     public Button button;
     private CanvasGroup canvasGroup;
-    public bool dialogueLocked;
     private DataManagement saveData;
     public string buttonText;
     public int scenarioID;
@@ -23,7 +22,7 @@ public class CutsceneDecisionButton : MonoBehaviour
     {
         saveData = this.GetComponent<DataManagement>();
         canvasGroup = this.GetComponent<CanvasGroup>();
-        dialogueLocked = false;
+        dialogue.dialogueLocked = false;
         button.onClick.AddListener(TaskOnClick);
         canvasGroup.alpha = 1f;
         canvasGroup.interactable = true;
@@ -33,54 +32,54 @@ public class CutsceneDecisionButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // disable this button if another one is also disabled
-        if (otherButton.GetComponent<CanvasGroup>().interactable == false)
+        // checks if there's a decision
+        if (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount] != 0)
+        {
+            if (decisionAllowed == true)
+            {
+                canvasGroup.alpha = 1f;
+                canvasGroup.interactable = true;
+                // checks the cutscenemanager list to see which decision we're doing
+                switch (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount])
+                {
+                    case 1:
+                        scenarioID = 1;
+                        if (buttonID == 1)
+                        {
+                            buttonText = "Yes please!";
+                        }
+                        if (buttonID == 2)
+                        {
+                            buttonText = "Keep it";
+                        }
+                        break;
+                    case 2:
+                        Debug.Log("test");
+                        break;
+                    case 3:
+                        Debug.Log("test");
+                        break;
+                }
+                dialogue.dialogueLocked = true;
+                decisionAllowed = false;
+            }
+        }
+        else
         {
             canvasGroup.alpha = 0f;
             canvasGroup.interactable = false;
         }
-        
-        if (dialogueLocked == false)
+        // disable this button if another one is also disabled
+        if (dialogue.dialogueLocked == false)
         {
-            // checks if there's a decision
-            if (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount] != 0)
-            {
-                if (decisionAllowed == true)
-                {
-                    canvasGroup.alpha = 1f;
-                    canvasGroup.interactable = true;
-                    dialogueLocked = true;
-                    // checks the cutscenemanager list to see which decision we're doing
-                    switch (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount])
-                    {
-                        case 1:
-                            scenarioID = 1;
-                            if (buttonID == 1)
-                            {
-                                buttonText = "Yes please!";
-                            }
-                            if (buttonID == 2)
-                            {
-                                buttonText = "Keep it";
-                            }
-                            break;
-                        case 2:
-                            Debug.Log("test");
-                            break;
-                        case 3:
-                            Debug.Log("test");
-                            break;
-                    }
-                }
-
-            }
-            else
-            {
-                canvasGroup.alpha = 0f;
-                canvasGroup.interactable = false;
-            }
+            canvasGroup.alpha = 0f;
+            canvasGroup.interactable = false;
         }
-        
+        else
+        {
+            canvasGroup.alpha = 1f;
+            canvasGroup.interactable = true;
+        }
     }
 
     void GiveItem(GameObject itemGiven)
@@ -99,15 +98,12 @@ public class CutsceneDecisionButton : MonoBehaviour
                 }
                 else if (buttonID == 2)
                 {
-                    decisionAllowed = false;
-                    dialogueLocked = false;
-                    canvasGroup.alpha = 0f;
-                    canvasGroup.interactable = false;
+                    
                 }
                 break;
         }
         decisionAllowed = false;
-        dialogueLocked = false;
+        dialogue.dialogueLocked = false;
         canvasGroup.alpha = 0f;
         canvasGroup.interactable = false;
     }
