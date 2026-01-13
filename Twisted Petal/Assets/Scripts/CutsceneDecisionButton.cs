@@ -15,6 +15,9 @@ public class CutsceneDecisionButton : MonoBehaviour
     public List<GameObject> itemsIndex;
     public bool decisionAllowed;
     public Dialogue dialogue;
+    public List<string> alternateLines;
+    private int altLinesStart;
+    private int altLinesEnd;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,9 +56,21 @@ public class CutsceneDecisionButton : MonoBehaviour
                         }
                         break;
                     case 2:
-                        Debug.Log("test");
+                        scenarioID = 2;
+                        altLinesStart = 0;
+                        altLinesEnd = 1;
+                        if (buttonID == 1)
+                        {
+                            buttonText = "Talk about coins";
+
+                        }
+                        if (buttonID == 2)
+                        {
+                            buttonText = "Talk about TV";
+                        }
                         break;
                     case 3:
+                        scenarioID = 3;
                         Debug.Log("test");
                         break;
                 }
@@ -95,12 +110,39 @@ public class CutsceneDecisionButton : MonoBehaviour
                 {
                     GiveItem(itemsIndex[4]);
                 }
-                else if (buttonID == 2)
+                if (buttonID == 2)
                 {
                     
                 }
                 break;
+            case 2:
+                if (buttonID == 1)
+                {
+                    dialogue.dialogueLines.Clear();
+                    for (int i = 0; i < Dialogue.currentLine + 1; i++)
+                    {
+                        dialogue.dialogueLines.Add("");
+                    }
+                    for (int i = altLinesStart; i < altLinesEnd; i++)
+                    {
+                        dialogue.dialogueLines.Add(alternateLines[i]);
+                    }
+                }
+                if (buttonID == 2)
+                {
+                    dialogue.dialogueLines.Clear();
+                    for (int i = 0; i < Dialogue.currentLine + 1; i++)
+                    {
+                        dialogue.dialogueLines.Add("");
+                    }
+                    for (int i = altLinesStart; i < altLinesEnd; i++)
+                    {
+                        dialogue.dialogueLines.Add(alternateLines[i]);
+                    }
+                }
+                break;
         }
+            
         decisionAllowed = false;
         dialogue.dialogueLocked = false;
         canvasGroup.alpha = 0f;

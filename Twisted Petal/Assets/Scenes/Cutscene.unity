@@ -275,7 +275,7 @@ MonoBehaviour:
   - WOAH! This is the second line.
   - Holy cowabunga-dero! Three lines already!
   - Line 4
-  decision: {fileID: 406763047}
+  dialogueLocked: 0
   dataManager: {fileID: 935132565}
   cutsceneDialogueCount: 0
 --- !u!1 &166885730
@@ -444,6 +444,7 @@ MonoBehaviour:
   itemsLootedOverall: 0
   enemiesBeaten: 0
   enemiesBeatenOverall: 0
+  selectedButtonIDs: 
 --- !u!114 &406763047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,7 +460,6 @@ MonoBehaviour:
   buttonID: 1
   cutscenes: {fileID: 577101591}
   button: {fileID: 406763048}
-  dialogueLocked: 0
   buttonText: 
   scenarioID: 0
   itemsIndex:
@@ -471,8 +471,9 @@ MonoBehaviour:
   - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
   - {fileID: 815084102267353062, guid: 66ad71816d2714e41bb11e0020be3d07, type: 3}
   decisionAllowed: 0
-  otherButton: {fileID: 561514258}
   dialogue: {fileID: 61325680}
+  alternateLines:
+  - '"Coins are shiny and metal. AT THE SAME TIME! OH MY GOD THIS IS INSANE. Wow"'
 --- !u!114 &406763048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,6 +629,7 @@ MonoBehaviour:
   itemsLootedOverall: 0
   enemiesBeaten: 0
   enemiesBeatenOverall: 0
+  selectedButtonIDs: 
 --- !u!114 &561514261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,7 +645,6 @@ MonoBehaviour:
   buttonID: 2
   cutscenes: {fileID: 577101591}
   button: {fileID: 561514262}
-  dialogueLocked: 0
   buttonText: 
   scenarioID: 0
   itemsIndex:
@@ -655,8 +656,9 @@ MonoBehaviour:
   - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
   - {fileID: 815084102267353062, guid: 66ad71816d2714e41bb11e0020be3d07, type: 3}
   decisionAllowed: 0
-  otherButton: {fileID: 406763044}
   dialogue: {fileID: 61325680}
+  alternateLines:
+  - '"It''s TV Time! Or something like that idk I never watched that show"'
 --- !u!114 &561514262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,6 +790,7 @@ MonoBehaviour:
   itemsLootedOverall: 0
   enemiesBeaten: 0
   enemiesBeatenOverall: 0
+  selectedButtonIDs: 
 --- !u!114 &577101591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,15 +809,15 @@ MonoBehaviour:
   - '"Wow we have made it out of the city."'
   - '"Hey kid, ya want a lightning gun?"'
   - '"ok"'
-  - '"Wahooo we are literally on the open road."'
-  - '"Time to keep driving forward."'
+  - '"What should I talk about?"'
+  - '"Dummy answer. Will talk about TV or coins"'
   cutsceneDialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: -2248588054835376049, guid: eb600b9bb04f9da47bb1914c4c75194f, type: 3}
   - {fileID: -790151542688815544, guid: c1659740120d72d4eac3a3e8267fe5b5, type: 3}
   - {fileID: -970146014054310643, guid: ea009a957a9d8314c854d871a56e13a7, type: 3}
   - {fileID: 375807072183942001, guid: a784882050e852044aefb851247d7d19, type: 3}
-  cutsceneDecisions: 0000000001000000000000000000000000000000
+  cutsceneDecisions: 0000000001000000000000000200000000000000
 --- !u!4 &577101592
 Transform:
   m_ObjectHideFlags: 0
