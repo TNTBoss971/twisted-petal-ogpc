@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class CutsceneDecisionButton : MonoBehaviour
 {
-    public int buttonID;
-    public CutsceneManager cutscenes;
-    public Button button;
-    private CanvasGroup canvasGroup;
-    private DataManagement saveData;
-    public string buttonText;
-    public int scenarioID;
-    public List<GameObject> itemsIndex;
-    public bool decisionAllowed;
-    public Dialogue dialogue;
-    public List<string> alternateLines;
-    private int altLinesStart;
-    private int altLinesEnd;
+    public int buttonID; // to differentiate each button
+    public CutsceneManager cutscenes; // the cutscenemanager
+    public Button button; // so the button can be selected
+    private CanvasGroup canvasGroup; // canvasgroup
+    private DataManagement saveData; // to access saved vars
+    public string buttonText; // the button's text
+    public int scenarioID; // current decision scenario
+    public List<GameObject> itemsIndex; // every item in the game
+    public bool decisionAllowed; // are we worrying about decisions right now?
+    public Dialogue dialogue; // the dialogue box
+    public List<string> alternateLines; // lines to replace current ones
+    private int altLinesStart; // where do we start replacing
+    private int altLinesEnd; // where do we stop replacing
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,6 +42,8 @@ public class CutsceneDecisionButton : MonoBehaviour
                 canvasGroup.alpha = 1f;
                 canvasGroup.interactable = true;
                 // checks the cutscenemanager list to see which decision we're doing
+                // then makes each button do something different depending on which
+                // decision we got
                 switch (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount])
                 {
                     case 1:
@@ -83,7 +85,7 @@ public class CutsceneDecisionButton : MonoBehaviour
             canvasGroup.alpha = 0f;
             canvasGroup.interactable = false;
         }
-        // disable this button if another one is also disabled
+        // if dialogue is happening, turn off any buttons
         if (dialogue.dialogueLocked == false)
         {
             canvasGroup.alpha = 0f;
@@ -96,6 +98,8 @@ public class CutsceneDecisionButton : MonoBehaviour
         }
     }
 
+    // This function allows for buttons to add
+    // items to the player's inventory
     void GiveItem(GameObject itemGiven)
     {
         saveData.ownedItems.Add(itemGiven);
@@ -103,6 +107,9 @@ public class CutsceneDecisionButton : MonoBehaviour
 
     void TaskOnClick()
     {
+        // find out which scenario we're doing
+        // and also which button we clicked
+        // and acts accordingly
         switch (scenarioID)
         {
             case 1:
@@ -112,7 +119,7 @@ public class CutsceneDecisionButton : MonoBehaviour
                 }
                 if (buttonID == 2)
                 {
-                    
+
                 }
                 break;
             case 2:
@@ -142,7 +149,7 @@ public class CutsceneDecisionButton : MonoBehaviour
                 }
                 break;
         }
-            
+        // After you've clicked a button, no more decisions.
         decisionAllowed = false;
         dialogue.dialogueLocked = false;
         canvasGroup.alpha = 0f;

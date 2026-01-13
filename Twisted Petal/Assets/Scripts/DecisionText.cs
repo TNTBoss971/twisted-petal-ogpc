@@ -11,7 +11,7 @@ public class DecisionText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // set text to buttonText variable of parent
         GetComponent<TMPro.TextMeshProUGUI>().text = GetComponentInParent<CutsceneDecisionButton>().buttonText;
     }
 }
