@@ -14,12 +14,22 @@ public class CutsceneManager : MonoBehaviour
     {
         {1, 0},
         {2, 3},
+        {3, 5},
+        {4, 8},
+        {5, 12},
+        {6, 15},
+        {7, 18}
     };
     // a dictionary containing the end point for dialogue in a given cutscene
     Dictionary<int, int> cutsceneLinesEnd = new Dictionary<int, int>
     {
         {1, 3},
         {2, 5},
+        {3, 8},
+        {4, 12},
+        {5, 15},
+        {6, 18},
+        {7, 21}
     };
     private DataManagement saveData;
     private bool linesLoaded;
