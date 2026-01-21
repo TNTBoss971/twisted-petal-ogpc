@@ -176,11 +176,11 @@ public class BossManager : MonoBehaviour
                 // cancel the attack
                 FinishAttack();
             }
-            else if (attackStartTime + 2.05f <= Time.time)
+            else if (attackStartTime + 2.45f <= Time.time)
             {
                 FinishAttack();
             }
-            else if (attackStartTime + 1.45f <= Time.time && !damageApplied)
+            else if (attackStartTime + 2.15f <= Time.time && !damageApplied)
             {
                 // deal the damage of the attack
                 gameManager.playerHealth -= 10;
@@ -230,17 +230,25 @@ public class BossManager : MonoBehaviour
                 // cancel the attack
                 FinishAttack();
             }
-            if (attackStartTime + 1.35f <= Time.time)
+            if (attackStartTime + 2.08f <= Time.time)
             {
 
                 FinishAttack();
             } 
-            else if (attackStartTime + 0.27f + fireTime <= Time.time && attackStartTime + 1.00f >= Time.time)
+            else if (attackStartTime + 1.00f + fireTime <= Time.time && attackStartTime + 1.44f >= Time.time)
             {
-                fireTime += 0.10f;
+                fireTime += 0.12f;
                 GameObject projectile = Instantiate(projectiles[0]);
                 projectile.transform.position = new Vector3(3.5f, -0.75f, 0);
+                projectile.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 30;
+            }
+            else if (!damageApplied && attackStartTime + 1.44 <= Time.time)
+            {
+                GameObject projectile = Instantiate(projectiles[1]);
+                projectile.transform.position = new Vector3(3.5f, -0.75f, 0);
                 projectile.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 10;
+
+                damageApplied = true;
             }
         }
     }
