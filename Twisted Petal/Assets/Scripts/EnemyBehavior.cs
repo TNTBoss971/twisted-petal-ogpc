@@ -21,8 +21,6 @@ public class EnemyBehavior : MonoBehaviour
     private GameManagement gameManager;
     private Rigidbody2D rb;
     private Vector2 movement;
-    private float colorTime = 0f;
-    private string color = "default";
     private bool hasLoot = false;
     public int lootFrequency; // the higher this number is the less likely it is for a loot drop
     private ParticleSystem lootSparkles;

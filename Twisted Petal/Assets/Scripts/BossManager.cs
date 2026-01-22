@@ -21,8 +21,6 @@ public class BossManager : MonoBehaviour
     public GameObject[] projectiles;
     public GameObject[] minions;
 
-
-
     // enums
     public enum BossStates // comments in this denote which states are used by which bosses
     {
@@ -30,7 +28,8 @@ public class BossManager : MonoBehaviour
         Slam, // Placeholder
         FireProjectile, // Placeholder
         SpawnMinions, // Placeholder (this attack creates minions)
-        Exposed // Placeholder (when the player gets to deal the most damage / when the best weakpoints are revealed)
+        Exposed, // Placeholder (when the player gets to deal the most damage / when the best weakpoints are revealed)
+        Stunned // Placeholder (when the player stops an attack)
     }
     public enum Bosses
     {
@@ -46,6 +45,7 @@ public class BossManager : MonoBehaviour
     public float attackStartTime; // for attacks that last a certain period of time
     private bool damageApplied;
     private float fireTime;
+    private float startingX;
 
     [Header("Properties")]
     public float maxHealth;
@@ -66,6 +66,8 @@ public class BossManager : MonoBehaviour
             weakpoints = GameObject.FindGameObjectsWithTag("Weakpoint");
             bossParts = GameObject.FindGameObjectsWithTag("Boss");
         }
+
+        startingX = bossObject.transform.position.x;
 
         BarBehavior bossHealthBar = canvasObject.GetComponentInChildren<BarBehavior>();
         bossHealthBar.maxValue = maxHealth;
@@ -89,6 +91,12 @@ public class BossManager : MonoBehaviour
             PlaceholderChecks();
         }
         HealthLogic();
+    }
+    void FixedUpdate()
+    {
+        if (bossState == BossStates.Stunned) {
+            Stunned();
+        }
     }
 
     // controls health, the health bar, and what to do upon health reaching 0
@@ -173,12 +181,11 @@ public class BossManager : MonoBehaviour
         {
             if (arm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 2)
             {
-                // cancel the attack
-                FinishAttack();
+                FinishAttack(true);
             }
             else if (attackStartTime + 2.45f <= Time.time)
             {
-                FinishAttack();
+                FinishAttack(false);
             }
             else if (attackStartTime + 2.15f <= Time.time && !damageApplied)
             {
@@ -194,7 +201,7 @@ public class BossManager : MonoBehaviour
             if (attackStartTime + 2.30f <= Time.time)
             {
 
-                FinishAttack();
+                FinishAttack(false);
             }
         }
 
@@ -204,12 +211,12 @@ public class BossManager : MonoBehaviour
             if (arm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
             {
                 // cancel the attack
-                FinishAttack();
+                FinishAttack(true);
             }
             if (attackStartTime + 1.40f <= Time.time)
             {
 
-                FinishAttack();
+                FinishAttack(false);
             }
             else if (attackStartTime + 1.00f <= Time.time && !damageApplied)
             {
@@ -228,12 +235,11 @@ public class BossManager : MonoBehaviour
             if (arm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
             {
                 // cancel the attack
-                FinishAttack();
+                FinishAttack(true);
             }
             if (attackStartTime + 2.08f <= Time.time)
             {
-
-                FinishAttack();
+                FinishAttack(false);
             } 
             else if (attackStartTime + 1.00f + fireTime <= Time.time && attackStartTime + 1.44f >= Time.time)
             {
@@ -253,16 +259,41 @@ public class BossManager : MonoBehaviour
         }
     }
 
-    public void FinishAttack()
+    public void Stunned()
     {
-        // reset the boss state
-        bossState = BossStates.None;
-
-        // increment the position in the attack pattern
-        positionInAttackPattern++;
-        if (positionInAttackPattern >= attackPattern.Length)
+        Debug.Log((Time.time - attackStartTime) % 3);
+        // bossObject.transform.position = new Vector2 (startingX + ((Time.time - attackStartTime) % 0.3f - 0.15f) / 10, bossObject.transform.position.y);
+        bossObject.transform.position = new Vector2(startingX + (float)Mathf.Sin(Time.time * 50) / 40, bossObject.transform.position.y);
+        if (attackStartTime + 2 <= Time.time)
         {
-            positionInAttackPattern = 0;
+            bossObject.transform.position = new Vector2(startingX, bossObject.transform.position.y);
+            bossState = BossStates.None;
+            
+            // unfreeze the animation
+            bossObject.GetComponent<Animator>().enabled = true;
+            // play idle animation
+            bossObject.GetComponent<Animator>().Play("PlaceholderBossIdle");
+            FinishAttack(false);
+        }
+    }
+    public void FinishAttack(bool stun)
+    {
+        if (stun) {
+            attackStartTime = Time.time;
+            bossState = BossStates.Stunned;
+            // freeze the animation
+            bossObject.GetComponent<Animator>().enabled = false;
+        } else {
+
+            // reset the boss state
+            bossState = BossStates.None;
+
+            // increment the position in the attack pattern
+            positionInAttackPattern++;
+            if (positionInAttackPattern >= attackPattern.Length)
+            {
+                positionInAttackPattern = 0;
+            }
         }
     }
 }
