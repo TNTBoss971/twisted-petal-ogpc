@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 2414848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.485, z: -0.36}
+  m_LocalPosition: {x: 0.77, y: 1.57, z: -0.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -926,6 +926,7 @@ MonoBehaviour:
   - {fileID: 9122227014563279572, guid: 0e4e374640378764fac60cea1b4580fb, type: 3}
   - {fileID: 9122227014563279572, guid: 5fb5373ad909de346bf32e7382174422, type: 3}
   currentWave: {fileID: 9122227014563279572, guid: e7e8eddd741d43740a2e67b4613eec4b, type: 3}
+  bossManager: {fileID: 0}
   waveProgressionBar: {fileID: 1722427373}
   healthBar: {fileID: 275496887}
   dataManager: {fileID: 279707653}
@@ -945,6 +946,10 @@ MonoBehaviour:
   levelsBeaten: 0
   selectedItems: []
   ownedItems: []
+  itemsLooted: 0
+  itemsLootedOverall: 0
+  enemiesBeaten: 0
+  enemiesBeatenOverall: 0
 --- !u!1 &421250703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,7 +1510,7 @@ GameObject:
   - component: {fileID: 878683914}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3446,9 +3451,9 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 878683910}
   - {fileID: 972505550}
-  - {fileID: 359535018}
   - {fileID: 1809830779}
   - {fileID: 278306114}
   - {fileID: 1281863860}
   - {fileID: 1557907284}
+  - {fileID: 359535018}
   - {fileID: 279707654}
