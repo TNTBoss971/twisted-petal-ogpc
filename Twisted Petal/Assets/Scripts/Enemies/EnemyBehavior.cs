@@ -52,7 +52,7 @@ public class EnemyBehavior : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         if (hasLoot == false)
         {
             if (lootSparkles != null)
@@ -60,31 +60,23 @@ public class EnemyBehavior : MonoBehaviour
                 Destroy(lootSparkles);
             }
         }
+
         if (health < 1)
-            {
-                if (hasLoot == true)
-                {
-                    GameManagement.itemsLooted += 1;
-                }
-                GameManagement.enemiesBeaten += 1;
-                gameManager.enemyCount -= 1;
-                Destroy(gameObject);
-            }
-        /*
-        if (color == "default")
         {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            if (hasLoot == true)
+            {
+                GameManagement.itemsLooted += 1;
+            }
+            GameManagement.enemiesBeaten += 1;
+            gameManager.enemyCount -= 1;
+            Destroy(gameObject);
         }
-        */
+
         Vector3 direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
         direction.Normalize();
-        movement = direction;
-
-
-
-        
+        movement = direction;       
     }
 
     private void FixedUpdate()
@@ -102,6 +94,10 @@ public class EnemyBehavior : MonoBehaviour
         {
             hasNotTickedDamage = true;
         }
+    }
+
+    void BehaviorLogic() {
+
     }
 
     void MoveCharacter(Vector2 direction)

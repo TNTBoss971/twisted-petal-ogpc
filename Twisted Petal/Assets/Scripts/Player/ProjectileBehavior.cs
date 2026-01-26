@@ -13,8 +13,6 @@ public class ProjectileBehavior : MonoBehaviour
     public GameObject targetIndicator;
     private Rigidbody2D rb;
 
-    
-
     public enum MunitionType
     {
         None,
@@ -24,6 +22,7 @@ public class ProjectileBehavior : MonoBehaviour
         Arcing, // chain lightning and the like
         Missile // multiple projectiles at once / arcing projectiles
     }
+
     public MunitionType type;
     
     [Header("Effect Objects")]
