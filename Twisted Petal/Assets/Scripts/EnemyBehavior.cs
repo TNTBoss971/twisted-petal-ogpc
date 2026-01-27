@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -26,7 +27,6 @@ public class EnemyBehavior : MonoBehaviour
     private bool hasLoot = false;
     public int lootFrequency; // the higher this number is the less likely it is for a loot drop
     private ParticleSystem lootSparkles;
-
     [Header("Attributes")]
     public float speed = 3f;
     public float maxHealth = 2f;
@@ -36,6 +36,13 @@ public class EnemyBehavior : MonoBehaviour
     public float poison = 0;
     public bool hasNotTickedDamage = true;
     public float invincibilityTimer = 0f;
+    [Header("Item Looting")]
+    private static List<GameObject> personalWeaponList;
+    private DataManagement saveData;
+    private int rarityChance;
+    private GameObject itemLooted;
+    private bool hasLootedItem;
+    public Dictionary<GameObject, int> itemRarities = new Dictionary<GameObject, int>();
 
     void Start()
     {
@@ -50,6 +57,18 @@ public class EnemyBehavior : MonoBehaviour
         }
         lootSparkles = this.GetComponent<ParticleSystem>();
         health = maxHealth;
+        saveData = gameManager.GetComponent<DataManagement>();
+        personalWeaponList = gameManager.weaponTypes;
+        itemRarities = new Dictionary<GameObject, int>
+        {
+            {personalWeaponList[0], 1},
+            {personalWeaponList[1], 2},
+            {personalWeaponList[2], 4},
+            {personalWeaponList[3], 4},
+            {personalWeaponList[4], 10},
+            {personalWeaponList[5], 6},
+            {personalWeaponList[6], 8}
+        };
     }
 
     // Update is called once per frame
@@ -67,6 +86,22 @@ public class EnemyBehavior : MonoBehaviour
                 if (hasLoot == true)
                 {
                     GameManagement.itemsLooted += 1;
+                    // higher number = rarer
+                    //adds looted items to the player's inventory
+                    while (hasLootedItem != true)
+                    {
+                        // picks a random number and random item. If the chosen
+                        // item's rarity is less than or equal to the random
+                        // number chosen then it gets added, if not, another loop.
+                        rarityChance = Random.Range(0, 14);
+                        itemLooted = gameManager.weaponTypes[Random.Range(0, gameManager.weaponTypes.Count)];
+                        if (itemRarities[itemLooted] <= rarityChance)
+                        {
+                            gameManager.saveData.ownedItems.Add(itemLooted);
+                            hasLootedItem = true;
+                        Debug.Log("got a " + itemLooted.GetComponent<GunController>().weaponName);
+                        }
+                    }
                 }
                 GameManagement.enemiesBeaten += 1;
                 gameManager.enemyCount -= 1;
