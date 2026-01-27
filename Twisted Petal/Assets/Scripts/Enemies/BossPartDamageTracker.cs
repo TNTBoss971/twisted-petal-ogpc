@@ -19,6 +19,7 @@ public class BossPartDamageTracker : MonoBehaviour
     }
     public void DamageSelf(float damage)
     {
+        Debug.Log("Damaged");
         totalDamage += damage;
         damageThisAttack += damage;
         if (isWeakPoint)

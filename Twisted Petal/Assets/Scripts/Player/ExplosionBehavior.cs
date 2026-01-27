@@ -47,6 +47,7 @@ public class ExplosionBehavior : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Trigger Enter");
         if (other.CompareTag("Boundary"))
         {
             Destroy(gameObject);
@@ -75,5 +76,33 @@ public class ExplosionBehavior : MonoBehaviour
             }
         }
 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collider Enter");
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (type == AreaType.Explosive)
+            {
+                collision.gameObject.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
+            }
+            if (type == AreaType.Poison)
+            {
+                collision.gameObject.GetComponent<EnemyBehavior>().poison += damage;
+            }
+        }
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            if (type == AreaType.Explosive)
+            {
+                collision.gameObject.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+            }
+            if (type == AreaType.Poison)
+            {
+                collision.gameObject.GetComponent<BossPartDamageTracker>().manager.poison += damage;
+            }
+        }
+        
     }
 }

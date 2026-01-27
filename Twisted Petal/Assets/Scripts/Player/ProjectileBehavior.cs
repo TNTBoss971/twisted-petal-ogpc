@@ -42,6 +42,7 @@ public class ProjectileBehavior : MonoBehaviour
     public List<GameObject> pastTargets; // Arcing
     public int positionInTargets; // Arcing
     public int positionModifier = 1; // Arcing
+    public bool validTargetsPresent = false; // Arcing
 
     public float timer;
 
@@ -49,13 +50,13 @@ public class ProjectileBehavior : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
         rb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
 
         player = GameObject.Find("Player");
         startingPosition = transform.position;
-
+    
         if (type == MunitionType.Missile)
         {
             // convert velocity to degrees
@@ -104,45 +105,36 @@ public class ProjectileBehavior : MonoBehaviour
         {
             if (pierce == 0)
             {
-
-                if (positionInTargets < 0)
+                if (!validTargetsPresent || pastTargets.Count() == 0)
                 {
-                    positionModifier = 1;
+                    Destroy(gameObject);
                 }
-                if (positionInTargets >= pastTargets.Count)
+                else
                 {
-                    positionModifier = -1;
-                }
-                positionInTargets += positionModifier;
 
-                int reps = 0; // repitions
-                // skip over any deleted enemies
-                while (pastTargets[positionInTargets] == null)
-                {
-                    if (positionInTargets < 0)
+                    if (positionInTargets < 1)
                     {
                         positionModifier = 1;
                     }
-                    if (positionInTargets >= pastTargets.Count)
+                    if (positionInTargets >= pastTargets.Count - 1)
                     {
                         positionModifier = -1;
                     }
                     positionInTargets += positionModifier;
 
-                    reps++;
-                    if (reps > 100)
+                    if (pastTargets[positionInTargets] == null)
                     {
-                        Destroy(gameObject);
-                        break;
+                        pastTargets.RemoveAt(positionInTargets);
+                    }
+                    else
+                    {
+                        transform.position = pastTargets[positionInTargets].transform.position;
                     }
 
-                }
-                transform.position = pastTargets[positionInTargets].transform.position;
-
-
-                if (timer < Time.time)
-                {
-                    Destroy(gameObject);
+                    if (timer < Time.time)
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
         }
@@ -170,7 +162,14 @@ public class ProjectileBehavior : MonoBehaviour
                 // damage enemy
                 if (damagePulse)
                 {
-                    results[0].transform.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
+                    if (results[0].transform.GetComponent<EnemyBehavior>() != null)
+                    {
+                        results[0].transform.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
+                    }
+                    else if (results[0].transform.GetComponent<BossPartDamageTracker>() != null)
+                    {
+                        results[0].transform.gameObject.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+                    }
                     damagePulse = false;
                 }
             }
@@ -214,10 +213,15 @@ public class ProjectileBehavior : MonoBehaviour
                         distance = Vector2.Distance(possibleTargets[i].transform.position, transform.position);
                     }
                 }
-                
-                pastTargets.Add(targetEnemy);
-                transform.position = targetEnemy.transform.position;
-                targetEnemy.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
+
+                // if there was at least 1 possible target
+                if (targetEnemy != null)
+                {
+                    pastTargets.Add(targetEnemy);
+                    transform.position = targetEnemy.transform.position;
+                    targetEnemy.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
+                    validTargetsPresent = true;
+                }
 
                 pierce--;
                 if (pierce == 0)
