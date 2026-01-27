@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor.Overlays;
-using UnityEngine.Rendering; 
+using UnityEngine.Rendering;
+using Unity.VisualScripting;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class InventoryManager : MonoBehaviour
     public static List<int> selectedDescriptions = new List<int>(); // This list contains the descriptions of all currently selected buttons
     public List<GameObject> ownedItems; // This list contains the items the player currently has. Can be modified.
     private DataManagement saveData;
-    public static List<GameObject> inventoryWeaponTypes; // This list is just so other objects in the scene can acess ownedItems without having to mess with savedata
     public List<GameObject> weaponTypes;
+    public static List<GameObject> inventoryWeaponTypes; // This list is just so other objects in the scene can acess ownedItems without having to mess with savedata
     public List<GameObject> lootedItems; // I don't know why we need this but everything breaks if you take it out
     private int itemsLooted; // how many items a player has looted
     private int lootLoop; // a temp variable used to keep track of how many loops to use when adding items
@@ -21,12 +22,25 @@ public class InventoryManager : MonoBehaviour
     private bool hasAllItems = false;
     public GameObject buttonPrefab;
     public Canvas canvas;
-
     public SlotDisplayLogic[] displays;
+    public int rarityChance;
+    private int loopsDone;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        inventoryWeaponTypes = weaponTypes;
+        // higher number = rarer
+        Dictionary<GameObject, int> itemRarities = new Dictionary<GameObject, int>
+        {
+            {inventoryWeaponTypes[0], 1},
+            {inventoryWeaponTypes[1], 2},
+            {inventoryWeaponTypes[2], 4},
+            {inventoryWeaponTypes[3], 4},
+            {inventoryWeaponTypes[4], 10},
+            {inventoryWeaponTypes[5], 6},
+            {inventoryWeaponTypes[6], 8}
+        };
         saveData = this.GetComponent<DataManagement>();
         selectedItems = saveData.selectedItems;
         selectedIDs = saveData.selectedButtonIDs;
@@ -35,11 +49,19 @@ public class InventoryManager : MonoBehaviour
         //adds looted items to the lootedItems list
         if (itemsLooted > 0)
         {
-            for (int i = 0; i < lootLoop; i++)
+            while (loopsDone < lootLoop)
             {
-                itemsLooted -= 1;
+                // picks a random number and random item. If the chosen
+                // item's rarity is less than or equal to the random
+                // number chosen then it gets added, if not, another loop.
+                rarityChance = Random.Range(0, 14);
                 itemLooted = weaponTypes[Random.Range(0, weaponTypes.Count)];
-                lootedItems.Add(itemLooted);
+                if (itemRarities[itemLooted] <= rarityChance)
+                {
+                    lootedItems.Add(itemLooted);
+                    itemsLooted -= 1;
+                    loopsDone += 1;
+                }
             }
         }
         saveData.itemsLooted = itemsLooted;
