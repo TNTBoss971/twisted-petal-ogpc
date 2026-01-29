@@ -51,6 +51,8 @@ public class BossManager : MonoBehaviour
     public float maxHealth;
     public float health;
     public float poison;
+    public bool hasNotTickedDamage = true;
+    public float poisonPerTick = 1f; // how much damage the boss takes from poison each tick
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -94,8 +96,40 @@ public class BossManager : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (bossState == BossStates.Stunned) {
+        if (bossState == BossStates.Stunned)
+        {
             Stunned();
+        }
+        // in my testing, Time.time % 10f will never be exactly zero
+        if (Time.time % 10f <= 10f && hasNotTickedDamage)
+        {
+            hasNotTickedDamage = false;
+            DamageTick();
+        }
+
+        if (Time.time % 0.1f >= 0.09f)
+        {
+            hasNotTickedDamage = true;
+        }
+    }
+    // for all your tick damage related needs
+    private void DamageTick()
+    {
+        // check for and apply poison
+        if (poison > 0)
+        {
+            // bosses do not have a poison cap
+
+            if (poison >= poisonPerTick)
+            {
+                poison -= poisonPerTick;
+                health -= poisonPerTick;
+            }
+            else
+            {
+                health -= poison;
+                poison = 0;
+            }
         }
     }
 
