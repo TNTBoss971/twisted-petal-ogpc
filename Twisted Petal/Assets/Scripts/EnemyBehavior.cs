@@ -20,6 +20,7 @@ public class EnemyBehavior : MonoBehaviour
     public Transform target;
     private GameObject player;
     private GameManagement gameManager;
+    private ItemPopup itemPopup;
     private Rigidbody2D rb;
     private Vector2 movement;
     private float colorTime = 0f;
@@ -47,6 +48,7 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0];
+        itemPopup = FindObjectsByType<ItemPopup>(FindObjectsSortMode.None)[0];
         player = GameObject.Find("Player");
         target = player.transform;
         rb = this.GetComponent<Rigidbody2D>();
@@ -99,7 +101,7 @@ public class EnemyBehavior : MonoBehaviour
                         {
                             gameManager.saveData.ownedItems.Add(itemLooted);
                             hasLootedItem = true;
-                        Debug.Log("got a " + itemLooted.GetComponent<GunController>().weaponName);
+                        itemPopup.displayPopup("You got a " + itemLooted.GetComponent<GunController>().weaponName + "!");
                         }
                     }
                 }
