@@ -11,7 +11,7 @@ public class WeaponsFound : MonoBehaviour
     {
         foundWeapons.Clear();
         saveData = this.GetComponent<DataManagement>();
-        GetComponent<TMPro.TextMeshProUGUI>().text = "Weapons Found: ";
+        GetComponent<TMPro.TextMeshProUGUI>().text = "Weapons Discovered: ";
     }
 
     // Update is called once per frame
