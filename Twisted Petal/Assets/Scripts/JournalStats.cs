@@ -5,10 +5,19 @@ public class JournalStats : MonoBehaviour
 {
     public int statID; // what stat text it corresponds to
     public static bool currentStats;
+    public bool showOverallStats;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentStats = true;
+        if (showOverallStats == true)
+        {
+            currentStats = false;
+        }
+        else
+        {
+            currentStats = true;
+        }
+        
     }
 
     // Update is called once per frame
