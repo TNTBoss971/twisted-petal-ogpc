@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4950766893030274313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6430318628046738652}
+  - component: {fileID: 8132049638577706528}
+  m_Layer: 0
+  m_Name: PlantBossManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6430318628046738652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4950766893030274313}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8132049638577706528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4950766893030274313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3b88e068ffe1a43856dff62790faa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testing: 0
+  bossPrefab: {fileID: 8639554469198242578, guid: 1bed0b0def2d5564d9e9cb41af69c7b5, type: 3}
+  canvasPrefab: {fileID: 8724778410921523659, guid: 470b95de9b7399644a0ecfa1ffa416fc, type: 3}
+  bossObject: {fileID: 0}
+  canvasObject: {fileID: 0}
+  weakpoints: []
+  bossParts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  gameManager: {fileID: 0}
+  projectiles:
+  - {fileID: 6684092658235471012, guid: 026256fb7004c464e9877766939c8f38, type: 3}
+  - {fileID: 6684092658235471012, guid: db773b06eb0412c43a99456f59654b10, type: 3}
+  minions:
+  - {fileID: 1859193798442875194, guid: da10f828601be214fb62227136b37c6f, type: 3}
+  boss: 1
+  bossState: 0
+  attackPattern: 0100000002000000010000000300000004000000
+  positionInAttackPattern: 0
+  attackStartTime: 0
+  maxHealth: 100
+  health: 100
+  poison: 0
+  hasNotTickedDamage: 1
+  poisonPerTick: 1

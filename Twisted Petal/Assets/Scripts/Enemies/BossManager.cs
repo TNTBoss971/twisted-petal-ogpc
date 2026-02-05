@@ -16,6 +16,9 @@ public class BossManager : MonoBehaviour
     public GameObject[] weakpoints;
     public GameObject[] bossParts;
     public GameManagement gameManager;
+    private GameObject mainBody;
+    private GameObject frontArm;
+    private GameObject backArm;
 
     [Header("Spawnables")]
     public GameObject[] projectiles;
@@ -25,15 +28,16 @@ public class BossManager : MonoBehaviour
     public enum BossStates // comments in this denote which states are used by which bosses
     {
         None,
-        Slam, // Placeholder
-        FireProjectile, // Placeholder
-        SpawnMinions, // Placeholder (this attack creates minions)
-        Exposed, // Placeholder (when the player gets to deal the most damage / when the best weakpoints are revealed)
-        Stunned // Placeholder (when the player stops an attack)
+        Slam, // Plant
+        FireProjectile, // Plant
+        SpawnMinions, // Plant (this attack creates minions)
+        Exposed, // Plant (when the player gets to deal the most damage / when the best weakpoints are revealed)
+        Stunned // Plant (when the player stops an attack)
     }
     public enum Bosses
     {
         None,
+        PlantBoss,
         Placeholder
     }
 
@@ -63,10 +67,13 @@ public class BossManager : MonoBehaviour
             bossObject = Instantiate(bossPrefab);
             canvasObject = Instantiate(canvasPrefab);
         }
-        if (boss == Bosses.Placeholder)
+        if (boss == Bosses.PlantBoss)
         {
             weakpoints = GameObject.FindGameObjectsWithTag("Weakpoint");
             bossParts = GameObject.FindGameObjectsWithTag("Boss");
+            mainBody = bossParts[0];
+            frontArm = bossParts[1];
+            backArm = bossParts[2];
         }
 
         startingX = bossObject.transform.position.x;
@@ -83,14 +90,14 @@ public class BossManager : MonoBehaviour
         // if the boss is idle, activate next attack
         if (bossState == BossStates.None)
         {
-            // if boss is the placeholder boss
-            if (boss == Bosses.Placeholder)
+            // if boss is the plant boss
+            if (boss == Bosses.PlantBoss)
             {
-                PlaceholderBehavior();
+                PlantBossBehavior();
             }
         } else
         {
-            PlaceholderChecks();
+            PlantBossChecks();
         }
         HealthLogic();
     }
@@ -142,7 +149,8 @@ public class BossManager : MonoBehaviour
 
     // for unique behavior for different bosses. (dont want all bosses to be the exact same.)
     // wait, are we going to have more than one boss? oh well, its *future proofing*!!!
-    void PlaceholderBehavior()
+    // screw future proofing >:(
+    void PlantBossBehavior()
     {
         BossStates currentAttack = attackPattern[positionInAttackPattern];
 
@@ -152,11 +160,10 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.Slam;
             attackStartTime = Time.time;
 
-            GameObject arm = bossParts[1];
-            arm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
             damageApplied = false;
             // play slam animation
-            bossObject.GetComponent<Animator>().Play("PlaceholderBossSlam");
+            bossObject.GetComponent<Animator>().Play("PlantBossSlam");
         }
         
         // projectile attack
@@ -165,14 +172,14 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.FireProjectile;
             attackStartTime = Time.time;
 
-            GameObject arm = bossParts[1];
-            arm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            backArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            mainBody.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
             damageApplied = false;
             fireTime = 0;
             // play firing animation
             Debug.Log("Firing Projectiles");
-            bossObject.GetComponent<Animator>().Play("PlaceholderBossFireProjectile");
-            //FinishAttack();
+            bossObject.GetComponent<Animator>().Play("PlantBossFireProjectile");
         }
 
         // minion attack
@@ -181,13 +188,10 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.SpawnMinions;
             attackStartTime = Time.time;
 
-            GameObject arm = bossParts[1];
-            arm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            backArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
             damageApplied = false;
-            // play spawing animation
-            Debug.Log("Spawing Minions");
-            bossObject.GetComponent<Animator>().Play("PlaceholderBossSpawnMinions");
-            //FinishAttack();
+            // play spawning animation
+            bossObject.GetComponent<Animator>().Play("PlantBossSpawnMinions");
         }
 
         // exposed
@@ -196,24 +200,19 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.Exposed;
             attackStartTime = Time.time;
 
-            GameObject arm = bossParts[1];
-            arm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
             damageApplied = false;
             // play exposed animation
-            Debug.Log("Exposed");
-            bossObject.GetComponent<Animator>().Play("PlaceholderBossExposed");
-            //FinishAttack();
+            bossObject.GetComponent<Animator>().Play("PlantBossExposed");
         }
     }
     // determines if the current attack should be over
-    void PlaceholderChecks()
+    void PlantBossChecks()
     {
-        
-        GameObject arm = bossParts[1];
         // slam
         if (bossState == BossStates.Slam)
         {
-            if (arm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 2)
+            if (frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 2)
             {
                 FinishAttack(true);
             }
@@ -242,7 +241,7 @@ public class BossManager : MonoBehaviour
         // spawn minions
         if (bossState == BossStates.SpawnMinions)
         {
-            if (arm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
+            if (backArm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
             {
                 // cancel the attack
                 FinishAttack(true);
@@ -266,7 +265,9 @@ public class BossManager : MonoBehaviour
         // fire projectile
         if (bossState == BossStates.FireProjectile)
         {
-            if (arm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
+            if (mainBody.GetComponent<BossPartDamageTracker>().damageThisAttack + 
+            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack + 
+            backArm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
             {
                 // cancel the attack
                 FinishAttack(true);
@@ -295,7 +296,6 @@ public class BossManager : MonoBehaviour
 
     public void Stunned()
     {
-        Debug.Log((Time.time - attackStartTime) % 3);
         // bossObject.transform.position = new Vector2 (startingX + ((Time.time - attackStartTime) % 0.3f - 0.15f) / 10, bossObject.transform.position.y);
         bossObject.transform.position = new Vector2(startingX + (float)Mathf.Sin(Time.time * 50) / 40, bossObject.transform.position.y);
         if (attackStartTime + 2 <= Time.time)
@@ -306,7 +306,7 @@ public class BossManager : MonoBehaviour
             // unfreeze the animation
             bossObject.GetComponent<Animator>().enabled = true;
             // play idle animation
-            bossObject.GetComponent<Animator>().Play("PlaceholderBossIdle");
+            bossObject.GetComponent<Animator>().Play("PlantBossIdle");
             FinishAttack(false);
         }
     }
