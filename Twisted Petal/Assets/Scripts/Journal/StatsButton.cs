@@ -1,31 +1,35 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JournalStatsButton : MonoBehaviour
+public class StatsButton : MonoBehaviour
 {
-    public Button button;
+    private Button button;
     public int buttonID;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        button = this.GetComponent<Button>();
         button.onClick.AddListener(TaskOnClick);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void TaskOnClick()
     {
         if (buttonID == 1)
         {
-            JournalStats.currentStats = true;
+            JournalStats.statsHidden = false;
+            WeaponsFound.weaponsFoundHidden = true;
         }
-        else
+        if (buttonID == 2)
         {
-            JournalStats.currentStats = false;
+            JournalStats.statsHidden = true;
+            WeaponsFound.weaponsFoundHidden = false;
         }
+        
     }
 }

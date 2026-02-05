@@ -6,6 +6,7 @@ public class WeaponsFound : MonoBehaviour
     private DataManagement saveData;
     public List<GameObject> foundWeapons;
     private bool loopDone;
+    public static bool weaponsFoundHidden = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,18 +18,28 @@ public class WeaponsFound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (loopDone != true)
+        if (weaponsFoundHidden == true)
         {
-            for (int i = 0; i < saveData.ownedItems.Count; i++)
+            GetComponent<TMPro.TextMeshProUGUI>().text = "";
+            loopDone = false;
+        }
+        else
+        {
+            if (loopDone != true)
             {
-                if (foundWeapons.Contains(saveData.ownedItems[i]) == false)
+                foundWeapons.Clear();
+                GetComponent<TMPro.TextMeshProUGUI>().text = "Weapons Discovered: ";
+                for (int i = 0; i < saveData.ownedItems.Count; i++)
                 {
-                    foundWeapons.Add(saveData.ownedItems[i]);
-                    GetComponent<TMPro.TextMeshProUGUI>().text += saveData.ownedItems[i]
-                    .GetComponent<GunController>().weaponName + ", ";
+                    if (foundWeapons.Contains(saveData.ownedItems[i]) == false)
+                    {
+                        foundWeapons.Add(saveData.ownedItems[i]);
+                        GetComponent<TMPro.TextMeshProUGUI>().text += saveData.ownedItems[i]
+                        .GetComponent<GunController>().weaponName + ", ";
+                    }
                 }
+                loopDone = true;
             }
-            loopDone = true;
         }
     }
 }
