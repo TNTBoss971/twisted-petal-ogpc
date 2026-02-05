@@ -1382,8 +1382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9e76b4ea21e0c4a8416796330468b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 1680731251}
   dataManager: {fileID: 2083493894}
+  destination: WorldMap
 --- !u!1 &2083493893
 GameObject:
   m_ObjectHideFlags: 0

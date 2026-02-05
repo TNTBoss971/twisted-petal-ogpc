@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MapInventoryButton : MonoBehaviour
+public class SceneChangeButton : MonoBehaviour
 {
-    public Button button;
-    public DataPersistanceManager dataManager;
+    private Button button;
+    public string destination;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        button = this.GetComponent<Button>();
         button.onClick.AddListener(TaskOnClick);
     }
 
@@ -20,8 +21,7 @@ public class MapInventoryButton : MonoBehaviour
     
     void TaskOnClick()
     {
-        // When pressed, exits the inventory to the map screen
-        dataManager.SaveGame();
-        SceneManager.LoadScene("Inventory");
+        // When pressed, changes to the selected scene
+        SceneManager.LoadScene(destination);
     }
 }

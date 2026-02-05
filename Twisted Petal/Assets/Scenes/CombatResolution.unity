@@ -191,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statID: 3
+  showOverallStats: 0
 --- !u!114 &39497306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,6 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statID: 2
+  showOverallStats: 0
 --- !u!114 &532085383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,6 +1082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statID: 4
+  showOverallStats: 0
 --- !u!114 &562263264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,6 +1352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statID: 1
+  showOverallStats: 0
 --- !u!114 &639093923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,6 +1524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statID: 5
+  showOverallStats: 0
 --- !u!114 &851775606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2105,6 +2110,7 @@ GameObject:
   - component: {fileID: 2063953347}
   - component: {fileID: 2063953346}
   - component: {fileID: 2063953345}
+  - component: {fileID: 2063953349}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -2227,6 +2233,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063953343}
   m_CullTransparentMesh: 1
+--- !u!114 &2063953349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063953343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9e76b4ea21e0c4a8416796330468b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataManager: {fileID: 290015171}
+  destination: WorldMap
 --- !u!1 &2146507617
 GameObject:
   m_ObjectHideFlags: 0

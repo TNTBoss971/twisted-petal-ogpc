@@ -692,6 +692,7 @@ MonoBehaviour:
   itemsLootedOverall: 0
   enemiesBeaten: 0
   enemiesBeatenOverall: 0
+  selectedButtonIDs: 
 --- !u!114 &264655454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,6 +727,7 @@ MonoBehaviour:
   - {fileID: 861555365}
   - {fileID: 934823591}
   - {fileID: 1387522946}
+  rarityChance: 0
 --- !u!1 &494568192
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,8 +847,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9e76b4ea21e0c4a8416796330468b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 997361697}
   dataManager: {fileID: 6608530}
+  destination: WorldMap
 --- !u!114 &997361697
 MonoBehaviour:
   m_ObjectHideFlags: 0
