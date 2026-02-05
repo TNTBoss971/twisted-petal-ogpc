@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class WaveData : MonoBehaviour
 {
+    public bool isBossBattle;
     public float length;
     public GameObject[] enemiesInWave;
     [Header("All frequencies must add up to 1")]
