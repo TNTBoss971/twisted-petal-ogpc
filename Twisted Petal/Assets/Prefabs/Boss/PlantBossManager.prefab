@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3b88e068ffe1a43856dff62790faa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testing: 0
+  testing: 1
   bossPrefab: {fileID: 8639554469198242578, guid: 1bed0b0def2d5564d9e9cb41af69c7b5, type: 3}
   canvasPrefab: {fileID: 8724778410921523659, guid: 470b95de9b7399644a0ecfa1ffa416fc, type: 3}
   bossObject: {fileID: 0}

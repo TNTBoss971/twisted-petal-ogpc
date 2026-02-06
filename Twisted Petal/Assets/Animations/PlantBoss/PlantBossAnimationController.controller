@@ -35,7 +35,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlaceholderBossFireProjectile
+  m_Name: PlantBossFireProjectile
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -50,7 +50,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 713b87b422980d04ca79e23a5b4593ca, type: 2}
+  m_Motion: {fileID: 7400000, guid: de203c372e145c246abceb63d0ca846f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -125,7 +125,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 26a876c3b3e43e14c9a0b132c359b47d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 713b87b422980d04ca79e23a5b4593ca, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

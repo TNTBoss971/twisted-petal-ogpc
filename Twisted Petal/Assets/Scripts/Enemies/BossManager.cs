@@ -32,7 +32,8 @@ public class BossManager : MonoBehaviour
         FireProjectile, // Plant
         SpawnMinions, // Plant (this attack creates minions)
         Exposed, // Plant (when the player gets to deal the most damage / when the best weakpoints are revealed)
-        Stunned // Plant (when the player stops an attack)
+        Stunned, // Plant (when the player stops an attack)
+        Intro // for super cool epic intros!!!!
     }
     public enum Bosses
     {
@@ -74,6 +75,8 @@ public class BossManager : MonoBehaviour
             mainBody = bossParts[0];
             frontArm = bossParts[1];
             backArm = bossParts[2];
+            bossState = BossStates.Intro;
+            attackStartTime = Time.time;
         }
 
         startingX = bossObject.transform.position.x;
@@ -95,7 +98,8 @@ public class BossManager : MonoBehaviour
             {
                 PlantBossBehavior();
             }
-        } else
+        } 
+        else
         {
             PlantBossChecks();
         }
@@ -209,6 +213,15 @@ public class BossManager : MonoBehaviour
     // determines if the current attack should be over
     void PlantBossChecks()
     {
+        // intro
+        if (bossState == BossStates.Intro)
+        {
+            if (attackStartTime + 1.03f <= Time.time)
+            {
+                bossState = BossStates.None;
+            }
+        }
+
         // slam
         if (bossState == BossStates.Slam)
         {
