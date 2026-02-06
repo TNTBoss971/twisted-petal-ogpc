@@ -44,11 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920e8f5dac2a9ad44b18daf2e69d50f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBossBattle: 1
+  isBossBattle: 0
   length: 30
   enemiesInWave:
-  - {fileID: 4950766893030274313, guid: 4229bdae6e663834d998ed2fd6ec2ab1, type: 3}
+  - {fileID: 1859193798442875194, guid: da10f828601be214fb62227136b37c6f, type: 3}
   enemyFrequency:
-  - 0.9
-  - 0.05
-  - 0.05
+  - 1
