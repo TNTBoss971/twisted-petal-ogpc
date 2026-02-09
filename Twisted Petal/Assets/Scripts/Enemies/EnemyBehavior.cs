@@ -3,8 +3,6 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     public enum DamageType
     {
         None,
@@ -13,6 +11,11 @@ public class EnemyBehavior : MonoBehaviour
         Tick, // tick damage ignores i-frames, preventing poison from making an enemy invincible
         Fire, // burn the world! >:D
         Energy // slower i-frames
+    }
+    public enum EnemyType
+    {
+        Basic, //bush guy
+        Evergreen, //long range needle attack
     }
 
     [Header("Targeting")]
@@ -30,10 +33,15 @@ public class EnemyBehavior : MonoBehaviour
     public float maxHealth = 2f;
     public float health = 2f;
     public float poisonPerTick = 1f; // how much damage the enemy takes from poison each tick
+
     [Header("Status")]
     public float poison = 0;
     public bool hasNotTickedDamage = true;
     public float invincibilityTimer = 0f;
+
+    [Header("Logic")]
+    public float leftBoundary = 20;
+    public bool isMoving = true;
 
     void Start()
     {
@@ -96,14 +104,22 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    void BehaviorLogic() {
-
+    void BehaviorLogic() 
+    {
+        if (transform.position.x > leftBoundary)
+        {
+            isMoving = false;
+        }
     }
 
     void MoveCharacter(Vector2 direction)
     {
-        rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
+        if (isMoving = true)
+        {
+            rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
+        }
     }
+        
 
     // for all your tick damage related needs
     private void DamageTick()

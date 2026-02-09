@@ -15,8 +15,10 @@ GameObject:
   - component: {fileID: 5181034740998668783}
   - component: {fileID: 4118980773611697474}
   - component: {fileID: 8942829205161027995}
+  - component: {fileID: 4094652808990721100}
+  - component: {fileID: -1656966545379529163}
   m_Layer: 6
-  m_Name: BlueEnemy
+  m_Name: Evergreen
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,6 +115,8 @@ MonoBehaviour:
   poison: 0
   hasNotTickedDamage: 1
   invincibilityTimer: 0
+  leftBoundary: 100
+  isMoving: 1
 --- !u!50 &5426400630366098533
 Rigidbody2D:
   serializedVersion: 5
