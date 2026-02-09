@@ -1195,10 +1195,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2051514279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 258f5a15b10d64b489f71039934cab05, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c7aeff8b1bba6c41849c13907f8f69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: WorldMap
+  button: {fileID: 2051514282}
+  dataManager: {fileID: 1038745306}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
