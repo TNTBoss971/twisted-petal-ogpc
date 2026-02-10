@@ -63,13 +63,13 @@ public class EnemyBehavior : MonoBehaviour
         personalWeaponList = gameManager.weaponTypes;
         itemRarities = new Dictionary<GameObject, int>
         {
-            {personalWeaponList[0], 1},
-            {personalWeaponList[1], 2},
-            {personalWeaponList[2], 4},
-            {personalWeaponList[3], 4},
-            {personalWeaponList[4], 10},
-            {personalWeaponList[5], 6},
-            {personalWeaponList[6], 8}
+            {personalWeaponList[0], 1}, // tank gun
+            {personalWeaponList[1], 2}, // rapid gun
+            {personalWeaponList[2], 4}, // explosive gun
+            {personalWeaponList[3], 4}, // laser gun
+            {personalWeaponList[4], 10}, // gas gun
+            {personalWeaponList[5], 6}, // lightning gun
+            {personalWeaponList[6], 8} // tenta missiles
         };
     }
 
