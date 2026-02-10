@@ -235,11 +235,11 @@ public class BossManager : MonoBehaviour
             {
                 FinishAttack(true);
             }
-            else if (attackStartTime + 2.45f <= Time.time)
+            else if (attackStartTime + 2.55f <= Time.time)
             {
                 FinishAttack(false);
             }
-            else if (attackStartTime + 2.15f <= Time.time && !damageApplied)
+            else if (attackStartTime + 0.52f <= Time.time && !damageApplied)
             {
                 // deal the damage of the attack
                 gameManager.playerHealth -= 10;
