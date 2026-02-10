@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8942829205161027995}
   - component: {fileID: -2604929487123584004}
   - component: {fileID: 2342294099172478849}
+  - component: {fileID: -2642496205716771965}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -104,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c24953132743046ae6e90adfab7ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   target: {fileID: 0}
   lootFrequency: 5
   speed: 3
@@ -113,6 +115,8 @@ MonoBehaviour:
   poison: 0
   hasNotTickedDamage: 1
   invincibilityTimer: 0
+  leftBoundary: 15
+  isMoving: 1
 --- !u!50 &5426400630366098533
 Rigidbody2D:
   serializedVersion: 5
@@ -4992,3 +4996,23 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1818360609 &-2642496205716771965
+RotationConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859193798442875194}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1

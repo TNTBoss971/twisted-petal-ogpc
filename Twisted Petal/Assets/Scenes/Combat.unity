@@ -1976,6 +1976,83 @@ RectTransform:
   m_AnchoredPosition: {x: 300, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1141854227
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1653066517115082537, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.028669596
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653066517115082537, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.6629825
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653066517115082537, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653066517115082537, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653066517115082537, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653066517115082537, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653066517115082537, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653066517115082537, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653066517115082537, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653066517115082537, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859193798442875194, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_Name
+      value: PlantBossMinion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806705371347904165, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_Size.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806705371347904165, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_Size.y
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806705371347904165, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942829205161027995, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942829205161027995, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.28
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
 --- !u!1 &1212523319
 GameObject:
   m_ObjectHideFlags: 0
@@ -3733,3 +3810,4 @@ SceneRoots:
   - {fileID: 4468239664441531059}
   - {fileID: 1974617770}
   - {fileID: 1651594584}
+  - {fileID: 1141854227}

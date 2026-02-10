@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -35,15 +36,26 @@ public class EnemyBehavior : MonoBehaviour
     public float maxHealth = 2f;
     public float health = 2f;
     public float poisonPerTick = 1f; // how much damage the enemy takes from poison each tick
+    public bool dealsContactDamage;
 
     [Header("Status")]
     public float poison = 0;
     public bool hasNotTickedDamage = true;
     public float invincibilityTimer = 0f;
 
+    [Header("Display")]
+    public Animator animator;
+    public bool hasIntro = false;
+    public float introLength;
+
+    public string attackAnimationName;
+    public string walkAnimationName;
+
     [Header("Logic")]
     public float leftBoundary = 15;
     public bool isMoving = true;
+    public bool isMinion;
+    private float spawnTime;
     
     void Start()
     {
@@ -51,13 +63,16 @@ public class EnemyBehavior : MonoBehaviour
         player = GameObject.Find("Player");
         target = player.transform;
         rb = this.GetComponent<Rigidbody2D>();
-        health = 2f;
-        if (Random.Range(0, lootFrequency) == (lootFrequency - 1))
+
+        if (Random.Range(0, lootFrequency) == (lootFrequency - 1) && !isMinion)
         {
             hasLoot = true;
         }
         lootSparkles = this.GetComponent<ParticleSystem>();
+
         health = maxHealth;
+
+        spawnTime = Time.time;
     }
 
     // Update is called once per frame
@@ -91,34 +106,45 @@ public class EnemyBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MoveCharacter(movement);
-        
-        // in my testing, Time.time % 10f will never be exactly zero
-        if (Time.time % 10f <= 10f && hasNotTickedDamage)
+        if (!hasIntro)
         {
-            hasNotTickedDamage = false;
-            DamageTick();
-        }
+            MoveCharacter(movement);
+            BehaviorLogic();
 
-        if (Time.time % 0.1f >= 0.09f)
+            // in my testing, Time.time % 10f will never be exactly zero
+            if (Time.time % 10f <= 10f && hasNotTickedDamage)
+            {
+                hasNotTickedDamage = false;
+                DamageTick();
+            }
+
+            if (Time.time % 0.1f >= 0.09f)
+            {
+                hasNotTickedDamage = true;
+            }
+        }
+        else
         {
-            hasNotTickedDamage = true;
+            if (spawnTime + introLength < Time.time)
+            {
+                hasIntro = false;
+            }
         }
     }
 
-    void BehaviorLogic() 
+    void BehaviorLogic()
     {
-        if (type == EnemyType.Evergreen)    
+        if (type == EnemyType.Evergreen) {
             if (transform.position.x > leftBoundary)
             {
                 isMoving = false;
             }
-
+        }
     }
 
     void MoveCharacter(Vector2 direction)
     {
-        if (isMoving = true)
+        if (isMoving == true)
         {
             rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
         }
@@ -146,6 +172,30 @@ public class EnemyBehavior : MonoBehaviour
             {
                 DamageSelf(poison, DamageType.Tick);
                 poison = 0;
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (!dealsContactDamage)
+            {
+                isMoving = false;
+                animator.Play(attackAnimationName);
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // if the enemy doesnt deal contact damage and is far enough away
+            if (!dealsContactDamage && new Vector2(Mathf.Abs(gameObject.transform.position.x - collision.gameObject.transform.position.x), Mathf.Abs(gameObject.transform.position.y - collision.gameObject.transform.position.y)).magnitude > 0.75f)
+            {
+                isMoving = true;
+                animator.Play(walkAnimationName);
             }
         }
     }

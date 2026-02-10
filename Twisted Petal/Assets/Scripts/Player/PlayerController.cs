@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            if (invincibilityTimer <= Time.time)
+            if (invincibilityTimer <= Time.time && other.GetComponent<EnemyBehavior>().dealsContactDamage)
             {
                 gameManager.playerHealth -= 1;
                 invincibilityTimer = Time.time + 0.3f;
