@@ -14,9 +14,11 @@ public class EnemyBehavior : MonoBehaviour
     }
     public enum EnemyType
     {
-        Basic, //bush guy
+        Basic, //bush guy, can only attack by hitting the van, lot of them
         Evergreen, //long range needle attack
     }
+
+    public EnemyType type;
 
     [Header("Targeting")]
     public Transform target;
@@ -40,9 +42,9 @@ public class EnemyBehavior : MonoBehaviour
     public float invincibilityTimer = 0f;
 
     [Header("Logic")]
-    public float leftBoundary = 20;
+    public float leftBoundary = 15;
     public bool isMoving = true;
-
+    
     void Start()
     {
         gameManager = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0];
@@ -84,7 +86,7 @@ public class EnemyBehavior : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
         direction.Normalize();
-        movement = direction;       
+        movement = direction;     
     }
 
     private void FixedUpdate()
@@ -106,10 +108,12 @@ public class EnemyBehavior : MonoBehaviour
 
     void BehaviorLogic() 
     {
-        if (transform.position.x > leftBoundary)
-        {
-            isMoving = false;
-        }
+        if (type == EnemyType.Evergreen)    
+            if (transform.position.x > leftBoundary)
+            {
+                isMoving = false;
+            }
+
     }
 
     void MoveCharacter(Vector2 direction)
