@@ -47,6 +47,6 @@ MonoBehaviour:
   isBossBattle: 1
   length: 30
   enemiesInWave:
-  - {fileID: 0}
+  - {fileID: 4950766893030274313, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
   enemyFrequency:
   - 1

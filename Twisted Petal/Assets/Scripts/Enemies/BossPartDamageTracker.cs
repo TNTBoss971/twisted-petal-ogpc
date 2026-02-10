@@ -9,7 +9,7 @@ public class BossPartDamageTracker : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        manager = FindObjectsByType<BossManager>(FindObjectsSortMode.None)[0];
+        //manager = FindObjectsByType<BossManager>(FindObjectsSortMode.None)[0];
     }
 
     // Update is called once per frame
@@ -19,6 +19,8 @@ public class BossPartDamageTracker : MonoBehaviour
     }
     public void DamageSelf(float damage)
     {
+        manager = FindObjectsByType<BossManager>(FindObjectsSortMode.None)[0];
+        
         Debug.Log("Damaged");
         totalDamage += damage;
         damageThisAttack += damage;

@@ -68,6 +68,11 @@ public class BossManager : MonoBehaviour
             bossObject = Instantiate(bossPrefab);
             canvasObject = Instantiate(canvasPrefab);
         }
+        else
+        {
+            bossObject = GameObject.Find("PlantBoss");
+            canvasObject = GameObject.Find("PlantBossCanvas").GetComponent<Canvas>();
+        }
         if (boss == Bosses.PlantBoss)
         {
             weakpoints = GameObject.FindGameObjectsWithTag("Weakpoint");
@@ -85,6 +90,7 @@ public class BossManager : MonoBehaviour
         bossHealthBar.maxValue = maxHealth;
 
         gameManager = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0];
+
     }
 
     // Update is called once per frame

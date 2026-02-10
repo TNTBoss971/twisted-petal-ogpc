@@ -206,76 +206,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &3240599
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4950766893030274313, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: m_Name
-      value: PlantBossManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430318628046738652, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430318628046738652, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430318628046738652, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430318628046738652, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430318628046738652, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430318628046738652, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430318628046738652, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430318628046738652, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430318628046738652, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430318628046738652, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132049638577706528, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: bossObject
-      value: 
-      objectReference: {fileID: 1815221103}
-    - target: {fileID: 8132049638577706528, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
-      propertyPath: canvasObject
-      value: 
-      objectReference: {fileID: 8173076}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
---- !u!223 &8173076 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 8724778410921523659, guid: 470b95de9b7399644a0ecfa1ffa416fc, type: 3}
-  m_PrefabInstance: {fileID: 1651594584}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &42348281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3268,11 +3198,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1815221103 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8639554469198242578, guid: 1bed0b0def2d5564d9e9cb41af69c7b5, type: 3}
-  m_PrefabInstance: {fileID: 517567054}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1819033291
 GameObject:
   m_ObjectHideFlags: 0
@@ -3804,4 +3729,3 @@ SceneRoots:
   - {fileID: 4468239664441531059}
   - {fileID: 1974617770}
   - {fileID: 1651594584}
-  - {fileID: 3240599}
