@@ -1077,6 +1077,7 @@ GameObject:
   - component: {fileID: 2051514283}
   - component: {fileID: 2051514282}
   - component: {fileID: 2051514285}
+  - component: {fileID: 2051514286}
   m_Layer: 5
   m_Name: NewGameButton
   m_TagString: Untagged
@@ -1200,6 +1201,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 2051514282}
   dataManager: {fileID: 1038745306}
+  startingWeapons:
+  - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
+  - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
+--- !u!114 &2051514286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051514279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab286be09ea58c94ba6b577a25e435ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelsBeaten: 0
+  selectedItems: []
+  ownedItems: []
+  itemsLooted: 0
+  itemsLootedOverall: 0
+  enemiesBeaten: 0
+  enemiesBeatenOverall: 0
+  selectedButtonIDs: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
