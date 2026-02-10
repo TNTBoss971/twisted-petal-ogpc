@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ public class MapManager : MonoBehaviour
     private DataManagement saveData;
     public bool showError = false;
     private float errorTimer;
+    public List<GameObject> startingWeapons;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

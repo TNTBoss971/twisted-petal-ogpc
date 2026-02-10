@@ -690,6 +690,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showError: 0
+  startingWeapons:
+  - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
+  - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
+  dataManager: {fileID: 513334422}
 --- !u!114 &939551369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2012,7 +2016,7 @@ SceneRoots:
   - {fileID: 1282472819}
   - {fileID: 958554080}
   - {fileID: 148302824}
-  - {fileID: 939551367}
   - {fileID: 513334423}
+  - {fileID: 939551367}
   - {fileID: 147728462}
   - {fileID: 1334153531}

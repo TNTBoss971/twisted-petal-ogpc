@@ -8,7 +8,7 @@ public class NewGameButton : MonoBehaviour
 {
     public Button button;
     public DataPersistanceManager dataManager;
-    public List<GameObject> startingWeapons;
+    public static bool giveStartingWeapons = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,9 +29,6 @@ public class NewGameButton : MonoBehaviour
         //and deletes their save.
         // Might change to another scene later
         File.Delete(Application.persistentDataPath + "/saved_data.json");
-        this.GetComponent<DataManagement>().ownedItems.Add(startingWeapons[0]);
-        this.GetComponent<DataManagement>().ownedItems.Add(startingWeapons[1]);
-        dataManager.SaveGame();
         SceneManager.LoadScene("WorldMap");
     }
 }
