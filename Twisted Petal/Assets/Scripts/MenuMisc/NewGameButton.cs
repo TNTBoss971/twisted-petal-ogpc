@@ -8,6 +8,7 @@ public class NewGameButton : MonoBehaviour
 {
     public Button button;
     public DataPersistanceManager dataManager;
+    public static bool giveStartingWeapons = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

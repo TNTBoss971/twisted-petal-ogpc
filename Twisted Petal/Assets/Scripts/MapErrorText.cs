@@ -1,11 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class JournalStats : MonoBehaviour
+public class MapErrorText : MonoBehaviour
 {
-    public int statID; // what stat text it corresponds to
-    public bool showOverallStats;
-    public static bool statsHidden = false;
+    public MapManager map;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,9 +12,9 @@ public class JournalStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (statsHidden == false)
+        if (map.showError == true)
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = JournalManager.statDisplayed[statID];
+            GetComponent<TMPro.TextMeshProUGUI>().text = "You must equip atleast 1 weapon before entering a level.";
         }
         else
         {
