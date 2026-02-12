@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  lootFrequency: 100
+  lootFrequency: 5
   speed: 3
   maxHealth: 2
   health: 2

@@ -23,12 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CombatResolution.unity
     guid: 22f27cafbb8b88e418e610ad14e2ee24
-  - enabled: 1
-    path: Assets/Scenes/Cutscene.unity
-    guid: cc2c8c8278f64814d8bc8d1b2a3c4f58
-  - enabled: 1
-    path: Assets/Scenes/Journal.unity
-    guid: f3b470cfcbdbdf5478c0eea981f69e15
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

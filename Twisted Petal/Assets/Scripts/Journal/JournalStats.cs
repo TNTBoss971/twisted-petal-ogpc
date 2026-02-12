@@ -4,24 +4,37 @@ using UnityEngine;
 public class JournalStats : MonoBehaviour
 {
     public int statID; // what stat text it corresponds to
-    public bool showOverallStats;
-    public static bool statsHidden = false;
+    public static bool currentStats;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        currentStats = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (statsHidden == false)
+        if (statID == 1 || statID == 2 || statID == 3)
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = JournalManager.statDisplayed[statID];
+            if (currentStats == true)
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = JournalManager.statDisplayed[statID];
+            }
+            else
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = "";
+            }
         }
         else
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "";
+            if (currentStats == false)
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = JournalManager.statDisplayed[statID];
+            }
+            else
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = "";
+            }
         }
     }
 }
