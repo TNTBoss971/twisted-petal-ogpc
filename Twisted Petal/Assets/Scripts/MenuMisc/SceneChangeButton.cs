@@ -1,13 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class JournalStatsButton : MonoBehaviour
+public class SceneChangeButton : MonoBehaviour
 {
-    public Button button;
-    public int buttonID;
+    private Button button;
+    public string destination;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        button = this.GetComponent<Button>();
         button.onClick.AddListener(TaskOnClick);
     }
 
@@ -16,16 +18,10 @@ public class JournalStatsButton : MonoBehaviour
     {
 
     }
-
+    
     void TaskOnClick()
     {
-        if (buttonID == 1)
-        {
-            JournalStats.currentStats = true;
-        }
-        else
-        {
-            JournalStats.currentStats = false;
-        }
+        // When pressed, changes to the selected scene
+        SceneManager.LoadScene(destination);
     }
 }
