@@ -232,7 +232,7 @@ public class EnemyBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // if the enemy doesnt deal contact damage and is far enough away
-            if (!dealsContactDamage && new Vector2(Mathf.Abs(gameObject.transform.position.x - collision.gameObject.transform.position.x), Mathf.Abs(gameObject.transform.position.y - collision.gameObject.transform.position.y)).magnitude > 0.75f)
+            if (!dealsContactDamage && Mathf.Abs(gameObject.transform.position.x - collision.gameObject.transform.position.x) > 2.5f)
             {
                 isMoving = true;
                 animator.Play(walkAnimationName);

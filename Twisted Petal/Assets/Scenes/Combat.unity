@@ -3102,6 +3102,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8724778410921523659, guid: 470b95de9b7399644a0ecfa1ffa416fc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724778410921523659, guid: 470b95de9b7399644a0ecfa1ffa416fc, type: 3}
       propertyPath: m_VertexColorAlwaysGammaSpace
       value: 0
       objectReference: {fileID: 0}
@@ -3966,6 +3970,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 1651594584}
   - {fileID: 878683910}
   - {fileID: 972505550}
   - {fileID: 359535018}
@@ -3977,5 +3982,4 @@ SceneRoots:
   - {fileID: 517567054}
   - {fileID: 4468239664441531059}
   - {fileID: 1974617770}
-  - {fileID: 1651594584}
   - {fileID: 1141854227}
