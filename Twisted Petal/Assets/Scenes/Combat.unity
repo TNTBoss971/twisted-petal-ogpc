@@ -1076,6 +1076,7 @@ MonoBehaviour:
   - {fileID: 9122227014563279572, guid: 0e4e374640378764fac60cea1b4580fb, type: 3}
   - {fileID: 9122227014563279572, guid: 5fb5373ad909de346bf32e7382174422, type: 3}
   currentWave: {fileID: 9122227014563279572, guid: e7e8eddd741d43740a2e67b4613eec4b, type: 3}
+  bossManager: {fileID: 0}
   waveProgressionBar: {fileID: 1722427373}
   healthBar: {fileID: 275496887}
   dataManager: {fileID: 279707653}
@@ -1729,7 +1730,7 @@ GameObject:
   - component: {fileID: 878683914}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
