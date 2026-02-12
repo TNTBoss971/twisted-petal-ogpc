@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ public class GameData
     public int enemiesBeaten;
     public int enemiesBeatenOverall;
     public List<int> selectedButtonIDs;
+    public List<String> levelSummaries;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -28,5 +30,6 @@ public class GameData
         enemiesBeaten = 0;
         enemiesBeatenOverall = 0;
         selectedButtonIDs = null;
+        levelSummaries = null;
     }
 }

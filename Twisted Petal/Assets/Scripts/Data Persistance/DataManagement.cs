@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class DataManagement : MonoBehaviour, IDataPersistance
 {
@@ -11,6 +12,7 @@ public class DataManagement : MonoBehaviour, IDataPersistance
     public int enemiesBeaten;
     public int enemiesBeatenOverall;
     public List<int> selectedButtonIDs;
+    public List<String> levelSummaries;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +36,7 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         enemiesBeaten = data.enemiesBeaten;
         enemiesBeatenOverall = data.enemiesBeatenOverall;
         selectedButtonIDs = data.selectedButtonIDs;
+        levelSummaries = data.levelSummaries;
     }
 
     public void SaveData(ref GameData data)
@@ -46,5 +49,6 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         data.enemiesBeaten = enemiesBeaten;
         data.enemiesBeatenOverall = enemiesBeatenOverall;
         data.selectedButtonIDs = selectedButtonIDs;
+        data.levelSummaries = levelSummaries;
     }
 }

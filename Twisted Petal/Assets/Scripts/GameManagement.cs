@@ -259,6 +259,7 @@ public class GameManagement : MonoBehaviour
         saveData.enemiesBeaten = enemiesBeaten;
         saveData.enemiesBeatenOverall += enemiesBeaten;
         saveData.itemsLooted = itemsLooted;
+        saveData.levelSummaries.Add("Day " + (waveNumber + 1) + ": " + "we tested how level summary work");
         dataManager.SaveGame();
         SceneManager.LoadScene("CombatResolution");
     }
