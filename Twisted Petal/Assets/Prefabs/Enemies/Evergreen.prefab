@@ -110,16 +110,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   target: {fileID: 0}
-  lootFrequency: 5
+  lootFrequency: 80
   speed: 3
   maxHealth: 2
   health: 2
   poisonPerTick: 0.1
+  dealsContactDamage: 0
   poison: 0
   hasNotTickedDamage: 1
   invincibilityTimer: 0
+  animator: {fileID: 0}
+  hasIntro: 0
+  introLength: 0
+  attackAnimationName: 
+  walkAnimationName: 
   leftBoundary: 1500
   isMoving: 1
+  isMinion: 0
 --- !u!50 &5426400630366098533
 Rigidbody2D:
   serializedVersion: 5

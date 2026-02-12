@@ -1299,7 +1299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8639554469198242578, guid: 1bed0b0def2d5564d9e9cb41af69c7b5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2187,6 +2187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantBossMinion
       objectReference: {fileID: 0}
+    - target: {fileID: 1859193798442875194, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6806705371347904165, guid: 2db3d3003e4051e44b6f9d63739503c4, type: 3}
       propertyPath: m_Size.x
       value: 1.28
@@ -3012,6 +3016,10 @@ PrefabInstance:
     - target: {fileID: 5560267569099439923, guid: 470b95de9b7399644a0ecfa1ffa416fc, type: 3}
       propertyPath: m_Name
       value: PlantBossCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560267569099439923, guid: 470b95de9b7399644a0ecfa1ffa416fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6890522942844500964, guid: 470b95de9b7399644a0ecfa1ffa416fc, type: 3}
       propertyPath: m_Pivot.x

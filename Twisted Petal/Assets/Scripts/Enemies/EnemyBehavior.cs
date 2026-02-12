@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using System.Collections.Generic;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -56,12 +57,22 @@ public class EnemyBehavior : MonoBehaviour
     public bool isMoving = true;
     public bool isMinion;
     private float spawnTime;
+
+    [Header("Item Looting")]
+    private static List<GameObject> personalWeaponList;
+    private DataManagement saveData;
+    private int rarityChance;
+    private GameObject itemLooted;
+    private ItemPopup itemPopup;
+    private bool hasLootedItem;
+    public Dictionary<GameObject, int> itemRarities = new Dictionary<GameObject, int>();
     
     void Start()
     {
         gameManager = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0];
         player = GameObject.Find("Player");
         target = player.transform;
+        animator = this.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody2D>();
 
         if (Random.Range(0, lootFrequency) == (lootFrequency - 1) && !isMinion)
@@ -71,6 +82,20 @@ public class EnemyBehavior : MonoBehaviour
         lootSparkles = this.GetComponent<ParticleSystem>();
 
         health = maxHealth;
+
+        saveData = gameManager.GetComponent<DataManagement>();
+        personalWeaponList = gameManager.weaponTypes;
+        itemRarities = new Dictionary<GameObject, int>
+        {
+            {personalWeaponList[0], 1},
+            {personalWeaponList[1], 2},
+            {personalWeaponList[2], 4},
+            {personalWeaponList[3], 4},
+            {personalWeaponList[4], 10},
+            {personalWeaponList[5], 6},
+            {personalWeaponList[6], 8}
+        };
+        itemPopup = FindObjectsByType<ItemPopup>(FindObjectsSortMode.None)[0];
 
         spawnTime = Time.time;
     }
@@ -91,6 +116,21 @@ public class EnemyBehavior : MonoBehaviour
             if (hasLoot == true)
             {
                 GameManagement.itemsLooted += 1;
+                //adds looted items to the player's inventory
+                while (hasLootedItem != true)
+                {
+                    // picks a random number and random item. If the chosen
+                    // item's rarity is less than or equal to the random
+                    // number chosen then it gets added, if not, another loop.
+                    rarityChance = Random.Range(0, 14);
+                    itemLooted = gameManager.weaponTypes[Random.Range(0, gameManager.weaponTypes.Count)];
+                    if (itemRarities[itemLooted] <= rarityChance)
+                    {
+                        gameManager.saveData.ownedItems.Add(itemLooted);
+                        hasLootedItem = true;
+                    itemPopup.displayPopup("You got a " + itemLooted.GetComponent<GunController>().weaponName + "!");
+                    }
+                }
             }
             GameManagement.enemiesBeaten += 1;
             gameManager.enemyCount -= 1;
