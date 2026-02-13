@@ -128,7 +128,8 @@ public class EnemyBehavior : MonoBehaviour
                     {
                         gameManager.saveData.ownedItems.Add(itemLooted);
                         hasLootedItem = true;
-                    itemPopup.displayPopup("You got a " + itemLooted.GetComponent<GunController>().weaponName + "!");
+                        itemPopup.displayPopup("You got a " + itemLooted.GetComponent<GunController>().weaponName + "!");
+                        gameManager.lastWeaponObtained = itemLooted;
                     }
                 }
             }

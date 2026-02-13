@@ -44,6 +44,9 @@ public class GameManagement : MonoBehaviour
     public DataPersistanceManager dataManager;
     public DataManagement saveData;
     public List<GameObject> weaponTypes;
+    [Header("Summary")]
+    public LevelSummaryCreator summaryCreator;
+    public GameObject lastWeaponObtained;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -61,7 +64,7 @@ public class GameManagement : MonoBehaviour
 
         healthBar.maxValue = playerMaxHealth;
 
-        
+        lastWeaponObtained = null;
         
         WeaponInitialization();
     }
@@ -259,9 +262,9 @@ public class GameManagement : MonoBehaviour
         saveData.enemiesBeaten = enemiesBeaten;
         saveData.enemiesBeatenOverall += enemiesBeaten;
         saveData.itemsLooted = itemsLooted;
-        saveData.levelSummaries.Add("Day " + (waveNumber + 1) + ": " + "we tested how level summary work");
+        saveData.levelSummaries.Add(summaryCreator.CreateSummary(saveData, playerHealth, lastWeaponObtained));
         dataManager.SaveGame();
-        SceneManager.LoadScene("CombatResolution");
+        SceneManager.LoadScene("Cutscene");
     }
 
     // function that can be called by the weapon buttons that swaps the weapon to the given id

@@ -24,11 +24,19 @@ public class StatsButton : MonoBehaviour
         {
             JournalStats.statsHidden = false;
             WeaponsFound.weaponsFoundHidden = true;
+            LevelSummary.levelSummariesHidden = true;
         }
         if (buttonID == 2)
         {
             JournalStats.statsHidden = true;
             WeaponsFound.weaponsFoundHidden = false;
+            LevelSummary.levelSummariesHidden = true;
+        }
+        if (buttonID == 3)
+        {
+            JournalStats.statsHidden = true;
+            WeaponsFound.weaponsFoundHidden = true;
+            LevelSummary.levelSummariesHidden = false;
         }
         
     }
