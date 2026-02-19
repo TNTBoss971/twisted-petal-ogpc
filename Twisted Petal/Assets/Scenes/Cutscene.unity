@@ -445,6 +445,7 @@ MonoBehaviour:
   enemiesBeaten: 0
   enemiesBeatenOverall: 0
   selectedButtonIDs: 
+  levelSummaries: []
 --- !u!114 &406763047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,6 +631,7 @@ MonoBehaviour:
   enemiesBeaten: 0
   enemiesBeatenOverall: 0
   selectedButtonIDs: 
+  levelSummaries: []
 --- !u!114 &561514261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,6 +793,7 @@ MonoBehaviour:
   enemiesBeaten: 0
   enemiesBeatenOverall: 0
   selectedButtonIDs: 
+  levelSummaries: []
 --- !u!114 &577101591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,7 +810,7 @@ MonoBehaviour:
   portrait: {fileID: 1133078069}
   cutsceneDialogueLines:
   - '"Wow we have made it out of the city."'
-  - '"Hey kid, ya want a lightning gun?"'
+  - '"Hey kid, ya want a missile launcher?"'
   - '"ok"'
   - '"What should I talk about?"'
   - '"Dummy answer. Will talk about TV or coins"'

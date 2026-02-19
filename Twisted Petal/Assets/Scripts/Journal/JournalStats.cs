@@ -17,7 +17,15 @@ public class JournalStats : MonoBehaviour
     {
         if (statsHidden == false)
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = JournalManager.statDisplayed[statID];
+            try
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = JournalManager.statDisplayed[statID];
+            }
+            catch (KeyNotFoundException)
+            {
+                
+            }
+            
         }
         else
         {

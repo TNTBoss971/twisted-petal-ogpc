@@ -257,7 +257,6 @@ public class GameManagement : MonoBehaviour
         // this wave/level is over, go to combat resolution
 
         saveData.levelsBeaten = waveNumber + 1;
-        Debug.Log(itemsLooted);
         saveData.itemsLootedOverall += itemsLooted;
         saveData.enemiesBeaten = enemiesBeaten;
         saveData.enemiesBeatenOverall += enemiesBeaten;

@@ -115,7 +115,7 @@ public class CutsceneDecisionButton : MonoBehaviour
             case 1:
                 if (buttonID == 1)
                 {
-                    GiveItem(itemsIndex[4]);
+                    GiveItem(itemsIndex[6]);
                 }
                 if (buttonID == 2)
                 {
