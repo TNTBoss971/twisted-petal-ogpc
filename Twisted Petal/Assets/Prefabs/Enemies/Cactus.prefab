@@ -15,8 +15,11 @@ GameObject:
   - component: {fileID: 5181034740998668783}
   - component: {fileID: 4118980773611697474}
   - component: {fileID: 8942829205161027995}
+  - component: {fileID: 1748683012961437541}
+  - component: {fileID: -3168383948166791283}
+  - component: {fileID: -8088006631988468104}
   m_Layer: 6
-  m_Name: RedEnemy
+  m_Name: Cactus
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +37,8 @@ Transform:
   m_LocalPosition: {x: 4.92, y: -1.19, z: 0}
   m_LocalScale: {x: 0.7385, y: 0.7385, z: 0.7385}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7885411886739803340}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6806705371347904165
@@ -81,12 +85,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5848159553563625447, guid: f0ef051ec14dc0441ba3190fd62b9a1a, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 6268836588896933761, guid: 61c94e81a43c45948b11c997f48d2611, type: 3}
+  m_Color: {r: 0.3359195, g: 0.745283, b: 0.33397114, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.79, y: 2.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -104,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c24953132743046ae6e90adfab7ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   target: {fileID: 0}
   lootFrequency: 5
   speed: 3
@@ -113,6 +118,8 @@ MonoBehaviour:
   poison: 0
   hasNotTickedDamage: 1
   invincibilityTimer: 0
+  leftBoundary: 15
+  isMoving: 1
 --- !u!50 &5426400630366098533
 Rigidbody2D:
   serializedVersion: 5
@@ -178,8 +185,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.925, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.79, y: 2.12}
+    newSize: {x: 1.79, y: 2.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -244,8 +251,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.925, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.79, y: 2.12}
+    newSize: {x: 1.79, y: 2.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -5058,3 +5065,48 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-8088006631988468104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859193798442875194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c7c963632deb84ab023cd348b80829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 3841425572836747505, guid: 4b440022e83b2374089bafc436e83957, type: 3}
+  bulletPos: {fileID: 7885411886739803340}
+--- !u!1 &2906632929649384736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7885411886739803340}
+  m_Layer: 0
+  m_Name: SpikePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7885411886739803340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906632929649384736}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.3110836, y: 0, z: 0}
+  m_LocalScale: {x: 1.3540962, y: 1.3540962, z: 1.3540962}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1653066517115082537}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

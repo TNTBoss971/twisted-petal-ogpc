@@ -52,5 +52,5 @@ MonoBehaviour:
   - {fileID: 1859193798442875194, guid: e5739132a0ae81648a31ed042d66698c, type: 3}
   enemyFrequency:
   - 0
-  - 0
-  - 1
+  - 0.5
+  - 0.5

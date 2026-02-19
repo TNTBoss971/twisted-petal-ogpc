@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EvergreenAtack : MonoBehaviour
+public class LongRangeEnemyAttack : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bulletPos;

@@ -85,8 +85,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5848159553563625447, guid: f0ef051ec14dc0441ba3190fd62b9a1a, type: 3}
-  m_Color: {r: 0, g: 0.24636889, b: 1, a: 1}
+  m_Sprite: {fileID: 3823919136341461105, guid: 9ff2c6a1ff286ab418bf80f0cf2a3448, type: 3}
+  m_Color: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -185,7 +185,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.925, y: 1}
+    oldSize: {x: 1.18, y: 2.42}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -251,7 +251,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.925, y: 1}
+    oldSize: {x: 1.18, y: 2.42}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5089,7 +5089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2984067091888133654}
   m_Layer: 6
-  m_Name: BulletPostition
+  m_Name: NeedlePostition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
