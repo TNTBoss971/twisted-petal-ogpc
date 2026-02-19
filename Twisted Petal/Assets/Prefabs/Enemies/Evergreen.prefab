@@ -114,8 +114,9 @@ MonoBehaviour:
   speed: 3
   maxHealth: 2
   health: 2
+  damage: 0
   poisonPerTick: 0.1
-  dealsContactDamage: 0
+  dealsContactDamage: 1
   poison: 0
   hasNotTickedDamage: 1
   invincibilityTimer: 0
@@ -170,7 +171,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -5084,7 +5085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c7c963632deb84ab023cd348b80829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3841425572836747505, guid: 4d61daf3a42076040a91d90f643ec8a1, type: 3}
+  bullet: {fileID: 6684092658235471012, guid: 62da35630ef41e249a352607a6ca61ea, type: 3}
   bulletPos: {fileID: 2984067091888133654}
 --- !u!1 &4320917045072890485
 GameObject:

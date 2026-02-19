@@ -26,7 +26,34 @@ public class PlayerController : MonoBehaviour
         {
             if (invincibilityTimer <= Time.time && other.GetComponent<EnemyBehavior>().dealsContactDamage)
             {
-                gameManager.playerHealth -= 1;
+                gameManager.playerHealth -= other.GetComponent<EnemyBehavior>().damage;
+                invincibilityTimer = Time.time + 0.3f;
+            }
+        } /* else if (other.CompareTag("EnemyProjectile"))
+        {
+            
+            if (invincibilityTimer <= Time.time)
+            {
+                gameManager.playerHealth -= other.GetComponent<EnemyProjectileBehavior>().damage;
+                invincibilityTimer = Time.time + 0.3f;
+            }
+        } */
+    }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            if (invincibilityTimer <= Time.time && other.gameObject.GetComponent<EnemyBehavior>().dealsContactDamage)
+            {
+                gameManager.playerHealth -= other.gameObject.GetComponent<EnemyBehavior>().damage;
+                invincibilityTimer = Time.time + 0.3f;
+            }
+        } else if (other.gameObject.CompareTag("EnemyProjectile"))
+        {
+            
+            if (invincibilityTimer <= Time.time)
+            {
+                gameManager.playerHealth -= other.gameObject.GetComponent<EnemyProjectileBehavior>().damage;
                 invincibilityTimer = Time.time + 0.3f;
             }
         }

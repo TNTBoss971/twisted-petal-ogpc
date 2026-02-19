@@ -240,7 +240,7 @@ public class ProjectileBehavior : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Boss") || other.CompareTag("EnemyProjectile"))
         {
             if (type == MunitionType.Missile) 
             {
@@ -253,7 +253,7 @@ public class ProjectileBehavior : MonoBehaviour
                 {
                     other.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Bullet);
                 }
-                else
+                else if (other.CompareTag("Boss"))
                 {
                     other.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
                 }

@@ -117,7 +117,7 @@ public class GameManagement : MonoBehaviour
                     }
                 }
 
-                GameObject clone = Instantiate(currentWave.enemiesInWave[enemyIndex], new Vector2(10, Random.Range(-4.5f, 0.5f)), transform.rotation);
+                GameObject clone = Instantiate(currentWave.enemiesInWave[enemyIndex], new Vector2(11 - Random.Range(-2.5f, 0.5f), Random.Range(-4.5f, 0.5f)), transform.rotation);
                 enemyCount++;
             }
 

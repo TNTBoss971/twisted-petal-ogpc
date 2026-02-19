@@ -9,6 +9,7 @@ TagManager:
   - Boundary
   - Boss
   - Weakpoint
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

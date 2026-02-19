@@ -36,6 +36,7 @@ public class EnemyBehavior : MonoBehaviour
     public float speed = 3f;
     public float maxHealth = 2f;
     public float health = 2f;
+    public float damage = 1f;
     public float poisonPerTick = 1f; // how much damage the enemy takes from poison each tick
     public bool dealsContactDamage;
 
