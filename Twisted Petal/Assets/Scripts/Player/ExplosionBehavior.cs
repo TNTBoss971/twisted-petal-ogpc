@@ -19,6 +19,7 @@ public class ExplosionBehavior : MonoBehaviour
     }
     public AreaType type = AreaType.Explosive;
     private AudioSource audioSource;
+    private DataManagement saveData;
 
 
     // might also make a timer that deletes the collider before deleting the gameobject, this would also us to make the end part of the animation (smoke or something) not damage the enemies
@@ -29,6 +30,17 @@ public class ExplosionBehavior : MonoBehaviour
         deathTime = Time.time + lifetime;
         colliderDeathTime = Time.time + collisionTime;
         audioSource = gameObject.GetComponent<AudioSource>();
+        saveData = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0].GetComponent<DataManagement>();
+
+        // if sfx muted, volume is set to 0
+        if (saveData.soundsMuted == true)
+        {
+            audioSource.volume = 0;
+        }
+        else
+        {
+            audioSource.volume = 1;
+        }
 
         audioSource.Play();
     }

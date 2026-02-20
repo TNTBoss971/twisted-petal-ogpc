@@ -33,6 +33,7 @@ public class GunController : MonoBehaviour
     public GameObject targetingIndicator; // marks the target of projectiles
 
     private AudioSource audioSource;
+    private DataManagement saveData;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,11 +43,22 @@ public class GunController : MonoBehaviour
         attackAction = InputSystem.actions.FindAction("Attack");
         ammoBehavior = ammoObject.GetComponent<ProjectileBehavior>();
         audioSource = gameObject.GetComponent<AudioSource>();
+        saveData = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0].GetComponent<DataManagement>();
 
 
         if (attackAction == null)
         {
             Debug.Log("Attack action not assigned");
+        }
+
+        // if sfx muted, volume is set to 0
+        if (saveData.soundsMuted == true)
+        {
+            audioSource.volume = 0;
+        }
+        else
+        {
+            audioSource.volume = 1;
         }
     }
 

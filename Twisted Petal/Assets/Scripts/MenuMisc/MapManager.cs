@@ -35,7 +35,7 @@ public class MapManager : MonoBehaviour
         }
 
         // Pressing enter on the map takes you into a level
-        if (Input.GetKey("return"))
+        if (Input.GetKey("space"))
         {
             if (saveData.selectedItems.Count <= 0)
             {

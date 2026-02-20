@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -34,68 +35,76 @@ public class CutsceneDecisionButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // checks if there's a decision
-        if (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount] != 0)
+        try
         {
-            if (decisionAllowed == true)
+            // checks if there's a decision
+            if (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount] != 0)
+            {
+                if (decisionAllowed == true)
+                {
+                    canvasGroup.alpha = 1f;
+                    canvasGroup.interactable = true;
+                    // checks the cutscenemanager list to see which decision we're doing
+                    // then makes each button do something different depending on which
+                    // decision we got
+                    switch (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount])
+                    {
+                        case 1:
+                            scenarioID = 1;
+                            if (buttonID == 1)
+                            {
+                                buttonText = "Yes please!";
+                            }
+                            if (buttonID == 2)
+                            {
+                                buttonText = "Keep it";
+                            }
+                            break;
+                        case 2:
+                            scenarioID = 2;
+                            altLinesStart = 0;
+                            altLinesEnd = 1;
+                            if (buttonID == 1)
+                            {
+                                buttonText = "Talk about coins";
+
+                            }
+                            if (buttonID == 2)
+                            {
+                                buttonText = "Talk about TV";
+                            }
+                            break;
+                        case 3:
+                            scenarioID = 3;
+                            Debug.Log("test");
+                            break;
+                    }
+                    dialogue.dialogueLocked = true;
+                    decisionAllowed = false;
+                }
+            }
+            else
+            {
+                canvasGroup.alpha = 0f;
+                canvasGroup.interactable = false;
+            }
+            // if dialogue is happening, turn off any buttons
+            if (dialogue.dialogueLocked == false)
+            {
+                canvasGroup.alpha = 0f;
+                canvasGroup.interactable = false;
+            }
+            else
             {
                 canvasGroup.alpha = 1f;
                 canvasGroup.interactable = true;
-                // checks the cutscenemanager list to see which decision we're doing
-                // then makes each button do something different depending on which
-                // decision we got
-                switch (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount])
-                {
-                    case 1:
-                        scenarioID = 1;
-                        if (buttonID == 1)
-                        {
-                            buttonText = "Yes please!";
-                        }
-                        if (buttonID == 2)
-                        {
-                            buttonText = "Keep it";
-                        }
-                        break;
-                    case 2:
-                        scenarioID = 2;
-                        altLinesStart = 0;
-                        altLinesEnd = 1;
-                        if (buttonID == 1)
-                        {
-                            buttonText = "Talk about coins";
-
-                        }
-                        if (buttonID == 2)
-                        {
-                            buttonText = "Talk about TV";
-                        }
-                        break;
-                    case 3:
-                        scenarioID = 3;
-                        Debug.Log("test");
-                        break;
-                }
-                dialogue.dialogueLocked = true;
-                decisionAllowed = false;
             }
         }
-        else
+        catch (ArgumentOutOfRangeException)
         {
-            canvasGroup.alpha = 0f;
-            canvasGroup.interactable = false;
+            
         }
-        // if dialogue is happening, turn off any buttons
-        if (dialogue.dialogueLocked == false)
-        {
-            canvasGroup.alpha = 0f;
-            canvasGroup.interactable = false;
-        }
-        else
-        {
-            canvasGroup.alpha = 1f;
-            canvasGroup.interactable = true;
-        }
+        
     }
 
     // This function allows for buttons to add

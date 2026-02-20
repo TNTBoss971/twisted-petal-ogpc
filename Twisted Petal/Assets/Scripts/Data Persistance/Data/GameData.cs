@@ -16,6 +16,7 @@ public class GameData
     public int enemiesBeatenOverall;
     public List<int> selectedButtonIDs;
     public List<String> levelSummaries;
+    public bool soundsMuted;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -31,5 +32,6 @@ public class GameData
         enemiesBeatenOverall = 0;
         selectedButtonIDs = null;
         levelSummaries = null;
+        soundsMuted = false;
     }
 }

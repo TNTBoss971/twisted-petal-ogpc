@@ -45,6 +45,7 @@ public class ProjectileBehavior : MonoBehaviour
     public bool validTargetsPresent = false; // Arcing
 
     public float timer;
+    private DataManagement saveData;
 
     private AudioSource audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -56,6 +57,17 @@ public class ProjectileBehavior : MonoBehaviour
 
         player = GameObject.Find("Player");
         startingPosition = transform.position;
+        saveData = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0].GetComponent<DataManagement>();
+
+        // if sfx muted, volume is set to 0
+        if (saveData.soundsMuted == true)
+        {
+            audioSource.volume = 0;
+        }
+        else
+        {
+            audioSource.volume = 1;
+        }
     
         if (type == MunitionType.Missile)
         {
@@ -66,9 +78,6 @@ public class ProjectileBehavior : MonoBehaviour
             audioSource.Play();
 
         }
-        
-
-        
     }
 
     // Update is called once per frame
