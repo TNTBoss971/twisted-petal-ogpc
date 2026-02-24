@@ -178,6 +178,8 @@ MonoBehaviour:
   enemiesBeaten: 0
   enemiesBeatenOverall: 0
   selectedButtonIDs: 
+  levelSummaries: []
+  soundsMuted: 0
 --- !u!114 &39497305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -774,6 +776,8 @@ MonoBehaviour:
   enemiesBeaten: 0
   enemiesBeatenOverall: 0
   selectedButtonIDs: 
+  levelSummaries: []
+  soundsMuted: 0
 --- !u!114 &532085382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,6 +1029,8 @@ MonoBehaviour:
   enemiesBeaten: 0
   enemiesBeatenOverall: 0
   selectedButtonIDs: 
+  levelSummaries: []
+  soundsMuted: 0
 --- !u!114 &639093922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,6 +1189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c03689294f8c549bcbf3425e961936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingWeapons: []
 --- !u!114 &1872068410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1203,6 +1210,8 @@ MonoBehaviour:
   enemiesBeaten: 0
   enemiesBeatenOverall: 0
   selectedButtonIDs: 
+  levelSummaries: []
+  soundsMuted: 0
 --- !u!1 &2063953343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,7 +1224,6 @@ GameObject:
   - component: {fileID: 2063953348}
   - component: {fileID: 2063953347}
   - component: {fileID: 2063953346}
-  - component: {fileID: 2063953345}
   - component: {fileID: 2063953349}
   m_Layer: 5
   m_Name: Continue
@@ -1244,19 +1252,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -382.82623}
   m_SizeDelta: {x: 275.48, y: 51.6525}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2063953345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063953343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3e03cf6f36581146bb8304955ce64f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 2063953346}
 --- !u!114 &2063953346
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,14 +24,14 @@ public class GameData
     public GameData()
     {
         this.levelsBeaten = 0;
-        this.selectedItems = null;
-        ownedItems = null;
+        this.selectedItems = new List<GameObject>();
+        ownedItems = new List<GameObject>();
         itemsLooted = 0;
         itemsLootedOverall = 0;
         enemiesBeaten = 0;
         enemiesBeatenOverall = 0;
-        selectedButtonIDs = null;
-        levelSummaries = null;
+        selectedButtonIDs = new List<int>();
+        levelSummaries = new List<String>();
         soundsMuted = false;
     }
 }

@@ -14,7 +14,7 @@ public class MapErrorText : MonoBehaviour
     {
         if (map.showError == true)
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "You must equip atleast 1 weapon before entering a level.";
+            GetComponent<TMPro.TextMeshProUGUI>().text = "Equip atleast 1 weapon from the inventory before entering a level.";
         }
         else
         {

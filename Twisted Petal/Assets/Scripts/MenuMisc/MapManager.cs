@@ -16,6 +16,7 @@ public class MapManager : MonoBehaviour
     void Start()
     {
         saveData = this.GetComponent<DataManagement>();
+        Debug.Log(saveData.selectedItems);
     }
 
     // Update is called once per frame
@@ -40,7 +41,7 @@ public class MapManager : MonoBehaviour
             if (saveData.selectedItems.Count <= 0)
             {
                 showError = true;
-                errorTimer = Time.time + 1f;
+                errorTimer = Time.time + 1.5f;
             }
             else
             {
