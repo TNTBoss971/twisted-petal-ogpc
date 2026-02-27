@@ -344,6 +344,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: saved_data.json
+  gameData:
+    testVarOne: 0
+    testVarTwo: 0
+    levelsBeaten: 0
+    selectedItems: []
+    ownedItems: []
+    itemsLooted: 0
+    itemsLootedOverall: 0
+    enemiesBeaten: 0
+    enemiesBeatenOverall: 0
+    selectedButtonIDs: 
+    levelSummaries: []
+    soundsMuted: 0
 --- !u!4 &513334423
 Transform:
   m_ObjectHideFlags: 0
@@ -690,10 +703,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b926d62c233f7084dba7273e468c9220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataManager: {fileID: 513334422}
   showError: 0
   startingWeapons:
-  - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
-  - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
+  - {fileID: 815084102267353062, guid: b988f86b7bd1ef14496ab0d91ab3838b, type: 3}
+  - {fileID: 1692204540741050396, guid: d8c6e5f0efa4cb6428890499beaa69d0, type: 3}
 --- !u!114 &939551369
 MonoBehaviour:
   m_ObjectHideFlags: 0

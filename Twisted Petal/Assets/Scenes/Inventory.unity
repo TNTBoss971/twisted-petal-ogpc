@@ -256,6 +256,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: saved_data.json
+  gameData:
+    testVarOne: 0
+    testVarTwo: 0
+    levelsBeaten: 0
+    selectedItems: []
+    ownedItems: []
+    itemsLooted: 0
+    itemsLootedOverall: 0
+    enemiesBeaten: 0
+    enemiesBeatenOverall: 0
+    selectedButtonIDs: 
+    levelSummaries: []
+    soundsMuted: 0
 --- !u!4 &6608531
 Transform:
   m_ObjectHideFlags: 0
@@ -709,19 +722,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingWeapons:
-  - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
-  - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
+  - {fileID: 815084102267353062, guid: b988f86b7bd1ef14496ab0d91ab3838b, type: 3}
+  - {fileID: 1692204540741050396, guid: d8c6e5f0efa4cb6428890499beaa69d0, type: 3}
   selectedItems: []
   selectedIDs: 
   ownedItems: []
   weaponTypes:
-  - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
-  - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
-  - {fileID: 6144256074545822952, guid: 8842cd7145240bb4e8f895e77940b36e, type: 3}
-  - {fileID: 3108472696131321336, guid: c5994ef2baf0118409ecd921431edf14, type: 3}
-  - {fileID: 6144256074545822952, guid: e8b4810b7dc207d41b78e94fe245018f, type: 3}
-  - {fileID: 3108472696131321336, guid: 0c9d3e00a5c288b438ca4554c64ec154, type: 3}
-  - {fileID: 815084102267353062, guid: 66ad71816d2714e41bb11e0020be3d07, type: 3}
+  - {fileID: 815084102267353062, guid: b988f86b7bd1ef14496ab0d91ab3838b, type: 3}
+  - {fileID: 1692204540741050396, guid: d8c6e5f0efa4cb6428890499beaa69d0, type: 3}
+  - {fileID: 6144256074545822952, guid: 3f91c8b135f01b346b1c2106099e2f4e, type: 3}
+  - {fileID: 3108472696131321336, guid: 9dca4b138e2c55d468ef210984f00749, type: 3}
+  - {fileID: 6144256074545822952, guid: 1bdc729864b592347b23e294c87b1681, type: 3}
+  - {fileID: 3108472696131321336, guid: 91c5ef397d0ef494fb2d4a090cf7cdca, type: 3}
+  - {fileID: 815084102267353062, guid: 4f7b262a630dcb742ae45927e3760ebc, type: 3}
   lootedItems: []
   buttonPrefab: {fileID: 851354885029699233, guid: dc7a56ba1546ad5498336d519fe820a2, type: 3}
   canvas: {fileID: 670946}

@@ -8,7 +8,7 @@ public class DataPersistanceManager : MonoBehaviour
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
 
-    private GameData gameData;
+    public GameData gameData;
     private List<IDataPersistance> dataPersistanceObjects;
     private FileDataHandler dataHandler;
 

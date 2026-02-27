@@ -8,6 +8,7 @@ public class MapManager : MonoBehaviour
 {
     public static int mapPosition = 1;
     private DataManagement saveData;
+    public DataPersistanceManager dataManager;
     public bool showError = false;
     private float errorTimer;
     public List<GameObject> startingWeapons;
@@ -16,7 +17,12 @@ public class MapManager : MonoBehaviour
     void Start()
     {
         saveData = this.GetComponent<DataManagement>();
-        Debug.Log(saveData.selectedItems);
+        if (saveData.ownedItems.Count >= 2)
+        if (dataManager.gameData.ownedItems.Count >= 2)
+        {
+            Debug.Log(dataManager.gameData.ownedItems[2].GetComponent<GunController>().weaponName);
+        }
+        
     }
 
     // Update is called once per frame

@@ -179,6 +179,7 @@ MonoBehaviour:
   enemiesBeatenOverall: 0
   selectedButtonIDs: 
   levelSummaries: []
+  soundsMuted: 0
 --- !u!114 &125149103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +333,7 @@ MonoBehaviour:
   enemiesBeatenOverall: 0
   selectedButtonIDs: 
   levelSummaries: []
+  soundsMuted: 0
 --- !u!114 &173001247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,8 +347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingWeapons:
-  - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
-  - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
+  - {fileID: 815084102267353062, guid: b988f86b7bd1ef14496ab0d91ab3838b, type: 3}
+  - {fileID: 1692204540741050396, guid: d8c6e5f0efa4cb6428890499beaa69d0, type: 3}
 --- !u!4 &173001248
 Transform:
   m_ObjectHideFlags: 0
@@ -946,6 +948,7 @@ MonoBehaviour:
   enemiesBeatenOverall: 0
   selectedButtonIDs: 
   levelSummaries: []
+  soundsMuted: 0
 --- !u!114 &591919119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,6 +1509,7 @@ MonoBehaviour:
   enemiesBeatenOverall: 0
   selectedButtonIDs: 
   levelSummaries: []
+  soundsMuted: 0
 --- !u!114 &729627705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3934,6 +3938,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: saved_data.json
+  gameData:
+    testVarOne: 0
+    testVarTwo: 0
+    levelsBeaten: 0
+    selectedItems: []
+    ownedItems: []
+    itemsLooted: 0
+    itemsLootedOverall: 0
+    enemiesBeaten: 0
+    enemiesBeatenOverall: 0
+    selectedButtonIDs: 
+    levelSummaries: []
+    soundsMuted: 0
 --- !u!4 &2083493895
 Transform:
   m_ObjectHideFlags: 0
