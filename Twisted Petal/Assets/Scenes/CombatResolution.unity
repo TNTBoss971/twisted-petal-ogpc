@@ -429,6 +429,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: saved_data.json
+  gameData:
+    testVarOne: 0
+    testVarTwo: 0
+    levelsBeaten: 0
+    selectedItems: []
+    ownedItems: []
+    itemsLooted: 0
+    itemsLootedOverall: 0
+    enemiesBeaten: 0
+    enemiesBeatenOverall: 0
+    selectedButtonIDs: 
+    levelSummaries: []
+    soundsMuted: 0
 --- !u!4 &290015172
 Transform:
   m_ObjectHideFlags: 0
@@ -1347,7 +1360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataManager: {fileID: 290015171}
-  destination: WorldMap
+  destination: Cutscene
 --- !u!1 &2146507617
 GameObject:
   m_ObjectHideFlags: 0
