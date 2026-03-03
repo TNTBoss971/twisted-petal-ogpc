@@ -43,7 +43,7 @@ public class ProjectileBehavior : MonoBehaviour
     public int positionInTargets; // Arcing
     public int positionModifier = 1; // Arcing
     public bool validTargetsPresent = false; // Arcing
-
+    
     public float timer;
     private DataManagement saveData;
 
@@ -131,6 +131,15 @@ public class ProjectileBehavior : MonoBehaviour
                     }
                     positionInTargets += positionModifier;
 
+                    if (positionInTargets >= pastTargets.Count)
+                    {
+                        positionInTargets = pastTargets.Count - 1;
+                    }
+                    if (positionInTargets <= 0)
+                    {
+                        positionInTargets = 0;
+                    }
+
                     if (pastTargets[positionInTargets] == null)
                     {
                         pastTargets.RemoveAt(positionInTargets);
@@ -139,7 +148,6 @@ public class ProjectileBehavior : MonoBehaviour
                     {
                         transform.position = pastTargets[positionInTargets].transform.position;
                     }
-
                     if (timer < Time.time)
                     {
                         Destroy(gameObject);

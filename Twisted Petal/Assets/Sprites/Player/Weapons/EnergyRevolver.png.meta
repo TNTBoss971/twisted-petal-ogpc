@@ -1,49 +1,37 @@
 fileFormatVersion: 2
-guid: bd453fc651a7a6d4692c0cbdc24de480
+guid: bfa09f48f4dabc8489908c8595c744f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3460797624246274016
-    second: A-10Auto_0
+      213: 7672635321611742436
+    second: EnergyRevolver_0
   - first:
-      213: -4665493635129108126
-    second: A-10Auto_1
+      213: 451359811958589801
+    second: EnergyRevolver_1
   - first:
-      213: -5626258701668747990
-    second: A-10Auto_2
+      213: -8612153733723505979
+    second: EnergyRevolver_2
   - first:
-      213: 2860563807395151350
-    second: A-10Auto_3
+      213: -7575043513613154143
+    second: EnergyRevolver_3
   - first:
-      213: -2134724442178754295
-    second: A-10Auto_4
+      213: 505598324201579244
+    second: EnergyRevolver_4
   - first:
-      213: -5984220739087224199
-    second: A-10Auto_5
+      213: -6470326165230498731
+    second: EnergyRevolver_5
   - first:
-      213: -4566383546572607388
-    second: A-10Auto_6
+      213: 3653233511268442019
+    second: EnergyRevolver_6
   - first:
-      213: 6163638658630712601
-    second: A-10Auto_7
+      213: -2508912928403353409
+    second: EnergyRevolver_7
   - first:
-      213: -5208387273570792423
-    second: A-10Auto_8
+      213: -8934334627050082649
+    second: EnergyRevolver_8
   - first:
-      213: -2722965175075850405
-    second: A-10Auto_9
-  - first:
-      213: 2321064193305598993
-    second: A-10Auto_10
-  - first:
-      213: 3889873455790122035
-    second: A-10Auto_11
-  - first:
-      213: 6051074648598061498
-    second: A-10Auto_12
-  - first:
-      213: 718558688784361429
-    second: A-10Auto_13
+      213: -8423918515595201390
+    second: EnergyRevolver_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -76,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -90,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -112,9 +100,9 @@ TextureImporter:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -165,13 +153,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: A-10Auto_0
+      name: EnergyRevolver_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 11
-        width: 38
-        height: 9
+        x: 0
+        y: 30
+        width: 45
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 028f84795e6c8ffc0800000000000000
-      internalID: -3460797624246274016
+      spriteID: 4ec68c37c2daa7a60800000000000000
+      internalID: 7672635321611742436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A-10Auto_1
+      name: EnergyRevolver_1
       rect:
         serializedVersion: 2
-        x: 50
-        y: 11
-        width: 38
-        height: 9
+        x: 45
+        y: 30
+        width: 45
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +190,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2699848f146d04fb0800000000000000
-      internalID: -4665493635129108126
+      spriteID: 969cda98b5d834600800000000000000
+      internalID: 451359811958589801
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A-10Auto_2
+      name: EnergyRevolver_2
       rect:
         serializedVersion: 2
-        x: 95
-        y: 11
-        width: 38
-        height: 9
+        x: 90
+        y: 30
+        width: 45
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,20 +212,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a25759025838be1b0800000000000000
-      internalID: -5626258701668747990
+      spriteID: 5ca3b5eeecb7b7880800000000000000
+      internalID: -8612153733723505979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A-10Auto_3
+      name: EnergyRevolver_3
       rect:
         serializedVersion: 2
-        x: 139
-        y: 11
-        width: 42
-        height: 9
+        x: 135
+        y: 30
+        width: 45
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +234,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6fd702d70a3c2b720800000000000000
-      internalID: 2860563807395151350
+      spriteID: 1a806f40f0a00e690800000000000000
+      internalID: -7575043513613154143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A-10Auto_4
+      name: EnergyRevolver_4
       rect:
         serializedVersion: 2
-        x: 183
-        y: 11
-        width: 39
-        height: 9
+        x: 180
+        y: 30
+        width: 45
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +256,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 909679a1e6fef52e0800000000000000
-      internalID: -2134724442178754295
+      spriteID: ce261114ffe340700800000000000000
+      internalID: 505598324201579244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A-10Auto_5
+      name: EnergyRevolver_5
       rect:
         serializedVersion: 2
-        x: 222
-        y: 11
-        width: 44
-        height: 11
+        x: 0
+        y: 0
+        width: 45
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,20 +278,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9723e2d81f6c3fca0800000000000000
-      internalID: -5984220739087224199
+      spriteID: 55c458c42a8c436a0800000000000000
+      internalID: -6470326165230498731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A-10Auto_6
+      name: EnergyRevolver_6
       rect:
         serializedVersion: 2
-        x: 273
-        y: 11
-        width: 37
-        height: 9
+        x: 45
+        y: 0
+        width: 45
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,20 +300,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 460f95eab52f0a0c0800000000000000
-      internalID: -4566383546572607388
+      spriteID: 3af55b8d584e2b230800000000000000
+      internalID: 3653233511268442019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A-10Auto_7
+      name: EnergyRevolver_7
       rect:
         serializedVersion: 2
-        x: 319
-        y: 11
-        width: 37
-        height: 9
+        x: 90
+        y: 0
+        width: 45
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +322,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 91d7c8324b4a98550800000000000000
-      internalID: 6163638658630712601
+      spriteID: fb012220cfc8e2dd0800000000000000
+      internalID: -2508912928403353409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A-10Auto_8
+      name: EnergyRevolver_8
       rect:
         serializedVersion: 2
-        x: 365
-        y: 11
-        width: 37
-        height: 9
+        x: 135
+        y: 0
+        width: 45
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -356,20 +344,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 91cc522be5718b7b0800000000000000
-      internalID: -5208387273570792423
+      spriteID: 7ae253a2efdd20480800000000000000
+      internalID: -8934334627050082649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A-10Auto_9
+      name: EnergyRevolver_9
       rect:
         serializedVersion: 2
-        x: 410
-        y: 11
-        width: 37
-        height: 9
+        x: 180
+        y: 0
+        width: 45
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -378,96 +366,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5738d3a995163ad0800000000000000
-      internalID: -2722965175075850405
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A-10Auto_10
-      rect:
-        serializedVersion: 2
-        x: 455
-        y: 11
-        width: 37
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 11cdbd61693163020800000000000000
-      internalID: 2321064193305598993
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A-10Auto_11
-      rect:
-        serializedVersion: 2
-        x: 500
-        y: 11
-        width: 42
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 33467917c4b9bf530800000000000000
-      internalID: 3889873455790122035
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A-10Auto_12
-      rect:
-        serializedVersion: 2
-        x: 545
-        y: 11
-        width: 37
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab12f0b355cb9f350800000000000000
-      internalID: 6051074648598061498
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A-10Auto_13
-      rect:
-        serializedVersion: 2
-        x: 590
-        y: 11
-        width: 37
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5d723430255d8f900800000000000000
-      internalID: 718558688784361429
+      spriteID: 294bc1dedba381b80800000000000000
+      internalID: -8423918515595201390
       vertices: []
       indices: 
       edges: []
@@ -476,7 +376,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c6d986c746227104899001de53bdc98f
     internalID: 0
     vertices: []
     indices: 
@@ -486,20 +386,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      A-10Auto_0: -3460797624246274016
-      A-10Auto_1: -4665493635129108126
-      A-10Auto_10: 2321064193305598993
-      A-10Auto_11: 3889873455790122035
-      A-10Auto_12: 6051074648598061498
-      A-10Auto_13: 718558688784361429
-      A-10Auto_2: -5626258701668747990
-      A-10Auto_3: 2860563807395151350
-      A-10Auto_4: -2134724442178754295
-      A-10Auto_5: -5984220739087224199
-      A-10Auto_6: -4566383546572607388
-      A-10Auto_7: 6163638658630712601
-      A-10Auto_8: -5208387273570792423
-      A-10Auto_9: -2722965175075850405
+      EnergyRevolver_0: 7672635321611742436
+      EnergyRevolver_1: 451359811958589801
+      EnergyRevolver_2: -8612153733723505979
+      EnergyRevolver_3: -7575043513613154143
+      EnergyRevolver_4: 505598324201579244
+      EnergyRevolver_5: -6470326165230498731
+      EnergyRevolver_6: 3653233511268442019
+      EnergyRevolver_7: -2508912928403353409
+      EnergyRevolver_8: -8934334627050082649
+      EnergyRevolver_9: -8423918515595201390
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

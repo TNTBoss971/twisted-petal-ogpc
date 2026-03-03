@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Animator))]
 public class GunController : MonoBehaviour
@@ -78,7 +81,7 @@ public class GunController : MonoBehaviour
 
         if (shotsRemaining <= 0 && nextFirePoint > Time.time)
         {
-            shotsRemaining = magSize;   
+            shotsRemaining = magSize;
         }
         else if (nextFirePoint <= Time.time && attackAction.IsPressed())
         {
@@ -107,11 +110,11 @@ public class GunController : MonoBehaviour
             {
                 FireArcing();
             }
-            
+
         }
-        
+
         if (!isAnimationSingleShot)
-        { 
+        {
             if (shotsRemaining > 0 && !attackAction.IsPressed())
             {
                 animator.speed = 0;
@@ -152,7 +155,6 @@ public class GunController : MonoBehaviour
             }
         }
     }
-
     void FireBasic()
     {
         GameObject clone = Instantiate(ammoObject, transform.position + Vector3.forward, transform.rotation);
@@ -160,7 +162,7 @@ public class GunController : MonoBehaviour
         nextFirePoint = Time.time + firingDelay;
         audioSource.Play();
 
-        shotsRemaining-=1;
+        shotsRemaining -= 1;
         CheckMag();
     }
     void FireExplosive()
@@ -175,7 +177,7 @@ public class GunController : MonoBehaviour
         clone.GetComponent<ProjectileBehavior>().targetIndicator = Instantiate(targetingIndicator, targetPos, transform.rotation);
         audioSource.Play();
 
-        shotsRemaining-=1;
+        shotsRemaining -= 1;
         CheckMag();
     }
     void FireLaser()
@@ -186,7 +188,7 @@ public class GunController : MonoBehaviour
         }
         nextFirePoint = Time.time + firingDelay;
 
-        shotsRemaining-=1;
+        shotsRemaining -= 1;
         CheckMag();
     }
     void FireMissile()
@@ -214,7 +216,7 @@ public class GunController : MonoBehaviour
             nextFirePoint = Time.time + firingDelay;
             audioSource.Play();
 
-            shotsRemaining-=1;
+            shotsRemaining -= 1;
             CheckMag();
         }
     }
@@ -227,31 +229,69 @@ public class GunController : MonoBehaviour
         }
     }
 
-    void Targeting() {
+    void Targeting()
+    {
 
-        // the current screen position of the mouse
-        targetPos = Input.mousePosition;
-        targetPos.z = 5.23f;
-
-        // tranlates the screen position to world position
-        Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
-        targetPos.x = targetPos.x - objectPos.x;
-        targetPos.y = targetPos.y - objectPos.y;
-
-        directionVec = targetPos.normalized;
-
-        // find target angle
-        targetAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - currentAngle;
-
-        // stops overshooting
-        if (Mathf.Abs(targetAngle) > 180)
+        // point arcing gun at persisting projectile
+        if (persistentProjectile != null && ammoBehavior.type == ProjectileBehavior.MunitionType.Arcing)
         {
-            currentAngle = currentAngle * -1;
-            targetAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - currentAngle; // I made this awhile ago, its black magic to me now
-        }
+            /*
+            List<GameObject> targets = persistentProjectile.GetComponent<ProjectileBehavior>().pastTargets;
 
-        // start rotating
-        currentAngle = currentAngle + (targetAngle) * speedRot;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentAngle));
+            int index = 0;
+            while (targets[index] == null)
+            {
+                index++;
+
+                if (index >= targets.Count - 1)
+                {
+                    break;
+                }
+            }
+            if (index < targets.Count)
+            {
+                if (index >= targets.Count)
+                {
+                    index = targets.Count - 1;
+                }
+                if (index <= 0)
+                {
+                    index = 0;
+                }
+
+                Vector2 distanceVector = transform.position - targets[index].transform.position;
+                distanceVector = distanceVector.normalized;
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg));
+            } */
+
+        }
+        else
+        {
+            // the current screen position of the mouse
+            targetPos = Input.mousePosition;
+            targetPos.z = 5.23f;
+
+            // tranlates the screen position to world position
+            Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
+            targetPos.x = targetPos.x - objectPos.x;
+            targetPos.y = targetPos.y - objectPos.y;
+
+            directionVec = targetPos.normalized;
+
+            // find target angle
+            targetAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - currentAngle;
+
+            // stops overshooting
+            if (Mathf.Abs(targetAngle) > 180)
+            {
+                currentAngle = currentAngle * -1;
+                targetAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - currentAngle; // I made this awhile ago, its black magic to me now
+            }
+
+            // start rotating
+            currentAngle = currentAngle + (targetAngle) * speedRot;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentAngle));
+
+        }
     }
 }

@@ -18,6 +18,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         Basic, //bush guy, can only attack by hitting the van, lot of them
         Evergreen, //long range needle attack
+        Stump
     }
 
     public EnemyType type;
@@ -54,7 +55,7 @@ public class EnemyBehavior : MonoBehaviour
     public string walkAnimationName;
 
     [Header("Logic")]
-    public float leftBoundary = 15;
+    private float leftBoundary = -15;
     public bool isMoving = true;
     public bool isMinion;
     private float spawnTime;
@@ -73,7 +74,7 @@ public class EnemyBehavior : MonoBehaviour
         gameManager = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0];
         player = GameObject.Find("Player");
         target = player.transform;
-        animator = this.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody2D>();
 
         if (Random.Range(0, lootFrequency) == (lootFrequency - 1) && !isMinion)
@@ -139,11 +140,22 @@ public class EnemyBehavior : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Vector3 direction = target.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
-        direction.Normalize();
-        movement = direction;     
+        if (type == EnemyType.Stump)
+        {
+            Vector3 direction = new Vector2(-1, 0);
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            rb.rotation = angle;
+            direction.Normalize();
+            movement = direction;
+        }
+        else
+        {
+            Vector3 direction = target.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            rb.rotation = angle;
+            direction.Normalize();
+            movement = direction;
+        }
     }
 
     private void FixedUpdate()
@@ -177,7 +189,7 @@ public class EnemyBehavior : MonoBehaviour
     void BehaviorLogic()
     {
         if (type == EnemyType.Evergreen) {
-            if (transform.position.x > leftBoundary)
+            if (transform.position.x < leftBoundary)
             {
                 isMoving = false;
             }
@@ -186,9 +198,15 @@ public class EnemyBehavior : MonoBehaviour
 
     void MoveCharacter(Vector2 direction)
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
         if (isMoving == true)
         {
             rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
+        }
+        
+        if (transform.position.x < leftBoundary)
+        {
+            Destroy(gameObject);
         }
     }
         
@@ -227,6 +245,7 @@ public class EnemyBehavior : MonoBehaviour
                 isMoving = false;
                 animator.Play(attackAnimationName);
             }
+            
         }
     }
     private void OnCollisionExit2D(Collision2D collision)

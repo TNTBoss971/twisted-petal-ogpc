@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4094652808990721100}
   - component: {fileID: -1656966545379529163}
   - component: {fileID: -4249347337706113960}
+  - component: {fileID: 5966231923162451454}
   m_Layer: 6
   m_Name: Evergreen
   m_TagString: Enemy
@@ -35,8 +36,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.92, y: -1.19, z: 0}
-  m_LocalScale: {x: 0.7385, y: 0.7385, z: 0.7385}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2984067091888133654}
   m_Father: {fileID: 0}
@@ -5087,6 +5088,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6684092658235471012, guid: 62da35630ef41e249a352607a6ca61ea, type: 3}
   bulletPos: {fileID: 2984067091888133654}
+--- !u!95 &5966231923162451454
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859193798442875194}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4320917045072890485
 GameObject:
   m_ObjectHideFlags: 0

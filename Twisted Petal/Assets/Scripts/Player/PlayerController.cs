@@ -1,4 +1,5 @@
 using UnityEngine;
+using static EnemyBehavior;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,15 +21,26 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void EnemyEnter(GameObject enemy)
+    {
+        if (enemy.GetComponent<EnemyBehavior>().type == EnemyType.Stump)
+        {
+            gameManager.playerHealth -= enemy.GetComponent<EnemyBehavior>().damage;
+            Destroy(enemy);
+        }
+        else if (invincibilityTimer <= Time.time && enemy.GetComponent<EnemyBehavior>().dealsContactDamage)
+        {
+            gameManager.playerHealth -= enemy.GetComponent<EnemyBehavior>().damage;
+            invincibilityTimer = Time.time + 0.3f;
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
-            if (invincibilityTimer <= Time.time && other.GetComponent<EnemyBehavior>().dealsContactDamage)
-            {
-                gameManager.playerHealth -= other.GetComponent<EnemyBehavior>().damage;
-                invincibilityTimer = Time.time + 0.3f;
-            }
+            EnemyEnter(other.gameObject);
+            
         } /* else if (other.CompareTag("EnemyProjectile"))
         {
             
@@ -43,12 +55,9 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (invincibilityTimer <= Time.time && other.gameObject.GetComponent<EnemyBehavior>().dealsContactDamage)
-            {
-                gameManager.playerHealth -= other.gameObject.GetComponent<EnemyBehavior>().damage;
-                invincibilityTimer = Time.time + 0.3f;
-            }
-        } else if (other.gameObject.CompareTag("EnemyProjectile"))
+            EnemyEnter(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("EnemyProjectile"))
         {
             
             if (invincibilityTimer <= Time.time)

@@ -68,7 +68,7 @@ public class DataPersistanceManager : MonoBehaviour
     }
 
     // if we want it to save every time you quit: this is the code for that.
-    
+
     /*
     private void OnApplicationQuit()
     {
@@ -76,11 +76,12 @@ public class DataPersistanceManager : MonoBehaviour
     }
     */
 
+    [System.Obsolete]
     private List<IDataPersistance> FindAllDataPersistanceObjects()
     {
         // scripts must extend from Monobehaviour to be found
         IEnumerable<IDataPersistance> dataPersistanceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistance>();
-        
+
         return new List<IDataPersistance>(dataPersistanceObjects);
     }
 }
