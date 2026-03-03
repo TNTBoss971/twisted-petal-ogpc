@@ -724,6 +724,7 @@ MonoBehaviour:
   startingWeapons:
   - {fileID: 815084102267353062, guid: b988f86b7bd1ef14496ab0d91ab3838b, type: 3}
   - {fileID: 1692204540741050396, guid: d8c6e5f0efa4cb6428890499beaa69d0, type: 3}
+  - {fileID: 6144256074545822952, guid: 72b5b968fcbd1ac41b6089d539482685, type: 3}
   selectedItems: []
   selectedIDs: 
   ownedItems: []

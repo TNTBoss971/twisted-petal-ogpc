@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7001263803036203597}
   - component: {fileID: 6681536663318833205}
   m_Layer: 0
-  m_Name: GasGun
+  m_Name: PesticideSprinkler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,23 +47,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044e6e2a6445ba44ab5a7331ccde94ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firingDelay: 1
-  reloadTime: 0
-  magSize: 1
-  shotsRemaining: 1
+  firingDelay: 0.0333333
+  reloadTime: 1.216667
+  magSize: 16
+  shotsRemaining: 16
   burstSize: 0
-  ammoObject: {fileID: 4898352103702244452, guid: f6606d0e9a7a4fb4daf7411e53a4fbf0, type: 3}
-  speedRot: 0.5
+  ammoObject: {fileID: 4898352103702244452, guid: 16e598575cc2585409ed8bc720b16c05, type: 3}
+  speedRot: 0.1
   persistentProjectile: {fileID: 0}
   targetAngle: 0
   currentAngle: 0
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
+  isAnimationPlaying: 0
+  isAnimationSingleShot: 0
   displayImage: {fileID: -8022194467504591970, guid: 3b43e2e4e60e77d4baaf11ae964d4e02, type: 3}
   descriptionID: 6
-  description: Emmits a poisonous gas that damages enemies over time
-  weaponName: Gas Gun
+  description: Spews out pesticide to burn enemies
+  weaponName: Pesticide Sprinkler
   targetingIndicator: {fileID: 3578250175648416519, guid: 42a7c9f2b50b32d41a49197623ac3727, type: 3}
 --- !u!82 &-4622074114011619399
 AudioSource:
@@ -228,7 +230,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1101952043, guid: 4886c794934350a4d987c45188b472c5, type: 3}
+  m_Sprite: {fileID: -6006278191034331509, guid: 51f57e67607b9d344810b2df3a30aca7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

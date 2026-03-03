@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Animator))]
 public class GunController : MonoBehaviour
 {
     InputAction attackAction;
@@ -11,11 +12,13 @@ public class GunController : MonoBehaviour
 
     [Header("Gameplay Variables")]
     public float firingDelay;
+    public float reloadTime = 0;
     private float nextFirePoint = 0;
-    public int numberOfProjectiles = 1; // only utilized by missiles so far
-    public int projectilesInBurst; // only utilized by missiles so far
+    public int magSize = 1; // only utilized by missiles so far
+    public int shotsRemaining = 1;
+    public int burstSize; // only utilized by missiles so far
     public GameObject ammoObject;
-    public ProjectileBehavior ammoBehavior;
+    private ProjectileBehavior ammoBehavior;
     public float speedRot = 0.5f; // less then or equal to 1
     public GameObject persistentProjectile;
 
@@ -26,6 +29,9 @@ public class GunController : MonoBehaviour
     public Vector3 directionVec; // the target as a normalized vector
 
     [Header("Personal Display Variables")]
+    public Animator animator;
+    public bool isAnimationPlaying;
+    public bool isAnimationSingleShot; // check if the animation is per shot, or if it shows multiple projectiles
     public Sprite displayImage;
     public int descriptionID;  // tells the inventory what description to show
     public string description;
@@ -39,12 +45,15 @@ public class GunController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        shotsRemaining = magSize;
+
         // assign actions
         attackAction = InputSystem.actions.FindAction("Attack");
+
         ammoBehavior = ammoObject.GetComponent<ProjectileBehavior>();
         audioSource = gameObject.GetComponent<AudioSource>();
         saveData = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0].GetComponent<DataManagement>();
-
+        animator = GetComponent<Animator>();
 
         if (attackAction == null)
         {
@@ -67,9 +76,17 @@ public class GunController : MonoBehaviour
     {
         Targeting();
 
-
-        if (nextFirePoint <= Time.time && attackAction.IsPressed())
+        if (shotsRemaining <= 0 && nextFirePoint > Time.time)
         {
+            shotsRemaining = magSize;   
+        }
+        else if (nextFirePoint <= Time.time && attackAction.IsPressed())
+        {
+            if (!isAnimationPlaying)
+            {
+                animator.Play(weaponName + "Fire");
+            }
+
             if (ammoBehavior.type == ProjectileBehavior.MunitionType.Basic)
             {
                 FireBasic();
@@ -90,15 +107,28 @@ public class GunController : MonoBehaviour
             {
                 FireArcing();
             }
+            
         }
-        // resest missile if the player lets go of the mouse
+        
+        if (!isAnimationSingleShot)
+        { 
+            if (shotsRemaining > 0 && !attackAction.IsPressed())
+            {
+                animator.speed = 0;
+            }
+            else
+            {
+                animator.speed = 1;
+            }
+        }
+        // reset missile if the player lets go of the mouse
         if (!attackAction.IsPressed() && ammoBehavior.type == ProjectileBehavior.MunitionType.Missile && false)
         {
-            if (projectilesInBurst > 0)
+            if (burstSize > 0)
             {
                 nextFirePoint = Time.time + firingDelay;
             }
-            projectilesInBurst = 0;
+            burstSize = 0;
         }
 
         // advanced laser logic
@@ -125,10 +155,13 @@ public class GunController : MonoBehaviour
 
     void FireBasic()
     {
-        GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
+        GameObject clone = Instantiate(ammoObject, transform.position + Vector3.forward, transform.rotation);
         clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
         nextFirePoint = Time.time + firingDelay;
         audioSource.Play();
+
+        shotsRemaining-=1;
+        CheckMag();
     }
     void FireExplosive()
     {
@@ -141,6 +174,9 @@ public class GunController : MonoBehaviour
         clone.GetComponent<ProjectileBehavior>().targetPosition = targetPos;
         clone.GetComponent<ProjectileBehavior>().targetIndicator = Instantiate(targetingIndicator, targetPos, transform.rotation);
         audioSource.Play();
+
+        shotsRemaining-=1;
+        CheckMag();
     }
     void FireLaser()
     {
@@ -149,20 +185,23 @@ public class GunController : MonoBehaviour
             persistentProjectile.GetComponent<ProjectileBehavior>().damagePulse = true;
         }
         nextFirePoint = Time.time + firingDelay;
+
+        shotsRemaining-=1;
+        CheckMag();
     }
     void FireMissile()
     {
-        if (projectilesInBurst < numberOfProjectiles)
+        if (burstSize < magSize)
         {
             GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
             clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
 
-            projectilesInBurst++;
+            burstSize++;
             nextFirePoint = Time.time + 0.1f;
         }
         else
         {
-            projectilesInBurst = 0;
+            burstSize = 0;
             nextFirePoint = Time.time + firingDelay;
         }
     }
@@ -174,6 +213,17 @@ public class GunController : MonoBehaviour
             persistentProjectile.GetComponent<ProjectileBehavior>().targetIndicator = Instantiate(targetingIndicator, transform.position, transform.rotation);
             nextFirePoint = Time.time + firingDelay;
             audioSource.Play();
+
+            shotsRemaining-=1;
+            CheckMag();
+        }
+    }
+
+    void CheckMag()
+    {
+        if (shotsRemaining <= 0)
+        {
+            nextFirePoint = Time.time + reloadTime;
         }
     }
 
