@@ -17,12 +17,6 @@ public class MapManager : MonoBehaviour
     void Start()
     {
         saveData = this.GetComponent<DataManagement>();
-        if (saveData.ownedItems.Count >= 2)
-        if (dataManager.gameData.ownedItems.Count >= 2)
-        {
-            Debug.Log(dataManager.gameData.ownedItems[2].GetComponent<GunController>().weaponName);
-        }
-        
     }
 
     // Update is called once per frame

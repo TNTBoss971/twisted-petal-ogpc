@@ -58,7 +58,7 @@ public class Dialogue : MonoBehaviour
                     else
                     {
                         dataManager.SaveGame();
-                        SceneManager.LoadScene("CombatResolution");
+                        SceneManager.LoadScene("WorldMap");
                     }
                 }
             }

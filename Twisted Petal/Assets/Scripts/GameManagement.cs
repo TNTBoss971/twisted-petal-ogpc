@@ -289,7 +289,7 @@ public class GameManagement : MonoBehaviour
         saveData.itemsLooted = itemsLooted;
         saveData.levelSummaries.Add(summaryCreator.CreateSummary(saveData, playerHealth, lastWeaponObtained));
         dataManager.SaveGame();
-        SceneManager.LoadScene("Cutscene");
+        SceneManager.LoadScene("CombatResolution");
     }
 
     // function that can be called by the weapon buttons that swaps the weapon to the given id
