@@ -47,9 +47,9 @@ public class GameManagement : MonoBehaviour
     [Header("Summary")]
     public LevelSummaryCreator summaryCreator;
     public GameObject lastWeaponObtained;
-    [Header("Escaping")]
-    private float escapeTimer;
-    public bool escaping;
+    [Header("Pausing")]
+    public bool paused;
+    public GameObject pauseHue;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -69,9 +69,9 @@ public class GameManagement : MonoBehaviour
 
         lastWeaponObtained = null;
 
-        escaping = false;
+        paused = false;
 
-        escapeTimer = 0f;
+        pauseHue.SetActive(false);
         
         WeaponInitialization();
     }
@@ -88,21 +88,18 @@ public class GameManagement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            escapeTimer = Time.time + 1f;
-            escaping = true;
-        }
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            escaping = false;
-        }
-        if ((escapeTimer <= Time.time ) && (escaping == true))
-        {
-            saveData.itemsLootedOverall += itemsLooted;
-            saveData.enemiesBeaten = enemiesBeaten;
-            saveData.enemiesBeatenOverall += enemiesBeaten;
-            saveData.itemsLooted = itemsLooted;
-            dataManager.SaveGame();
-            SceneManager.LoadScene("WorldMap");
+            if (paused == false)
+            {
+                paused = true;
+                pauseHue.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                paused = false;
+                pauseHue.SetActive(false);
+                Time.timeScale = 1f;
+            }
         }
     }
     void ActiveWave()

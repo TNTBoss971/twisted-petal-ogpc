@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class EscapingPopup : MonoBehaviour
+public class PausedText : MonoBehaviour
 {
     private GameManagement gameManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,13 +13,13 @@ public class EscapingPopup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.escaping == true)
+        if (gameManager.paused == true)
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "Exiting level...";
+            GetComponent<TMPro.TextMeshProUGUI>().text = "Paused";
         }
         else
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "Hold Esape to Exit";
+            GetComponent<TMPro.TextMeshProUGUI>().text = "";
         }
     }
 }

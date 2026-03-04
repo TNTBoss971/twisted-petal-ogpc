@@ -8,10 +8,9 @@ using UnityEngine.UIElements;
 public class GunController : MonoBehaviour
 {
     InputAction attackAction;
-    /*
+
     [Header("Outside Objects")]
-    public GameManagement gameManager;
-    */
+    private GameManagement gameManager;
 
     [Header("Gameplay Variables")]
     public float firingDelay;
@@ -48,6 +47,8 @@ public class GunController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // assig variables
+        gameManager = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0];
         shotsRemaining = magSize;
 
         // assign actions
@@ -77,7 +78,11 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Targeting();
+        // don't target if the game is paused
+        if (gameManager.paused == false)
+        {
+            Targeting();
+        }
 
         if (shotsRemaining <= 0 && nextFirePoint > Time.time)
         {
@@ -90,28 +95,37 @@ public class GunController : MonoBehaviour
                 animator.Play(weaponName + "Fire");
             }
 
-            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Basic)
+            // don't shoot if the game is paused
+            if (gameManager.paused == false)
             {
-                FireBasic();
-            }
-            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Explosive)
-            {
-                FireExplosive();
-            }
-            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
-            {
-                FireLaser();
-            }
-            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Missile)
-            {
-                FireMissile();
-            }
-            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Arcing)
-            {
-                FireArcing();
-            }
+                if (nextFirePoint <= Time.time && attackAction.IsPressed())
+                {
+                    if (ammoBehavior.type == ProjectileBehavior.MunitionType.Basic)
+                    {
+                        FireBasic();
+                    }
+                    if (ammoBehavior.type == ProjectileBehavior.MunitionType.Explosive)
+                    {
+                        FireExplosive();
+                    }
+                    if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
+                    {
+                        FireLaser();
+                    }
+                    if (ammoBehavior.type == ProjectileBehavior.MunitionType.Missile)
+                    {
+                        FireMissile();
+                    }
+                    if (ammoBehavior.type == ProjectileBehavior.MunitionType.Arcing)
+                    {
+                        FireArcing();
+                    }
+                }
 
+            }
         }
+        
+        
 
         if (!isAnimationSingleShot)
         {
