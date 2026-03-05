@@ -1,11 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SummariesScrollbar : MonoBehaviour
 {
+    private Scrollbar scrollbar;
+    public int barValue;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        scrollbar = GetComponent<Scrollbar>();
+        scrollbar.onValueChanged.AddListener(OnScroll);
     }
 
     // Update is called once per frame
@@ -13,11 +17,16 @@ public class SummariesScrollbar : MonoBehaviour
     {
         if (LevelSummary.levelSummariesHidden == true)
         {
-            this.GetComponent<CanvasGroup>().alpha = 0;
+            GetComponent<CanvasGroup>().alpha = 0;
         }
         else
         {
-            this.GetComponent<CanvasGroup>().alpha = 1;
+            GetComponent<CanvasGroup>().alpha = 1;
         }
+    }
+
+    void OnScroll(float value)
+    {
+        barValue = (int)(value * 20);
     }
 }

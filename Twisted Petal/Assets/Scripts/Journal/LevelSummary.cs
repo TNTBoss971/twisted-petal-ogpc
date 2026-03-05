@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelSummary : MonoBehaviour
 {
@@ -7,12 +8,14 @@ public class LevelSummary : MonoBehaviour
     private string summary;
     public static bool levelSummariesHidden;
     private bool loopDone;
+    private SummariesScrollbar scrollbar;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         levelSummariesHidden = true;
         journalManager = FindAnyObjectByType<JournalManager>();
         loopDone = false;
+        scrollbar = FindAnyObjectByType<SummariesScrollbar>();
     }
 
     // Update is called once per frame
@@ -33,6 +36,10 @@ public class LevelSummary : MonoBehaviour
         else
         {
             GetComponent<TMPro.TextMeshProUGUI>().text = summary;
+            if (journalManager.GetComponent<DataManagement>().levelSummaries.Count > 7)
+            {
+                summary = journalManager.GetComponent<DataManagement>().levelSummaries[summaryID + scrollbar.barValue];
+            }
         }
     }
 }
