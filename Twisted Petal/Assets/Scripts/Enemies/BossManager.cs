@@ -86,6 +86,7 @@ public class BossManager : MonoBehaviour
         }
 
         startingX = bossObject.transform.position.x;
+        bossObject.transform.position = new Vector2 (startingX, 0.8222481f);
 
         BarBehavior bossHealthBar = canvasObject.GetComponentInChildren<BarBehavior>();
         bossHealthBar.maxValue = maxHealth;
@@ -240,7 +241,8 @@ public class BossManager : MonoBehaviour
             {
                 FinishAttack(false);
             }
-            else if (attackStartTime + 0.52f / bossSpeed <= Time.time && !damageApplied)
+            //                         0:42
+            else if (attackStartTime + 0.7f / bossSpeed <= Time.time && !damageApplied)
             {
                 // deal the damage of the attack
                 gameManager.playerHealth -= 10;
@@ -295,18 +297,20 @@ public class BossManager : MonoBehaviour
             {
                 FinishAttack(false);
             } 
-            else if (attackStartTime + 0.50f / bossSpeed + fireTime <= Time.time && attackStartTime + 1.44f / bossSpeed >= Time.time)
+            //                                 0:46                                                               1:14
+            else if (attackStartTime + (0.76666666666f + fireTime) / bossSpeed <= Time.time && attackStartTime + 1.23333333f / bossSpeed >= Time.time)
             {
-                fireTime += 0.12f;
+                //              0:14
+                fireTime += 0.233333f;
                 GameObject projectile = Instantiate(projectiles[0]);
-                projectile.transform.position = new Vector3(3.5f, -0.75f, 0);
+                projectile.transform.position = new Vector3(3.5f, -0.75f, 0); // 50 = 30
                 projectile.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 30;
             }
             else if (!damageApplied && attackStartTime + 1.44 / bossSpeed <= Time.time)
             {
                 GameObject projectile = Instantiate(projectiles[1]);
                 projectile.transform.position = new Vector3(3.5f, -0.75f, 0);
-                projectile.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 10;
+                projectile.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 30;
 
                 damageApplied = true;
             }

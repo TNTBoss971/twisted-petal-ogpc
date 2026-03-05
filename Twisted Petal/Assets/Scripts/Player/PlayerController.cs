@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static EnemyBehavior;
 
 public class PlayerController : MonoBehaviour
@@ -6,7 +7,9 @@ public class PlayerController : MonoBehaviour
     public GameObject projectile;
     private float invincibilityTimer = 0f;
     
-
+    public float vanSpeed;
+    public float upBoundary;
+    public float downBoundary;
     public GameManagement gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,9 +19,16 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
+        if (transform.position.y > downBoundary && Input.GetKey(KeyCode.S))
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y - vanSpeed * Time.deltaTime);
+        }
+        if (transform.position.y < upBoundary && Input.GetKey(KeyCode.W))
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y + vanSpeed * Time.deltaTime);
+        }
     }
 
     void EnemyEnter(GameObject enemy)
@@ -31,6 +41,15 @@ public class PlayerController : MonoBehaviour
         else if (invincibilityTimer <= Time.time && enemy.GetComponent<EnemyBehavior>().dealsContactDamage)
         {
             gameManager.playerHealth -= enemy.GetComponent<EnemyBehavior>().damage;
+            invincibilityTimer = Time.time + 0.3f;
+        }
+    }
+    
+    public void DamageSelf(float damage)
+    {
+        if (invincibilityTimer <= Time.time)
+        {
+            gameManager.playerHealth -= damage;
             invincibilityTimer = Time.time + 0.3f;
         }
     }

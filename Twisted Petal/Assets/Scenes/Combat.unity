@@ -1948,7 +1948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &596515477
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2208,6 +2208,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
+  vanSpeed: 1
+  upBoundary: -0.12
+  downBoundary: -3.6
   gameManager: {fileID: 0}
 --- !u!50 &878683912
 Rigidbody2D:
