@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,7 +39,14 @@ public class LevelSummary : MonoBehaviour
             GetComponent<TMPro.TextMeshProUGUI>().text = summary;
             if (journalManager.GetComponent<DataManagement>().levelSummaries.Count > 7)
             {
-                summary = journalManager.GetComponent<DataManagement>().levelSummaries[summaryID + scrollbar.barValue];
+                try
+                {
+                    summary = journalManager.GetComponent<DataManagement>().levelSummaries[summaryID + scrollbar.barValue];
+                }
+                catch(ArgumentOutOfRangeException)
+                {
+                    summary = "";
+                }
             }
         }
     }

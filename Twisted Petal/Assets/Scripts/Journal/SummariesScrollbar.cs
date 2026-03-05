@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using Unity.VisualScripting;
 
 public class SummariesScrollbar : MonoBehaviour
 {
@@ -27,6 +29,6 @@ public class SummariesScrollbar : MonoBehaviour
 
     void OnScroll(float value)
     {
-        barValue = (int)(value * 20);
+        barValue = (int)(Math.Round(value, 1) * 20);
     }
 }
