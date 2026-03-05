@@ -29,7 +29,14 @@ public class JournalStats : MonoBehaviour
         }
         else
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "";
+            if (showOverallStats == false)
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = JournalManager.statDisplayed[statID];
+            }
+            else
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = "";
+            }
         }
     }
 }
