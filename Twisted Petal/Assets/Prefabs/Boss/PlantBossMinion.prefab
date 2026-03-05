@@ -110,17 +110,19 @@ MonoBehaviour:
   speed: 3
   maxHealth: 2
   health: 2
+  damage: 1
   poisonPerTick: 0.1
   dealsContactDamage: 0
   poison: 0
   hasNotTickedDamage: 1
   invincibilityTimer: 0
+  dealDamage: 0
   animator: {fileID: 3403337144859412987}
   hasIntro: 1
   introLength: 0.25
   attackAnimationName: PlantBossMinionAttack
+  attackAnimationCycleLength: 1.183
   walkAnimationName: PlantBossMinionWalk
-  leftBoundary: 15
   isMoving: 1
   isMinion: 1
 --- !u!50 &5426400630366098533

@@ -45,6 +45,7 @@ public class EnemyBehavior : MonoBehaviour
     public float poison = 0;
     public bool hasNotTickedDamage = true;
     public float invincibilityTimer = 0f;
+    public bool dealDamage = false;
 
     [Header("Display")]
     public Animator animator;
@@ -52,6 +53,7 @@ public class EnemyBehavior : MonoBehaviour
     public float introLength;
 
     public string attackAnimationName;
+    public float attackAnimationCycleLength;
     public string walkAnimationName;
 
     [Header("Logic")]
@@ -156,6 +158,11 @@ public class EnemyBehavior : MonoBehaviour
             direction.Normalize();
             movement = direction;
         }
+
+        if (dealDamage && Time.time % attackAnimationCycleLength <= 0.1)
+        {
+            player.GetComponent<PlayerController>().DamageSelf(damage);
+        }
     }
 
     private void FixedUpdate()
@@ -244,6 +251,7 @@ public class EnemyBehavior : MonoBehaviour
             {
                 isMoving = false;
                 animator.Play(attackAnimationName);
+                dealDamage = true;
             }
             
         }
@@ -257,6 +265,7 @@ public class EnemyBehavior : MonoBehaviour
             {
                 isMoving = true;
                 animator.Play(walkAnimationName);
+                dealDamage = false;
             }
         }
     }
