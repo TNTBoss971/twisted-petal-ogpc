@@ -37,7 +37,7 @@ public class LevelSummary : MonoBehaviour
         else
         {
             GetComponent<TMPro.TextMeshProUGUI>().text = summary;
-            if (journalManager.GetComponent<DataManagement>().levelSummaries.Count > 7)
+            if (journalManager.GetComponent<DataManagement>().levelSummaries.Count > 2)
             {
                 try
                 {
