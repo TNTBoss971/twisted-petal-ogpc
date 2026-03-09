@@ -35,6 +35,7 @@ public class CombatExitButton : MonoBehaviour
         saveData.enemiesBeaten = GameManagement.enemiesBeaten;
         saveData.enemiesBeatenOverall += GameManagement.enemiesBeaten;
         saveData.itemsLooted = GameManagement.itemsLooted;
+        saveData.currentHealth = gameManager.playerHealth;
         gameManager.dataManager.SaveGame();
         gameManager.paused = false;
         Time.timeScale = 1f;

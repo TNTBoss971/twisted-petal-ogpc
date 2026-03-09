@@ -19,6 +19,7 @@ public class InventoryManager : MonoBehaviour
     public Canvas canvas;
     public SlotDisplayLogic[] displays;
     public int rarityChance;
+    public GameObject supplyCounter;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -88,5 +89,7 @@ public class InventoryManager : MonoBehaviour
                 displays[i].displayDiscription = null;
             }
         }
+
+        supplyCounter.GetComponent<TMPro.TextMeshProUGUI>().text = "Supplies: " + saveData.supplies;
     }
 }

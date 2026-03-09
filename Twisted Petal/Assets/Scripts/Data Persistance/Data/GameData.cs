@@ -18,6 +18,8 @@ public class GameData
     public List<String> levelSummaries;
     public bool soundsMuted;
     public List<GameObject> weaponsFound;
+    public float currentHealth;
+    public int supplies;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -35,5 +37,7 @@ public class GameData
         levelSummaries = new List<String>();
         soundsMuted = false;
         weaponsFound = new List<GameObject>();
+        currentHealth = 100;
+        supplies = 3;
     }
 }
