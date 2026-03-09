@@ -584,6 +584,9 @@ MonoBehaviour:
   selectedButtonIDs: 
   levelSummaries: []
   soundsMuted: 0
+  weaponsFound: []
+  currentHealth: 0
+  supplies: 0
 --- !u!114 &406763047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,6 +616,7 @@ MonoBehaviour:
   dialogue: {fileID: 61325680}
   alternateLines:
   - '"Coins are shiny and metal. AT THE SAME TIME! OH MY GOD THIS IS INSANE. Wow"'
+  dataManager: {fileID: 935132565}
 --- !u!114 &406763048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -771,6 +775,9 @@ MonoBehaviour:
   selectedButtonIDs: 
   levelSummaries: []
   soundsMuted: 0
+  weaponsFound: []
+  currentHealth: 0
+  supplies: 0
 --- !u!114 &561514261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,6 +807,7 @@ MonoBehaviour:
   dialogue: {fileID: 61325680}
   alternateLines:
   - '"It''s TV Time! Or something like that idk I never watched that show"'
+  dataManager: {fileID: 935132565}
 --- !u!114 &561514262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,6 +942,9 @@ MonoBehaviour:
   selectedButtonIDs: 
   levelSummaries: []
   soundsMuted: 0
+  weaponsFound: []
+  currentHealth: 0
+  supplies: 0
 --- !u!114 &577101591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,9 +960,9 @@ MonoBehaviour:
   dialogue: {fileID: 61325680}
   portrait: {fileID: 1133078069}
   cutsceneDialogueLines:
-  - '"Wow we have made it out of the city."'
-  - '"Hey kid, ya want a missile launcher?"'
-  - '"ok"'
+  - '"Oh, nice. Someone left some supplies for people."'
+  - '"Don''t mind if I do..."'
+  - '[3 supplies gained]'
   - '"What should I talk about?"'
   - '"Dummy answer. Will talk about TV or coins"'
   - '"I think the capabilities of uh, the system have been sufficiently tested."'
@@ -1052,6 +1063,9 @@ MonoBehaviour:
     selectedButtonIDs: 
     levelSummaries: []
     soundsMuted: 0
+    weaponsFound: []
+    currentHealth: 100
+    supplies: 3
 --- !u!4 &935132566
 Transform:
   m_ObjectHideFlags: 0
