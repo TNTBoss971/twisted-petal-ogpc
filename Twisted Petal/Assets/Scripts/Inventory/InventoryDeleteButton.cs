@@ -21,9 +21,12 @@ public class InventoryDeleteButton : MonoBehaviour
     void TaskOnClick()
     {
         // When pressed, deletes selected items
-        for (int i = 0; i < inventoryManager.selectedItems.Count; i++)
+        if (inventoryManager.GetComponent<DataManagement>().ownedItems.Count > inventoryManager.selectedItems.Count)
         {
-            inventoryManager.ownedItems.Remove(inventoryManager.selectedItems[i]);
+            for (int i = 0; i < inventoryManager.selectedItems.Count; i++)
+            {
+                inventoryManager.ownedItems.Remove(inventoryManager.selectedItems[i]);
+            }
         }
         inventoryManager.selectedItems.Clear();
         inventoryManager.selectedIDs.Clear();
