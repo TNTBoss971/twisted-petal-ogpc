@@ -8,6 +8,7 @@ public class WeaponFrame : MonoBehaviour
     private JournalManager journalManager;
     private DataManagement saveData;
     private bool loopDone;
+    private WeaponsFound weaponsFound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +17,7 @@ public class WeaponFrame : MonoBehaviour
         journalManager = FindAnyObjectByType<JournalManager>();
         saveData = journalManager.GetComponent<DataManagement>();
         loopDone = false;
+        weaponsFound = FindAnyObjectByType<WeaponsFound>();
     }
 
     // Update is called once per frame
@@ -23,7 +25,7 @@ public class WeaponFrame : MonoBehaviour
     {
         if (loopDone == false)
         {
-            if (saveData.ownedItems.Contains(itemStored))
+            if (weaponsFound.foundWeapons.Contains(itemStored))
             {
                 this.GetComponent<Image>().sprite = frameImage;
             }

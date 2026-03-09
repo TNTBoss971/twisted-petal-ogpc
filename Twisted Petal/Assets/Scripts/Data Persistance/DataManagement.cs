@@ -14,6 +14,7 @@ public class DataManagement : MonoBehaviour, IDataPersistance
     public List<int> selectedButtonIDs;
     public List<String> levelSummaries;
     public bool soundsMuted;
+    public List<GameObject> weaponsFound;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,6 +40,7 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         selectedButtonIDs = data.selectedButtonIDs;
         levelSummaries = data.levelSummaries;
         soundsMuted = data.soundsMuted;
+        weaponsFound = data.weaponsFound;
     }
 
     public void SaveData(ref GameData data)
@@ -53,5 +55,6 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         data.selectedButtonIDs = selectedButtonIDs;
         data.levelSummaries = levelSummaries;
         data.soundsMuted = soundsMuted;
+        data.weaponsFound = weaponsFound;
     }
 }

@@ -17,10 +17,6 @@ public class JournalManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (saveData.ownedItems.Count <= 0)
-        {
-            saveData.ownedItems = startingWeapons;
-        }
         if (itemsAdded == false)
         {
             statDisplayed.Add(1, "Day: " + saveData.levelsBeaten);
