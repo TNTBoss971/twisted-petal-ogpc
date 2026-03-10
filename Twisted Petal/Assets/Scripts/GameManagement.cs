@@ -60,6 +60,8 @@ public class GameManagement : MonoBehaviour
         // assign actions
         cycleAction = InputSystem.actions.FindAction("Cycle");
 
+        playerHealth = saveData.currentHealth;
+
 
         StartWave();
 
@@ -285,6 +287,7 @@ public class GameManagement : MonoBehaviour
         saveData.enemiesBeatenOverall += enemiesBeaten;
         saveData.itemsLooted = itemsLooted;
         saveData.levelSummaries.Add(summaryCreator.CreateSummary(saveData, playerHealth, lastWeaponObtained));
+        saveData.currentHealth = playerHealth;
         dataManager.SaveGame();
         SceneManager.LoadScene("CombatResolution");
     }

@@ -1,3 +1,4 @@
+using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,10 +21,17 @@ public class InventoryDeleteButton : MonoBehaviour
     
     void TaskOnClick()
     {
-        // When pressed, deletes selected items
-        for (int i = 0; i < inventoryManager.selectedItems.Count; i++)
+        // When pressed, scraps selected items
+        if (inventoryManager.GetComponent<DataManagement>().ownedItems.Count > inventoryManager.selectedItems.Count)
         {
-            inventoryManager.ownedItems.Remove(inventoryManager.selectedItems[i]);
+            if (inventoryManager.GetComponent<DataManagement>().ownedItems.Count > inventoryManager.startingWeapons.Count)
+            {
+                for (int i = 0; i < inventoryManager.selectedItems.Count; i++)
+                {
+                    inventoryManager.ownedItems.Remove(inventoryManager.selectedItems[i]);
+                    inventoryManager.GetComponent<DataManagement>().supplies += 1;
+                }
+            }
         }
         inventoryManager.selectedItems.Clear();
         inventoryManager.selectedIDs.Clear();

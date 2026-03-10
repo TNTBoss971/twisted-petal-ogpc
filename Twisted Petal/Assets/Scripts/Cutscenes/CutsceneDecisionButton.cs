@@ -19,6 +19,7 @@ public class CutsceneDecisionButton : MonoBehaviour
     public List<string> alternateLines; // lines to replace current ones
     private int altLinesStart; // where do we start replacing
     private int altLinesEnd; // where do we stop replacing
+    private bool suppliesGiven; // have supplies been given?
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +31,7 @@ public class CutsceneDecisionButton : MonoBehaviour
         canvasGroup.alpha = 1f;
         canvasGroup.interactable = true;
         decisionAllowed = true;
+        suppliesGiven = false;
     }
 
     // Update is called once per frame
@@ -53,11 +55,11 @@ public class CutsceneDecisionButton : MonoBehaviour
                             scenarioID = 1;
                             if (buttonID == 1)
                             {
-                                buttonText = "Yes please!";
+                                
                             }
                             if (buttonID == 2)
                             {
-                                buttonText = "Keep it";
+                                
                             }
                             break;
                         case 2:
@@ -104,7 +106,20 @@ public class CutsceneDecisionButton : MonoBehaviour
         {
             
         }
-        
+        if (scenarioID == 1)
+        {
+            decisionAllowed = false;
+            dialogue.dialogueLocked = false;
+            canvasGroup.alpha = 0f;
+            canvasGroup.interactable = false;
+            if (buttonID == 1)
+            {
+                if (suppliesGiven == false)
+                {
+                    GiveSupplies(3);
+                }
+            }
+        }
     }
 
     // This function allows for buttons to add
@@ -112,6 +127,13 @@ public class CutsceneDecisionButton : MonoBehaviour
     void GiveItem(GameObject itemGiven)
     {
         saveData.ownedItems.Add(itemGiven);
+    }
+
+    void GiveSupplies(int amount)
+    {
+        saveData.supplies += amount;
+        Debug.Log(amount);
+        suppliesGiven = true;
     }
 
     void TaskOnClick()
@@ -124,7 +146,7 @@ public class CutsceneDecisionButton : MonoBehaviour
             case 1:
                 if (buttonID == 1)
                 {
-                    GiveItem(itemsIndex[6]);
+                    
                 }
                 if (buttonID == 2)
                 {
