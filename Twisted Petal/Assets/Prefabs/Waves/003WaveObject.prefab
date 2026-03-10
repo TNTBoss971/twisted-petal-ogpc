@@ -48,7 +48,11 @@ MonoBehaviour:
   length: 70
   enemiesInWave:
   - {fileID: 4950766893030274313, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
+  weaponsInWave:
+  - {fileID: 815084102267353062, guid: b988f86b7bd1ef14496ab0d91ab3838b, type: 3}
   enemyFrequency:
   - 1
   - 0
   - 0
+  weaponFrequency:
+  - 1

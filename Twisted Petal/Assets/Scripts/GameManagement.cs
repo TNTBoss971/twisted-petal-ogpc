@@ -31,8 +31,8 @@ public class GameManagement : MonoBehaviour
 
     public float waveLength;
     public float nextWaveTime;
-    public static int itemsLooted;
-    public static int enemiesBeaten;
+    public int itemsLooted;
+    public int enemiesBeaten;
 
     public WaveData[] waves; // a list of all the waves
     public WaveData currentWave;

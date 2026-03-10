@@ -66,8 +66,8 @@ MonoBehaviour:
   positionInAttackPattern: 0
   attackStartTime: 0
   bossSpeed: 0.5
-  maxHealth: 100
-  health: 100
+  maxHealth: 1000
+  health: 1000
   poison: 0
   hasNotTickedDamage: 1
   poisonPerTick: 1

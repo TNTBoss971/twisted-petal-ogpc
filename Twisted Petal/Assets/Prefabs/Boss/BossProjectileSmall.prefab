@@ -176,8 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f903acb6f7b2b2941ac7f6df9d3ae8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 1
   pierce: 1
+  isMissile: 0
+  startingVelocity: {x: 0, y: 0}
+  magnitude: 0
+  frequency: 0
+  startingPosition: {x: 0, y: 0}
 --- !u!114 &6216881201816688446
 MonoBehaviour:
   m_ObjectHideFlags: 0

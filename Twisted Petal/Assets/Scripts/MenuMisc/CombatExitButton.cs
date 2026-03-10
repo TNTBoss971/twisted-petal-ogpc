@@ -31,10 +31,10 @@ public class CombatExitButton : MonoBehaviour
 
     void TaskOnClick()
     {
-        saveData.itemsLootedOverall += GameManagement.itemsLooted;
-        saveData.enemiesBeaten = GameManagement.enemiesBeaten;
-        saveData.enemiesBeatenOverall += GameManagement.enemiesBeaten;
-        saveData.itemsLooted = GameManagement.itemsLooted;
+        saveData.itemsLootedOverall += gameManager.itemsLooted;
+        saveData.enemiesBeaten = gameManager.enemiesBeaten;
+        saveData.enemiesBeatenOverall += gameManager.enemiesBeaten;
+        saveData.itemsLooted = gameManager.itemsLooted;
         gameManager.dataManager.SaveGame();
         gameManager.paused = false;
         Time.timeScale = 1f;

@@ -109,7 +109,7 @@ MonoBehaviour:
   type: 0
   target: {fileID: 0}
   lootFrequency: 100
-  speed: 3
+  speed: 6
   maxHealth: 2
   health: 2
   damage: 1
@@ -118,12 +118,13 @@ MonoBehaviour:
   poison: 0
   hasNotTickedDamage: 1
   invincibilityTimer: 0
+  dealDamage: 0
   animator: {fileID: 0}
   hasIntro: 0
   introLength: 0
   attackAnimationName: 
+  attackAnimationCycleLength: 0
   walkAnimationName: 
-  leftBoundary: 15
   isMoving: 1
   isMinion: 0
 --- !u!50 &5426400630366098533

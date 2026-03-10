@@ -24,6 +24,7 @@ public class DataPersistanceManager : MonoBehaviour
         instance = this;
     }
 
+    [System.Obsolete]
     private void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);

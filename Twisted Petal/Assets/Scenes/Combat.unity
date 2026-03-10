@@ -1128,6 +1128,7 @@ MonoBehaviour:
     selectedButtonIDs: 
     levelSummaries: []
     soundsMuted: 0
+    weaponsFound: []
 --- !u!4 &279707654
 Transform:
   m_ObjectHideFlags: 0
@@ -1344,10 +1345,10 @@ MonoBehaviour:
   - {fileID: 1093586336}
   - {fileID: 1852709581}
   weapons:
-  - {fileID: 815084102267353062, guid: ab5aeafe3a878db42b04ecb62ffbdcda, type: 3}
-  - {fileID: 1692204540741050396, guid: 62f1df4dac027cf438d8fd4476a4ad28, type: 3}
-  - {fileID: 6144256074545822952, guid: 8842cd7145240bb4e8f895e77940b36e, type: 3}
-  - {fileID: 3108472696131321336, guid: c5994ef2baf0118409ecd921431edf14, type: 3}
+  - {fileID: 815084102267353062, guid: b216c538c3058674595692da67c194fa, type: 3}
+  - {fileID: 6144256074545822952, guid: 3f91c8b135f01b346b1c2106099e2f4e, type: 3}
+  - {fileID: 6144256074545822952, guid: 1bdc729864b592347b23e294c87b1681, type: 3}
+  - {fileID: 3108472696131321336, guid: 9dca4b138e2c55d468ef210984f00749, type: 3}
   equippedWeapons:
   - {fileID: 0}
   - {fileID: 0}
@@ -1362,6 +1363,8 @@ MonoBehaviour:
   waveNumber: 0
   waveLength: 5
   nextWaveTime: 0
+  itemsLooted: 0
+  enemiesBeaten: 0
   waves:
   - {fileID: 9122227014563279572, guid: e7e8eddd741d43740a2e67b4613eec4b, type: 3}
   - {fileID: 9122227014563279572, guid: b1b126bab42e223498306c84a32df667, type: 3}
@@ -1411,6 +1414,7 @@ MonoBehaviour:
   selectedButtonIDs: 
   levelSummaries: []
   soundsMuted: 0
+  weaponsFound: []
 --- !u!1 &421250703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,7 +2215,7 @@ MonoBehaviour:
   vanSpeed: 1
   upBoundary: -0.12
   downBoundary: -3.6
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 359535019}
 --- !u!50 &878683912
 Rigidbody2D:
   serializedVersion: 5

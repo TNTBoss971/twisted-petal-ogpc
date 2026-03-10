@@ -17,8 +17,9 @@ public class EnemyBehavior : MonoBehaviour
     public enum EnemyType
     {
         Basic, //bush guy, can only attack by hitting the van, lot of them
-        Evergreen, //long range needle attack
-        Stump
+        Ranged, //long range needle attack
+        Stump,
+        Flung
     }
 
     public EnemyType type;
@@ -26,6 +27,7 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Targeting")]
     public Transform target;
     private GameObject player;
+    private PlayerController playerController;
     private GameManagement gameManager;
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -57,24 +59,21 @@ public class EnemyBehavior : MonoBehaviour
     public string walkAnimationName;
 
     [Header("Logic")]
-    private float leftBoundary = -15;
+    private float leftBoundary;
     public bool isMoving = true;
     public bool isMinion;
     private float spawnTime;
 
     [Header("Item Looting")]
-    private static List<GameObject> personalWeaponList;
     private DataManagement saveData;
     private int rarityChance;
-    private GameObject itemLooted;
     private ItemPopup itemPopup;
-    private bool hasLootedItem;
-    public Dictionary<GameObject, int> itemRarities = new Dictionary<GameObject, int>();
-    
+
     void Start()
     {
         gameManager = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0];
         player = GameObject.Find("Player");
+        playerController = player.GetComponent<PlayerController>();
         target = player.transform;
         animator = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody2D>();
@@ -88,17 +87,6 @@ public class EnemyBehavior : MonoBehaviour
         health = maxHealth;
 
         saveData = gameManager.GetComponent<DataManagement>();
-        personalWeaponList = gameManager.weaponTypes;
-        itemRarities = new Dictionary<GameObject, int>
-        {
-            {personalWeaponList[0], 1},
-            {personalWeaponList[1], 2},
-            {personalWeaponList[2], 4},
-            {personalWeaponList[3], 4},
-            {personalWeaponList[4], 10},
-            {personalWeaponList[5], 6},
-            {personalWeaponList[6], 8}
-        };
         itemPopup = FindObjectsByType<ItemPopup>(FindObjectsSortMode.None)[0];
 
         spawnTime = Time.time;
@@ -119,25 +107,35 @@ public class EnemyBehavior : MonoBehaviour
         {
             if (hasLoot == true)
             {
-                GameManagement.itemsLooted += 1;
+                gameManager.itemsLooted += 1;
                 //adds looted items to the player's inventory
-                while (hasLootedItem != true)
+                WaveData wave = gameManager.currentWave;
+                GameObject[] weaponPool = wave.weaponsInWave;
+                float selectedFreq = Random.Range(0.001f, 1);
+                float[] frequencies = wave.weaponFrequency;
+                int weaponIndex = 0;
+
+                float totalFreq = 0;
+                foreach (float freq in frequencies)
                 {
-                    // picks a random number and random item. If the chosen
-                    // item's rarity is less than or equal to the random
-                    // number chosen then it gets added, if not, another loop.
-                    rarityChance = Random.Range(0, 14);
-                    itemLooted = gameManager.weaponTypes[Random.Range(0, gameManager.weaponTypes.Count)];
-                    if (itemRarities[itemLooted] <= rarityChance)
+                    totalFreq += freq;
+                    // if totalFreq is withen the selected range
+                    if (selectedFreq <= totalFreq)
                     {
-                        gameManager.saveData.ownedItems.Add(itemLooted);
-                        hasLootedItem = true;
-                        itemPopup.displayPopup("You got a " + itemLooted.GetComponent<GunController>().weaponName + "!");
-                        gameManager.lastWeaponObtained = itemLooted;
+                        break;
+                    }
+                    else
+                    {
+                        weaponIndex++;
                     }
                 }
+
+                GameObject itemLooted = weaponPool[weaponIndex];
+                gameManager.saveData.ownedItems.Add(itemLooted);
+                itemPopup.displayPopup("You got a " + itemLooted.GetComponent<GunController>().weaponName + "!");
+                gameManager.lastWeaponObtained = itemLooted;
             }
-            GameManagement.enemiesBeaten += 1;
+            gameManager.enemiesBeaten += 1;
             gameManager.enemyCount -= 1;
             Destroy(gameObject);
         }
@@ -157,7 +155,12 @@ public class EnemyBehavior : MonoBehaviour
             rb.rotation = angle;
             direction.Normalize();
             movement = direction;
+            if (isMoving == true)
+            {
+                rb.MovePosition(transform.position + (direction * speed * Time.deltaTime));
+            }
         }
+        
 
         if (dealDamage && Time.time % attackAnimationCycleLength <= 0.1)
         {
@@ -195,7 +198,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void BehaviorLogic()
     {
-        if (type == EnemyType.Evergreen) {
+        if (type == EnemyType.Ranged) {
             if (transform.position.x < leftBoundary)
             {
                 isMoving = false;
@@ -205,16 +208,6 @@ public class EnemyBehavior : MonoBehaviour
 
     void MoveCharacter(Vector2 direction)
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
-        if (isMoving == true)
-        {
-            rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
-        }
-        
-        if (transform.position.x < leftBoundary)
-        {
-            Destroy(gameObject);
-        }
     }
         
 
@@ -252,6 +245,19 @@ public class EnemyBehavior : MonoBehaviour
                 isMoving = false;
                 animator.Play(attackAnimationName);
                 dealDamage = true;
+            }
+            else
+            {
+                if (type == EnemyType.Stump)
+                {
+                    gameManager.playerHealth -= damage;
+                    Destroy(gameObject);
+                }
+                else if (playerController.invincibilityTimer <= Time.time && dealsContactDamage)
+                {
+                    gameManager.playerHealth -= damage;
+                    playerController.invincibilityTimer = Time.time + 0.3f;
+                }
             }
             
         }

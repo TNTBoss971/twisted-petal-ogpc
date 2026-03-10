@@ -5,7 +5,7 @@ using static EnemyBehavior;
 public class PlayerController : MonoBehaviour
 {
     public GameObject projectile;
-    private float invincibilityTimer = 0f;
+    public float invincibilityTimer = 0f;
     
     public float vanSpeed;
     public float upBoundary;
@@ -31,19 +31,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void EnemyEnter(GameObject enemy)
-    {
-        if (enemy.GetComponent<EnemyBehavior>().type == EnemyType.Stump)
-        {
-            gameManager.playerHealth -= enemy.GetComponent<EnemyBehavior>().damage;
-            Destroy(enemy);
-        }
-        else if (invincibilityTimer <= Time.time && enemy.GetComponent<EnemyBehavior>().dealsContactDamage)
-        {
-            gameManager.playerHealth -= enemy.GetComponent<EnemyBehavior>().damage;
-            invincibilityTimer = Time.time + 0.3f;
-        }
-    }
     
     public void DamageSelf(float damage)
     {
@@ -51,39 +38,6 @@ public class PlayerController : MonoBehaviour
         {
             gameManager.playerHealth -= damage;
             invincibilityTimer = Time.time + 0.3f;
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            EnemyEnter(other.gameObject);
-            
-        } /* else if (other.CompareTag("EnemyProjectile"))
-        {
-            
-            if (invincibilityTimer <= Time.time)
-            {
-                gameManager.playerHealth -= other.GetComponent<EnemyProjectileBehavior>().damage;
-                invincibilityTimer = Time.time + 0.3f;
-            }
-        } */
-    }
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            EnemyEnter(other.gameObject);
-        }
-        else if (other.gameObject.CompareTag("EnemyProjectile"))
-        {
-            
-            if (invincibilityTimer <= Time.time)
-            {
-                gameManager.playerHealth -= other.gameObject.GetComponent<EnemyProjectileBehavior>().damage;
-                invincibilityTimer = Time.time + 0.3f;
-            }
         }
     }
 }

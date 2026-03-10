@@ -12,6 +12,7 @@ public class BossManager : MonoBehaviour
 
     [Header("Objects")]
     public GameObject bossObject;
+    public GameObject stunnedParticles;
     public Canvas canvasObject;
     public GameObject[] weakpoints;
     public GameObject[] bossParts;
@@ -78,6 +79,8 @@ public class BossManager : MonoBehaviour
         {
             weakpoints = GameObject.FindGameObjectsWithTag("Weakpoint");
             bossParts = GameObject.FindGameObjectsWithTag("Boss");
+            stunnedParticles = GameObject.Find("Stunned");
+            stunnedParticles.SetActive(false);
             mainBody = bossParts[0];
             frontArm = bossParts[1];
             backArm = bossParts[2];
@@ -233,7 +236,9 @@ public class BossManager : MonoBehaviour
         // slam
         if (bossState == BossStates.Slam)
         {
-            if (frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 2)
+            if (mainBody.GetComponent<BossPartDamageTracker>().damageThisAttack + 
+            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack + 
+            backArm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
             {
                 FinishAttack(true);
             }
@@ -245,7 +250,7 @@ public class BossManager : MonoBehaviour
             else if (attackStartTime + 0.7f / bossSpeed <= Time.time && !damageApplied)
             {
                 // deal the damage of the attack
-                gameManager.playerHealth -= 10;
+                gameManager.playerHealth -= 5;
                 damageApplied = true;
             }
         }
@@ -263,11 +268,6 @@ public class BossManager : MonoBehaviour
         // spawn minions
         if (bossState == BossStates.SpawnMinions)
         {
-            if (backArm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
-            {
-                // cancel the attack
-                FinishAttack(true);
-            }
             if (attackStartTime + 2.40f / bossSpeed <= Time.time)
             {
                 FinishAttack(false);
@@ -286,13 +286,6 @@ public class BossManager : MonoBehaviour
         // fire projectile
         if (bossState == BossStates.FireProjectile)
         {
-            if (mainBody.GetComponent<BossPartDamageTracker>().damageThisAttack + 
-            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack + 
-            backArm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
-            {
-                // cancel the attack
-                FinishAttack(true);
-            }
             if (attackStartTime + 2.08f / bossSpeed <= Time.time)
             {
                 FinishAttack(false);
@@ -319,10 +312,13 @@ public class BossManager : MonoBehaviour
 
     public void Stunned()
     {
+        stunnedParticles.SetActive(true);
+
         // bossObject.transform.position = new Vector2 (startingX + ((Time.time - attackStartTime) % 0.3f - 0.15f) / 10, bossObject.transform.position.y);
         bossObject.transform.position = new Vector2(startingX + (float)Mathf.Sin(Time.time * 50) / 40, bossObject.transform.position.y);
         if (attackStartTime + 2 / bossSpeed <= Time.time)
         {
+            stunnedParticles.SetActive(false);
             bossObject.transform.position = new Vector2(startingX, bossObject.transform.position.y);
             bossState = BossStates.None;
             
