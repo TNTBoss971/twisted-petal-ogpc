@@ -42,7 +42,7 @@ public class CutsceneDecisionButton : MonoBehaviour
         try
         {
             // checks if there's a decision
-            if (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount] != 0)
+            if (cutscenes.currentCutscene.decisions[dialogue.cutsceneDialogueCount] != 0)
             {
                 if (decisionAllowed == true)
                 {
@@ -51,7 +51,7 @@ public class CutsceneDecisionButton : MonoBehaviour
                     // checks the cutscenemanager list to see which decision we're doing
                     // then makes each button do something different depending on which
                     // decision we got
-                    switch (cutscenes.cutsceneDecisions[dialogue.cutsceneDialogueCount])
+                    switch (cutscenes.currentCutscene.decisions[dialogue.cutsceneDialogueCount])
                     {
                         case 1:
                             scenarioID = 1;
@@ -108,6 +108,10 @@ public class CutsceneDecisionButton : MonoBehaviour
         {
             
         }
+        catch (NullReferenceException)
+        {
+            
+        }
         if (scenarioID == 1)
         {
             decisionAllowed = false;
@@ -134,7 +138,6 @@ public class CutsceneDecisionButton : MonoBehaviour
     void GiveSupplies(int amount)
     {
         custceneManager.GetComponent<DataManagement>().supplies += amount;
-        Debug.Log(amount);
         suppliesGiven = true;
     }
 
