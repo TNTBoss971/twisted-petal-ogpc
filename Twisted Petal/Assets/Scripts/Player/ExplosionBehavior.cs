@@ -1,4 +1,5 @@
 using System;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using static ProjectileBehavior;
 
@@ -11,6 +12,7 @@ public class ExplosionBehavior : MonoBehaviour
     public float maxSize;
     public float growthTime; // not utilized yet, the animations will have a growing explosion, so it will look wierd if the collision box also doen't grow
     public float damage;
+    public float gravityScale;
 
     public enum AreaType {
         Explosive,
@@ -56,6 +58,11 @@ public class ExplosionBehavior : MonoBehaviour
         {
             this.GetComponent<Collider2D>().enabled = false;
         }
+
+        if (transform.position.y > 1.115f)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y - gravityScale * Time.deltaTime);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -87,7 +94,6 @@ public class ExplosionBehavior : MonoBehaviour
                 other.GetComponent<BossPartDamageTracker>().manager.poison += damage;
             }
         }
-
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

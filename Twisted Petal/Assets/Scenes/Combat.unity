@@ -484,8 +484,8 @@ Transform:
   m_GameObject: {fileID: 131345904}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.808, y: -1.4203, z: 0.12022286}
-  m_LocalScale: {x: 3.096004, y: 11.628119, z: 1}
+  m_LocalPosition: {x: -11.808, y: 4.7687, z: 0.12022286}
+  m_LocalScale: {x: 3.096004, y: 21.445742, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1557907284}
@@ -1129,6 +1129,8 @@ MonoBehaviour:
     levelSummaries: []
     soundsMuted: 0
     weaponsFound: []
+    currentHealth: 100
+    supplies: 3
 --- !u!4 &279707654
 Transform:
   m_ObjectHideFlags: 0
@@ -1415,6 +1417,8 @@ MonoBehaviour:
   levelSummaries: []
   soundsMuted: 0
   weaponsFound: []
+  currentHealth: 0
+  supplies: 0
 --- !u!1 &421250703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,6 +2216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
+  invincibilityTimer: 0
   vanSpeed: 1
   upBoundary: -0.12
   downBoundary: -3.6
@@ -3329,8 +3334,8 @@ Transform:
   m_GameObject: {fileID: 1417318683}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.4, y: -1.5068, z: 0.12022286}
-  m_LocalScale: {x: 2.4154594, y: 11.628119, z: 1}
+  m_LocalPosition: {x: 19.4, y: 5.1803, z: 0.12022286}
+  m_LocalScale: {x: 2.4154594, y: 22.349247, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1557907284}
@@ -4057,7 +4062,7 @@ Transform:
   m_GameObject: {fileID: 1819033291}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00000026481985, y: 0.0000002648131, z: 0.70710576, w: -0.70710784}
-  m_LocalPosition: {x: 0.19, y: 3.2776, z: 0.12}
+  m_LocalPosition: {x: 0.19, y: 13.2, z: 0.12}
   m_LocalScale: {x: 2.172401, y: 27.241314, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

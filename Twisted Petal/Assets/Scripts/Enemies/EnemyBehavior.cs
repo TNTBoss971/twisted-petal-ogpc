@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using System.Collections.Generic;
-
+using Unity.Profiling;
 public class EnemyBehavior : MonoBehaviour
 {
     public enum DamageType
@@ -42,11 +42,14 @@ public class EnemyBehavior : MonoBehaviour
     public float damage = 1f;
     public float poisonPerTick = 1f; // how much damage the enemy takes from poison each tick
     public bool dealsContactDamage;
+    public GameObject ammunition;
+    public float firingDelay;
 
     [Header("Status")]
     public float poison = 0;
     public bool hasNotTickedDamage = true;
     public float invincibilityTimer = 0f;
+    private float firingTimer;
     public bool dealDamage = false;
 
     [Header("Display")]
@@ -76,7 +79,7 @@ public class EnemyBehavior : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
         target = player.transform;
         animator = GetComponent<Animator>();
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
 
         if (Random.Range(0, lootFrequency) == (lootFrequency - 1) && !isMinion)
         {
@@ -90,6 +93,22 @@ public class EnemyBehavior : MonoBehaviour
         itemPopup = FindObjectsByType<ItemPopup>(FindObjectsSortMode.None)[0];
 
         spawnTime = Time.time;
+
+        // flung
+        if (type == EnemyType.Flung)
+        {
+            //rb.linearVelocity = new Vector2 (speed * -5, speed * 3f);
+            float launchForce = 15f * speed;
+            float arcMultiplier = 0.5f;
+
+            // Calculate the launch direction: Forward direction + an upward arc component
+            Vector3 launchDirection = Vector3.left * speed + Vector3.up * arcMultiplier;
+
+            // Apply force
+            //rb.AddForce(launchDirection.normalized * launchForce, ForceMode2D.Impulse);
+            rb.linearVelocity = launchDirection.normalized * launchForce;
+            rb.angularVelocity = 90;
+        }
     }
 
     // Update is called once per frame
@@ -103,6 +122,46 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
 
+        DeathLogic();
+        
+
+        if (dealDamage && Time.time % attackAnimationCycleLength <= 0.1)
+        {
+            player.GetComponent<PlayerController>().DamageSelf(damage);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!hasIntro)
+        {
+            MoveLogic();
+            BehaviorLogic();
+
+            // in my testing, Time.time % 10f will never be exactly zero
+            if (Time.time % 10f <= 10f && hasNotTickedDamage)
+            {
+                hasNotTickedDamage = false;
+                DamageTick();
+            }
+
+            if (Time.time % 0.1f >= 0.09f)
+            {
+                hasNotTickedDamage = true;
+            }
+        }
+        else
+        {
+            if (spawnTime + introLength < Time.time)
+            {
+                hasIntro = false;
+            }
+        }
+    }
+
+    void DeathLogic()
+    {
+        
         if (health < 1)
         {
             if (hasLoot == true)
@@ -139,61 +198,6 @@ public class EnemyBehavior : MonoBehaviour
             gameManager.enemyCount -= 1;
             Destroy(gameObject);
         }
-
-        if (type == EnemyType.Stump)
-        {
-            Vector3 direction = new Vector2(-1, 0);
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
-            direction.Normalize();
-            movement = direction;
-        }
-        else
-        {
-            Vector3 direction = target.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
-            direction.Normalize();
-            movement = direction;
-            if (isMoving == true)
-            {
-                rb.MovePosition(transform.position + (direction * speed * Time.deltaTime));
-            }
-        }
-        
-
-        if (dealDamage && Time.time % attackAnimationCycleLength <= 0.1)
-        {
-            player.GetComponent<PlayerController>().DamageSelf(damage);
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (!hasIntro)
-        {
-            MoveCharacter(movement);
-            BehaviorLogic();
-
-            // in my testing, Time.time % 10f will never be exactly zero
-            if (Time.time % 10f <= 10f && hasNotTickedDamage)
-            {
-                hasNotTickedDamage = false;
-                DamageTick();
-            }
-
-            if (Time.time % 0.1f >= 0.09f)
-            {
-                hasNotTickedDamage = true;
-            }
-        }
-        else
-        {
-            if (spawnTime + introLength < Time.time)
-            {
-                hasIntro = false;
-            }
-        }
     }
 
     void BehaviorLogic()
@@ -202,12 +206,35 @@ public class EnemyBehavior : MonoBehaviour
             if (transform.position.x < leftBoundary)
             {
                 isMoving = false;
+                if (firingTimer <= Time.time)
+                {
+                    firingTimer = Time.time + firingDelay;
+                    FireProjectile();
+                }
             }
         }
     }
 
-    void MoveCharacter(Vector2 direction)
+    void MoveLogic()
     {
+        Vector3 direction = target.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        if (type == EnemyType.Stump)
+        {
+            rb.rotation = angle;
+            rb.MovePosition(transform.position + (Vector3.left * speed * Time.deltaTime));
+        }
+        else if (type == EnemyType.Flung)
+        {
+            
+        }
+        else if (isMoving == true)
+        {
+            rb.rotation = angle;
+            rb.MovePosition(transform.position + (direction * speed * Time.deltaTime));
+        }
     }
         
 
@@ -235,45 +262,11 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            if (!dealsContactDamage)
-            {
-                isMoving = false;
-                animator.Play(attackAnimationName);
-                dealDamage = true;
-            }
-            else
-            {
-                if (type == EnemyType.Stump)
-                {
-                    gameManager.playerHealth -= damage;
-                    Destroy(gameObject);
-                }
-                else if (playerController.invincibilityTimer <= Time.time && dealsContactDamage)
-                {
-                    gameManager.playerHealth -= damage;
-                    playerController.invincibilityTimer = Time.time + 0.3f;
-                }
-            }
-            
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // if the enemy doesnt deal contact damage and is far enough away
-            if (!dealsContactDamage && Mathf.Abs(gameObject.transform.position.x - collision.gameObject.transform.position.x) > 2.5f)
-            {
-                isMoving = true;
-                animator.Play(walkAnimationName);
-                dealDamage = false;
-            }
-        }
+    void FireProjectile()
+    {   
+        GameObject clone = Instantiate(ammunition);
+        clone.transform.position = transform.position;
+        clone.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 10;
     }
 
 
@@ -303,4 +296,53 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
     }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (!dealsContactDamage)
+            {
+                isMoving = false;
+                animator.Play(attackAnimationName);
+                dealDamage = true;
+            }
+            else
+            {
+                if (type == EnemyType.Stump || type == EnemyType.Flung)
+                {
+                    gameManager.playerHealth -= damage;            
+                    gameManager.enemyCount -= 1;
+                    Destroy(gameObject);
+                }
+                else if (playerController.invincibilityTimer <= Time.time && dealsContactDamage)
+                {
+                    gameManager.playerHealth -= damage;
+                    playerController.invincibilityTimer = Time.time + 0.3f;
+                }
+            }
+            
+        }
+        if (collision.gameObject.CompareTag("Boundary"))
+        {
+            if (type == EnemyType.Flung) {            
+                gameManager.enemyCount -= 1;
+                Destroy(gameObject);
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // if the enemy doesnt deal contact damage and is far enough away
+            if (!dealsContactDamage && Mathf.Abs(gameObject.transform.position.x - collision.gameObject.transform.position.x) > 2.5f)
+            {
+                isMoving = true;
+                animator.Play(walkAnimationName);
+                dealDamage = false;
+            }
+        }
+    }
+
 }

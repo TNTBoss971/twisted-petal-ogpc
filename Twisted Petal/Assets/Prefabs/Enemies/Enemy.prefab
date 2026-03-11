@@ -109,7 +109,7 @@ MonoBehaviour:
   type: 0
   target: {fileID: 0}
   lootFrequency: 100
-  speed: 6
+  speed: 3
   maxHealth: 2
   health: 2
   damage: 1

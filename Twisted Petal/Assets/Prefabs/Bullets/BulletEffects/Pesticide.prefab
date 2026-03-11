@@ -139,6 +139,7 @@ MonoBehaviour:
   maxSize: 0
   growthTime: 0
   damage: 5
+  gravityScale: 10
   type: 1
 --- !u!58 &4314885797439468819
 CircleCollider2D:
