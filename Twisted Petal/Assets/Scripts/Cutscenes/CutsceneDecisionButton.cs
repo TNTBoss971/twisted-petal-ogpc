@@ -20,6 +20,7 @@ public class CutsceneDecisionButton : MonoBehaviour
     private int altLinesStart; // where do we start replacing
     private int altLinesEnd; // where do we stop replacing
     private bool suppliesGiven; // have supplies been given?
+    private CutsceneManager custceneManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +33,7 @@ public class CutsceneDecisionButton : MonoBehaviour
         canvasGroup.interactable = true;
         decisionAllowed = true;
         suppliesGiven = false;
+        custceneManager = FindAnyObjectByType<CutsceneManager>();
     }
 
     // Update is called once per frame
@@ -131,7 +133,7 @@ public class CutsceneDecisionButton : MonoBehaviour
 
     void GiveSupplies(int amount)
     {
-        saveData.supplies += amount;
+        custceneManager.GetComponent<DataManagement>().supplies += amount;
         Debug.Log(amount);
         suppliesGiven = true;
     }
