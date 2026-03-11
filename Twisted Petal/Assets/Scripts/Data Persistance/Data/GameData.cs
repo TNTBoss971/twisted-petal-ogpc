@@ -20,6 +20,7 @@ public class GameData
     public List<GameObject> weaponsFound;
     public float currentHealth;
     public int supplies;
+    public List<CutsceneDecisionButton.decisionsMade> choicesMade;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -39,5 +40,6 @@ public class GameData
         weaponsFound = new List<GameObject>();
         currentHealth = 100;
         supplies = 3;
+        choicesMade = new List<CutsceneDecisionButton.decisionsMade>();
     }
 }

@@ -5,7 +5,16 @@ public class CutsceneData : MonoBehaviour
 {
     public List<string> dialogueLines; // every dialogue line
     public List<Sprite> dialoguePortraits; // every dialogue portrait
-    public List<int> decisions; // every cutscene decision
+    public List<decisionType> decisions; // every cutscene decision
+    public enum decisionType
+    {
+        None, //default, no decision
+        SupplyCache, //just gives 3 supplies
+        SupplyConflict, //should you take some or all?
+        undefined //TBD
+    }
+
+    public List<string> altLinesOne; // alternate lines of dialogue
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -16,11 +16,13 @@ public class CutsceneDecisionButton : MonoBehaviour
     public List<GameObject> itemsIndex; // every item in the game
     public bool decisionAllowed; // are we worrying about decisions right now?
     public Dialogue dialogue; // the dialogue box
-    public List<string> alternateLines; // lines to replace current ones
-    private int altLinesStart; // where do we start replacing
-    private int altLinesEnd; // where do we stop replacing
     private bool suppliesGiven; // have supplies been given?
     private CutsceneManager custceneManager;
+    public enum decisionsMade
+    {
+        didntTakeMoreSupplies, // took only what you needed
+        tookMoreSupplies // took everything
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,7 +55,7 @@ public class CutsceneDecisionButton : MonoBehaviour
                     // decision we got
                     switch (cutscenes.currentCutscene.decisions[dialogue.cutsceneDialogueCount])
                     {
-                        case 1:
+                        case CutsceneData.decisionType.SupplyCache:
                             scenarioID = 1;
                             if (buttonID == 1)
                             {
@@ -64,21 +66,18 @@ public class CutsceneDecisionButton : MonoBehaviour
                                 
                             }
                             break;
-                        case 2:
+                        case CutsceneData.decisionType.SupplyConflict:
                             scenarioID = 2;
-                            altLinesStart = 0;
-                            altLinesEnd = 1;
                             if (buttonID == 1)
                             {
-                                buttonText = "Talk about coins";
-
+                                buttonText = "Take only what you need";
                             }
                             if (buttonID == 2)
                             {
-                                buttonText = "Talk about TV";
+                                buttonText = "Take everything";
                             }
                             break;
-                        case 3:
+                        case CutsceneData.decisionType.undefined:
                             scenarioID = 3;
                             Debug.Log("test");
                             break;
@@ -146,9 +145,9 @@ public class CutsceneDecisionButton : MonoBehaviour
         // find out which scenario we're doing
         // and also which button we clicked
         // and acts accordingly
-        switch (scenarioID)
+        switch (cutscenes.currentCutscene.decisions[dialogue.cutsceneDialogueCount])
         {
-            case 1:
+            case CutsceneData.decisionType.SupplyCache:
                 if (buttonID == 1)
                 {
                     
@@ -158,30 +157,25 @@ public class CutsceneDecisionButton : MonoBehaviour
 
                 }
                 break;
-            case 2:
+            case CutsceneData.decisionType.SupplyConflict:
                 if (buttonID == 1)
                 {
-                    dialogue.dialogueLines.Clear();
-                    for (int i = 0; i < Dialogue.currentLine + 1; i++)
-                    {
-                        dialogue.dialogueLines.Add("");
-                    }
-                    for (int i = altLinesStart; i < altLinesEnd; i++)
-                    {
-                        dialogue.dialogueLines.Add(alternateLines[i]);
-                    }
+                    GiveSupplies(2);
+                    saveData.choicesMade.Add(decisionsMade.didntTakeMoreSupplies);
                 }
                 if (buttonID == 2)
                 {
                     dialogue.dialogueLines.Clear();
+                    GiveSupplies(8);
                     for (int i = 0; i < Dialogue.currentLine + 1; i++)
                     {
                         dialogue.dialogueLines.Add("");
                     }
-                    for (int i = altLinesStart; i < altLinesEnd; i++)
+                    for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
                     {
-                        dialogue.dialogueLines.Add(alternateLines[i]);
+                        dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
                     }
+                    saveData.choicesMade.Add(decisionsMade.tookMoreSupplies);
                 }
                 break;
         }

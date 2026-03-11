@@ -17,6 +17,7 @@ public class DataManagement : MonoBehaviour, IDataPersistance
     public List<GameObject> weaponsFound;
     public float currentHealth;
     public int supplies;
+    public List<CutsceneDecisionButton.decisionsMade> choicesMade;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,6 +46,7 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         weaponsFound = data.weaponsFound;
         currentHealth = data.currentHealth;
         supplies = data.supplies;
+        choicesMade = data.choicesMade;
     }
 
     public void SaveData(ref GameData data)
@@ -62,5 +64,6 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         data.weaponsFound = weaponsFound;
         data.currentHealth = currentHealth;
         data.supplies = supplies;
+        data.choicesMade = choicesMade;
     }
 }
