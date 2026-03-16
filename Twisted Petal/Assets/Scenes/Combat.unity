@@ -1131,6 +1131,7 @@ MonoBehaviour:
     weaponsFound: []
     currentHealth: 100
     supplies: 3
+    choicesMade: 
 --- !u!4 &279707654
 Transform:
   m_ObjectHideFlags: 0
@@ -1419,6 +1420,7 @@ MonoBehaviour:
   weaponsFound: []
   currentHealth: 0
   supplies: 0
+  choicesMade: 
 --- !u!1 &421250703
 GameObject:
   m_ObjectHideFlags: 0
