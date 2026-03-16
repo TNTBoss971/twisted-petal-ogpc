@@ -11,7 +11,7 @@ public class CutsceneData : MonoBehaviour
         None, //default, no decision
         SupplyCache, //just gives 3 supplies
         SupplyConflict, //should you take some or all?
-        undefined //TBD
+        ThinkBack // thinking back to the supply conflict
     }
 
     public List<string> altLinesOne; // alternate lines of dialogue

@@ -16,7 +16,7 @@ public class CutsceneDecisionButton : MonoBehaviour
     public List<GameObject> itemsIndex; // every item in the game
     public bool decisionAllowed; // are we worrying about decisions right now?
     public Dialogue dialogue; // the dialogue box
-    private bool suppliesGiven; // have supplies been given?
+    private bool actionPerformed; // has the action already been performed?
     private CutsceneManager custceneManager;
     public enum decisionsMade
     {
@@ -34,7 +34,7 @@ public class CutsceneDecisionButton : MonoBehaviour
         canvasGroup.alpha = 1f;
         canvasGroup.interactable = true;
         decisionAllowed = true;
-        suppliesGiven = false;
+        actionPerformed = false;
         custceneManager = FindAnyObjectByType<CutsceneManager>();
     }
 
@@ -77,9 +77,16 @@ public class CutsceneDecisionButton : MonoBehaviour
                                 buttonText = "Take everything";
                             }
                             break;
-                        case CutsceneData.decisionType.undefined:
+                        case CutsceneData.decisionType.ThinkBack:
                             scenarioID = 3;
-                            Debug.Log("test");
+                            if (buttonID == 1)
+                            {
+                                
+                            }
+                            if (buttonID == 2)
+                            {
+                                
+                            }
                             break;
                     }
                     dialogue.dialogueLocked = true;
@@ -119,9 +126,35 @@ public class CutsceneDecisionButton : MonoBehaviour
             canvasGroup.interactable = false;
             if (buttonID == 1)
             {
-                if (suppliesGiven == false)
+                if (actionPerformed == false)
                 {
                     GiveSupplies(3);
+                }
+            }
+        }
+        if (scenarioID == 3)
+        {
+            decisionAllowed = false;
+            dialogue.dialogueLocked = false;
+            canvasGroup.alpha = 0f;
+            canvasGroup.interactable = false;
+            if (buttonID == 1)
+            {
+                if (saveData.choicesMade.Contains(decisionsMade.tookMoreSupplies))
+                {
+                    if (actionPerformed == false)
+                    {
+                        dialogue.dialogueLines.Clear();
+                        for (int i = 0; i < Dialogue.currentLine; i++)
+                        {
+                            dialogue.dialogueLines.Add("");
+                        }
+                        for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
+                        {
+                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
+                        }
+                        actionPerformed = true;
+                    }
                 }
             }
         }
@@ -137,7 +170,7 @@ public class CutsceneDecisionButton : MonoBehaviour
     void GiveSupplies(int amount)
     {
         custceneManager.GetComponent<DataManagement>().supplies += amount;
-        suppliesGiven = true;
+        actionPerformed = true;
     }
 
     void TaskOnClick()
