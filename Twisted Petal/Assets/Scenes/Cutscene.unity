@@ -961,6 +961,8 @@ MonoBehaviour:
   - {fileID: 1492960780936940638, guid: 4bb9fade68da9034287554426d98f5c0, type: 3}
   - {fileID: 1492960780936940638, guid: ec25ec828e5c1d24ab4e54b091637b8c, type: 3}
   - {fileID: 1492960780936940638, guid: 1ee066da2246133478c18e6ccb73c0dc, type: 3}
+  - {fileID: 1492960780936940638, guid: b38d725f475fe20448e0bac32e5c7ccb, type: 3}
+  - {fileID: 1492960780936940638, guid: daaf4f68c2e378c43be8ac1c8f19c03c, type: 3}
   currentCutscene: {fileID: 0}
 --- !u!4 &577101592
 Transform:

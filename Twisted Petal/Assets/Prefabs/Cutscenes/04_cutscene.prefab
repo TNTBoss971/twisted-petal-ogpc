@@ -47,10 +47,13 @@ MonoBehaviour:
   dialogueLines:
   - '*Another stretch of road cleared...*'
   - '*...*'
-  - '*I can''t help but think back to that person from before.*'
-  - '*I guess it''s probably a good thing I listened to them*'
-  - '*Even if having those extra supplies would have been nice...*'
-  - '*Well, what''s done is done.*'
+  - '*That monster was really something else... I didn''t know the plants could even
+    get that big.*'
+  - '*I hope Government Camp is still alright...*'
+  - '*...*'
+  - '*Could the giant plant have had something to do with the rumors from earlier?*'
+  - '*No, it''ll... probably be fine.*'
+  - '*Hopefully...*'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
@@ -58,8 +61,7 @@ MonoBehaviour:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 00000000000000000000000003000000
-  altLinesOne:
-  - '*Maybe they had a point...?*'
-  - '*No, that''s stupid. I needed those supplies.*'
-  - '*Who are they to tell me what to do anyways? I''ll take what I want.*'
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  decisions: 00000000
+  altLinesOne: []
