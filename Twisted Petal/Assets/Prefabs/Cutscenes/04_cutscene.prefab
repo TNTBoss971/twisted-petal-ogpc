@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7918187670393272394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5504978886221584557}
+  - component: {fileID: 1492960780936940638}
+  m_Layer: 0
+  m_Name: 04_cutscene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5504978886221584557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7918187670393272394}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1055.4882, y: 582.9374, z: 3.8902688}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1492960780936940638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7918187670393272394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a975e36eca21da4383cab3d1f951b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - '*Another stretch of road cleared...*'
+  - '*...*'
+  - '*I can''t help but think back to that person from before.*'
+  - '*I guess it''s probably a good thing I listened to them*'
+  - '*Even if having those extra supplies would have been nice...*'
+  - '*Well, what''s done is done.*'
+  dialoguePortraits:
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  decisions: 00000000000000000000000003000000
+  altLinesOne:
+  - '*Maybe they had a point...?*'
+  - '*No, that''s stupid. I needed those supplies.*'
+  - '*Who are they to tell me what to do anyways? I''ll take what I want.*'

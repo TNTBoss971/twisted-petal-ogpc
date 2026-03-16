@@ -587,6 +587,7 @@ MonoBehaviour:
   weaponsFound: []
   currentHealth: 0
   supplies: 0
+  choicesMade: 
 --- !u!114 &406763047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,6 +776,7 @@ MonoBehaviour:
   weaponsFound: []
   currentHealth: 0
   supplies: 0
+  choicesMade: 
 --- !u!114 &561514261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,6 +941,7 @@ MonoBehaviour:
   weaponsFound: []
   currentHealth: 0
   supplies: 0
+  choicesMade: 
 --- !u!114 &577101591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,6 +960,7 @@ MonoBehaviour:
   - {fileID: 1492960780936940638, guid: ab3e1d81f8a2e224fb18a29c1e6f6d92, type: 3}
   - {fileID: 1492960780936940638, guid: 4bb9fade68da9034287554426d98f5c0, type: 3}
   - {fileID: 1492960780936940638, guid: ec25ec828e5c1d24ab4e54b091637b8c, type: 3}
+  - {fileID: 1492960780936940638, guid: 1ee066da2246133478c18e6ccb73c0dc, type: 3}
   currentCutscene: {fileID: 0}
 --- !u!4 &577101592
 Transform:
@@ -1019,6 +1023,7 @@ MonoBehaviour:
     weaponsFound: []
     currentHealth: 100
     supplies: 3
+    choicesMade: 
 --- !u!4 &935132566
 Transform:
   m_ObjectHideFlags: 0

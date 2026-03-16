@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBossBattle: 1
-  length: 70
+  length: 2
   enemiesInWave:
   - {fileID: 4950766893030274313, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
   weaponsInWave:
