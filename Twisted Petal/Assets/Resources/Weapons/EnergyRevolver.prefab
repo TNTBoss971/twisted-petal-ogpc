@@ -62,10 +62,11 @@ MonoBehaviour:
   animator: {fileID: 0}
   isAnimationPlaying: 0
   isAnimationSingleShot: 0
-  displayImage: {fileID: -4542106424281798416, guid: 43c5214fe40baac45a50846e5e4154b6, type: 3}
+  displayImage: {fileID: -658787891185792140, guid: dd0b32c325c3433499980bb3a921a671, type: 3}
   descriptionID: 0
   description: Fires a high power electricty pulses with a long reload
   weaponName: Energy Revolver
+  animationName: energyRevolver_Clip
   targetingIndicator: {fileID: 0}
 --- !u!82 &-2774836476393105754
 AudioSource:
@@ -230,12 +231,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7672635321611742436, guid: bfa09f48f4dabc8489908c8595c744f4, type: 3}
+  m_Sprite: {fileID: 9131415152912909618, guid: 44445fa1351f0f94f9d513da706e0e51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.21875, y: 0.3125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

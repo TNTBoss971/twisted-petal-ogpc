@@ -38,6 +38,7 @@ public class GunController : MonoBehaviour
     public int descriptionID;  // tells the inventory what description to show
     public string description;
     public string weaponName;
+    public string animationName;
     public GameObject targetingIndicator; // marks the target of projectiles
 
     private AudioSource audioSource;
@@ -92,7 +93,7 @@ public class GunController : MonoBehaviour
         {
             if (!isAnimationPlaying)
             {
-                animator.Play(weaponName + "Fire");
+                animator.Play(animationName);
             }
 
             // don't shoot if the game is paused

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 312519010742403036}
   - component: {fileID: 3044736209341908981}
   m_Layer: 0
-  m_Name: TankCannon
+  m_Name: RouletteRevolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,12 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044e6e2a6445ba44ab5a7331ccde94ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firingDelay: 1
-  reloadTime: 3
-  magSize: 1
+  firingDelay: 0.1
+  reloadTime: 1.5
+  magSize: 10
   shotsRemaining: 1
   burstSize: 0
-  ammoObject: {fileID: 4898352103702244452, guid: 5980a175d1654fc42acf30561b702900, type: 3}
+  ammoObject: {fileID: 4898352103702244452, guid: d8b1c728f7552bb47a5ede21d90c98fd, type: 3}
   speedRot: 0.5
   persistentProjectile: {fileID: 0}
   targetAngle: 0
@@ -62,11 +62,11 @@ MonoBehaviour:
   animator: {fileID: 0}
   isAnimationPlaying: 0
   isAnimationSingleShot: 0
-  displayImage: {fileID: 5270983267409654312, guid: 767f38f97632794438f8203cb5c293e9, type: 3}
+  displayImage: {fileID: -2769536697078058589, guid: 945b06bdd674c884688be651aee5045f, type: 3}
   descriptionID: 0
   description: Fires a cannon shell
-  weaponName: Tank Cannon
-  animationName: tankCannon_Clip
+  weaponName: Roulette Revolver
+  animationName: rouletteRevolver_Clip
   targetingIndicator: {fileID: 0}
 --- !u!82 &-2774836476393105754
 AudioSource:
@@ -231,7 +231,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5023678018344381575, guid: 7f131caf75c587647bdb53d51bbca187, type: 3}
+  m_Sprite: {fileID: -7580701578969237254, guid: 4ea0f75923ccf2b45a5f9a06ca5dcc8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

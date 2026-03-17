@@ -62,10 +62,11 @@ MonoBehaviour:
   animator: {fileID: 0}
   isAnimationPlaying: 0
   isAnimationSingleShot: 0
-  displayImage: {fileID: -8022194467504591970, guid: 3b43e2e4e60e77d4baaf11ae964d4e02, type: 3}
+  displayImage: {fileID: -6377835621950481014, guid: fe97fed3d48ca1e4f894c3053e7bea8f, type: 3}
   descriptionID: 6
   description: Spews out pesticide to burn enemies
   weaponName: Pesticide Sprinkler
+  animationName: pesticideSprinkler_Clip
   targetingIndicator: {fileID: 3578250175648416519, guid: 42a7c9f2b50b32d41a49197623ac3727, type: 3}
 --- !u!82 &-4622074114011619399
 AudioSource:
@@ -230,12 +231,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6006278191034331509, guid: 51f57e67607b9d344810b2df3a30aca7, type: 3}
+  m_Sprite: {fileID: 338597591135171776, guid: 5a55aa29365d2d84fa227cf76c8131d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.15625, y: 0.46875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
