@@ -357,6 +357,10 @@ MonoBehaviour:
     selectedButtonIDs: 
     levelSummaries: []
     soundsMuted: 0
+    weaponsFound: []
+    currentHealth: 100
+    supplies: 3
+    choicesMade: 
 --- !u!4 &513334423
 Transform:
   m_ObjectHideFlags: 0
@@ -730,6 +734,10 @@ MonoBehaviour:
   selectedButtonIDs: 
   levelSummaries: []
   soundsMuted: 0
+  weaponsFound: []
+  currentHealth: 0
+  supplies: 0
+  choicesMade: 
 --- !u!1 &954091736
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +956,7 @@ Transform:
   m_GameObject: {fileID: 958554077}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.46, y: 2.26, z: 0}
+  m_LocalPosition: {x: 1.59, y: 2, z: 0}
   m_LocalScale: {x: 1.0753956, y: 0.9963415, z: 0.3786}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -972,14 +980,14 @@ MonoBehaviour:
   pos2Y: -0.19
   pos3X: -4
   pos3Y: -1.42
-  pos4X: -0.52
-  pos4Y: -2.29
-  pos5X: 0.71
-  pos5Y: -0.41
-  pos6X: 1.48
-  pos6Y: 2.26
-  pos7X: 4.64
-  pos7Y: 1.56
+  pos4X: -1.95
+  pos4Y: -1.91
+  pos5X: -1.22
+  pos5Y: -2.3
+  pos6X: 0.74
+  pos6Y: -0.92
+  pos7X: 1.59
+  pos7Y: 2
 --- !u!1 &968915738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1554,10 @@ MonoBehaviour:
   selectedButtonIDs: 
   levelSummaries: []
   soundsMuted: 0
+  weaponsFound: []
+  currentHealth: 0
+  supplies: 0
+  choicesMade: 
 --- !u!114 &1199547678
 MonoBehaviour:
   m_ObjectHideFlags: 0

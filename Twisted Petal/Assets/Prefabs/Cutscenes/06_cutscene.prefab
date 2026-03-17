@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5504978886221584557}
   - component: {fileID: 1492960780936940638}
   m_Layer: 0
-  m_Name: 01_cutscene
+  m_Name: 06_cutscene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,17 +45,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*I finally made it out of that place...*'
-  - '*I guess people have turned the gas stations into little safe-zones. That''s
-    good.*'
-  - '*Mount hood is still a ways away.*'
-  - '*Oh, it looks like someone put out supplies for people to take...*'
-  - '"Don''t mind if I do!"'
-  - '[3 supplies gained]'
+  - '*Well, I''m back at this station again.*'
+  - '*Looks like I''m the only one here today. No supplies either...*'
+  - '*...*'
+  - '*I can''t help but think about that moment from earlier.*'
+  - '*It''s probably a good thing I only took what I needed*'
+  - '*It''s probably because of selfish people that there aren''t any left at this
+    station...*'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 000000000000000000000000000000000000000001000000
-  altLinesOne: []
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  decisions: 0000000000000000000000000000000003000000
+  altLinesOne:
+  - '*I''m glad I took all the supplies there, considering there aren''t any over
+    here.*'
+  - '*After all, I bet everyone else is taking everything not nailed down anyways.
+    Might as well join in.*'

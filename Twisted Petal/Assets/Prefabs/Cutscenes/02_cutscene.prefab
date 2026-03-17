@@ -45,11 +45,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '"Oh, looks like someone left a supply cache for people."'
-  - '"Don''t mind if I do..."'
-  - '[3 supplies gained]'
+  - '*Hm, there are a few more people here at this one.*'
+  - '"Hey there!"'
+  - '"Oh, um, hi."'
+  - '"Are you headed for Government Camp?"'
+  - '"Yeah, I heard it was safe there"'
+  - '"Well, you''d better be careful!"'
+  - '"Why''s that?"'
+  - '"I heard something bad happened over there a little while ago."'
+  - '"Really? Can you tell me any more?"'
+  - '"No, sorry. I haven''t actually been over there myself. I''ve just heard some
+    things from some people."'
+  - '"I see..."'
+  - '*I''m hoping there isn''t any truth to these rumors...*'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -970146014054310643, guid: ea009a957a9d8314c854d871a56e13a7, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -970146014054310643, guid: ea009a957a9d8314c854d871a56e13a7, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -970146014054310643, guid: ea009a957a9d8314c854d871a56e13a7, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -970146014054310643, guid: ea009a957a9d8314c854d871a56e13a7, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -970146014054310643, guid: ea009a957a9d8314c854d871a56e13a7, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 000000000000000001000000
+  decisions: 00000000
+  altLinesOne: []
