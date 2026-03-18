@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +20,13 @@ public class DialogueSprite : MonoBehaviour
     void Update()
     {
         currentSprite = Dialogue.currentLine;
-        portraitBox.sprite = dialogueSprites[currentSprite];
+        try
+        {
+            portraitBox.sprite = dialogueSprites[currentSprite];
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            
+        }
     }
 }

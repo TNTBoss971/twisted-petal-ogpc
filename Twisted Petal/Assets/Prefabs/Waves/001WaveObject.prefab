@@ -45,16 +45,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBossBattle: 0
-  length: 2
+  length: 30
   enemiesInWave:
   - {fileID: 1859193798442875194, guid: da10f828601be214fb62227136b37c6f, type: 3}
   - {fileID: 1859193798442875194, guid: e5739132a0ae81648a31ed042d66698c, type: 3}
   - {fileID: 1859193798442875194, guid: 0fd52fa7d1269324e954f5bc7a4a211c, type: 3}
   weaponsInWave:
-  - {fileID: 815084102267353062, guid: b988f86b7bd1ef14496ab0d91ab3838b, type: 3}
+  - {fileID: 6144256074545822952, guid: 3f91c8b135f01b346b1c2106099e2f4e, type: 3}
+  - {fileID: 3108472696131321336, guid: 9dca4b138e2c55d468ef210984f00749, type: 3}
+  - {fileID: 1692204540741050396, guid: d8c6e5f0efa4cb6428890499beaa69d0, type: 3}
   enemyFrequency:
   - 0.5
   - 0.25
   - 0.25
   weaponFrequency:
-  - 1
+  - 0.25
+  - 0.5
+  - 0.25
