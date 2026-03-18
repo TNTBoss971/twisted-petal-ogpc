@@ -60,10 +60,13 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
-  displayImage: {fileID: 375807072183942001, guid: a784882050e852044aefb851247d7d19, type: 3}
+  isAnimationPlaying: 0
+  isAnimationSingleShot: 0
+  displayImage: {fileID: -99696809558826987, guid: 2043ba5f7313416479386009936452b4, type: 3}
   descriptionID: 1
   description: Ever wanted to fire FASTER?
   weaponName: Minigun
+  animationName: 
   targetingIndicator: {fileID: 0}
 --- !u!82 &-536878544031197509
 AudioSource:
@@ -228,12 +231,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1101952043, guid: 4886c794934350a4d987c45188b472c5, type: 3}
+  m_Sprite: {fileID: 6375373277384741699, guid: a173b7dd9372cde4592a36cf2e0fe59b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8125, y: 0.4375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

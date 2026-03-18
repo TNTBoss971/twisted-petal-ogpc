@@ -66,6 +66,7 @@ MonoBehaviour:
   descriptionID: 5
   description: This weapons attack is rather shocking!
   weaponName: Tesla Coil
+  animationName: 
   targetingIndicator: {fileID: 3654990897623919181, guid: eff04fd1d0d6ee64f818dfa9b6ef54e3, type: 3}
 --- !u!82 &6553196030272806826
 AudioSource:
@@ -238,6 +239,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

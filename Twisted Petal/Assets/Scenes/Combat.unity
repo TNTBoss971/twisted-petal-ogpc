@@ -206,6 +206,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &30767213
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 815084102267353062, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_Name
+      value: RouletteRevolver
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.1079206
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.68898726
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4db1509e63f41645a50f9f110865508, type: 3}
 --- !u!1 &42348281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,7 +2235,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4998990965674732422, guid: 962adf962316591428c66d0ab045c8ce, type: 3}
+  m_Sprite: {fileID: 1179732833736189345, guid: 35d177dfa1e09a7458390d709b03b002, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2287,8 +2344,8 @@ BoxCollider2D:
   m_Offset: {x: 0.093189955, y: -0.027438164}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.65625, y: 2.21875}
+    pivot: {x: 0.49659866, y: 0.6571429}
+    oldSize: {x: 4.59375, y: 2.1875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4720,3 +4777,4 @@ SceneRoots:
   - {fileID: 1974617770}
   - {fileID: 1141854227}
   - {fileID: 596515478}
+  - {fileID: 30767213}
