@@ -85,7 +85,12 @@ public class GunController : MonoBehaviour
             Targeting();
         }
 
-        if (nextFirePoint <= Time.time && attackAction.IsPressed())
+
+        if (shotsRemaining <= 0 && nextFirePoint > Time.time)
+        {
+            shotsRemaining = magSize;
+        }
+        else if (nextFirePoint <= Time.time && attackAction.IsPressed())
         {
             if (!isAnimationPlaying)
             {
