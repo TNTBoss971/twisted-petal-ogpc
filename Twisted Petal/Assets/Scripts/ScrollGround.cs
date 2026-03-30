@@ -35,7 +35,7 @@ public class ScrollGround : MonoBehaviour
             road1X = startingPos;
         }
         
-        road0.transform.position = new Vector2(road0X, road0.transform.position.y);
-        road1.transform.position = new Vector2(road1X, road1.transform.position.y);
+        road0.transform.position = new Vector3(road0X, road0.transform.position.y, 10);
+        road1.transform.position = new Vector3(road1X, road1.transform.position.y, 10);
     }
 }

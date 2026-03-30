@@ -85,18 +85,14 @@ public class GunController : MonoBehaviour
             Targeting();
         }
 
-        if (shotsRemaining <= 0 && nextFirePoint > Time.time)
-        {
-            shotsRemaining = magSize;
-        }
-        else if (nextFirePoint <= Time.time && attackAction.IsPressed())
+        if (nextFirePoint <= Time.time && attackAction.IsPressed())
         {
             if (!isAnimationPlaying)
             {
                 animator.Play(animationName);
             }
 
-            // don't shoot if the game is paused
+            // don't shoot if the game is paused 
             if (gameManager.paused == false)
             {
                 if (nextFirePoint <= Time.time && attackAction.IsPressed())
@@ -240,7 +236,7 @@ public class GunController : MonoBehaviour
     {
         if (shotsRemaining <= 0)
         {
-            nextFirePoint = Time.time + reloadTime;
+            nextFirePoint = Time.time + firingDelay;
         }
     }
 

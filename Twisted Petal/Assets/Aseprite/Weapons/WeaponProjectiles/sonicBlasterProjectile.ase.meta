@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2a7f6ca66eac73f41b5c545f7616f145
+guid: c1d9357e6895f0143bd8681fcabd1749
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -122,9 +122,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: rocketLauncherProjectile
+  - name: sonicBlasterProjectile
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: -0.071428575}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -132,9 +132,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 44
-      height: 12
-    spriteID: 31af0a4f378c52640943dda3b024e1fe
+      width: 32
+      height: 28
+    spriteID: 591af87774212e245af2ac3559674fea
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -146,21 +146,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1710046381
-    name: rocketLauncherProjectile
+    guid: 2026104888
+    name: sonicBlasterProjectile
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: rocketLauncherProjectile
+    - name: sonicBlasterProjectile
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 10
-        width: 44
-        height: 12
-      spriteId: 31af0a4f378c52640943dda3b024e1fe
+        x: 0
+        y: 2
+        width: 32
+        height: 28
+      spriteId: 591af87774212e245af2ac3559674fea
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -227,4 +227,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 48, y: 32}
+  canvasSize: {x: 32, y: 32}
