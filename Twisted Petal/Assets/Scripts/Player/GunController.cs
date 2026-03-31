@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using NUnit.Framework.Constraints;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +10,16 @@ using UnityEngine.UIElements;
 public class GunController : MonoBehaviour
 {
     InputAction attackAction;
+
+    public enum FiringState
+    {
+        None,
+        Idle,
+        Firing,
+        Reloading
+    }
+
+    public FiringState state = FiringState.None;
 
     [Header("Outside Objects")]
     private GameManagement gameManager;
@@ -85,13 +97,14 @@ public class GunController : MonoBehaviour
             Targeting();
         }
 
-
         if (shotsRemaining <= 0 && nextFirePoint > Time.time)
         {
             shotsRemaining = magSize;
         }
         else if (nextFirePoint <= Time.time && attackAction.IsPressed())
         {
+            state = FiringState.Firing;
+
             if (!isAnimationPlaying)
             {
                 animator.Play(animationName);
@@ -148,6 +161,7 @@ public class GunController : MonoBehaviour
                 nextFirePoint = Time.time + firingDelay;
             }
             burstSize = 0;
+            burstSize = 0;
         }
 
         // advanced laser logic
@@ -167,6 +181,23 @@ public class GunController : MonoBehaviour
                 if (persistentProjectile != null)
                 {
                     Destroy(persistentProjectile);
+                }
+            }
+        }
+
+
+        // state management:
+        if (nextFirePoint <= Time.time)
+        {
+            if (attackAction.IsPressed())
+            {
+                state = FiringState.Firing;
+            }
+            else
+            {
+                if (state != FiringState.Reloading)
+                {
+                    state = FiringState.Idle;
                 }
             }
         }
@@ -241,7 +272,8 @@ public class GunController : MonoBehaviour
     {
         if (shotsRemaining <= 0)
         {
-            nextFirePoint = Time.time + firingDelay;
+            nextFirePoint = Time.time + reloadTime;
+            state = FiringState.Reloading;
         }
     }
 

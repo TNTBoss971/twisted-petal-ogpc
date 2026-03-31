@@ -1,4 +1,3 @@
-using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +11,7 @@ public class InventoryHealButton : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        button = this.GetComponent<Button>();
+        button = GetComponent<Button>();
         button.onClick.AddListener(TaskOnClick);
         saveData = inventoryManager.GetComponent<DataManagement>();
     }
