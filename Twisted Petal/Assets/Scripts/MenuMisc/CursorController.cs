@@ -23,6 +23,9 @@ public class CursorController : MonoBehaviour
     {
         if (useCrosshair)
         {
+            // get weapon
+            activeWeapon = gameManager.equippedWeapons[gameManager.activeWeaponId].GetComponent<GunController>();
+
 
             // Get the mouse position from the Input system (legacy or new)
             Vector3 mouseScreenPosition = Input.mousePosition;

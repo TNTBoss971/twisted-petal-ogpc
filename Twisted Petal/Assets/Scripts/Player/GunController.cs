@@ -97,9 +97,10 @@ public class GunController : MonoBehaviour
             Targeting();
         }
 
-        if (shotsRemaining <= 0 && nextFirePoint > Time.time)
+        if (shotsRemaining <= 0 && nextFirePoint < Time.time)
         {
             shotsRemaining = magSize;
+            state = FiringState.Idle;
         }
         else if (nextFirePoint <= Time.time && attackAction.IsPressed())
         {
@@ -161,7 +162,6 @@ public class GunController : MonoBehaviour
                 nextFirePoint = Time.time + firingDelay;
             }
             burstSize = 0;
-            burstSize = 0;
         }
 
         // advanced laser logic
@@ -205,6 +205,7 @@ public class GunController : MonoBehaviour
     void FireBasic()
     {
         GameObject clone = Instantiate(ammoObject, transform.position + Vector3.forward, transform.rotation);
+        clone.transform.position = transform.position + Vector3.forward;
         clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
         nextFirePoint = Time.time + firingDelay;
         audioSource.Play();
@@ -215,6 +216,7 @@ public class GunController : MonoBehaviour
     void FireExplosive()
     {
         GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
+        clone.transform.position = transform.position + Vector3.forward;
         clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
         nextFirePoint = Time.time + firingDelay;
 
@@ -243,6 +245,7 @@ public class GunController : MonoBehaviour
         if (burstSize < magSize)
         {
             GameObject clone = Instantiate(ammoObject, transform.position, transform.rotation);
+            clone.transform.position = transform.position + Vector3.forward;
             clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
 
             burstSize++;
@@ -259,6 +262,7 @@ public class GunController : MonoBehaviour
         if (persistentProjectile == null)
         {
             persistentProjectile = Instantiate(ammoObject, transform.position, transform.rotation);
+            persistentProjectile.transform.position = transform.position + Vector3.forward;
             persistentProjectile.GetComponent<ProjectileBehavior>().targetIndicator = Instantiate(targetingIndicator, transform.position, transform.rotation);
             nextFirePoint = Time.time + firingDelay;
             audioSource.Play();
@@ -281,40 +285,14 @@ public class GunController : MonoBehaviour
     {
 
         // point arcing gun at persisting projectile
-        if (persistentProjectile != null && ammoBehavior.type == ProjectileBehavior.MunitionType.Arcing)
+        if (ammoBehavior.type == ProjectileBehavior.MunitionType.Arcing)
         {
-            /*
-            List<GameObject> targets = persistentProjectile.GetComponent<ProjectileBehavior>().pastTargets;
-
-            int index = 0;
-            while (targets[index] == null)
-            {
-                index++;
-
-                if (index >= targets.Count - 1)
-                {
-                    break;
-                }
-            }
-            if (index < targets.Count)
-            {
-                if (index >= targets.Count)
-                {
-                    index = targets.Count - 1;
-                }
-                if (index <= 0)
-                {
-                    index = 0;
-                }
-
-                Vector2 distanceVector = transform.position - targets[index].transform.position;
-                distanceVector = distanceVector.normalized;
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg));
-            } */
-
+            transform.parent.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
         else
         {
+            //transform.parent.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
             // the current screen position of the mouse
             targetPos = Input.mousePosition;
             targetPos.z = 5.23f;

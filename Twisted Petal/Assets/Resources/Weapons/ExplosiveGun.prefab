@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044e6e2a6445ba44ab5a7331ccde94ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   firingDelay: 1
-  reloadTime: 0
+  reloadTime: 1
   magSize: 1
   shotsRemaining: 1
   burstSize: 0
@@ -60,10 +61,13 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
-  displayImage: {fileID: -2248588054835376049, guid: eb600b9bb04f9da47bb1914c4c75194f, type: 3}
+  isAnimationPlaying: 0
+  isAnimationSingleShot: 0
+  displayImage: {fileID: -7469322836913186377, guid: 7f6a2c1181774fc489269b44e9858410, type: 3}
   descriptionID: 2
-  description: It goes boom
-  weaponName: Explosive Gun
+  description: Since when are T-Shirts explosive? Now. That's when.
+  weaponName: T-Shirt Literal Cannon
+  animationName: tshirtDryerCannon_Clip
   targetingIndicator: {fileID: 3578250175648416519, guid: 42a7c9f2b50b32d41a49197623ac3727, type: 3}
 --- !u!82 &3654062527376565208
 AudioSource:
@@ -228,12 +232,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1101952043, guid: 4886c794934350a4d987c45188b472c5, type: 3}
+  m_Sprite: {fileID: 2053937879295303826, guid: f77bf2ed5ac6bdd4197c480761d2b246, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28125, y: 0.53125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

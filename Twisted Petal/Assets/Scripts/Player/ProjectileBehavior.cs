@@ -88,6 +88,7 @@ public class ProjectileBehavior : MonoBehaviour
             if (transform.position.x > targetPosition.x)
             {
                 GameObject explosion = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+                explosion.transform.position = transform.position + Vector3.forward * 5;
                 Destroy(targetIndicator);
                 Destroy(gameObject);
             }
@@ -262,6 +263,7 @@ public class ProjectileBehavior : MonoBehaviour
             if (type == MunitionType.Missile) 
             {
                 GameObject explosion = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+                explosion.transform.position = transform.position + Vector3.forward * 5;
                 Destroy(gameObject);
             } 
             else if (type == MunitionType.Basic)

@@ -47,10 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044e6e2a6445ba44ab5a7331ccde94ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   firingDelay: 1
   reloadTime: 0
-  magSize: 1
-  shotsRemaining: 1
+  magSize: 5
+  shotsRemaining: 5
   burstSize: 0
   ammoObject: {fileID: 4898352103702244452, guid: d957cb421c5bb4b43b4346fa08e9fbf1, type: 3}
   speedRot: 0.5
@@ -60,10 +61,13 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
-  displayImage: {fileID: -970146014054310643, guid: ea009a957a9d8314c854d871a56e13a7, type: 3}
+  isAnimationPlaying: 0
+  isAnimationSingleShot: 0
+  displayImage: {fileID: -7436989883304217995, guid: c20d6eafb82d365479119867a72c934f, type: 3}
   descriptionID: 4
   description: It does what it says on the can (fires ten missiles)
   weaponName: Tenta Missiles
+  animationName: rocketLauncher_Clip
   targetingIndicator: {fileID: 0}
 --- !u!82 &4489809293424700145
 AudioSource:
@@ -228,12 +232,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1101952043, guid: 4886c794934350a4d987c45188b472c5, type: 3}
+  m_Sprite: {fileID: -4481014610056604078, guid: 27da1c1e8bccfd54897a3a0a5afd546e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.19, y: 0.09}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

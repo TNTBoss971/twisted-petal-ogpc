@@ -61,7 +61,7 @@ public class ExplosionBehavior : MonoBehaviour
 
         if (transform.position.y > 1.115f)
         {
-            transform.position = new Vector2(transform.position.x, transform.position.y - gravityScale * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, transform.position.y - gravityScale * Time.deltaTime, 5);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

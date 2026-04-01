@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8993663797122041990
 Transform:
   m_ObjectHideFlags: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044e6e2a6445ba44ab5a7331ccde94ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   firingDelay: 1
   reloadTime: 0
   magSize: 1
@@ -62,11 +63,11 @@ MonoBehaviour:
   animator: {fileID: 0}
   isAnimationPlaying: 0
   isAnimationSingleShot: 0
-  displayImage: {fileID: -4542106424281798416, guid: 43c5214fe40baac45a50846e5e4154b6, type: 3}
+  displayImage: {fileID: -8485262597208444784, guid: 1117b56cfff46fe48b0e746a651baf75, type: 3}
   descriptionID: 5
-  description: This weapons attack is rather shocking!
+  description: Massive crowd damage with the trade off of ZERO aiming
   weaponName: Tesla Coil
-  animationName: 
+  animationName: teslaCoil_Clip
   targetingIndicator: {fileID: 3654990897623919181, guid: eff04fd1d0d6ee64f818dfa9b6ef54e3, type: 3}
 --- !u!82 &6553196030272806826
 AudioSource:
@@ -231,14 +232,14 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7672635321611742436, guid: bfa09f48f4dabc8489908c8595c744f4, type: 3}
+  m_Sprite: {fileID: 1661000621012488723, guid: 9a2312d0ef2ec7f4e957ed414de7a08a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.28, y: 0.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
