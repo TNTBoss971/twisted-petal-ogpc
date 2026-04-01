@@ -12,6 +12,9 @@ public class MapManager : MonoBehaviour
     public bool showError = false;
     private float errorTimer;
     public List<GameObject> startingWeapons;
+    public GameObject playerMapIcon;
+    public List<float> posX;
+    public List<float> posY;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +37,8 @@ public class MapManager : MonoBehaviour
         {
             mapPosition = 7;
         }
+
+        playerMapIcon.transform.position = new Vector2(posX[mapPosition - 1], posY[mapPosition - 1]);
 
         // Pressing enter on the map takes you into a level
         if (Input.GetKey("return"))

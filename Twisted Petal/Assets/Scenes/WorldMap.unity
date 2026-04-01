@@ -712,6 +712,23 @@ MonoBehaviour:
   startingWeapons:
   - {fileID: 815084102267353062, guid: b988f86b7bd1ef14496ab0d91ab3838b, type: 3}
   - {fileID: 1692204540741050396, guid: d8c6e5f0efa4cb6428890499beaa69d0, type: 3}
+  playerMapIcon: {fileID: 958554077}
+  posX:
+  - -7.69
+  - -5.63
+  - -4
+  - -1.95
+  - -1.22
+  - 0.74
+  - 1.59
+  posY:
+  - 0.27
+  - -0.19
+  - -1.42
+  - -1.91
+  - -2.3
+  - -0.92
+  - 2
 --- !u!114 &939551369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,7 +901,6 @@ GameObject:
   m_Component:
   - component: {fileID: 958554080}
   - component: {fileID: 958554079}
-  - component: {fileID: 958554081}
   m_Layer: 0
   m_Name: PlayerIcon
   m_TagString: Player
@@ -962,32 +978,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &958554081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 958554077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c315a6f51a8062c4dbeac4962e82c5c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pos1X: -7.69
-  pos1Y: 0.27
-  pos2X: -5.63
-  pos2Y: -0.19
-  pos3X: -4
-  pos3Y: -1.42
-  pos4X: -1.95
-  pos4Y: -1.91
-  pos5X: -1.22
-  pos5Y: -2.3
-  pos6X: 0.74
-  pos6Y: -0.92
-  pos7X: 1.59
-  pos7Y: 2
 --- !u!1 &968915738
 GameObject:
   m_ObjectHideFlags: 0
