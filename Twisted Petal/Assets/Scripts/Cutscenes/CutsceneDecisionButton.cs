@@ -12,6 +12,7 @@ public class CutsceneDecisionButton : MonoBehaviour
     private CanvasGroup canvasGroup; // canvasgroup
     private DataManagement saveData; // to access saved vars
     public string buttonText; // the button's text
+    public GameObject decisionText; // the actual text object to display the text
     public int scenarioID; // current decision scenario
     public List<GameObject> itemsIndex; // every item in the game
     public bool decisionAllowed; // are we worrying about decisions right now?
@@ -158,6 +159,7 @@ public class CutsceneDecisionButton : MonoBehaviour
                 }
             }
         }
+        decisionText.GetComponent<TMPro.TextMeshProUGUI>().text = buttonText;
     }
 
     // This function allows for buttons to add

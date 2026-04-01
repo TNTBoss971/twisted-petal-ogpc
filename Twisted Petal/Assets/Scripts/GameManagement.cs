@@ -40,6 +40,7 @@ public class GameManagement : MonoBehaviour
     [Header("Status Bars")]
     public BarBehavior waveProgressionBar;
     public BarBehavior healthBar;
+    public GameObject playerHealthText;
     [Header("Save Data")]
     public DataPersistanceManager dataManager;
     public DataManagement saveData;
@@ -103,6 +104,8 @@ public class GameManagement : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
+
+        playerHealthText.GetComponent<TMPro.TextMeshProUGUI>().text = "Health: " + playerHealth;
     }
     void ActiveWave()
     {

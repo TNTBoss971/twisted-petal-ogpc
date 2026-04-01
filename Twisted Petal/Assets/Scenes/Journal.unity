@@ -181,6 +181,9 @@ MonoBehaviour:
   levelSummaries: []
   soundsMuted: 0
   weaponsFound: []
+  currentHealth: 0
+  supplies: 0
+  choicesMade: 
 --- !u!114 &125149103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,6 +339,9 @@ MonoBehaviour:
   levelSummaries: []
   soundsMuted: 0
   weaponsFound: []
+  currentHealth: 0
+  supplies: 0
+  choicesMade: 
 --- !u!114 &173001247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,6 +948,9 @@ MonoBehaviour:
   levelSummaries: []
   soundsMuted: 0
   weaponsFound: []
+  currentHealth: 0
+  supplies: 0
+  choicesMade: 
 --- !u!114 &591919119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1354,6 +1363,9 @@ MonoBehaviour:
   levelSummaries: []
   soundsMuted: 0
   weaponsFound: []
+  currentHealth: 0
+  supplies: 0
+  choicesMade: 
 --- !u!114 &729627705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2677,8 +2689,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -343, y: -20}
-  m_SizeDelta: {x: 695.5938, y: 602.674}
+  m_AnchoredPosition: {x: -364.4516, y: -19.3297}
+  m_SizeDelta: {x: 652.6906, y: 601.3333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1582143575
 MonoBehaviour:
@@ -3438,8 +3450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 313, y: -18}
-  m_SizeDelta: {x: 602.7715, y: 602.6741}
+  m_AnchoredPosition: {x: 327.6847, y: -18}
+  m_SizeDelta: {x: 562.1409, y: 602.6741}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1938840277
 MonoBehaviour:
@@ -3825,6 +3837,9 @@ MonoBehaviour:
     levelSummaries: []
     soundsMuted: 0
     weaponsFound: []
+    currentHealth: 100
+    supplies: 3
+    choicesMade: 
 --- !u!4 &2083493895
 Transform:
   m_ObjectHideFlags: 0
