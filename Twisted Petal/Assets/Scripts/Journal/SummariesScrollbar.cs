@@ -7,17 +7,19 @@ public class SummariesScrollbar : MonoBehaviour
 {
     private Scrollbar scrollbar;
     public int barValue;
+    private JournalManager journalManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         scrollbar = GetComponent<Scrollbar>();
         scrollbar.onValueChanged.AddListener(OnScroll);
+        journalManager = FindAnyObjectByType<JournalManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (LevelSummary.levelSummariesHidden == true)
+        if (LevelSummary.levelSummariesHidden == true || journalManager.GetComponent<DataManagement>().levelSummaries.Count <= 2)
         {
             GetComponent<CanvasGroup>().alpha = 0;
         }
