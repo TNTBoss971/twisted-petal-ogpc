@@ -8,7 +8,7 @@ public class DataPersistanceManager : MonoBehaviour
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
 
-    private GameData gameData;
+    public GameData gameData;
     private List<IDataPersistance> dataPersistanceObjects;
     private FileDataHandler dataHandler;
 
@@ -24,6 +24,7 @@ public class DataPersistanceManager : MonoBehaviour
         instance = this;
     }
 
+    [System.Obsolete]
     private void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
@@ -68,7 +69,7 @@ public class DataPersistanceManager : MonoBehaviour
     }
 
     // if we want it to save every time you quit: this is the code for that.
-    
+
     /*
     private void OnApplicationQuit()
     {
@@ -76,11 +77,12 @@ public class DataPersistanceManager : MonoBehaviour
     }
     */
 
+    [System.Obsolete]
     private List<IDataPersistance> FindAllDataPersistanceObjects()
     {
         // scripts must extend from Monobehaviour to be found
         IEnumerable<IDataPersistance> dataPersistanceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistance>();
-        
+
         return new List<IDataPersistance>(dataPersistanceObjects);
     }
 }

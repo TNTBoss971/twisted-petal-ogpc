@@ -10,8 +10,8 @@ public class LevelText : MonoBehaviour
         {1, "Level 1: Flee the City"},
         {2, "Level 2: On the Open Road"},
         {3, "Level 3: Driving Some More"},
-        {4, "Level 4: Wow It's Mount Hood"},
-        {5, "Level 5: The 3/4 Mark "},
+        {4, "Level 4: Home Stretch"},
+        {5, "Level 5: Government Camp"},
         {6, "Level 6: Im running out of names"},
         {7, "Level 7: Wow we're almost at the island"}
     };

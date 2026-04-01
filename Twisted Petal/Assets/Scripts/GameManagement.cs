@@ -31,17 +31,25 @@ public class GameManagement : MonoBehaviour
 
     public float waveLength;
     public float nextWaveTime;
-    public static int itemsLooted;
-    public static int enemiesBeaten;
+    public int itemsLooted;
+    public int enemiesBeaten;
 
     public WaveData[] waves; // a list of all the waves
-    public WaveData currentWave; 
+    public WaveData currentWave;
+    public BossManager bossManager;
     [Header("Status Bars")]
     public BarBehavior waveProgressionBar;
     public BarBehavior healthBar;
     [Header("Save Data")]
     public DataPersistanceManager dataManager;
     public DataManagement saveData;
+    public List<GameObject> weaponTypes;
+    [Header("Summary")]
+    public LevelSummaryCreator summaryCreator;
+    public GameObject lastWeaponObtained;
+    [Header("Pausing")]
+    public bool paused;
+    public GameObject pauseHue;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,6 +60,8 @@ public class GameManagement : MonoBehaviour
         // assign actions
         cycleAction = InputSystem.actions.FindAction("Cycle");
 
+        playerHealth = saveData.currentHealth;
+
 
         StartWave();
 
@@ -59,7 +69,11 @@ public class GameManagement : MonoBehaviour
 
         healthBar.maxValue = playerMaxHealth;
 
-        
+        lastWeaponObtained = null;
+
+        paused = false;
+
+        pauseHue.SetActive(false);
         
         WeaponInitialization();
     }
@@ -73,36 +87,72 @@ public class GameManagement : MonoBehaviour
 
 
         ActiveWave();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (paused == false)
+            {
+                paused = true;
+                pauseHue.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                paused = false;
+                pauseHue.SetActive(false);
+                Time.timeScale = 1f;
+            }
+        }
     }
     void ActiveWave()
     {
-        // continuouslly spawn enemies while wave is active
-        // rarely spawn "loot" enemy
-        if (enemyCount < enemyCountMax)
+        if (currentWave.isBossBattle)
         {
-            // spawn enemy
-
-            // decide enemy to spawn
-            float selectedFreq = Random.Range(0.001f, 1);
-        
-            float[] frequencies = currentWave.enemyFrequency;
-            int enemyIndex = 0;
-
-            float totalFreq = 0;
-            foreach (float freq in frequencies)
+            if (bossManager.health <= 0)
             {
-                totalFreq += freq;
-                // if totalFreq is withen the selected range
-                if (selectedFreq <= totalFreq)
+                EndWave();
+            }
+        }
+        else
+        {
+            // continuouslly spawn enemies while wave is active
+            // rarely spawn "loot" enemy
+            if (enemyCount < enemyCountMax)
+            {
+                // spawn enemy
+
+                // decide enemy to spawn
+                float selectedFreq = Random.Range(0.001f, 1);
+
+                float[] frequencies = currentWave.enemyFrequency;
+                int enemyIndex = 0;
+
+                float totalFreq = 0;
+                foreach (float freq in frequencies)
                 {
-                    break;
-                } else {
-                    enemyIndex++;
+                    totalFreq += freq;
+                    // if totalFreq is withen the selected range
+                    if (selectedFreq <= totalFreq)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        enemyIndex++;
+                    }
                 }
+
+                GameObject clone = Instantiate(currentWave.enemiesInWave[enemyIndex], new Vector2(11 - Random.Range(-2.5f, 0.5f), Random.Range(-4.5f, 0.5f)), transform.rotation);
+                enemyCount++;
             }
 
-            GameObject clone = Instantiate(currentWave.enemiesInWave[enemyIndex], new Vector2(10, Random.Range(-4.5f, 0.5f)), transform.rotation);
-            enemyCount++;
+            // check the wave timer
+            if (nextWaveTime < Time.time)
+            {
+                EndWave();
+            }
+            waveProgressionBar.value = waveLength + (Time.time - nextWaveTime);
+
         }
 
 
@@ -114,23 +164,6 @@ public class GameManagement : MonoBehaviour
         // update player health bar
         healthBar.value = playerHealth;
 
-        // check the wave timer
-        if (nextWaveTime < Time.time)
-        {
-            // this wave/level is over, go to combat resolution
-
-            saveData.levelsBeaten = waveNumber + 1;
-            Debug.Log(itemsLooted);
-            saveData.itemsLootedOverall += itemsLooted;
-            saveData.enemiesBeaten = enemiesBeaten;
-            saveData.enemiesBeatenOverall += enemiesBeaten;
-            saveData.itemsLooted = itemsLooted;
-            dataManager.SaveGame();
-            SceneManager.LoadScene("CombatResolution");
-        }
-        waveProgressionBar.value = waveLength + (Time.time - nextWaveTime);
-        // if its at the end, go to loot screen
-
     }
     
     void StartWave()
@@ -139,8 +172,15 @@ public class GameManagement : MonoBehaviour
 
         currentWave = waves[waveNumber];
 
-        waveLength = currentWave.length;
-        nextWaveTime = Time.time + waveLength;
+        if (currentWave.isBossBattle)
+        {
+            bossManager = Instantiate(currentWave.enemiesInWave[0]).GetComponent<BossManager>();
+        }
+        else
+        {
+            waveLength = currentWave.length;
+            nextWaveTime = Time.time + waveLength;    
+        }
     }
 
     // sets up weapons when the scene starts
@@ -233,8 +273,23 @@ public class GameManagement : MonoBehaviour
         if (pastActiveWeaponId != activeWeaponId)
         {
             equippedWeapons[pastActiveWeaponId].SetActive(false);
+            Destroy(equippedWeapons[pastActiveWeaponId].GetComponent<GunController>().persistentProjectile);
         }
         equippedWeapons[activeWeaponId].SetActive(true);
+    }
+    public void EndWave()
+    {
+        // this wave/level is over, go to combat resolution
+
+        saveData.levelsBeaten = waveNumber + 1;
+        saveData.itemsLootedOverall += itemsLooted;
+        saveData.enemiesBeaten = enemiesBeaten;
+        saveData.enemiesBeatenOverall += enemiesBeaten;
+        saveData.itemsLooted = itemsLooted;
+        saveData.levelSummaries.Add(summaryCreator.CreateSummary(saveData, playerHealth, lastWeaponObtained));
+        saveData.currentHealth = playerHealth;
+        dataManager.SaveGame();
+        SceneManager.LoadScene("CombatResolution");
     }
 
     // function that can be called by the weapon buttons that swaps the weapon to the given id
