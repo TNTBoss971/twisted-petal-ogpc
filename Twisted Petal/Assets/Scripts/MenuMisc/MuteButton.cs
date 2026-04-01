@@ -7,6 +7,7 @@ public class MuteButton : MonoBehaviour
     private Button button;
     private DataManagement saveData;
     public DataPersistanceManager dataManager;
+    public GameObject muteButtonText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,7 +19,14 @@ public class MuteButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (saveData.soundsMuted == true)
+        {
+            muteButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = "Unmute SFX";
+        }
+        else
+        {
+            muteButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = "Mute SFX";
+        }
     }
     
     void TaskOnClick()

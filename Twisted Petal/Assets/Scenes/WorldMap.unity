@@ -434,7 +434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip atleast 1 weapon from the inventory before entering a level.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -729,6 +729,7 @@ MonoBehaviour:
   - -2.3
   - -0.92
   - 2
+  mapErrorText: {fileID: 583282439}
 --- !u!114 &939551369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1261,7 +1262,6 @@ GameObject:
   - component: {fileID: 1140305702}
   - component: {fileID: 1140305704}
   - component: {fileID: 1140305703}
-  - component: {fileID: 1140305705}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1387,18 +1387,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140305701}
   m_CullTransparentMesh: 1
---- !u!114 &1140305705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140305701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f807218f3e153e34f839c16e80a51c5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1199547671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,6 +1549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataManager: {fileID: 513334422}
+  muteButtonText: {fileID: 1140305701}
 --- !u!1 &1282472816
 GameObject:
   m_ObjectHideFlags: 0

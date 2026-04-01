@@ -15,6 +15,7 @@ public class MapManager : MonoBehaviour
     public GameObject playerMapIcon;
     public List<float> posX;
     public List<float> posY;
+    public GameObject mapErrorText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +30,7 @@ public class MapManager : MonoBehaviour
         {
             if (errorTimer <= Time.time)
             {
+                mapErrorText.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                 showError = false;
             }
         }
@@ -46,6 +48,7 @@ public class MapManager : MonoBehaviour
             if (saveData.selectedItems.Count <= 0)
             {
                 showError = true;
+                mapErrorText.GetComponent<TMPro.TextMeshProUGUI>().text = "Equip atleast 1 weapon from the inventory before entering a level.";
                 errorTimer = Time.time + 1.5f;
             }
             else
