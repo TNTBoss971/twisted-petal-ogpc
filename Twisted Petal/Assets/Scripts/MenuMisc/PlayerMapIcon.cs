@@ -3,6 +3,7 @@ using UnityEngine.UIElements;
 
 public class PlayerMapIcon : MonoBehaviour
 {
+
     // Public vars for positions
     public float pos1X;
     public float pos1Y;
