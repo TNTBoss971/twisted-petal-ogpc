@@ -35,9 +35,9 @@ public class MapManager : MonoBehaviour
             }
         }
         mapPosition = saveData.levelsBeaten + 1;
-        if (mapPosition > 7)
+        if (mapPosition > 15)
         {
-            mapPosition = 7;
+            mapPosition = 15;
         }
 
         playerMapIcon.transform.position = new Vector2(posX[mapPosition - 1], posY[mapPosition - 1]);
