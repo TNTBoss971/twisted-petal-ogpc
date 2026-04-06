@@ -13,7 +13,9 @@ public class CutsceneData : MonoBehaviour
         SupplyConflict, //should you take some or all?
         ThinkBack, // thinking back to the supply conflict
         Charity, // some travelers ask for supplies
-        Market // pesticide sprayer for sale
+        Market, // pesticide sprayer for sale
+        Ponder, // dialogue changes based on previous actions
+        BarrenCache, // leave or take supplies
     }
 
     public List<string> altLinesOne; // alternate lines of dialogue

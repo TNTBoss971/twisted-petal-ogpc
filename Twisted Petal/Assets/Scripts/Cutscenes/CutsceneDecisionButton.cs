@@ -26,7 +26,10 @@ public class CutsceneDecisionButton : MonoBehaviour
         gaveCharity, // gave out supplies
         apologized, // didn't have enough supplies to give
         didntGiveCharity, // didn't give out supplies
+        gaveToBarrenCache, // contributed supplies to the barren cache
+        lootedBarrenCache, // took everything from the barren supply cache
     }
+    public int moralityNumber; // number to track morality
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,6 +43,31 @@ public class CutsceneDecisionButton : MonoBehaviour
         decisionAllowed = true;
         actionPerformed = false;
         custceneManager = FindAnyObjectByType<CutsceneManager>();
+        moralityNumber = 0;
+        if (saveData.choicesMade.Contains(decisionsMade.tookMoreSupplies))
+        {
+            moralityNumber -= 2;
+        }
+        if (saveData.choicesMade.Contains(decisionsMade.didntGiveCharity))
+        {
+            moralityNumber -= 1;
+        }
+        if (saveData.choicesMade.Contains(decisionsMade.gaveCharity))
+        {
+            moralityNumber += 2;
+        }
+        if (saveData.choicesMade.Contains(decisionsMade.didntTakeMoreSupplies))
+        {
+            moralityNumber += 1;
+        }
+        if (saveData.choicesMade.Contains(decisionsMade.gaveToBarrenCache))
+        {
+            moralityNumber += 2;
+        }
+        if (saveData.choicesMade.Contains(decisionsMade.lootedBarrenCache))
+        {
+            moralityNumber -= 1;
+        }
     }
 
     // Update is called once per frame
@@ -121,6 +149,28 @@ public class CutsceneDecisionButton : MonoBehaviour
                                 buttonText = "Don't buy it";
                             }
                             break;
+                        case CutsceneData.decisionType.Ponder:
+                            scenarioID = 5;
+                            if (buttonID == 1)
+                            {
+                                
+                            }
+                            if (buttonID == 2)
+                            {
+                                
+                            }
+                            break;
+                        case CutsceneData.decisionType.BarrenCache:
+                            scenarioID = 6;
+                            if (buttonID == 1)
+                            {
+                                buttonText = "Contribute 3 supplies";
+                            }
+                            if (buttonID == 2)
+                            {
+                                buttonText = "Take what's left.";
+                            }
+                            break;
                     }
                     dialogue.dialogueLocked = true;
                     decisionAllowed = false;
@@ -185,6 +235,48 @@ public class CutsceneDecisionButton : MonoBehaviour
                         for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
                         {
                             dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
+                        }
+                        actionPerformed = true;
+                    }
+                }
+            }
+        }
+        if (scenarioID == 5)
+        {
+            decisionAllowed = false;
+            dialogue.dialogueLocked = false;
+            canvasGroup.alpha = 0f;
+            canvasGroup.interactable = false;
+            if (buttonID == 1)
+            {
+                if (moralityNumber < 0)
+                {
+                    if (actionPerformed == false)
+                    {
+                        dialogue.dialogueLines.Clear();
+                        for (int i = 0; i < Dialogue.currentLine; i++)
+                        {
+                            dialogue.dialogueLines.Add("");
+                        }
+                        for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
+                        {
+                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
+                        }
+                        actionPerformed = true;
+                    }
+                }
+                if (moralityNumber == 0)
+                {
+                    if (actionPerformed == false)
+                    {
+                        dialogue.dialogueLines.Clear();
+                        for (int i = 0; i < Dialogue.currentLine; i++)
+                        {
+                            dialogue.dialogueLines.Add("");
+                        }
+                        for (int i = 0; i < cutscenes.currentCutscene.altLinesTwo.Count; i++)
+                        {
+                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesTwo[i]);
                         }
                         actionPerformed = true;
                     }
@@ -314,15 +406,51 @@ public class CutsceneDecisionButton : MonoBehaviour
                 if (buttonID == 2)
                 {
                     dialogue.dialogueLines.Clear();
-                    dialogue.dialogueLines.Clear();
+                    for (int i = 0; i < Dialogue.currentLine + 1; i++)
+                    {
+                        dialogue.dialogueLines.Add("");
+                    }
+                    for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
+                    {
+                        dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
+                    }
+                }
+                break;
+            case CutsceneData.decisionType.BarrenCache:
+                if (buttonID == 1)
+                {
+                    if (saveData.supplies >= 3)
+                    {
+                        TakeSupplies(3);
+                        saveData.choicesMade.Add(decisionsMade.gaveToBarrenCache);
+                    }
+                    else
+                    {
+                        dialogue.dialogueLines.Clear();
                         for (int i = 0; i < Dialogue.currentLine + 1; i++)
                         {
                             dialogue.dialogueLines.Add("");
                         }
-                        for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
+                        for (int i = 0; i < cutscenes.currentCutscene.altLinesTwo.Count; i++)
                         {
-                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
+                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesTwo[i]);
                         }
+                    }
+                    
+                }
+                if (buttonID == 2)
+                {
+                    GiveSupplies(1);
+                    dialogue.dialogueLines.Clear();
+                    for (int i = 0; i < Dialogue.currentLine + 1; i++)
+                    {
+                        dialogue.dialogueLines.Add("");
+                    }
+                    for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
+                    {
+                        dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
+                    }
+                    saveData.choicesMade.Add(decisionsMade.lootedBarrenCache);
                 }
                 break;
         }

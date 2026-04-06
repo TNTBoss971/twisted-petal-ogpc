@@ -618,6 +618,7 @@ MonoBehaviour:
   - {fileID: 815084102267353062, guid: b216c538c3058674595692da67c194fa, type: 3}
   decisionAllowed: 0
   dialogue: {fileID: 61325680}
+  moralityNumber: 0
 --- !u!114 &406763048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,8 +709,8 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406763044}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
+  m_Alpha: 0
+  m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &561514258
@@ -808,6 +809,7 @@ MonoBehaviour:
   - {fileID: 815084102267353062, guid: 4f7b262a630dcb742ae45927e3760ebc, type: 3}
   decisionAllowed: 0
   dialogue: {fileID: 61325680}
+  moralityNumber: 0
 --- !u!114 &561514262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,9 +900,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561514258}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &577101589
 GameObject:
@@ -969,6 +971,9 @@ MonoBehaviour:
   - {fileID: 1492960780936940638, guid: daaf4f68c2e378c43be8ac1c8f19c03c, type: 3}
   - {fileID: 1492960780936940638, guid: cbe19ff4863d7f548858da93c2478fb4, type: 3}
   - {fileID: 1492960780936940638, guid: f46dc8f2fb9a88a458fed1479c3ff4c1, type: 3}
+  - {fileID: 1492960780936940638, guid: 284a55cf8da07cc43a68bf8b7d2950c6, type: 3}
+  - {fileID: 1492960780936940638, guid: 9b3f3a478414ee744a5b5b6a5d55c542, type: 3}
+  - {fileID: 1492960780936940638, guid: 73b4d9ef22093b84ab0b18fa05bbc6e2, type: 3}
   currentCutscene: {fileID: 0}
 --- !u!4 &577101592
 Transform:

@@ -1539,6 +1539,9 @@ MonoBehaviour:
   - {fileID: 9122227014563279572, guid: af52120d52e70f74f854229913aaf488, type: 3}
   - {fileID: 9122227014563279572, guid: 0e4e374640378764fac60cea1b4580fb, type: 3}
   - {fileID: 9122227014563279572, guid: 5fb5373ad909de346bf32e7382174422, type: 3}
+  - {fileID: 9122227014563279572, guid: c8bf667abf40af347a009f294baa61fb, type: 3}
+  - {fileID: 9122227014563279572, guid: 53cb0f804e59c1a45ab1d95928a4c304, type: 3}
+  - {fileID: 9122227014563279572, guid: 6109ed6024803974e8fe34930f6ecaef, type: 3}
   currentWave: {fileID: 9122227014563279572, guid: e7e8eddd741d43740a2e67b4613eec4b, type: 3}
   bossManager: {fileID: 0}
   waveProgressionBar: {fileID: 1722427373}
