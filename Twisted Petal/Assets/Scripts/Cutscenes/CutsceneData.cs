@@ -11,10 +11,13 @@ public class CutsceneData : MonoBehaviour
         None, //default, no decision
         SupplyCache, //just gives 3 supplies
         SupplyConflict, //should you take some or all?
-        ThinkBack // thinking back to the supply conflict
+        ThinkBack, // thinking back to the supply conflict
+        Charity, // some travelers ask for supplies
+        Market // pesticide sprayer for sale
     }
 
     public List<string> altLinesOne; // alternate lines of dialogue
+    public List<string> altLinesTwo; // alternate lines of dialogue
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

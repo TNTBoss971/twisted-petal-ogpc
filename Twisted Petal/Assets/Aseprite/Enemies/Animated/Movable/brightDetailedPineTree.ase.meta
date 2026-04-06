@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9e7af5e3415235b4aaa537b0ced01dce
+guid: 7aed8b5d13949a24a8a0e74cc958cdaf
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -133,8 +133,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 78
-      height: 127
-    spriteID: 8172b274cf15ac741b30c0b693d8d970
+      height: 121
+    spriteID: 43ec7456d1734384bb84a172e55d219c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -145,17 +145,17 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Frame_1
     originalName: 
-    pivot: {x: 0.51282054, y: 0}
+    pivot: {x: 0.5064935, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
-      y: 139
-      width: 78
-      height: 127
-    spriteID: ddcd19b3349373844aa4e97ded3c0e9f
+      y: 133
+      width: 77
+      height: 122
+    spriteID: ca453914bce63a44b99f7cc13b9cde2e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -163,31 +163,10 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 139}
+    uvTransform: {x: 4, y: 133}
   - name: Frame_2
     originalName: 
-    pivot: {x: 0.51282054, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 274
-      width: 78
-      height: 127
-    spriteID: a0d888353dda8f944bb8918f3af817aa
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 274}
-  - name: Frame_3
-    originalName: 
-    pivot: {x: 0.51282054, y: 0}
+    pivot: {x: 0.5064935, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -195,9 +174,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 90
       y: 4
-      width: 78
-      height: 127
-    spriteID: 74f23a21b28c1ad4ba396d619989dda7
+      width: 77
+      height: 121
+    spriteID: 0a94bbbc3999d8e4abf6d4eaa715e969
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -206,7 +185,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 90, y: 4}
-  - name: Frame_4
+  - name: Frame_3
     originalName: 
     pivot: {x: 0.51282054, y: 0}
     alignment: 9
@@ -214,11 +193,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 90
-      y: 139
+      x: 4
+      y: 263
       width: 78
-      height: 127
-    spriteID: a466323c9bff4a043bad01db1ad8fb2c
+      height: 120
+    spriteID: f4738f3c34e85a444b54a65a42da721a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -226,12 +205,12 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 90, y: 139}
+    uvTransform: {x: 4, y: 263}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 336249389
-    name: evergreenBasicChristmasPineTree
+    guid: -678743612
+    name: brightDetailedPineTree
     layerFlags: 0
     layerType: 0
     blendMode: 0
@@ -243,26 +222,26 @@ ScriptedImporter:
         x: 24
         y: 0
         width: 78
-        height: 127
-      spriteId: 8172b274cf15ac741b30c0b693d8d970
+        height: 121
+      spriteId: 43ec7456d1734384bb84a172e55d219c
     - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 24
+        x: 25
         y: 0
-        width: 78
-        height: 127
-      spriteId: ddcd19b3349373844aa4e97ded3c0e9f
+        width: 77
+        height: 122
+      spriteId: ca453914bce63a44b99f7cc13b9cde2e
     - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
-        x: 24
+        x: 25
         y: 0
-        width: 78
-        height: 127
-      spriteId: a0d888353dda8f944bb8918f3af817aa
+        width: 77
+        height: 121
+      spriteId: 0a94bbbc3999d8e4abf6d4eaa715e969
     - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
@@ -270,17 +249,8 @@ ScriptedImporter:
         x: 24
         y: 0
         width: 78
-        height: 127
-      spriteId: 74f23a21b28c1ad4ba396d619989dda7
-    - name: Frame_4
-      frameIndex: 4
-      additiveSortOrder: 0
-      cellRect:
-        x: 24
-        y: 0
-        width: 78
-        height: 127
-      spriteId: a466323c9bff4a043bad01db1ad8fb2c
+        height: 120
+      spriteId: f4738f3c34e85a444b54a65a42da721a
     linkedCells: []
     parentIndex: -1
   platformSettings:

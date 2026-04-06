@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5504978886221584557}
   - component: {fileID: 1492960780936940638}
   m_Layer: 0
-  m_Name: 05_cutscene
+  m_Name: 07_cutscene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,25 +45,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*It''s as I feared... the whole place is in ruins...*'
-  - '"Hey! Are you the one who took down that huge monster?"'
-  - '"Oh, uh. Yeah."'
-  - '"Well, I offer you my thanks. I only wish you were here earlier though."'
-  - '"As you can probably tell, this place isn''t really livable anymore. Most of
-    the folks moved over to Astoria."'
-  - '"Oh, really?"'
-  - '"Yeah. Do you have a map on you? I could point it out."'
-  - '"Yeah, I do. And that''d be great..."'
-  - '*Well, I guess I have a new destination now...*'
+  - '*I guess I ended up near the south end of the city*'
+  - '"Hey, I don''t mean to bother you, but my friend and I just made it out of the
+    city. Would you happen to have any supplies you could give us?"'
+  - '"Well..."'
+  - '"Yeah, you can have some."'
+  - '[3 supplies lost]'
+  - '"Thank you! This will be super helpful. I appreciate it."'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: -790151542688815544, guid: c1659740120d72d4eac3a3e8267fe5b5, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: -790151542688815544, guid: c1659740120d72d4eac3a3e8267fe5b5, type: 3}
-  - {fileID: -790151542688815544, guid: c1659740120d72d4eac3a3e8267fe5b5, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: -790151542688815544, guid: c1659740120d72d4eac3a3e8267fe5b5, type: 3}
+  - {fileID: -8022194467504591970, guid: 3b43e2e4e60e77d4baaf11ae964d4e02, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 00000000
-  altLinesOne: []
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -8022194467504591970, guid: 3b43e2e4e60e77d4baaf11ae964d4e02, type: 3}
+  decisions: 000000000000000004000000000000000000000000000000
+  altLinesOne:
+  - '"Um, the issue is..."'
+  - '"I don''t really have enough to give anything out, sorry."'
+  - '"It''s okay, I figured it was kind of a long shot."'
+  altLinesTwo:
+  - '"no..."'
+  - '"I don''t just, like... give things out to people."'
+  - '"Oh, well, sorry for bothering you."'

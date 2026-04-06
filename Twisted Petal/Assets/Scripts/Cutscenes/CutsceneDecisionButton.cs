@@ -22,7 +22,10 @@ public class CutsceneDecisionButton : MonoBehaviour
     public enum decisionsMade
     {
         didntTakeMoreSupplies, // took only what you needed
-        tookMoreSupplies // took everything
+        tookMoreSupplies, // took everything
+        gaveCharity, // gave out supplies
+        apologized, // didn't have enough supplies to give
+        didntGiveCharity, // didn't give out supplies
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -87,6 +90,35 @@ public class CutsceneDecisionButton : MonoBehaviour
                             if (buttonID == 2)
                             {
                                 
+                            }
+                            break;
+                        case CutsceneData.decisionType.Charity:
+                            scenarioID = 4;
+                            if (buttonID == 1)
+                            {
+                                if (saveData.supplies >= 3)
+                                {
+                                    buttonText = "Give them supplies";
+                                }
+                                else
+                                {
+                                    buttonText = "Explain you don't have enough";
+                                }
+                            }
+                            if (buttonID == 2)
+                            {
+                                buttonText = "Don't give them supplies";
+                            }
+                            break;
+                        case CutsceneData.decisionType.Market:
+                            scenarioID = 4;
+                            if (buttonID == 1)
+                            {
+                                buttonText = "Buy it";
+                            }
+                            if (buttonID == 2)
+                            {
+                                buttonText = "Don't buy it";
                             }
                             break;
                     }
@@ -159,6 +191,7 @@ public class CutsceneDecisionButton : MonoBehaviour
                 }
             }
         }
+        
         decisionText.GetComponent<TMPro.TextMeshProUGUI>().text = buttonText;
     }
 
@@ -172,6 +205,12 @@ public class CutsceneDecisionButton : MonoBehaviour
     void GiveSupplies(int amount)
     {
         custceneManager.GetComponent<DataManagement>().supplies += amount;
+        actionPerformed = true;
+    }
+
+    void TakeSupplies(int amount)
+    {
+        custceneManager.GetComponent<DataManagement>().supplies -= amount;
         actionPerformed = true;
     }
 
@@ -211,6 +250,79 @@ public class CutsceneDecisionButton : MonoBehaviour
                         dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
                     }
                     saveData.choicesMade.Add(decisionsMade.tookMoreSupplies);
+                }
+                break;
+            case CutsceneData.decisionType.Charity:
+                if (buttonID == 1)
+                {
+                    if (buttonText == "Give them supplies")
+                    {
+                        TakeSupplies(3);
+                        saveData.choicesMade.Add(decisionsMade.gaveCharity);
+                    }
+                    else
+                    {
+                        dialogue.dialogueLines.Clear();
+                        for (int i = 0; i < Dialogue.currentLine + 1; i++)
+                        {
+                            dialogue.dialogueLines.Add("");
+                        }
+                        for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
+                        {
+                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
+                        }
+                        saveData.choicesMade.Add(decisionsMade.apologized);
+                    }
+                    
+                }
+                if (buttonID == 2)
+                {
+                    dialogue.dialogueLines.Clear();
+                    for (int i = 0; i < Dialogue.currentLine + 1; i++)
+                    {
+                        dialogue.dialogueLines.Add("");
+                    }
+                    for (int i = 0; i < cutscenes.currentCutscene.altLinesTwo.Count; i++)
+                    {
+                        dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesTwo[i]);
+                    }
+                    saveData.choicesMade.Add(decisionsMade.didntGiveCharity);
+                }
+                break;
+            case CutsceneData.decisionType.Market:
+                if (buttonID == 1)
+                {
+                    if (saveData.supplies >= 5)
+                    {
+                        TakeSupplies(5);
+                        GiveItem(itemsIndex[7]);
+                    }
+                    else
+                    {
+                        dialogue.dialogueLines.Clear();
+                        for (int i = 0; i < Dialogue.currentLine + 1; i++)
+                        {
+                            dialogue.dialogueLines.Add("");
+                        }
+                        for (int i = 0; i < cutscenes.currentCutscene.altLinesTwo.Count; i++)
+                        {
+                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesTwo[i]);
+                        }
+                    }
+                    
+                }
+                if (buttonID == 2)
+                {
+                    dialogue.dialogueLines.Clear();
+                    dialogue.dialogueLines.Clear();
+                        for (int i = 0; i < Dialogue.currentLine + 1; i++)
+                        {
+                            dialogue.dialogueLines.Add("");
+                        }
+                        for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
+                        {
+                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
+                        }
                 }
                 break;
         }
