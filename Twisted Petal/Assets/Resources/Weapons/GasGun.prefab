@@ -60,7 +60,7 @@ MonoBehaviour:
   currentAngle: 0
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 7001263803036203597}
   isAnimationPlaying: 0
   isAnimationSingleShot: 0
   displayImage: {fileID: 5582383443878835742, guid: b99832c55933e8144bfcb4f047e2d897, type: 3}

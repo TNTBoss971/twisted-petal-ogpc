@@ -16,7 +16,8 @@ public class GunController : MonoBehaviour
         None,
         Idle,
         Firing,
-        Reloading
+        Reloading,
+        Preparing
     }
 
     public FiringState state = FiringState.None;
@@ -56,6 +57,8 @@ public class GunController : MonoBehaviour
     private AudioSource audioSource;
     private DataManagement saveData;
 
+    private float temp;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -88,6 +91,7 @@ public class GunController : MonoBehaviour
         }
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -96,108 +100,120 @@ public class GunController : MonoBehaviour
         {
             Targeting();
         }
+       
 
-        if (shotsRemaining <= 0 && nextFirePoint < Time.time)
+        if (state == FiringState.Preparing)
         {
-            shotsRemaining = magSize;
-            state = FiringState.Idle;
+            if (nextFirePoint < Time.time && temp >= nextFirePoint)
+            {
+                state = FiringState.Idle;
+            }
+            Debug.Log(transform.position.y);
         }
-        else if (nextFirePoint <= Time.time && attackAction.IsPressed())
+        else
         {
-            state = FiringState.Firing;
-
-            if (!isAnimationPlaying)
+            if (shotsRemaining <= 0 && nextFirePoint < Time.time)
             {
-                animator.Play(animationName);
+                shotsRemaining = magSize;
+                state = FiringState.Idle;
             }
-
-            // don't shoot if the game is paused 
-            if (gameManager.paused == false)
-            {
-                if (nextFirePoint <= Time.time && attackAction.IsPressed())
-                {
-                    if (ammoBehavior.type == ProjectileBehavior.MunitionType.Basic)
-                    {
-                        FireBasic();
-                    }
-                    if (ammoBehavior.type == ProjectileBehavior.MunitionType.Explosive)
-                    {
-                        FireExplosive();
-                    }
-                    if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
-                    {
-                        FireLaser();
-                    }
-                    if (ammoBehavior.type == ProjectileBehavior.MunitionType.Missile)
-                    {
-                        FireMissile();
-                    }
-                    if (ammoBehavior.type == ProjectileBehavior.MunitionType.Arcing)
-                    {
-                        FireArcing();
-                    }
-                }
-
-            }
-        }
-        
-        
-
-        if (!isAnimationSingleShot)
-        {
-            if (shotsRemaining > 0 && !attackAction.IsPressed())
-            {
-                animator.speed = 0;
-            }
-            else
-            {
-                animator.speed = 1;
-            }
-        }
-        // reset missile if the player lets go of the mouse
-        if (!attackAction.IsPressed() && ammoBehavior.type == ProjectileBehavior.MunitionType.Missile && false)
-        {
-            if (burstSize > 0)
-            {
-                nextFirePoint = Time.time + firingDelay;
-            }
-            burstSize = 0;
-        }
-
-        // advanced laser logic
-        if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
-        {
-            if (attackAction.IsPressed())
-            {
-                if (persistentProjectile == null)
-                {
-                    persistentProjectile = Instantiate(ammoObject, transform.position, transform.rotation);
-                }
-                persistentProjectile.GetComponent<ProjectileBehavior>().targetLength = Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position);
-                persistentProjectile.transform.rotation = transform.rotation;
-            }
-            else
-            {
-                if (persistentProjectile != null)
-                {
-                    Destroy(persistentProjectile);
-                }
-            }
-        }
-
-
-        // state management:
-        if (nextFirePoint <= Time.time)
-        {
-            if (attackAction.IsPressed())
+            else if (nextFirePoint <= Time.time && attackAction.IsPressed())
             {
                 state = FiringState.Firing;
-            }
-            else
-            {
-                if (state != FiringState.Reloading)
+
+                if (!isAnimationPlaying)
                 {
-                    state = FiringState.Idle;
+                    animator.Play(animationName);
+                }
+
+                // don't shoot if the game is paused 
+                if (gameManager.paused == false)
+                {
+                    if (nextFirePoint <= Time.time && attackAction.IsPressed())
+                    {
+                        if (ammoBehavior.type == ProjectileBehavior.MunitionType.Basic)
+                        {
+                            FireBasic();
+                        }
+                        if (ammoBehavior.type == ProjectileBehavior.MunitionType.Explosive)
+                        {
+                            FireExplosive();
+                        }
+                        if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
+                        {
+                            FireLaser();
+                        }
+                        if (ammoBehavior.type == ProjectileBehavior.MunitionType.Missile)
+                        {
+                            FireMissile();
+                        }
+                        if (ammoBehavior.type == ProjectileBehavior.MunitionType.Arcing)
+                        {
+                            FireArcing();
+                        }
+                    }
+
+                }
+            }
+        
+        
+
+            if (!isAnimationSingleShot)
+            {
+                if (shotsRemaining > 0 && !attackAction.IsPressed())
+                {
+                    animator.speed = 0;
+                }
+                else
+                {
+                    animator.speed = 1;
+                }
+            }
+            // reset missile if the player lets go of the mouse
+            if (!attackAction.IsPressed() && ammoBehavior.type == ProjectileBehavior.MunitionType.Missile && false)
+            {
+                if (burstSize > 0)
+                {
+                    nextFirePoint = Time.time + firingDelay;
+                }
+                burstSize = 0;
+            }
+
+            // advanced laser logic
+            if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
+            {
+                if (attackAction.IsPressed())
+                {
+                    if (persistentProjectile == null)
+                    {
+                        persistentProjectile = Instantiate(ammoObject, transform.position, transform.rotation);
+                    }
+                    persistentProjectile.GetComponent<ProjectileBehavior>().targetLength = Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position);
+                    persistentProjectile.transform.rotation = transform.rotation;
+                }
+                else
+                {
+                    if (persistentProjectile != null)
+                    {
+                        Destroy(persistentProjectile);
+                    }
+                }
+            }
+
+
+            // state management:
+            if (nextFirePoint <= Time.time)
+            {
+                if (attackAction.IsPressed())
+                {
+                    state = FiringState.Firing;
+                }
+                else
+                {
+                    if (state != FiringState.Reloading)
+                    {
+                        state = FiringState.Idle;
+                    }
                 }
             }
         }
@@ -319,5 +335,13 @@ public class GunController : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentAngle));
 
         }
+    }
+    public void WakeUp()
+    {
+        state = FiringState.Preparing;
+        temp = Time.time + 1;
+        animator.Play("PrepareWeapon");
+        nextFirePoint = Time.time + 1;
+        Debug.Log(nextFirePoint);
     }
 }

@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RouletteRevolver
       objectReference: {fileID: 0}
+    - target: {fileID: 815084102267353062, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.1079206
@@ -2892,6 +2896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ATenAuto
       objectReference: {fileID: 0}
+    - target: {fileID: 815084102267353062, guid: 594bfcfb1411902489a00d7d5ba109b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2483006655279719242, guid: 594bfcfb1411902489a00d7d5ba109b1, type: 3}
       propertyPath: weaponName
       value: A-10 Auto
@@ -3731,6 +3739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightningGun
       objectReference: {fileID: 0}
+    - target: {fileID: 3108472696131321336, guid: 91c5ef397d0ef494fb2d4a090cf7cdca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8993663797122041990, guid: 91c5ef397d0ef494fb2d4a090cf7cdca, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.32
@@ -3848,6 +3860,10 @@ PrefabInstance:
     - target: {fileID: 815084102267353062, guid: 4f7b262a630dcb742ae45927e3760ebc, type: 3}
       propertyPath: m_Name
       value: TentaMissiles
+      objectReference: {fileID: 0}
+    - target: {fileID: 815084102267353062, guid: 4f7b262a630dcb742ae45927e3760ebc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8088979065578101632, guid: 4f7b262a630dcb742ae45927e3760ebc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4454,6 +4470,10 @@ PrefabInstance:
     - target: {fileID: 4505431783618574702, guid: 00d9fe97cce54054fa773a4ee96bfb1f, type: 3}
       propertyPath: m_Name
       value: CursorController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505431783618574702, guid: 00d9fe97cce54054fa773a4ee96bfb1f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

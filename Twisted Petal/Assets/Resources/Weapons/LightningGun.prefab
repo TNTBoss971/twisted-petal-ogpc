@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8993663797122041990
 Transform:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   currentAngle: 0
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 2327630160633934636}
   isAnimationPlaying: 0
   isAnimationSingleShot: 0
   displayImage: {fileID: -8485262597208444784, guid: 1117b56cfff46fe48b0e746a651baf75, type: 3}
