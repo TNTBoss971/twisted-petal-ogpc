@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Transactions;
 using NUnit.Framework.Constraints;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -57,7 +58,7 @@ public class GunController : MonoBehaviour
     private AudioSource audioSource;
     private DataManagement saveData;
 
-    private float temp;
+    private bool isPrepairing;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -95,23 +96,25 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // don't target if the game is paused
-        if (gameManager.paused == false)
+        if (state == FiringState.Preparing || isPrepairing)
         {
-            Targeting();
-        }
-       
-
-        if (state == FiringState.Preparing)
-        {
-            if (nextFirePoint < Time.time && temp >= nextFirePoint)
+            if (nextFirePoint < Time.time)
             {
                 state = FiringState.Idle;
+                isPrepairing = false;
             }
+            //transform.position = new Vector3(5, 5, 5);
             Debug.Log(transform.position.y);
         }
         else
         {
+            // don't target if the game is paused
+            if (gameManager.paused == false)
+            {
+                Targeting();
+            }
+
+
             if (shotsRemaining <= 0 && nextFirePoint < Time.time)
             {
                 shotsRemaining = magSize;
@@ -338,9 +341,9 @@ public class GunController : MonoBehaviour
     }
     public void WakeUp()
     {
+        //isPrepairing = true;
         state = FiringState.Preparing;
-        temp = Time.time + 1;
-        animator.Play("PrepareWeapon");
+        transform.parent.GetComponent<Animator>().Play("SwivelSwap");
         nextFirePoint = Time.time + 1;
         Debug.Log(nextFirePoint);
     }
