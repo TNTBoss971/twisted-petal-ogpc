@@ -1321,6 +1321,7 @@ MonoBehaviour:
     currentHealth: 100
     supplies: 3
     choicesMade: 
+    maxHealth: 100
 --- !u!4 &279707654
 Transform:
   m_ObjectHideFlags: 0
@@ -1569,6 +1570,10 @@ MonoBehaviour:
   - {fileID: 9122227014563279572, guid: c8bf667abf40af347a009f294baa61fb, type: 3}
   - {fileID: 9122227014563279572, guid: 53cb0f804e59c1a45ab1d95928a4c304, type: 3}
   - {fileID: 9122227014563279572, guid: 6109ed6024803974e8fe34930f6ecaef, type: 3}
+  - {fileID: 9122227014563279572, guid: 86be9818457df0442a5105a79e7c4c30, type: 3}
+  - {fileID: 9122227014563279572, guid: 3754903089b98764a83d8d3e3f7ee468, type: 3}
+  - {fileID: 9122227014563279572, guid: 3754903089b98764a83d8d3e3f7ee468, type: 3}
+  - {fileID: 9122227014563279572, guid: 1110a34ca53ea884fb6e46307853b764, type: 3}
   currentWave: {fileID: 9122227014563279572, guid: e7e8eddd741d43740a2e67b4613eec4b, type: 3}
   bossManager: {fileID: 0}
   waveProgressionBar: {fileID: 1722427373}
@@ -1614,6 +1619,7 @@ MonoBehaviour:
   currentHealth: 0
   supplies: 0
   choicesMade: 
+  maxHealth: 0
 --- !u!1 &421250703
 GameObject:
   m_ObjectHideFlags: 0

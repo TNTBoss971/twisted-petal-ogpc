@@ -14,22 +14,26 @@ public class InventoryHealButton : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(TaskOnClick);
         saveData = inventoryManager.GetComponent<DataManagement>();
+        if (saveData.currentHealth > saveData.maxHealth)
+        {
+            saveData.currentHealth = saveData.maxHealth;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthText.GetComponent<TMPro.TextMeshProUGUI>().text = "Health: " + saveData.currentHealth + "/100";
+        healthText.GetComponent<TMPro.TextMeshProUGUI>().text = "Health: " + saveData.currentHealth + "/" + saveData.maxHealth;
     }
     
     void TaskOnClick()
     {
         // When pressed, scraps selected items
-        if (saveData.supplies >= 1 && saveData.currentHealth < 100)
+        if (saveData.supplies >= 1 && saveData.currentHealth < saveData.maxHealth)
         {
-            if ((saveData.currentHealth + supplyHealthValue) > 100)
+            if ((saveData.currentHealth + supplyHealthValue) > saveData.maxHealth)
             {
-                saveData.currentHealth = 100;
+                saveData.currentHealth = saveData.maxHealth;
             }
             else
             {

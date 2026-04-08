@@ -16,6 +16,8 @@ public class CutsceneData : MonoBehaviour
         Market, // pesticide sprayer for sale
         Ponder, // dialogue changes based on previous actions
         BarrenCache, // leave or take supplies
+        LaserTurret, // take the turret as a weapon or leave it?
+        WallRepair, // sacrifice max hp to help people?
     }
 
     public List<string> altLinesOne; // alternate lines of dialogue

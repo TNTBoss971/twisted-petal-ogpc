@@ -21,6 +21,7 @@ public class GameData
     public float currentHealth;
     public int supplies;
     public List<CutsceneDecisionButton.decisionsMade> choicesMade;
+    public int maxHealth;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -41,5 +42,6 @@ public class GameData
         currentHealth = 100;
         supplies = 3;
         choicesMade = new List<CutsceneDecisionButton.decisionsMade>();
+        maxHealth = 100;
     }
 }

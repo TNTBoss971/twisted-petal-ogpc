@@ -28,6 +28,8 @@ public class CutsceneDecisionButton : MonoBehaviour
         didntGiveCharity, // didn't give out supplies
         gaveToBarrenCache, // contributed supplies to the barren cache
         lootedBarrenCache, // took everything from the barren supply cache
+        tookTurret, // stole the laser turret from the safe area
+        repairedWall // repaired the wall at the gas station
     }
     public int moralityNumber; // number to track morality
 
@@ -67,6 +69,10 @@ public class CutsceneDecisionButton : MonoBehaviour
         if (saveData.choicesMade.Contains(decisionsMade.lootedBarrenCache))
         {
             moralityNumber -= 1;
+        }
+        if (saveData.choicesMade.Contains(decisionsMade.tookTurret))
+        {
+            moralityNumber -= 3;
         }
     }
 
@@ -169,6 +175,28 @@ public class CutsceneDecisionButton : MonoBehaviour
                             if (buttonID == 2)
                             {
                                 buttonText = "Take what's left.";
+                            }
+                            break;
+                        case CutsceneData.decisionType.LaserTurret:
+                            scenarioID = 7;
+                            if (buttonID == 1)
+                            {
+                                buttonText = "Leave it.";
+                            }
+                            if (buttonID == 2)
+                            {
+                                buttonText = "Take it.";
+                            }
+                            break;
+                        case CutsceneData.decisionType.WallRepair:
+                            scenarioID = 8;
+                            if (buttonID == 1)
+                            {
+                                buttonText = "Repair the wall.";
+                            }
+                            if (buttonID == 2)
+                            {
+                                buttonText = "Don't repair the wall.";
                             }
                             break;
                     }
@@ -306,6 +334,38 @@ public class CutsceneDecisionButton : MonoBehaviour
         actionPerformed = true;
     }
 
+    void ReduceMaxHealth(int amount)
+    {
+        custceneManager.GetComponent<DataManagement>().maxHealth -= amount;
+        actionPerformed = true;
+    }
+
+    void PlayAltLinesOne()
+    {
+        dialogue.dialogueLines.Clear();
+        for (int i = 0; i < Dialogue.currentLine + 1; i++)
+        {
+            dialogue.dialogueLines.Add("");
+        }
+        for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
+        {
+            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
+        }
+    }
+
+    void PlayAltLinesTwo()
+    {
+        dialogue.dialogueLines.Clear();
+        for (int i = 0; i < Dialogue.currentLine + 1; i++)
+        {
+            dialogue.dialogueLines.Add("");
+        }
+        for (int i = 0; i < cutscenes.currentCutscene.altLinesTwo.Count; i++)
+        {
+            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesTwo[i]);
+        }
+    }
+
     void TaskOnClick()
     {
         // find out which scenario we're doing
@@ -331,16 +391,8 @@ public class CutsceneDecisionButton : MonoBehaviour
                 }
                 if (buttonID == 2)
                 {
-                    dialogue.dialogueLines.Clear();
                     GiveSupplies(8);
-                    for (int i = 0; i < Dialogue.currentLine + 1; i++)
-                    {
-                        dialogue.dialogueLines.Add("");
-                    }
-                    for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
-                    {
-                        dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
-                    }
+                    PlayAltLinesOne();
                     saveData.choicesMade.Add(decisionsMade.tookMoreSupplies);
                 }
                 break;
@@ -354,30 +406,13 @@ public class CutsceneDecisionButton : MonoBehaviour
                     }
                     else
                     {
-                        dialogue.dialogueLines.Clear();
-                        for (int i = 0; i < Dialogue.currentLine + 1; i++)
-                        {
-                            dialogue.dialogueLines.Add("");
-                        }
-                        for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
-                        {
-                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
-                        }
+                        PlayAltLinesOne();
                         saveData.choicesMade.Add(decisionsMade.apologized);
                     }
-                    
                 }
                 if (buttonID == 2)
                 {
-                    dialogue.dialogueLines.Clear();
-                    for (int i = 0; i < Dialogue.currentLine + 1; i++)
-                    {
-                        dialogue.dialogueLines.Add("");
-                    }
-                    for (int i = 0; i < cutscenes.currentCutscene.altLinesTwo.Count; i++)
-                    {
-                        dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesTwo[i]);
-                    }
+                    PlayAltLinesTwo();
                     saveData.choicesMade.Add(decisionsMade.didntGiveCharity);
                 }
                 break;
@@ -391,29 +426,13 @@ public class CutsceneDecisionButton : MonoBehaviour
                     }
                     else
                     {
-                        dialogue.dialogueLines.Clear();
-                        for (int i = 0; i < Dialogue.currentLine + 1; i++)
-                        {
-                            dialogue.dialogueLines.Add("");
-                        }
-                        for (int i = 0; i < cutscenes.currentCutscene.altLinesTwo.Count; i++)
-                        {
-                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesTwo[i]);
-                        }
+                        PlayAltLinesTwo();
                     }
                     
                 }
                 if (buttonID == 2)
                 {
-                    dialogue.dialogueLines.Clear();
-                    for (int i = 0; i < Dialogue.currentLine + 1; i++)
-                    {
-                        dialogue.dialogueLines.Add("");
-                    }
-                    for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
-                    {
-                        dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
-                    }
+                    PlayAltLinesOne();
                 }
                 break;
             case CutsceneData.decisionType.BarrenCache:
@@ -426,31 +445,37 @@ public class CutsceneDecisionButton : MonoBehaviour
                     }
                     else
                     {
-                        dialogue.dialogueLines.Clear();
-                        for (int i = 0; i < Dialogue.currentLine + 1; i++)
-                        {
-                            dialogue.dialogueLines.Add("");
-                        }
-                        for (int i = 0; i < cutscenes.currentCutscene.altLinesTwo.Count; i++)
-                        {
-                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesTwo[i]);
-                        }
+                        PlayAltLinesTwo();
                     }
                     
                 }
                 if (buttonID == 2)
                 {
-                    GiveSupplies(1);
-                    dialogue.dialogueLines.Clear();
-                    for (int i = 0; i < Dialogue.currentLine + 1; i++)
-                    {
-                        dialogue.dialogueLines.Add("");
-                    }
-                    for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
-                    {
-                        dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
-                    }
+                    PlayAltLinesOne();
                     saveData.choicesMade.Add(decisionsMade.lootedBarrenCache);
+                }
+                break;
+            case CutsceneData.decisionType.LaserTurret:
+                if (buttonID == 1)
+                {
+                    
+                }
+                if (buttonID == 2)
+                {
+                    GiveItem(itemsIndex[3]);
+                    PlayAltLinesOne();
+                    saveData.choicesMade.Add(decisionsMade.tookTurret);
+                }
+                break;
+            case CutsceneData.decisionType.WallRepair:
+                if (buttonID == 1)
+                {
+                    ReduceMaxHealth(20);
+                    saveData.choicesMade.Add(decisionsMade.repairedWall);
+                }
+                if (buttonID == 2)
+                {
+                    PlayAltLinesOne();
                 }
                 break;
         }

@@ -56,12 +56,18 @@ public class GameManagement : MonoBehaviour
     void Start()
     {
         dataManager.LoadGame();
+        
         itemsLooted = 0;
         enemiesBeaten = 0;
         // assign actions
         cycleAction = InputSystem.actions.FindAction("Cycle");
 
+        playerMaxHealth = saveData.maxHealth;
         playerHealth = saveData.currentHealth;
+        if (playerHealth > playerMaxHealth)
+        {
+            playerHealth = playerMaxHealth;
+        }
 
 
         StartWave();

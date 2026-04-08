@@ -588,6 +588,7 @@ MonoBehaviour:
   currentHealth: 0
   supplies: 0
   choicesMade: 
+  maxHealth: 0
 --- !u!114 &406763047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,6 +782,7 @@ MonoBehaviour:
   currentHealth: 0
   supplies: 0
   choicesMade: 
+  maxHealth: 0
 --- !u!114 &561514261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,7 +904,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &577101589
 GameObject:
@@ -948,6 +950,7 @@ MonoBehaviour:
   currentHealth: 0
   supplies: 0
   choicesMade: 
+  maxHealth: 0
 --- !u!114 &577101591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,6 +977,8 @@ MonoBehaviour:
   - {fileID: 1492960780936940638, guid: 284a55cf8da07cc43a68bf8b7d2950c6, type: 3}
   - {fileID: 1492960780936940638, guid: 9b3f3a478414ee744a5b5b6a5d55c542, type: 3}
   - {fileID: 1492960780936940638, guid: 73b4d9ef22093b84ab0b18fa05bbc6e2, type: 3}
+  - {fileID: 1492960780936940638, guid: 611ab621d3ee11a4bbd087828774ef09, type: 3}
+  - {fileID: 1492960780936940638, guid: 953fd425947cdce4bad8731043e587b9, type: 3}
   currentCutscene: {fileID: 0}
 --- !u!4 &577101592
 Transform:
@@ -1037,6 +1042,7 @@ MonoBehaviour:
     currentHealth: 100
     supplies: 3
     choicesMade: 
+    maxHealth: 100
 --- !u!4 &935132566
 Transform:
   m_ObjectHideFlags: 0
