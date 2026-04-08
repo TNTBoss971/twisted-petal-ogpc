@@ -561,6 +561,7 @@ MonoBehaviour:
     currentHealth: 100
     supplies: 3
     choicesMade: 
+    maxHealth: 100
 --- !u!4 &1038745307
 Transform:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ public class EnemyBehavior : MonoBehaviour
     private Vector2 movement;
     private bool hasLoot = false;
     public int lootFrequency; // the higher this number is the less likely it is for a loot drop
-    private ParticleSystem lootSparkles;
+    public GameObject lootSparkles;
 
     [Header("Attributes")]
     public float speed = 3f;
@@ -85,7 +85,6 @@ public class EnemyBehavior : MonoBehaviour
         {
             hasLoot = true;
         }
-        lootSparkles = this.GetComponent<ParticleSystem>();
 
         health = maxHealth;
 
@@ -114,12 +113,9 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (hasLoot == false)
+        if (hasLoot == true)
         {
-            if (lootSparkles != null)
-            {
-                Destroy(lootSparkles);
-            }
+            lootSparkles.SetActive(true);
         }
 
         DeathLogic();
@@ -296,7 +292,20 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (type == EnemyType.Stump)
+            {
+                gameManager.playerHealth -= damage;            
+                gameManager.enemyCount -= 1;
+                Destroy(gameObject);
+            }   
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -309,7 +318,7 @@ public class EnemyBehavior : MonoBehaviour
             }
             else
             {
-                if (type == EnemyType.Stump || type == EnemyType.Flung)
+                if (type == EnemyType.Stump)
                 {
                     gameManager.playerHealth -= damage;            
                     gameManager.enemyCount -= 1;
