@@ -227,42 +227,38 @@ public class GameManagement : MonoBehaviour
         // inputs (keys are offset by 1 because 0 is on the other side of the keyboard)
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            pastActiveWeaponId = activeWeaponId; // deactivate old active weapon
-            activeWeaponId = 0;
+            SetWeaponActive(0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            pastActiveWeaponId = activeWeaponId; // deactivate old active weapon
-            activeWeaponId = 1;
+            SetWeaponActive(1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            pastActiveWeaponId = activeWeaponId; // deactivate old active weapon
-            activeWeaponId = 2;
+            SetWeaponActive(2);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            pastActiveWeaponId = activeWeaponId; // deactivate old active weapon
-            activeWeaponId = 3;
+            SetWeaponActive(3);
         }
 
         if (cycleValue > 0)
         {
-            pastActiveWeaponId = activeWeaponId; // deactivate old active weapon
-            activeWeaponId += 1;
-            if (activeWeaponId > numOfEquippedWeapons - 1)
+            int tempId = activeWeaponId + 1;
+            if (tempId > numOfEquippedWeapons - 1)
             {
-                activeWeaponId = 0;
+                tempId = 0;
             }
+            SetWeaponActive(tempId);
         }
         if (cycleValue < 0)
         {
-            pastActiveWeaponId = activeWeaponId; // deactivate old active weapon
-            activeWeaponId -= 1;
-            if (activeWeaponId < 0)
+            int tempId = activeWeaponId - 1;
+            if (tempId < 0)
             {
-                activeWeaponId = numOfEquippedWeapons - 1;
+                tempId = numOfEquippedWeapons - 1;
             }
+            SetWeaponActive(tempId);
         }
 
 
@@ -300,5 +296,7 @@ public class GameManagement : MonoBehaviour
     {
         pastActiveWeaponId = activeWeaponId; // deactivate old active weapon
         activeWeaponId = id;
+        equippedWeapons[activeWeaponId].SetActive(true);
+        equippedWeapons[activeWeaponId].GetComponent<GunController>().WakeUp();
     }
 }

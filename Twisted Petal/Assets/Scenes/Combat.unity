@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2414849}
   - component: {fileID: 2414850}
+  - component: {fileID: 2414851}
   m_Layer: 0
   m_Name: Swivel
   m_TagString: Untagged
@@ -145,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 2414848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.485, z: -0.36}
+  m_LocalPosition: {x: 1, y: 1.15, z: 0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -206,6 +207,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2414851
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2414848}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e4b576f6723f2448bd289996ca643a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &30767213
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -217,6 +240,10 @@ PrefabInstance:
     - target: {fileID: 815084102267353062, guid: b4db1509e63f41645a50f9f110865508, type: 3}
       propertyPath: m_Name
       value: RouletteRevolver
+      objectReference: {fileID: 0}
+    - target: {fileID: 815084102267353062, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8088979065578101632, guid: b4db1509e63f41645a50f9f110865508, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2469,7 +2496,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878683908}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cdcab98f46d46cf478134f851641a5ad, type: 2}
   m_CullingMode: 0
@@ -2891,6 +2918,10 @@ PrefabInstance:
     - target: {fileID: 815084102267353062, guid: 594bfcfb1411902489a00d7d5ba109b1, type: 3}
       propertyPath: m_Name
       value: ATenAuto
+      objectReference: {fileID: 0}
+    - target: {fileID: 815084102267353062, guid: 594bfcfb1411902489a00d7d5ba109b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2483006655279719242, guid: 594bfcfb1411902489a00d7d5ba109b1, type: 3}
       propertyPath: weaponName
@@ -3731,6 +3762,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightningGun
       objectReference: {fileID: 0}
+    - target: {fileID: 3108472696131321336, guid: 91c5ef397d0ef494fb2d4a090cf7cdca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8993663797122041990, guid: 91c5ef397d0ef494fb2d4a090cf7cdca, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.32
@@ -3848,6 +3883,10 @@ PrefabInstance:
     - target: {fileID: 815084102267353062, guid: 4f7b262a630dcb742ae45927e3760ebc, type: 3}
       propertyPath: m_Name
       value: TentaMissiles
+      objectReference: {fileID: 0}
+    - target: {fileID: 815084102267353062, guid: 4f7b262a630dcb742ae45927e3760ebc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8088979065578101632, guid: 4f7b262a630dcb742ae45927e3760ebc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4454,6 +4493,10 @@ PrefabInstance:
     - target: {fileID: 4505431783618574702, guid: 00d9fe97cce54054fa773a4ee96bfb1f, type: 3}
       propertyPath: m_Name
       value: CursorController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505431783618574702, guid: 00d9fe97cce54054fa773a4ee96bfb1f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1530891f023939f469f41e66ec8e0420
+guid: 33a871e4ca879ef4e8bac10625ff6d5d
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -122,9 +122,30 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: redAdlerTree
+  - name: Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.4814815, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 4
+      width: 27
+      height: 62
+    spriteID: 76362fcdef8498245be35940a93c6ba7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.42857146, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -132,9 +153,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 26
+      width: 28
       height: 62
-    spriteID: aa25a5a90c77ec245b00e40a8df498f2
+    spriteID: 5d1000435f0b29e4fab9be0d3e4775e4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -143,24 +164,93 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_2
+    originalName: 
+    pivot: {x: 0.42857146, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 74
+      width: 28
+      height: 62
+    spriteID: 9a5cef36c1d857a4e9d59b554fc4eaa4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 74}
+  - name: Frame_3
+    originalName: 
+    pivot: {x: 0.42857146, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 144
+      width: 28
+      height: 62
+    spriteID: e5ad0559d56c9e747a83287f709e99cf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 144}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 2101982799
-    name: redAdlerTree
+    guid: -258376535
+    name: redAdler
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: redAdlerTree
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 3
         y: 0
-        width: 26
+        width: 27
         height: 62
-      spriteId: aa25a5a90c77ec245b00e40a8df498f2
+      spriteId: 76362fcdef8498245be35940a93c6ba7
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 4
+        y: 0
+        width: 28
+        height: 62
+      spriteId: 5d1000435f0b29e4fab9be0d3e4775e4
+    - name: Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 4
+        y: 0
+        width: 28
+        height: 62
+      spriteId: 9a5cef36c1d857a4e9d59b554fc4eaa4
+    - name: Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 4
+        y: 0
+        width: 28
+        height: 62
+      spriteId: e5ad0559d56c9e747a83287f709e99cf
     linkedCells: []
     parentIndex: -1
   platformSettings:

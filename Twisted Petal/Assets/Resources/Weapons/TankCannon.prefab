@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044e6e2a6445ba44ab5a7331ccde94ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   firingDelay: 1
   reloadTime: 3
   magSize: 1
@@ -59,7 +60,7 @@ MonoBehaviour:
   currentAngle: 0
   targetPos: {x: 0, y: 0, z: 0}
   directionVec: {x: 0, y: 0, z: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 312519010742403036}
   isAnimationPlaying: 0
   isAnimationSingleShot: 0
   displayImage: {fileID: 5270983267409654312, guid: 767f38f97632794438f8203cb5c293e9, type: 3}
