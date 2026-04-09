@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        /*
+        
         if (transform.position.y > downBoundary && Input.GetKey(KeyCode.S))
         {
             transform.position = new Vector2(transform.position.x, transform.position.y - vanSpeed * Time.deltaTime);
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < upBoundary && Input.GetKey(KeyCode.W))
         {
             transform.position = new Vector2(transform.position.x, transform.position.y + vanSpeed * Time.deltaTime);
-        }*/
+        }
     }
 
     

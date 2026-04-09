@@ -63,11 +63,11 @@ MonoBehaviour:
   animator: {fileID: 312519010742403036}
   isAnimationPlaying: 0
   isAnimationSingleShot: 0
-  displayImage: {fileID: -2769536697078058589, guid: 945b06bdd674c884688be651aee5045f, type: 3}
+  displayImage: {fileID: 9137017587912637682, guid: a64bfbc3856614c45925acd9bddc3840, type: 3}
   descriptionID: 0
   description: Wait... Isn't the A-10 a plane?
-  weaponName: Roulette Revolver
-  animationName: rouletteRevolver_Clip
+  weaponName: A-10 Auto
+  animationName: aTenAuto_Clip
   targetingIndicator: {fileID: 0}
 --- !u!82 &-2774836476393105754
 AudioSource:
@@ -232,7 +232,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7580701578969237254, guid: 4ea0f75923ccf2b45a5f9a06ca5dcc8f, type: 3}
+  m_Sprite: {fileID: -4737175838266674952, guid: 1b2ade62778c87a47bd490a05cf02090, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
