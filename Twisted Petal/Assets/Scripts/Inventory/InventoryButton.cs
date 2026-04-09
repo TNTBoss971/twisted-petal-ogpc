@@ -69,4 +69,10 @@ public class InventoryButton : MonoBehaviour
             }
         }
     }
+
+    public void DeleteSelf()
+    {
+        print("destroying button");
+        Destroy(gameObject);
+    }
 }

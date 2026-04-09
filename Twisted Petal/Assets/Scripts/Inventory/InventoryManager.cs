@@ -20,6 +20,8 @@ public class InventoryManager : MonoBehaviour
     public SlotDisplayLogic[] displays;
     public int rarityChance;
     public GameObject supplyCounter;
+    private int buttonCount; // how many buttons get made
+    public List<GameObject> currentButtons; // list of buttons in the scene
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,7 +44,12 @@ public class InventoryManager : MonoBehaviour
         int row = 0;
         int col = 0;
 
-        for (int i = 0; i < ownedItems.Count; i++)
+        if (ownedItems.Count > 20)
+        {
+            buttonCount = 20;
+        }
+
+        for (int i = 0; i < buttonCount; i++)
         {
             // clone the prefab
             GameObject clone = Instantiate(buttonPrefab, transform.position, transform.rotation);
@@ -53,14 +60,89 @@ public class InventoryManager : MonoBehaviour
             // set the item stored
             clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
             // set the position
-            clone.transform.position = new Vector2(row * 175 + 100f, col * -175 + 750);
+            clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 750);
 
-            // 
             row++;
             if (row > 10)
             {
                 col++;
                 row = 0;
+            }
+            currentButtons.Add(clone);
+        }
+    }
+
+    public void GenerateButtons(int amountOfButtons)
+    {
+        if ((ownedItems.Count - amountOfButtons) > 0)
+        {
+            for (int i = 0; i < currentButtons.Count; i++)
+            {
+                currentButtons[i].GetComponent<InventoryButton>().DeleteSelf();
+                currentButtons.Remove(currentButtons[i]);
+            }
+
+            int row = 0;
+            int col = 0;
+
+            for (int i = amountOfButtons; i < (amountOfButtons + 20); i++)
+            {
+                // clone the prefab
+                GameObject clone = Instantiate(buttonPrefab, transform.position, transform.rotation);
+                // set the parent
+                clone.transform.SetParent(canvas.transform, false);
+                // set the id
+                clone.GetComponent<InventoryButton>().buttonID = i;
+                // set the item stored
+                clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
+                // set the position
+                clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 750);
+
+                row++;
+                if (row > 10)
+                {
+                    col++;
+                    row = 0;
+                }
+                currentButtons.Add(clone);
+            }
+        }
+        else if (amountOfButtons == 0)
+        {
+            for (int i = 0; i < currentButtons.Count; i++)
+            {
+                currentButtons[i].GetComponent<InventoryButton>().DeleteSelf();
+                currentButtons.Remove(currentButtons[i]);
+            }
+
+            int row = 0;
+            int col = 0;
+            
+            if (ownedItems.Count > 20)
+            {
+                buttonCount = 20;
+            }
+
+            for (int i = 0; i < buttonCount; i++)
+            {
+                // clone the prefab
+                GameObject clone = Instantiate(buttonPrefab, transform.position, transform.rotation);
+                // set the parent
+                clone.transform.SetParent(canvas.transform, false);
+                // set the id
+                clone.GetComponent<InventoryButton>().buttonID = i;
+                // set the item stored
+                clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
+                // set the position
+                clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 750);
+
+                row++;
+                if (row > 10)
+                {
+                    col++;
+                    row = 0;
+                }
+                currentButtons.Add(clone);
             }
         }
     }
