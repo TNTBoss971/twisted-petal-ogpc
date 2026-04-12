@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 178428279396322861}
   - component: {fileID: 5426400630366098533}
   - component: {fileID: 8942829205161027995}
+  - component: {fileID: -2642496205716771965}
   - component: {fileID: 7925444384531411363}
   m_Layer: 6
-  m_Name: Melon
+  m_Name: GreenBirchMoving
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +35,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 8307868950505374339}
+  - {fileID: 426521370939119547}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6806705371347904165
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4098747432067981438, guid: 440cb21f23418ac4e81252a0a48e4f11, type: 3}
+  m_Sprite: {fileID: 5258182386501191756, guid: a52252317f3282340bfaab03622798eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,16 +105,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c24953132743046ae6e90adfab7ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
+  type: 0
   target: {fileID: 0}
   lootFrequency: 100
-  lootSparkles: {fileID: 1089639378256414328}
-  speed: 0.5
-  maxHealth: 2
-  health: 2
-  damage: 1
+  lootSparkles: {fileID: 8772758206032040768}
+  speed: 3
+  maxHealth: 20
+  health: 20
+  damage: 5
   poisonPerTick: 0.1
-  dealsContactDamage: 1
+  dealsContactDamage: 0
   ammunition: {fileID: 0}
   firingDelay: 0
   poison: 0
@@ -123,9 +124,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   hasIntro: 0
   introLength: 0
-  attackAnimationName: Break
-  attackAnimationCycleLength: 0.23
-  walkAnimationName: Fly
+  attackAnimationName: Attack
+  attackAnimationCycleLength: 0.7
+  walkAnimationName: Walk
   isMoving: 1
   isMinion: 0
 --- !u!50 &5426400630366098533
@@ -140,10 +141,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.5
+  m_Mass: 0.0001
   m_LinearDamping: 0
-  m_AngularDamping: 0
-  m_GravityScale: 0.25
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -154,7 +155,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &8942829205161027995
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,18 +190,38 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.05616021, y: 1.0121636}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.49230772}
-    oldSize: {x: 0.8125, y: 0.8125}
+    pivot: {x: 0.31914893, y: 0}
+    oldSize: {x: 1.46875, y: 1.96875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.925, y: 1}
+  m_Size: {x: 0.954617, y: 2.0399623}
   m_EdgeRadius: 0
+--- !u!1818360609 &-2642496205716771965
+RotationConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859193798442875194}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1
 --- !u!95 &7925444384531411363
 Animator:
   serializedVersion: 7
@@ -211,7 +232,7 @@ Animator:
   m_GameObject: {fileID: 1859193798442875194}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: -1570756404435582615, guid: 440cb21f23418ac4e81252a0a48e4f11, type: 3}
+  m_Controller: {fileID: 1463199188601765680, guid: a52252317f3282340bfaab03622798eb, type: 3}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -223,7 +244,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1001 &4117247781436367548
+--- !u!1001 &5729514605704198020
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -241,11 +262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5361568067586973759, guid: d6348245ca032db499f2439c8c51017f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 5361568067586973759, guid: d6348245ca032db499f2439c8c51017f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5361568067586973759, guid: d6348245ca032db499f2439c8c51017f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -280,13 +301,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6348245ca032db499f2439c8c51017f, type: 3}
---- !u!1 &1089639378256414328 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3908080175703123140, guid: d6348245ca032db499f2439c8c51017f, type: 3}
-  m_PrefabInstance: {fileID: 4117247781436367548}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8307868950505374339 stripped
+--- !u!4 &426521370939119547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5361568067586973759, guid: d6348245ca032db499f2439c8c51017f, type: 3}
-  m_PrefabInstance: {fileID: 4117247781436367548}
+  m_PrefabInstance: {fileID: 5729514605704198020}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8772758206032040768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3908080175703123140, guid: d6348245ca032db499f2439c8c51017f, type: 3}
+  m_PrefabInstance: {fileID: 5729514605704198020}
   m_PrefabAsset: {fileID: 0}
