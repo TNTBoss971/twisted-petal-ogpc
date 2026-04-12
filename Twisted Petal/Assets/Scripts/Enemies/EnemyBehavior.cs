@@ -213,7 +213,10 @@ public class EnemyBehavior : MonoBehaviour
 
     void MoveLogic()
     {
-        Vector3 direction = target.position - transform.position;
+        // set z to y for proper layering
+        transform.position =  new Vector3 (transform.position.x, transform.position.y, transform.position.y);
+
+        Vector2 direction = target.position - transform.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
@@ -229,7 +232,8 @@ public class EnemyBehavior : MonoBehaviour
         else if (isMoving == true)
         {
             rb.rotation = angle;
-            rb.MovePosition(transform.position + (direction * speed * Time.deltaTime));
+            Vector3 additionVector = speed * Time.deltaTime * direction;
+            rb.MovePosition(transform.position + additionVector);
         }
     }
         
@@ -310,7 +314,11 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (!dealsContactDamage)
+            if (type == EnemyType.Flung)
+            {
+                BreakFlung();
+            }
+            else if (!dealsContactDamage)
             {
                 isMoving = false;
                 animator.Play(attackAnimationName);
@@ -334,7 +342,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Boundary"))
         {
-            if (type == EnemyType.Flung) {            
+            if (type == EnemyType.Flung) {
                 gameManager.enemyCount -= 1;
                 Destroy(gameObject);
             }
@@ -352,6 +360,23 @@ public class EnemyBehavior : MonoBehaviour
                 dealDamage = false;
             }
         }
+    }
+
+    private void BreakFlung()
+    {
+        gameManager.playerHealth -= damage;
+
+        GetComponent<Collider2D>().enabled = false;
+        rb.simulated = false;
+        animator.Play(attackAnimationName);
+
+        Invoke(nameof(DestroyFlung), attackAnimationCycleLength);
+    }
+
+    private void DestroyFlung()
+    {
+        gameManager.enemyCount -= 1;
+        Destroy(gameObject);
     }
 
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5d84c91397eb00c499b77ce29fd49f2a
+guid: e52c5b18c758d124c9fa750f67aa8ca1
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -122,7 +122,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: birchTreeOrange
+  - name: birchTreeGreen
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -134,7 +134,7 @@ ScriptedImporter:
       y: 4
       width: 32
       height: 63
-    spriteID: 40de6d60b0be66a43bab8d86466aff7d
+    spriteID: 514408f0cebbdca459114f1819d540fa
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -146,13 +146,13 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 504419054
-    name: birchTreeOrange
+    guid: -1480013653
+    name: birchTreeGreen
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: birchTreeOrange
+    - name: birchTreeGreen
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -160,7 +160,7 @@ ScriptedImporter:
         y: 0
         width: 32
         height: 63
-      spriteId: 40de6d60b0be66a43bab8d86466aff7d
+      spriteId: 514408f0cebbdca459114f1819d540fa
     linkedCells: []
     parentIndex: -1
   platformSettings:

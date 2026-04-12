@@ -47,23 +47,21 @@ MonoBehaviour:
   isBossBattle: 0
   length: 30
   enemiesInWave:
-  - {fileID: 1859193798442875194, guid: a31d56b2d7c9c6e43b16b63b77f6bcd1, type: 3}
   - {fileID: 1859193798442875194, guid: 7fcf175b87f4a3c4bba083adfe6a4c76, type: 3}
-  - {fileID: 1859193798442875194, guid: dd44fb6edae93c742ac1dca4a01207c6, type: 3}
+  - {fileID: 5354275259588418300, guid: 777a1035d54df634faff3d8e83617376, type: 3}
   - {fileID: 1859193798442875194, guid: fe4e96af2f9a33a4e9efac397e11653a, type: 3}
   - {fileID: 1859193798442875194, guid: 73e104e8695b5d441a5670c193372b2e, type: 3}
   - {fileID: 1859193798442875194, guid: c7346c99ebbfa144f98a89611adfaa0a, type: 3}
   - {fileID: 1859193798442875194, guid: 66ecdac19f2ff454b97f79c4702f779e, type: 3}
   - {fileID: 1859193798442875194, guid: 8f1565cf3b42d3e45a9f8533c4754abf, type: 3}
-  - {fileID: 1859193798442875194, guid: 09c89e090a0ab0b418d03e135424e87a, type: 3}
+  - {fileID: 1859193798442875194, guid: b97cf2d7b3bd1024c99cfac19a56be0b, type: 3}
   weaponsInWave:
   - {fileID: 6144256074545822952, guid: 3f91c8b135f01b346b1c2106099e2f4e, type: 3}
   - {fileID: 3108472696131321336, guid: 9dca4b138e2c55d468ef210984f00749, type: 3}
   - {fileID: 1692204540741050396, guid: d8c6e5f0efa4cb6428890499beaa69d0, type: 3}
   enemyFrequency:
   - 0.1
-  - 0.2
-  - 0.1
+  - 0.3
   - 0.1
   - 0.1
   - 0.1
