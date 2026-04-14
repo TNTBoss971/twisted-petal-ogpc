@@ -5,6 +5,7 @@ public class InventoryDeleteButton : MonoBehaviour
 {
     private Button button;
     public InventoryManager inventoryManager;
+    public PageButtonInventory nextPageButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,5 +35,6 @@ public class InventoryDeleteButton : MonoBehaviour
         }
         inventoryManager.selectedItems.Clear();
         inventoryManager.selectedIDs.Clear();
+        nextPageButton.CalculateMaxPages();
     }
 }

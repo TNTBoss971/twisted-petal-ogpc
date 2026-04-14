@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEngine.Rendering;
 using Unity.VisualScripting;
+using System;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class InventoryManager : MonoBehaviour
     public GameObject supplyCounter;
     private int buttonCount; // how many buttons get made
     public List<GameObject> currentButtons; // list of buttons in the scene
+    private int tempButtonsCount; // used in a loop that deletes buttons
+    public GameObject pageLabel; // label used to track the current page of the inventory.
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,6 +51,10 @@ public class InventoryManager : MonoBehaviour
         {
             buttonCount = 20;
         }
+        else
+        {
+            buttonCount = ownedItems.Count;
+        }
 
         for (int i = 0; i < buttonCount; i++)
         {
@@ -63,7 +70,7 @@ public class InventoryManager : MonoBehaviour
             clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 750);
 
             row++;
-            if (row > 10)
+            if (row > 9)
             {
                 col++;
                 row = 0;
@@ -76,10 +83,11 @@ public class InventoryManager : MonoBehaviour
     {
         if ((ownedItems.Count - amountOfButtons) > 0)
         {
-            for (int i = 0; i < currentButtons.Count; i++)
+            tempButtonsCount = currentButtons.Count;
+            for (int i = 0; i < tempButtonsCount; i++)
             {
-                currentButtons[i].GetComponent<InventoryButton>().DeleteSelf();
-                currentButtons.Remove(currentButtons[i]);
+                currentButtons[0].GetComponent<InventoryButton>().DeleteSelf();
+                currentButtons.Remove(currentButtons[0]);
             }
 
             int row = 0;
@@ -87,62 +95,31 @@ public class InventoryManager : MonoBehaviour
 
             for (int i = amountOfButtons; i < (amountOfButtons + 20); i++)
             {
-                // clone the prefab
-                GameObject clone = Instantiate(buttonPrefab, transform.position, transform.rotation);
-                // set the parent
-                clone.transform.SetParent(canvas.transform, false);
-                // set the id
-                clone.GetComponent<InventoryButton>().buttonID = i;
-                // set the item stored
-                clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
-                // set the position
-                clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 750);
-
-                row++;
-                if (row > 10)
+                try
                 {
-                    col++;
-                    row = 0;
+                    // clone the prefab
+                    GameObject clone = Instantiate(buttonPrefab, transform.position, transform.rotation);
+                    // set the parent
+                    clone.transform.SetParent(canvas.transform, false);
+                    // set the id
+                    clone.GetComponent<InventoryButton>().buttonID = i;
+                    // set the item stored
+                    clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
+                    // set the position
+                    clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 750);
+
+                    row++;
+                    if (row > 9)
+                    {
+                        col++;
+                        row = 0;
+                    }
+                    currentButtons.Add(clone);
                 }
-                currentButtons.Add(clone);
-            }
-        }
-        else if (amountOfButtons == 0)
-        {
-            for (int i = 0; i < currentButtons.Count; i++)
-            {
-                currentButtons[i].GetComponent<InventoryButton>().DeleteSelf();
-                currentButtons.Remove(currentButtons[i]);
-            }
-
-            int row = 0;
-            int col = 0;
-            
-            if (ownedItems.Count > 20)
-            {
-                buttonCount = 20;
-            }
-
-            for (int i = 0; i < buttonCount; i++)
-            {
-                // clone the prefab
-                GameObject clone = Instantiate(buttonPrefab, transform.position, transform.rotation);
-                // set the parent
-                clone.transform.SetParent(canvas.transform, false);
-                // set the id
-                clone.GetComponent<InventoryButton>().buttonID = i;
-                // set the item stored
-                clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
-                // set the position
-                clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 750);
-
-                row++;
-                if (row > 10)
+                catch(ArgumentOutOfRangeException)
                 {
-                    col++;
-                    row = 0;
+                    
                 }
-                currentButtons.Add(clone);
             }
         }
     }
@@ -173,5 +150,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         supplyCounter.GetComponent<TMPro.TextMeshProUGUI>().text = "Supplies: " + saveData.supplies;
+
+        pageLabel.GetComponent<TMPro.TextMeshProUGUI>().text = "Page: " + (PageButtonInventory.page + 1) + "/" + (PageButtonInventory.maxPages + 1);
     }
 }
