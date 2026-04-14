@@ -271,6 +271,7 @@ public class ProjectileBehavior : MonoBehaviour
                 if (other.CompareTag("Enemy"))
                 {
                     other.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Bullet);
+                    SpawnLeaves(other.GetComponent<EnemyBehavior>());
                 }
                 else if (other.CompareTag("Boss"))
                 {
@@ -289,4 +290,10 @@ public class ProjectileBehavior : MonoBehaviour
         }
 
     }
+    public void SpawnLeaves(EnemyBehavior enemy)
+    {
+        GameObject leafSystem = Instantiate(effect); //, enemy.gameObject.transform);
+        leafSystem.transform.position = new Vector3(transform.position.x, transform.position.y, enemy.gameObject.transform.position.z - 1);
+    }
 }
+

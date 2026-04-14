@@ -183,7 +183,7 @@ MonoBehaviour:
   pierce: 0
   targetIndicator: {fileID: 0}
   type: 1
-  effect: {fileID: 0}
+  effect: {fileID: 4143777059560333450, guid: 95272e5da6aff0f4d860f142be761848, type: 3}
   targetPosition: {x: 0, y: 0}
   startingPosition: {x: 0, y: 0}
   atTarget: 0
