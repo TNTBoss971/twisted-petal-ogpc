@@ -127,6 +127,7 @@ MonoBehaviour:
   attackAnimationName: Attack
   attackAnimationCycleLength: 0.7
   walkAnimationName: Walk
+  impactParticle: {fileID: 4143777059560333450, guid: 95272e5da6aff0f4d860f142be761848, type: 3}
   isMoving: 1
   isMinion: 0
 --- !u!50 &5426400630366098533

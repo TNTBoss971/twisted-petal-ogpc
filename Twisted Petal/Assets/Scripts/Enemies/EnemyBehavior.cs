@@ -60,6 +60,7 @@ public class EnemyBehavior : MonoBehaviour
     public string attackAnimationName;
     public float attackAnimationCycleLength;
     public string walkAnimationName;
+    public GameObject impactParticle;
 
     [Header("Logic")]
     private float leftBoundary;

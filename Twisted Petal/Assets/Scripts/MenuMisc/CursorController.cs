@@ -14,8 +14,11 @@ public class CursorController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       Cursor.SetCursor(sceneCursor, Vector3.zero, CursorMode.ForceSoftware);
-       gameManager = GameObject.Find("GameManager").GetComponent<GameManagement>();
+        Cursor.SetCursor(sceneCursor, Vector3.zero, CursorMode.ForceSoftware);
+        if (useCrosshair)
+        {
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManagement>();
+        }
     }
 
     // Update is called once per frame

@@ -48,13 +48,16 @@ public class GameManagement : MonoBehaviour
     [Header("Summary")]
     public LevelSummaryCreator summaryCreator;
     public GameObject lastWeaponObtained;
-    [Header("Pausing")]
+    [Header("Pausing/Loading In")]
     public bool paused;
     public GameObject pauseHue;
+    private GameObject fadeBox;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        fadeBox = GameObject.Find("FadeBox");
+        fadeBox.GetComponent<Animator>().Play("FadeIn");
         dataManager.LoadGame();
         
         itemsLooted = 0;

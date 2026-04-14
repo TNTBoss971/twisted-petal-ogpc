@@ -13,14 +13,19 @@ public class MapManager : MonoBehaviour
     private float errorTimer;
     public List<GameObject> startingWeapons;
     public GameObject playerMapIcon;
-    public List<float> posX;
-    public List<float> posY;
+    public GameObject worldMap;
+    public List<Sprite> worldMapSprites;
+    public List<Vector2> pos;
     public GameObject mapErrorText;
+
+    private GameObject fadeBox;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         saveData = this.GetComponent<DataManagement>();
+        playerMapIcon.SetActive(false);
+        fadeBox = GameObject.Find("FadeBox");
     }
 
     // Update is called once per frame
@@ -40,7 +45,8 @@ public class MapManager : MonoBehaviour
             mapPosition = 15;
         }
 
-        playerMapIcon.transform.position = new Vector2(posX[mapPosition - 1], posY[mapPosition - 1]);
+        worldMap.GetComponent<SpriteRenderer>().sprite = worldMapSprites[saveData.levelsBeaten];
+        playerMapIcon.transform.localPosition = pos[mapPosition - 1];
 
         // Pressing enter on the map takes you into a level
         if (Input.GetKey("return"))
@@ -53,8 +59,15 @@ public class MapManager : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene("Combat");
+                playerMapIcon.SetActive(true);
+                fadeBox.GetComponent<Animator>().Play("FadeOut");
+                Invoke(nameof(EnterCombat), 1.4f);
             }
         }
+    }
+
+    public void EnterCombat()
+    {
+        SceneManager.LoadScene("Combat");
     }
 }
