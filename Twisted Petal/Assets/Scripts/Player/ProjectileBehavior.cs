@@ -183,6 +183,7 @@ public class ProjectileBehavior : MonoBehaviour
                     if (results[0].transform.GetComponent<EnemyBehavior>() != null)
                     {
                         results[0].transform.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
+                        //SpawnLeaves(results[0].transform.GetComponent<EnemyBehavior>()); // doesn't work very well and lasers arent kenetic anyway
                     }
                     else if (results[0].transform.GetComponent<BossPartDamageTracker>() != null)
                     {
@@ -238,6 +239,7 @@ public class ProjectileBehavior : MonoBehaviour
                     pastTargets.Add(targetEnemy);
                     transform.position = targetEnemy.transform.position;
                     targetEnemy.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
+                    SpawnLeaves(targetEnemy.GetComponent<EnemyBehavior>());
                     validTargetsPresent = true;
                 }
 
@@ -264,6 +266,9 @@ public class ProjectileBehavior : MonoBehaviour
             {
                 GameObject explosion = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
                 explosion.transform.position = transform.position + Vector3.forward * 5;
+                SpawnLeaves(other.GetComponent<EnemyBehavior>());
+                SpawnLeaves(other.GetComponent<EnemyBehavior>());
+                SpawnLeaves(other.GetComponent<EnemyBehavior>());
                 Destroy(gameObject);
             } 
             else if (type == MunitionType.Basic)

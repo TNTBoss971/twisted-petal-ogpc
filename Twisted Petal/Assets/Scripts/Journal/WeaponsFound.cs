@@ -14,9 +14,9 @@ public class WeaponsFound : MonoBehaviour
     void Start()
     {
         foundWeapons.Clear();
-        saveData = this.GetComponent<DataManagement>();
         loopDone = false;
         journalManager = FindAnyObjectByType<JournalManager>();
+        saveData = journalManager.gameObject.GetComponent<DataManagement>();
     }
 
     // Update is called once per frame
