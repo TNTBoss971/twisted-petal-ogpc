@@ -18,6 +18,7 @@ public class CutsceneData : MonoBehaviour
         BarrenCache, // leave or take supplies
         LaserTurret, // take the turret as a weapon or leave it?
         WallRepair, // sacrifice max hp to help people?
+        TheEnding // which ending did you get?
     }
 
     public List<string> altLinesOne; // alternate lines of dialogue
