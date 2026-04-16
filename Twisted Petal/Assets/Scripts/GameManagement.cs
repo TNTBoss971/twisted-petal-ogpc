@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameManagement : MonoBehaviour
 {
+    public bool devSkipActive;
+
     InputAction cycleAction;
     public float cycleValue;
     InputAction nextAction;
@@ -162,7 +164,7 @@ public class GameManagement : MonoBehaviour
             }
 
             // check the wave timer
-            if (nextWaveTime < Time.time)
+            if (nextWaveTime < Time.time || (devSkipActive && Input.GetKeyDown(KeyCode.Space)))
             {
                 EndWave();
             }

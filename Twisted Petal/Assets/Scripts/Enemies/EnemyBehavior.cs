@@ -40,6 +40,7 @@ public class EnemyBehavior : MonoBehaviour
     public float maxHealth = 2f;
     public float health = 2f;
     public float damage = 1f;
+    public float armor = 1f;
     public float poisonPerTick = 1f; // how much damage the enemy takes from poison each tick
     public bool dealsContactDamage;
     public GameObject ammunition;
@@ -202,6 +203,10 @@ public class EnemyBehavior : MonoBehaviour
         if (type == EnemyType.Ranged) {
             if (transform.position.x < leftBoundary)
             {
+                if (isMoving)
+                {
+                    animator.Play(attackAnimationName);
+                }
                 isMoving = false;
                 if (firingTimer <= Time.time)
                 {
@@ -225,6 +230,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             rb.rotation = angle;
             rb.MovePosition(transform.position + (Vector3.left * speed * Time.deltaTime));
+            //transform.position = transform.position + (Vector3.left * speed * Time.deltaTime);
         }
         else if (type == EnemyType.Flung)
         {
@@ -283,7 +289,7 @@ public class EnemyBehavior : MonoBehaviour
 
         if (invincibilityTimer <= Time.time || type == DamageType.Tick)
         {
-            health -= damage;
+            health -= damage * armor;
             if (type != DamageType.Tick) // tick damage doesnt give i-frames
             {
                 if (type == DamageType.Energy)

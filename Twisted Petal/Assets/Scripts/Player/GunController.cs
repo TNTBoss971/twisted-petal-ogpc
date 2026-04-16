@@ -104,7 +104,7 @@ public class GunController : MonoBehaviour
                 isPrepairing = false;
             }
             //transform.position = new Vector3(5, 5, 5);
-            Debug.Log(transform.position.y);
+            
         }
         else
         {

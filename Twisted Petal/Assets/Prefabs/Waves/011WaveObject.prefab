@@ -50,8 +50,6 @@ MonoBehaviour:
   spawnrate: 1
   enemiesInWave:
   - {fileID: 1859193798442875194, guid: da10f828601be214fb62227136b37c6f, type: 3}
-  - {fileID: 1859193798442875194, guid: 0fd52fa7d1269324e954f5bc7a4a211c, type: 3}
-  - {fileID: 1859193798442875194, guid: e5739132a0ae81648a31ed042d66698c, type: 3}
   weaponsInWave:
   - {fileID: 6144256074545822952, guid: 1bdc729864b592347b23e294c87b1681, type: 3}
   - {fileID: 6144256074545822952, guid: 72b5b968fcbd1ac41b6089d539482685, type: 3}

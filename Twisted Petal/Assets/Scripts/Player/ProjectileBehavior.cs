@@ -182,8 +182,8 @@ public class ProjectileBehavior : MonoBehaviour
                 {
                     if (results[0].transform.GetComponent<EnemyBehavior>() != null)
                     {
-                        results[0].transform.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
-                        //SpawnLeaves(results[0].transform.GetComponent<EnemyBehavior>()); // doesn't work very well and lasers arent kenetic anyway
+                        results[0].transform.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
+                        SpawnLeaves(results[0].transform.GetComponent<EnemyBehavior>(), targetPosition);
                     }
                     else if (results[0].transform.GetComponent<BossPartDamageTracker>() != null)
                     {
@@ -239,7 +239,7 @@ public class ProjectileBehavior : MonoBehaviour
                     pastTargets.Add(targetEnemy);
                     transform.position = targetEnemy.transform.position;
                     targetEnemy.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
-                    SpawnLeaves(targetEnemy.GetComponent<EnemyBehavior>());
+                    SpawnLeaves(targetEnemy.GetComponent<EnemyBehavior>(), transform.position);
                     validTargetsPresent = true;
                 }
 
@@ -255,6 +255,7 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.name);
         if (other.CompareTag("Boundary"))
         {
             Destroy(gameObject);
@@ -266,9 +267,7 @@ public class ProjectileBehavior : MonoBehaviour
             {
                 GameObject explosion = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
                 explosion.transform.position = transform.position + Vector3.forward * 5;
-                SpawnLeaves(other.GetComponent<EnemyBehavior>());
-                SpawnLeaves(other.GetComponent<EnemyBehavior>());
-                SpawnLeaves(other.GetComponent<EnemyBehavior>());
+                SpawnLeaves(other.GetComponent<EnemyBehavior>(), transform.position);
                 Destroy(gameObject);
             } 
             else if (type == MunitionType.Basic)
@@ -276,7 +275,7 @@ public class ProjectileBehavior : MonoBehaviour
                 if (other.CompareTag("Enemy"))
                 {
                     other.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Bullet);
-                    SpawnLeaves(other.GetComponent<EnemyBehavior>());
+                    SpawnLeaves(other.GetComponent<EnemyBehavior>(), transform.position);
                 }
                 else if (other.CompareTag("Boss"))
                 {
@@ -295,12 +294,12 @@ public class ProjectileBehavior : MonoBehaviour
         }
 
     }
-    public void SpawnLeaves(EnemyBehavior enemy)
+    public void SpawnLeaves(EnemyBehavior enemy, Vector2 spawnPos)
     {
         for (int i = 0;i <= damage; i++)
         {
             GameObject leafSystem = Instantiate(enemy.impactParticle); //, enemy.gameObject.transform);
-            leafSystem.transform.position = new Vector3(transform.position.x, transform.position.y, enemy.gameObject.transform.position.z - 1f);
+            leafSystem.transform.position = new Vector3(spawnPos.x, spawnPos.y, enemy.gameObject.transform.position.z - 1f);
         }
     }
 }
