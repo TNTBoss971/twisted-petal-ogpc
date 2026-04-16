@@ -10,6 +10,9 @@ public class StatsButton : MonoBehaviour
     {
         button = this.GetComponent<Button>();
         button.onClick.AddListener(TaskOnClick);
+        JournalStats.statsHidden = false;
+        WeaponsFound.weaponsFoundHidden = true;
+        LevelSummary.levelSummariesHidden = true;
     }
 
     // Update is called once per frame

@@ -74,6 +74,10 @@ public class CutsceneDecisionButton : MonoBehaviour
         {
             moralityNumber -= 3;
         }
+        if (saveData.choicesMade.Contains(decisionsMade.repairedWall))
+        {
+            moralityNumber += 3;
+        }
     }
 
     // Update is called once per frame
@@ -199,6 +203,17 @@ public class CutsceneDecisionButton : MonoBehaviour
                                 buttonText = "Don't repair the wall.";
                             }
                             break;
+                        case CutsceneData.decisionType.TheEnding:
+                            scenarioID = 9;
+                            if (buttonID == 1)
+                            {
+                                
+                            }
+                            if (buttonID == 2)
+                            {
+                                
+                            }
+                            break;
                     }
                     dialogue.dialogueLocked = true;
                     decisionAllowed = false;
@@ -270,6 +285,48 @@ public class CutsceneDecisionButton : MonoBehaviour
             }
         }
         if (scenarioID == 5)
+        {
+            decisionAllowed = false;
+            dialogue.dialogueLocked = false;
+            canvasGroup.alpha = 0f;
+            canvasGroup.interactable = false;
+            if (buttonID == 1)
+            {
+                if (moralityNumber < 0)
+                {
+                    if (actionPerformed == false)
+                    {
+                        dialogue.dialogueLines.Clear();
+                        for (int i = 0; i < Dialogue.currentLine; i++)
+                        {
+                            dialogue.dialogueLines.Add("");
+                        }
+                        for (int i = 0; i < cutscenes.currentCutscene.altLinesOne.Count; i++)
+                        {
+                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
+                        }
+                        actionPerformed = true;
+                    }
+                }
+                if (moralityNumber == 0)
+                {
+                    if (actionPerformed == false)
+                    {
+                        dialogue.dialogueLines.Clear();
+                        for (int i = 0; i < Dialogue.currentLine; i++)
+                        {
+                            dialogue.dialogueLines.Add("");
+                        }
+                        for (int i = 0; i < cutscenes.currentCutscene.altLinesTwo.Count; i++)
+                        {
+                            dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesTwo[i]);
+                        }
+                        actionPerformed = true;
+                    }
+                }
+            }
+        }
+        if (scenarioID == 9)
         {
             decisionAllowed = false;
             dialogue.dialogueLocked = false;
