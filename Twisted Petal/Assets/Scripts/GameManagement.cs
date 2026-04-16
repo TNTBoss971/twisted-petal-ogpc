@@ -37,6 +37,7 @@ public class GameManagement : MonoBehaviour
     public WaveData[] waves; // a list of all the waves
     public WaveData currentWave;
     public BossManager bossManager;
+    private float spawnCooldown;
     [Header("Status Bars")]
     public BarBehavior waveProgressionBar;
     public BarBehavior healthBar;
@@ -52,6 +53,7 @@ public class GameManagement : MonoBehaviour
     public bool paused;
     public GameObject pauseHue;
     private GameObject fadeBox;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -129,7 +131,7 @@ public class GameManagement : MonoBehaviour
         {
             // continuouslly spawn enemies while wave is active
             // rarely spawn "loot" enemy
-            if (enemyCount < enemyCountMax)
+            if (enemyCount < enemyCountMax && spawnCooldown <= Time.time)
             {
                 // spawn enemy
 
@@ -156,6 +158,7 @@ public class GameManagement : MonoBehaviour
 
                 GameObject clone = Instantiate(currentWave.enemiesInWave[enemyIndex], new Vector2(11 - Random.Range(-2.5f, 0.5f), Random.Range(-4.5f, 0.5f)), transform.rotation);
                 enemyCount++;
+                spawnCooldown = Time.time + currentWave.spawnrate;
             }
 
             // check the wave timer
@@ -183,6 +186,8 @@ public class GameManagement : MonoBehaviour
         waveNumber = saveData.levelsBeaten;
 
         currentWave = waves[waveNumber];
+
+        enemyCountMax = currentWave.maxEnemies;
 
         if (currentWave.isBossBattle)
         {

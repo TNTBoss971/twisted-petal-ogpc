@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2642496205716771965}
   - component: {fileID: 8888473370995302826}
   m_Layer: 6
-  m_Name: OakTree
+  m_Name: BrightEvergreenTree
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 848632283094939496}
+  - {fileID: 3993208232147196445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6806705371347904165
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6800927168972201395, guid: ed56b0e9ebe544a4ea7d5ef57ae884d7, type: 3}
+  m_Sprite: {fileID: 8564140453282690069, guid: f66e3e5dfd52daa42a10edf342104e20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,11 +108,11 @@ MonoBehaviour:
   type: 2
   target: {fileID: 0}
   lootFrequency: 100
-  lootSparkles: {fileID: 8616130896159044499}
+  lootSparkles: {fileID: 5422033011691626214}
   speed: 0.9
-  maxHealth: 10
-  health: 10
-  damage: 2
+  maxHealth: 20
+  health: 20
+  damage: 10
   poisonPerTick: 0.1
   dealsContactDamage: 1
   ammunition: {fileID: 0}
@@ -173,7 +173,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -191,17 +191,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.016064167, y: 1.7397069}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.51282054, y: 0}
+    oldSize: {x: 2.4375, y: 3.96875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.4284801, y: 3.4950488}
   m_EdgeRadius: 0
 --- !u!1818360609 &-2642496205716771965
 RotationConstraint:
@@ -233,7 +233,7 @@ Animator:
   m_GameObject: {fileID: 1859193798442875194}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 8499740284779681523, guid: 9619b900f57eaa740b73da0623e2ed97, type: 3}
+  m_Controller: {fileID: -5495671712505168571, guid: f66e3e5dfd52daa42a10edf342104e20, type: 3}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -245,7 +245,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1001 &4732983387861817175
+--- !u!1001 &9007943051889736226
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -267,11 +267,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5361568067586973759, guid: d6348245ca032db499f2439c8c51017f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 5361568067586973759, guid: d6348245ca032db499f2439c8c51017f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 5361568067586973759, guid: d6348245ca032db499f2439c8c51017f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -306,13 +306,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6348245ca032db499f2439c8c51017f, type: 3}
---- !u!4 &848632283094939496 stripped
+--- !u!4 &3993208232147196445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5361568067586973759, guid: d6348245ca032db499f2439c8c51017f, type: 3}
-  m_PrefabInstance: {fileID: 4732983387861817175}
+  m_PrefabInstance: {fileID: 9007943051889736226}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8616130896159044499 stripped
+--- !u!1 &5422033011691626214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3908080175703123140, guid: d6348245ca032db499f2439c8c51017f, type: 3}
-  m_PrefabInstance: {fileID: 4732983387861817175}
+  m_PrefabInstance: {fileID: 9007943051889736226}
   m_PrefabAsset: {fileID: 0}

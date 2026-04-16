@@ -107,11 +107,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   target: {fileID: 0}
-  lootFrequency: 100
+  lootFrequency: 25
   lootSparkles: {fileID: 4535120231852129010}
   speed: 3
-  maxHealth: 2
-  health: 2
+  maxHealth: 5
+  health: 5
   damage: 1
   poisonPerTick: 0.1
   dealsContactDamage: 1
@@ -191,7 +191,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.14951533, y: -0.05955267}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.2631579, y: 0.5714286}
@@ -201,7 +201,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.925, y: 1}
+  m_Size: {x: 0.6259693, y: 0.88089466}
   m_EdgeRadius: 0
 --- !u!1818360609 &-2642496205716771965
 RotationConstraint:

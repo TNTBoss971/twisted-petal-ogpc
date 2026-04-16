@@ -297,8 +297,11 @@ public class ProjectileBehavior : MonoBehaviour
     }
     public void SpawnLeaves(EnemyBehavior enemy)
     {
-        GameObject leafSystem = Instantiate(enemy.impactParticle); //, enemy.gameObject.transform);
-        leafSystem.transform.position = new Vector3(transform.position.x, transform.position.y, enemy.gameObject.transform.position.z - 1f);
+        for (int i = 0;i <= damage; i++)
+        {
+            GameObject leafSystem = Instantiate(enemy.impactParticle); //, enemy.gameObject.transform);
+            leafSystem.transform.position = new Vector3(transform.position.x, transform.position.y, enemy.gameObject.transform.position.z - 1f);
+        }
     }
 }
 

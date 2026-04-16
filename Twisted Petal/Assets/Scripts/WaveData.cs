@@ -4,6 +4,8 @@ public class WaveData : MonoBehaviour
 {
     public bool isBossBattle;
     public float length;
+    public int maxEnemies;
+    public float spawnrate;
     public GameObject[] enemiesInWave;
     public GameObject[] weaponsInWave;
     [Header("All frequencies must individually add up to 1")]

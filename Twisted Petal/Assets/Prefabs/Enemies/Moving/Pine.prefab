@@ -109,7 +109,7 @@ MonoBehaviour:
   target: {fileID: 0}
   lootFrequency: 100
   lootSparkles: {fileID: 8772758206032040768}
-  speed: 3
+  speed: 5
   maxHealth: 20
   health: 20
   damage: 5

@@ -343,7 +343,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Boundary"))
         {
-            if (type == EnemyType.Flung) {
+            if (type == EnemyType.Flung || type == EnemyType.Stump) {
                 gameManager.enemyCount -= 1;
                 Destroy(gameObject);
             }

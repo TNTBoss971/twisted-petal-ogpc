@@ -110,8 +110,8 @@ MonoBehaviour:
   lootFrequency: 100
   lootSparkles: {fileID: 8772758206032040768}
   speed: 3
-  maxHealth: 20
-  health: 20
+  maxHealth: 10
+  health: 10
   damage: 5
   poisonPerTick: 0.1
   dealsContactDamage: 0

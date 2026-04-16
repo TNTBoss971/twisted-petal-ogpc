@@ -4948,10 +4948,10 @@ MonoBehaviour:
   target: {fileID: 0}
   lootFrequency: 100
   lootSparkles: {fileID: 4179906694850691707}
-  speed: 3
+  speed: 5
   maxHealth: 20
   health: 20
-  damage: 5
+  damage: 10
   poisonPerTick: 0.1
   dealsContactDamage: 0
   ammunition: {fileID: 0}
@@ -4964,7 +4964,7 @@ MonoBehaviour:
   hasIntro: 0
   introLength: 0
   attackAnimationName: Attack
-  attackAnimationCycleLength: 0.99
+  attackAnimationCycleLength: 1.58
   walkAnimationName: Walk
   impactParticle: {fileID: 4143777059560333450, guid: 95272e5da6aff0f4d860f142be761848, type: 3}
   isMoving: 1

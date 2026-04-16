@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   firingDelay: 1
-  reloadTime: 1
+  reloadTime: 3
   magSize: 1
   shotsRemaining: 1
   burstSize: 0

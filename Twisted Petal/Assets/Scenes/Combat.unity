@@ -1500,11 +1500,11 @@ MonoBehaviour:
   waves:
   - {fileID: 9122227014563279572, guid: e7e8eddd741d43740a2e67b4613eec4b, type: 3}
   - {fileID: 9122227014563279572, guid: b1b126bab42e223498306c84a32df667, type: 3}
-  - {fileID: 9122227014563279572, guid: b1b126bab42e223498306c84a32df667, type: 3}
+  - {fileID: 9122227014563279572, guid: bd4052d48952092489ef2cec1ff66bb6, type: 3}
   - {fileID: 9122227014563279572, guid: e8ed3fc429dfe774a9f2eadcea56a0f6, type: 3}
   - {fileID: 9122227014563279572, guid: c418e4801ea1fa4478e38ddb0e2ec7ab, type: 3}
   - {fileID: 9122227014563279572, guid: af52120d52e70f74f854229913aaf488, type: 3}
-  - {fileID: 9122227014563279572, guid: 0e4e374640378764fac60cea1b4580fb, type: 3}
+  - {fileID: -5593508512251616741, guid: 0e4e374640378764fac60cea1b4580fb, type: 3}
   - {fileID: 9122227014563279572, guid: 5fb5373ad909de346bf32e7382174422, type: 3}
   - {fileID: 9122227014563279572, guid: c8bf667abf40af347a009f294baa61fb, type: 3}
   - {fileID: 9122227014563279572, guid: 53cb0f804e59c1a45ab1d95928a4c304, type: 3}
@@ -3974,7 +3974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7cfcb5ae86f44438bc032b49a3d5bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1
   startingPos: 20.9
   road0: {fileID: 1862592265}
   road0X: 0
