@@ -25,10 +25,18 @@ public class InventoryManager : MonoBehaviour
     public List<GameObject> currentButtons; // list of buttons in the scene
     private int tempButtonsCount; // used in a loop that deletes buttons
     public GameObject pageLabel; // label used to track the current page of the inventory.
-    
+
+    private Transform weaponsParent;
+
+    private GameObject fadeBox;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        weaponsParent = GameObject.Find("WeaponParent").transform;
+        fadeBox = GameObject.Find("FadeBox");
+        fadeBox.GetComponent<Animator>().Play("FadeIn");
+
         inventoryWeaponTypes = weaponTypes;
         saveData = this.GetComponent<DataManagement>();
         selectedItems = saveData.selectedItems;
@@ -61,7 +69,7 @@ public class InventoryManager : MonoBehaviour
             // clone the prefab
             GameObject clone = Instantiate(buttonPrefab, transform.position, transform.rotation);
             // set the parent
-            clone.transform.SetParent(canvas.transform, false);
+            clone.transform.SetParent(weaponsParent, false);
             // set the id
             clone.GetComponent<InventoryButton>().buttonID = i;
             // set the item stored
@@ -77,6 +85,7 @@ public class InventoryManager : MonoBehaviour
             }
             currentButtons.Add(clone);
         }
+
     }
 
     public void GenerateButtons(int amountOfButtons)

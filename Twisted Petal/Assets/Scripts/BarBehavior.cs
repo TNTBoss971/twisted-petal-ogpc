@@ -22,6 +22,8 @@ public class BarBehavior : MonoBehaviour
     private RectTransform barTransform;
     public Vector2 startPos;
 
+    public GameObject edgeObject;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -47,6 +49,11 @@ public class BarBehavior : MonoBehaviour
         if (doGreenToRedTransition)
         {
             gameObject.GetComponent<Image>().color = Color.HSVToRGB(((value / maxValue) * 130f) / 360f, 1f, 1f);
+        }
+
+        if (edgeObject != null)
+        {
+            edgeObject.transform.localPosition = new Vector2(barTransform.sizeDelta.x, 0);
         }
         
     }

@@ -26,6 +26,7 @@ public class MapManager : MonoBehaviour
         saveData = this.GetComponent<DataManagement>();
         playerMapIcon.SetActive(false);
         fadeBox = GameObject.Find("FadeBox");
+        fadeBox.GetComponent<Animator>().Play("FadeIn");
     }
 
     // Update is called once per frame

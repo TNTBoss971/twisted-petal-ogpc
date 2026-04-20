@@ -56,6 +56,8 @@ public class GameManagement : MonoBehaviour
     public GameObject pauseHue;
     private GameObject fadeBox;
 
+    private string sceneToLoad;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -117,8 +119,6 @@ public class GameManagement : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-
-        playerHealthText.GetComponent<TMPro.TextMeshProUGUI>().text = "Health: " + playerHealth;
     }
     void ActiveWave()
     {
@@ -176,7 +176,7 @@ public class GameManagement : MonoBehaviour
         // go to game over screen if hp reaches 0
         if (playerHealth <= 0)
         {
-            SceneManager.LoadScene("Combat");
+            KillPlayer();
         }
         // update player health bar
         healthBar.value = playerHealth;
@@ -304,7 +304,19 @@ public class GameManagement : MonoBehaviour
         saveData.levelSummaries.Add(summaryCreator.CreateSummary(saveData, playerHealth, lastWeaponObtained));
         saveData.currentHealth = playerHealth;
         dataManager.SaveGame();
-        SceneManager.LoadScene("CombatResolution");
+        sceneToLoad = "CombatResolution";
+        fadeBox.GetComponent<Animator>().Play("FadeOut");
+        Invoke(nameof(LoadSceneForDelay), 1f);
+    }
+    public void KillPlayer()
+    {
+        sceneToLoad = "WorldMap";
+        fadeBox.GetComponent<Animator>().Play("FadeOut");
+        Invoke(nameof(LoadSceneForDelay), 1f);
+    }
+    public void LoadSceneForDelay()
+    {
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     // function that can be called by the weapon buttons that swaps the weapon to the given id

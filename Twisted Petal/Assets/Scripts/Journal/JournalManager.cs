@@ -7,11 +7,15 @@ public class JournalManager : MonoBehaviour
     private DataManagement saveData;
     private bool itemsAdded = false;
     public List<GameObject> startingWeapons;
+    private GameObject fadeBox;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         statDisplayed.Clear();
         saveData = this.GetComponent<DataManagement>();
+
+        fadeBox = GameObject.Find("FadeBox");
+        fadeBox.GetComponent<Animator>().Play("FadeIn");
     }
 
     // Update is called once per frame
