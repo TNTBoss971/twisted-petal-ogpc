@@ -114,6 +114,7 @@ MonoBehaviour:
   maxHealth: 2
   health: 2
   damage: 1
+  armor: 1
   poisonPerTick: 0.1
   dealsContactDamage: 1
   ammunition: {fileID: 0}
