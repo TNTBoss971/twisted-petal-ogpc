@@ -45,15 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*Another stretch of road cleared...*'
-  - '*...*'
-  - '*That monster was really something else... I didn''t know the plants could even
-    get that big.*'
-  - '*I hope Government Camp is still alright...*'
-  - '*...*'
-  - '*Could the giant plant have had something to do with the rumors from earlier?*'
-  - '*No, it''ll... probably be fine.*'
-  - '*Hopefully...*'
+  - '*Seems like there''s some kind of makeshift market at this station. All bartering,
+    of course.*'
+  - '*Hmm, this is interesting... someone''s selling a pesticide sprayer.*'
+  - '*I could probably mount it onto my van and use it as a weapon against the plants...*'
+  - '*It would probably cost me, maybe around 5 units of supply to buy it though.*'
+  - '*Yeah, I''ll get it.*'
+  - '[5 supplies lost, pesticide sprayer gained*'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
@@ -61,7 +59,10 @@ MonoBehaviour:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 00000000
-  altLinesOne: []
+  decisions: 000000000000000000000000050000000000000000000000
+  altLinesOne:
+  - '*No, I don''t think it''s worth it.*'
+  - '*Well, guess I''d better get some rest.*'
+  altLinesTwo:
+  - '*Yeah, I''ll-*'
+  - '*Wait... that''s a little out of my price range, isn''t it? Oh well...*'

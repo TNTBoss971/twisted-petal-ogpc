@@ -295,10 +295,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.65, y: 1.83}
+  m_Size: {x: 18.5625, y: 10.78125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &148302824
@@ -840,22 +840,21 @@ MonoBehaviour:
   playerMapIcon: {fileID: 958554077}
   worldMap: {fileID: 148302822}
   worldMapSprites:
-  - {fileID: -2170159954834838908, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: 7739278473320028714, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: 4706010927220507074, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: -6490085687278256422, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: 8961252212556430936, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: -3202433514583529534, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: -8464420937612854571, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: 2440232036615606413, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: -3182234882236385691, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: -662624512110735476, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: 8000443240657846174, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: 1002605082698821200, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: -8517337540153897215, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: 631994273313086937, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: 631994273313086937, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
-  - {fileID: 631994273313086937, guid: e0dc85c958736f7469a88f012dfb8365, type: 3}
+  - {fileID: 5967911882053550066, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: -250316593156440790, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: -571444233001050307, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: 7715358374017140953, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: -6895629849364511283, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: -2913502836173884090, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: 7986325437180032047, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: -1787113208856202259, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: 1972662134547396941, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: 2184084432091550605, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: 3646285767547457391, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: -4285888610125914939, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: -6232584397949184070, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: 1294972471228186475, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
+  - {fileID: -3394050640297548985, guid: a27090b29f9beb842b3750a3b89bf2ce, type: 3}
   pos:
   - {x: -1.5, y: -0.14}
   - {x: 1.92, y: 0.16}
@@ -1723,7 +1722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataManager: {fileID: 513334422}
-  muteButtonText: {fileID: 1140305701}
+  images: []
 --- !u!1 &1282472816
 GameObject:
   m_ObjectHideFlags: 0

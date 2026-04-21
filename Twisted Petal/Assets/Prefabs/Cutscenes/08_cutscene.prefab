@@ -45,24 +45,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*Seems like there''s some kind of makeshift market at this station. All bartering,
-    of course.*'
-  - '*Hmm, this is interesting... someone''s selling a pesticide sprayer.*'
-  - '*I could probably mount it onto my van and use it as a weapon against the plants...*'
-  - '*It would probably cost me, maybe around 5 units of supply to buy it though.*'
-  - '*Yeah, I''ll get it.*'
-  - '[5 supplies lost, pesticide sprayer gained*'
+  - '*I guess I ended up near the south end of the city*'
+  - '"Hey, I don''t mean to bother you, but my friend and I just made it out of the
+    city. Would you happen to have any supplies you could give us?"'
+  - '"Well..."'
+  - '"Yeah, you can have some."'
+  - '[3 supplies lost]'
+  - '"Thank you! This will be super helpful. I appreciate it."'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -8022194467504591970, guid: 3b43e2e4e60e77d4baaf11ae964d4e02, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 000000000000000000000000050000000000000000000000
+  - {fileID: -8022194467504591970, guid: 3b43e2e4e60e77d4baaf11ae964d4e02, type: 3}
+  decisions: 000000000000000004000000000000000000000000000000
   altLinesOne:
-  - '*No, I don''t think it''s worth it.*'
-  - '*Well, guess I''d better get some rest.*'
+  - '"Um, the issue is..."'
+  - '"I don''t really have enough to give anything out, sorry."'
+  - '"It''s okay, I figured it was kind of a long shot."'
   altLinesTwo:
-  - '*Yeah, I''ll-*'
-  - '*Wait... that''s a little out of my price range, isn''t it? Oh well...*'
+  - '"no..."'
+  - '"I don''t just, like... give things out to people."'
+  - '"Oh, well, sorry for bothering you."'

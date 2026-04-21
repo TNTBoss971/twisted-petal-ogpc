@@ -9,18 +9,18 @@ public class LevelText : MonoBehaviour
     {
         {1, "Level 1: Flee the City"},
         {2, "Level 2: On the Open Road"},
-        {3, "Level 3: River's Junction"},
+        {3, "Level 3: Moving Forward"},
         {4, "Level 4: Home Stretch"},
-        {5, "Level 5: Government Camp"},
-        {6, "Level 6: Chart A Course"},
-        {7, "Level 7: South of the City"},
+        {5, "Level 5: River's Junction"},
+        {6, "Level 6: Government Camp"},
+        {7, "Level 7: Chart a Course"},
         {8, "Level 8: Westward Bound"},
-        {9, "Level 9: Race to the Coast"},
-        {10, "Level 10: Shelter From The Storm"},
-        {11, "Level 11: On The Road Again"},
-        {12, "Level 12: Through the Forest"},
-        {13, "Level 13: Cannon Beach"},
-        {14, "Level 14: Seaside"},
+        {9, "Level 9: South of the City"},
+        {10, "Level 10: Race to the Coast"},
+        {11, "Level 11: Shelter From The Storm"},
+        {12, "Level 12: On the Road Again"},
+        {13, "Level 13: Through the Forest"},
+        {14, "Level 14: Cannon Beach"},
         {15, "Level 15: Road to Astoria"}
     };
 
