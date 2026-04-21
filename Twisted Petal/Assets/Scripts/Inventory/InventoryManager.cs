@@ -29,6 +29,7 @@ public class InventoryManager : MonoBehaviour
     private Transform weaponsParent;
 
     private GameObject fadeBox;
+    private Sprite emptyImage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,6 +42,7 @@ public class InventoryManager : MonoBehaviour
         saveData = this.GetComponent<DataManagement>();
         selectedItems = saveData.selectedItems;
         selectedIDs = saveData.selectedButtonIDs;
+        emptyImage = displays[0].displayImage;
         if (saveData.ownedItems.Count <= 0)
         {
             ownedItems = startingWeapons;
@@ -152,9 +154,9 @@ public class InventoryManager : MonoBehaviour
             }
             else
             {
-                displays[i].displayImage = null;
-                displays[i].displayName = null;
-                displays[i].displayDiscription = null;
+                displays[i].displayImage = emptyImage;
+                displays[i].displayName = "Empty";
+                displays[i].displayDiscription = "Useless. Probably should put a weapon here.";
             }
         }
 
