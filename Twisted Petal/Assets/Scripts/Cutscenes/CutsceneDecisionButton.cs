@@ -40,8 +40,6 @@ public class CutsceneDecisionButton : MonoBehaviour
         canvasGroup = this.GetComponent<CanvasGroup>();
         dialogue.dialogueLocked = false;
         button.onClick.AddListener(TaskOnClick);
-        canvasGroup.alpha = 1f;
-        canvasGroup.interactable = true;
         decisionAllowed = true;
         actionPerformed = false;
         custceneManager = FindAnyObjectByType<CutsceneManager>();
@@ -350,6 +348,7 @@ public class CutsceneDecisionButton : MonoBehaviour
                         actionPerformed = true;
                     }
                 }
+                
                 if (moralityNumber == 0)
                 {
                     if (actionPerformed == false)

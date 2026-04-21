@@ -29,6 +29,6 @@ public class NewGameButton : MonoBehaviour
         //and deletes their save.
         // Might change to another scene later
         File.Delete(Application.persistentDataPath + "/saved_data.json");
-        SceneManager.LoadScene("WorldMap");
+        SceneManager.LoadScene("Cutscene");
     }
 }

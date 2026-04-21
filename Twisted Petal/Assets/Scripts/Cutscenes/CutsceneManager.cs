@@ -11,6 +11,7 @@ public class CutsceneManager : MonoBehaviour
     // a dictionary containing the start point for dialogue in a given cutscene
     private DataManagement saveData;
     private bool linesLoaded;
+    public GameObject SkipButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,7 +30,17 @@ public class CutsceneManager : MonoBehaviour
         // I HAVE TO DO THIS NONSENSE. WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY!?!?!?!?!?!?
         if (linesLoaded != true)
         {
-            currentCutscene = cutscenes[saveData.levelsBeaten - 1];
+            if (saveData.levelsBeaten == 0)
+            {
+                SkipButton.GetComponent<CanvasGroup>().alpha = 1;
+                SkipButton.GetComponent<CanvasGroup>().interactable = true;
+            }
+            else
+            {
+                SkipButton.GetComponent<CanvasGroup>().alpha = 0;
+                SkipButton.GetComponent<CanvasGroup>().interactable = false;
+            }
+            currentCutscene = cutscenes[saveData.levelsBeaten];
             for (int i = 0; i < currentCutscene.dialogueLines.Count; i++)
             {
                 dialogue.dialogueLines.Add(currentCutscene.dialogueLines[i]);

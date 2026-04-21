@@ -44,6 +44,7 @@ public class GameManagement : MonoBehaviour
     public BarBehavior waveProgressionBar;
     public BarBehavior healthBar;
     public GameObject playerHealthText;
+    public GameObject shootHint;
     [Header("Save Data")]
     public DataPersistanceManager dataManager;
     public DataManagement saveData;
@@ -78,6 +79,14 @@ public class GameManagement : MonoBehaviour
             playerHealth = playerMaxHealth;
         }
 
+        if (saveData.levelsBeaten > 0)
+        {
+            shootHint.GetComponent<TMPro.TextMeshProUGUI>().text = "W and S to move up and down.";
+        }
+        else
+        {
+            shootHint.GetComponent<TMPro.TextMeshProUGUI>().text = "Left Click to shoot. \n W and S to move up and down.";
+        }
 
         StartWave();
 
