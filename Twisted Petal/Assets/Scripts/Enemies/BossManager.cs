@@ -175,7 +175,8 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.Slam;
             attackStartTime = Time.time;
 
-            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            ResetDamage();
+
             damageApplied = false;
             // play slam animation
             bossObject.GetComponent<Animator>().Play("PlantBossSlam");
@@ -187,9 +188,7 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.FireProjectile;
             attackStartTime = Time.time;
 
-            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
-            backArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
-            mainBody.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            ResetDamage();
             damageApplied = false;
             fireTime = 0;
             // play firing animation
@@ -203,7 +202,7 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.SpawnMinions;
             attackStartTime = Time.time;
 
-            backArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            ResetDamage();
             damageApplied = false;
             // play spawning animation
             bossObject.GetComponent<Animator>().Play("PlantBossSpawnMinions");
@@ -215,7 +214,7 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.Exposed;
             attackStartTime = Time.time;
 
-            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            ResetDamage();
             damageApplied = false;
             // play exposed animation
             bossObject.GetComponent<Animator>().Play("PlantBossExposed");
@@ -348,5 +347,12 @@ public class BossManager : MonoBehaviour
                 positionInAttackPattern = 0;
             }
         }
+    }
+
+    public void ResetDamage()
+    {
+        frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+        backArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+        mainBody.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
     }
 }

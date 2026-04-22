@@ -42,6 +42,7 @@ public class GameManagement : MonoBehaviour
     private float spawnCooldown;
     [Header("Status Bars")]
     public BarBehavior waveProgressionBar;
+    public GameObject uiRoad;
     public BarBehavior healthBar;
     public GameObject playerHealthText;
     public GameObject shootHint;
@@ -203,6 +204,8 @@ public class GameManagement : MonoBehaviour
         if (currentWave.isBossBattle)
         {
             bossManager = Instantiate(currentWave.enemiesInWave[0]).GetComponent<BossManager>();
+            uiRoad.SetActive(false);
+            waveProgressionBar.gameObject.SetActive(false);
         }
         else
         {

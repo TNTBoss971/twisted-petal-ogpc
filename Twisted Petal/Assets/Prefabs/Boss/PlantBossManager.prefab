@@ -48,6 +48,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 8639554469198242578, guid: 1bed0b0def2d5564d9e9cb41af69c7b5, type: 3}
   canvasPrefab: {fileID: 8724778410921523659, guid: 470b95de9b7399644a0ecfa1ffa416fc, type: 3}
   bossObject: {fileID: 0}
+  stunnedParticles: {fileID: 0}
   canvasObject: {fileID: 0}
   weakpoints: []
   bossParts:
@@ -66,8 +67,8 @@ MonoBehaviour:
   positionInAttackPattern: 0
   attackStartTime: 0
   bossSpeed: 0.5
-  maxHealth: 1000
-  health: 1000
+  maxHealth: 375
+  health: 375
   poison: 0
   hasNotTickedDamage: 1
   poisonPerTick: 1

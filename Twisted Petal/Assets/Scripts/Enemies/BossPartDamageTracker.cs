@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class BossPartDamageTracker : MonoBehaviour
 {
@@ -17,11 +18,15 @@ public class BossPartDamageTracker : MonoBehaviour
     {
 
     }
-    public void DamageSelf(float damage)
+    public void DamageSelf(float damage, EnemyBehavior.DamageType damageType)
     {
         manager = FindObjectsByType<BossManager>(FindObjectsSortMode.None)[0];
+        if (damageType == EnemyBehavior.DamageType.Energy)
+        {
+            damage = damage / 16;
+        }
         
-        Debug.Log("Damaged");
+        //Debug.Log("Damaged");
         totalDamage += damage;
         damageThisAttack += damage;
         if (isWeakPoint)

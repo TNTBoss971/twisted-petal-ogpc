@@ -107,12 +107,16 @@ MonoBehaviour:
   type: 0
   target: {fileID: 0}
   lootFrequency: 5
+  lootSparkles: {fileID: 0}
   speed: 3
   maxHealth: 2
   health: 2
   damage: 1
+  armor: 1
   poisonPerTick: 0.1
   dealsContactDamage: 0
+  ammunition: {fileID: 0}
+  firingDelay: 0
   poison: 0
   hasNotTickedDamage: 1
   invincibilityTimer: 0
@@ -123,6 +127,7 @@ MonoBehaviour:
   attackAnimationName: PlantBossMinionAttack
   attackAnimationCycleLength: 1.183
   walkAnimationName: PlantBossMinionWalk
+  impactParticle: {fileID: 4143777059560333450, guid: 95272e5da6aff0f4d860f142be761848, type: 3}
   isMoving: 1
   isMinion: 1
 --- !u!50 &5426400630366098533
