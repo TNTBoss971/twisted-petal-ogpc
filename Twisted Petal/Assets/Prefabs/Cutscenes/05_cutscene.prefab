@@ -45,15 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*Another stretch of road cleared...*'
-  - '*...*'
-  - '*That monster was really something else... I didn''t know the plants could even
-    get that big.*'
-  - '*I hope Government Camp is still alright...*'
-  - '*...*'
-  - '*Could the giant plant have had something to do with the rumors from earlier?*'
-  - '*No, it''ll... probably be fine.*'
-  - '*Hopefully...*'
+  - '*If my map is right, I''m getting quite close to Government Camp.*'
+  - '*This station seems to be doing pretty well for itself.*'
+  - '*There are some supplies for people to take.*'
+  - '*I think I''ll just take a little.*'
+  - '[3 supplies gained]'
+  - '*I''m gonna need it for the drive ahead.*'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
@@ -61,7 +58,6 @@ MonoBehaviour:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 00000000
+  decisions: 000000000000000000000000000000000100000000000000
   altLinesOne: []
+  altLinesTwo: []

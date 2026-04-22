@@ -45,26 +45,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*I guess I ended up near the south end of the city*'
-  - '"Hey, I don''t mean to bother you, but my friend and I just made it out of the
-    city. Would you happen to have any supplies you could give us?"'
-  - '"Well..."'
-  - '"Yeah, you can have some."'
-  - '[3 supplies lost]'
-  - '"Thank you! This will be super helpful. I appreciate it."'
+  - '*Made it to the next gas station...*'
+  - '*Looks like I''m the only one here today. No supplies either...*'
+  - '*...*'
+  - '*I can''t help but think about that moment from earlier.*'
+  - '*It''s probably a good thing I only took what I needed*'
+  - '*It''s probably because of selfish people that there aren''t any left at this
+    station...*'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: -8022194467504591970, guid: 3b43e2e4e60e77d4baaf11ae964d4e02, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: -8022194467504591970, guid: 3b43e2e4e60e77d4baaf11ae964d4e02, type: 3}
-  decisions: 000000000000000004000000000000000000000000000000
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  decisions: 0000000000000000000000000000000003000000
   altLinesOne:
-  - '"Um, the issue is..."'
-  - '"I don''t really have enough to give anything out, sorry."'
-  - '"It''s okay, I figured it was kind of a long shot."'
-  altLinesTwo:
-  - '"no..."'
-  - '"I don''t just, like... give things out to people."'
-  - '"Oh, well, sorry for bothering you."'
+  - '*I''m glad I took all the supplies there, considering there aren''t any over
+    here.*'
+  - '*After all, I bet everyone else is taking everything not nailed down anyways.
+    Might as well join in.*'
+  altLinesTwo: []

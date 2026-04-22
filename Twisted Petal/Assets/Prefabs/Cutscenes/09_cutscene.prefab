@@ -45,18 +45,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*I''ve been making pretty good time with these past few trips...*'
-  - '*At this rate, I''m bound to reach Astoria soon-*'
-  - '*Woah... this storm is getting pretty bad.*'
-  - '*It would be too risky to keep driving in this weather. I should find somewhere
-    to take shelter before it gets worse*'
-  - '*Even if it means fighting through some more plants.*'
+  - '*I guess I ended up near the south end of the city*'
+  - '"Hey, I don''t mean to bother you, but my friend and I just made it out of the
+    city. Would you happen to have any supplies you could give us?"'
+  - '"Well..."'
+  - '"Yeah, you can have some."'
+  - '[3 supplies lost]'
+  - '"Thank you! This will be super helpful. I appreciate it."'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -8022194467504591970, guid: 3b43e2e4e60e77d4baaf11ae964d4e02, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 0000000000000000000000000000000000000000
-  altLinesOne: []
-  altLinesTwo: []
+  - {fileID: -8022194467504591970, guid: 3b43e2e4e60e77d4baaf11ae964d4e02, type: 3}
+  decisions: 000000000000000004000000000000000000000000000000
+  altLinesOne:
+  - '"Um, the issue is..."'
+  - '"I don''t really have enough to give anything out, sorry."'
+  - '"It''s okay, I figured it was kind of a long shot."'
+  altLinesTwo:
+  - '"no..."'
+  - '"I don''t just, like... give things out to people."'
+  - '"Oh, well, sorry for bothering you."'

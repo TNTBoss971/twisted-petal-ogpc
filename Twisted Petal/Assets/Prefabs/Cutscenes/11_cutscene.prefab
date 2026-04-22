@@ -45,14 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*Another gas station.*'
-  - '*Feel like it''s been a whlie since i''ve seen one of these.*'
-  - '*Looks like there''s nobody here.*'
-  - '*This one also has a communal supply cache. Looks pretty barren though, not
-    much in there...*'
-  - '*I might as well put some there for the next person.*'
-  - '[3 supplies lost]'
-  - '*I''d better rest up. I''ll need it for tomorrow when I head through the forest.*'
+  - '*Camp Merriwether... yeah, this place looks good.*'
+  - '*...*'
+  - '*I''m glad I decided to make that detour when I did... it sounds pretty bad
+    out there.*'
+  - '*This place is totally abandoned...*'
+  - '*It''s kind of lonely...*'
+  - '*I guess I should get some rest. The storm will probably be gone by morning.*'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
@@ -60,13 +59,10 @@ MonoBehaviour:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 00000000000000000000000007000000000000000000000000000000
+  decisions: 000000000000000000000000060000000000000000000000
   altLinesOne:
-  - '*Might as well take it if it''s just sitting there.*'
-  - '[1 supplies gained]'
-  - '*After all, I might need it. I''ll be driving through the forest tomorrow.*'
+  - '*Just how I like it.*'
+  - '*I guess I should get some rest. The storm will probably be gone by morning.*'
   altLinesTwo:
-  - '*I might as well put some there for the next per-*'
-  - '*Oh, wait. I don''t exactly have much of anything to offer, do I?*'
-  - '*I uh, think I''ll just go to sleep now...*'
+  - '*Suppose that just means I don''t need to worry about anyone.*'
+  - '*I guess I should get some rest. The storm will probably be gone by morning.*'

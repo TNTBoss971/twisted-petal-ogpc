@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 282040474871025790}
-  - component: {fileID: -5593508512251616741}
+  - component: {fileID: 9122227014563279572}
   m_Layer: 0
   m_Name: 006WaveObject
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5593508512251616741
+--- !u!114 &9122227014563279572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,17 +44,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920e8f5dac2a9ad44b18daf2e69d50f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBossBattle: 1
-  length: 1
+  isBossBattle: 0
+  length: 80
   maxEnemies: 25
   spawnrate: 1
   enemiesInWave:
-  - {fileID: 4950766893030274313, guid: 3664dc90b61295946bb08d4612c54547, type: 3}
+  - {fileID: 1859193798442875194, guid: 66ecdac19f2ff454b97f79c4702f779e, type: 3}
+  - {fileID: 6516766992148424705, guid: 516696f1408b01a41869ca023cb8537e, type: 3}
+  - {fileID: 1859193798442875194, guid: 6ef60437f7a9fa7489de312854884c42, type: 3}
+  - {fileID: 1859193798442875194, guid: 8d9704df27be722498efc51b0520cf7d, type: 3}
   weaponsInWave:
+  - {fileID: 6144256074545822952, guid: 72b5b968fcbd1ac41b6089d539482685, type: 3}
   - {fileID: 6144256074545822952, guid: 1bdc729864b592347b23e294c87b1681, type: 3}
+  - {fileID: 6144256074545822952, guid: 3f91c8b135f01b346b1c2106099e2f4e, type: 3}
   enemyFrequency:
-  - 0.2
-  - 0.4
-  - 0.4
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
   weaponFrequency:
-  - 1
+  - 0.6
+  - 0.3
+  - 0.1

@@ -45,59 +45,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*These plants are getting worse by the day...*'
-  - '*Atleast I have a nice view of the beach*'
-  - '*Here we are, another station.*'
-  - '"Oh hey, a new person. You probably shouldn''t stay here long though."'
-  - '"Hm? Why is that?"'
-  - '"Well, the plant attacks are especially bad around these parts, so we built
-    a perimeter wall around this gas station, but recently one of the bigger ones
-    managed to break a hole in it."'
-  - '"Nobody''s fixed this hole yet?"'
-  - '"Well, we don''t really have the materials for it. It''s a shame, this was a
-    nice place to stop, too."'
-  - '*Hmm...*'
-  - '*I bet I could patch this hole using some of my van''s internal armor plating...
-    but that would reduce its integrity by around... 20%.*'
-  - '*Yeah... I''ll do it.*'
-  - '"Hey, uh, I could probably get you the metal you need?"'
-  - '"Really? Thanks, that would be awesome."'
-  - '[max hp reduced by 20]'
-  - '"Well... that should do it."'
-  - '"It looks great! This should hold nicely. I''m glad to see there are still nice
-    people around here nowadays."'
-  - '"Glad I could help."'
-  - '*Hope I don''t end up needing that...*'
+  - '*Finally, a safe zone...*'
+  - '*That forest was quite the battle*'
+  - '*I''m honestly surprised this place isn''t swarming with plants. It''s not like
+    we''re that far away from the forest.* '
+  - '*Wait... seems like they have some kind of laser turret set up here.*'
+  - '*I bet I could mount that on my van, if nobody''s looking...*'
+  - '*No, what am I thinking, that would doom this sanctuary.*'
+  - '*I already have plenty of good weapons.*'
+  - '*Other people need it more than I do.*'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: -4542106424281798416, guid: 43c5214fe40baac45a50846e5e4154b6, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: -4542106424281798416, guid: 43c5214fe40baac45a50846e5e4154b6, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: -4542106424281798416, guid: 43c5214fe40baac45a50846e5e4154b6, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: -4542106424281798416, guid: 43c5214fe40baac45a50846e5e4154b6, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: -4542106424281798416, guid: 43c5214fe40baac45a50846e5e4154b6, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 000000000000000000000000000000000000000000000000000000000000000000000000090000000000000000000000000000000000000000000000000000000000000000000000
+  decisions: 0000000000000000000000000000000008000000000000000000000000000000
   altLinesOne:
-  - '*No, that''s too risky.*'
-  - '"Yeah, hopefully it gets fixed soon."'
-  - '"Soon is right. My friends and I are gonna be leaving soon. If we don''t find
-    a way to patch this, the whole station will be overrun with plants..."'
-  - '"Quite the pickle..."'
-  - ...
-  - '"Well, you don''t need to worry about it. We''ll be here until tommorow, so
-    it''ll be defended for the night, but after that, I suppose it''ll be left up
-    to fate."'
-  - '"Yeah..."'
-  - '*I''d better get some rest.*'
+  - '*Yeah, that''s a good idea... let me just...*'
+  - '[laser gun gained]'
+  - '*There we go. This is gonna be good... hope nobody saw me.*'
   altLinesTwo: []
