@@ -65,8 +65,8 @@ MonoBehaviour:
   isAnimationSingleShot: 0
   displayImage: {fileID: -6377835621950481014, guid: fe97fed3d48ca1e4f894c3053e7bea8f, type: 3}
   descriptionID: 6
-  description: Spews out pesticide to burn enemies
-  weaponName: Pesticide Sprinkler
+  description: Spews out herbicide to corrode enemies
+  weaponName: Herbicide Sprinkler
   animationName: pesticideSprinkler_Clip
   targetingIndicator: {fileID: 3578250175648416519, guid: 42a7c9f2b50b32d41a49197623ac3727, type: 3}
 --- !u!82 &-4622074114011619399

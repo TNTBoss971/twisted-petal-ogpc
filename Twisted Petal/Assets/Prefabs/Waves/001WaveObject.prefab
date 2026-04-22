@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBossBattle: 0
-  length: 30
+  length: 90
   maxEnemies: 25
   spawnrate: 1
   enemiesInWave:

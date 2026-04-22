@@ -253,6 +253,7 @@ public class GunController : MonoBehaviour
         if (persistentProjectile != null)
         {
             persistentProjectile.GetComponent<ProjectileBehavior>().damagePulse = true;
+            persistentProjectile.GetComponent<ProjectileBehavior>().startingPosition = transform.position;
         }
         nextFirePoint = Time.time + firingDelay;
 
