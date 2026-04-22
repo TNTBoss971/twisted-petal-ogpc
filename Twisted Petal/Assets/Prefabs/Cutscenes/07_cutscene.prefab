@@ -45,24 +45,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*Made it to the next gas station...*'
-  - '*Looks like I''m the only one here today. No supplies either...*'
-  - '*...*'
-  - '*I can''t help but think about that moment from earlier.*'
-  - '*It''s probably a good thing I only took what I needed*'
-  - '*It''s probably because of selfish people that there aren''t any left at this
-    station...*'
+  - '*It''s as I feared... the whole place is in ruins...*'
+  - '"Hey! Are you the one who took down that huge monster?"'
+  - '"Oh, uh. Yeah."'
+  - '"Well, I offer you my thanks. I only wish you were here earlier though."'
+  - '"As you can probably tell, this place isn''t really livable anymore. Most of
+    the folks moved over to Astoria."'
+  - '"Oh, really?"'
+  - '"Yeah. Do you have a map on you? I could point it out."'
+  - '"Yeah, I do. And that''d be great..."'
+  - '*Well, I guess I have a new destination now...*'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -790151542688815544, guid: c1659740120d72d4eac3a3e8267fe5b5, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -790151542688815544, guid: c1659740120d72d4eac3a3e8267fe5b5, type: 3}
+  - {fileID: -790151542688815544, guid: c1659740120d72d4eac3a3e8267fe5b5, type: 3}
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -790151542688815544, guid: c1659740120d72d4eac3a3e8267fe5b5, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 0000000000000000000000000000000003000000
-  altLinesOne:
-  - '*I''m glad I took all the supplies there, considering there aren''t any over
-    here.*'
-  - '*After all, I bet everyone else is taking everything not nailed down anyways.
-    Might as well join in.*'
-  altLinesTwo: []
+  decisions: 00000000
+  altLinesOne: []

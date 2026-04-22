@@ -45,24 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*Camp Merriwether... yeah, this place looks good.*'
-  - '*...*'
-  - '*I''m glad I decided to make that detour when I did... it sounds pretty bad
-    out there.*'
-  - '*This place is totally abandoned...*'
-  - '*It''s kind of lonely...*'
-  - '*I guess I should get some rest. The storm will probably be gone by morning.*'
+  - '*I''ve been making pretty good time with these past few trips...*'
+  - '*At this rate, I''m bound to reach Astoria soon-*'
+  - '*Woah... this storm is getting pretty bad.*'
+  - '*It would be too risky to keep driving in this weather. I should find somewhere
+    to take shelter before it gets worse*'
+  - '*Even if it means fighting through some more plants.*'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 000000000000000000000000060000000000000000000000
-  altLinesOne:
-  - '*Just how I like it.*'
-  - '*I guess I should get some rest. The storm will probably be gone by morning.*'
-  altLinesTwo:
-  - '*Suppose that just means I don''t need to worry about anyone.*'
-  - '*I guess I should get some rest. The storm will probably be gone by morning.*'
+  decisions: 0000000000000000000000000000000000000000
+  altLinesOne: []
+  altLinesTwo: []
