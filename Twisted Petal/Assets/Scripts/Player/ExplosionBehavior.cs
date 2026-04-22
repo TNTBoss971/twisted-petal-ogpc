@@ -1,5 +1,6 @@
 using System;
 using NUnit.Framework.Constraints;
+using TMPro;
 using UnityEngine;
 using static ProjectileBehavior;
 
@@ -87,7 +88,7 @@ public class ExplosionBehavior : MonoBehaviour
         {
             if (type == AreaType.Explosive)
             {
-                other.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+                other.GetComponent<BossPartDamageTracker>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
             }
             if (type == AreaType.Poison)
             {
@@ -104,6 +105,7 @@ public class ExplosionBehavior : MonoBehaviour
             if (type == AreaType.Explosive)
             {
                 collision.gameObject.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
+                SpawnLeaves(collision.gameObject.GetComponent<EnemyBehavior>(), collision.transform.position);
             }
             if (type == AreaType.Poison)
             {
@@ -114,13 +116,21 @@ public class ExplosionBehavior : MonoBehaviour
         {
             if (type == AreaType.Explosive)
             {
-                collision.gameObject.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+                collision.gameObject.GetComponent<BossPartDamageTracker>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
             }
             if (type == AreaType.Poison)
             {
                 collision.gameObject.GetComponent<BossPartDamageTracker>().manager.poison += damage;
             }
         }
-        
+
+    }
+    private void SpawnLeaves(EnemyBehavior enemy, Vector2 spawnPos)
+    {
+        for (int i = 0; i <= damage; i++)
+        {
+            GameObject leafSystem = Instantiate(enemy.impactParticle); //, enemy.gameObject.transform);
+            leafSystem.transform.position = new Vector3(spawnPos.x, spawnPos.y, enemy.gameObject.transform.position.z - 1f);
+        }
     }
 }

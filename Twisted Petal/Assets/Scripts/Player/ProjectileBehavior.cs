@@ -187,7 +187,7 @@ public class ProjectileBehavior : MonoBehaviour
                     }
                     else if (results[0].transform.GetComponent<BossPartDamageTracker>() != null)
                     {
-                        results[0].transform.gameObject.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+                        results[0].transform.gameObject.GetComponent<BossPartDamageTracker>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
                     }
                     damagePulse = false;
                 }
@@ -279,7 +279,7 @@ public class ProjectileBehavior : MonoBehaviour
                 }
                 else if (other.CompareTag("Boss"))
                 {
-                    other.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+                    other.GetComponent<BossPartDamageTracker>().DamageSelf(damage, EnemyBehavior.DamageType.Bullet);
                 }
 
                 if (pierce > 0)
