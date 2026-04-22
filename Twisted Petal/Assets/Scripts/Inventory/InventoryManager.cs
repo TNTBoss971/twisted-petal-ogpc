@@ -77,7 +77,7 @@ public class InventoryManager : MonoBehaviour
             // set the item stored
             clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
             // set the position
-            clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 750);
+            clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 890);
 
             row++;
             if (row > 9)
@@ -117,7 +117,7 @@ public class InventoryManager : MonoBehaviour
                     // set the item stored
                     clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
                     // set the position
-                    clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 750);
+                    clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 890);
 
                     row++;
                     if (row > 9)
