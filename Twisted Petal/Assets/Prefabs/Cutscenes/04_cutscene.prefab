@@ -47,11 +47,11 @@ MonoBehaviour:
   dialogueLines:
   - '*Seems like there''s some kind of makeshift market at this station. All bartering,
     of course.*'
-  - '*Hmm, this is interesting... someone''s selling a pesticide sprayer.*'
+  - '*Hmm, this is interesting... someone''s selling a herbicide sprayer.*'
   - '*I could probably mount it onto my van and use it as a weapon against the plants...*'
   - '*It would probably cost me, maybe around 5 units of supply to buy it though.*'
   - '*Yeah, I''ll get it.*'
-  - '[5 supplies lost, pesticide sprayer gained*'
+  - '[5 supplies lost, herbicide sprayer gained]'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
