@@ -258,13 +258,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: LootSparkles
       objectReference: {fileID: 0}
+    - target: {fileID: 3908080175703123140, guid: d6348245ca032db499f2439c8c51017f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5361568067586973759, guid: d6348245ca032db499f2439c8c51017f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5361568067586973759, guid: d6348245ca032db499f2439c8c51017f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.37
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 5361568067586973759, guid: d6348245ca032db499f2439c8c51017f, type: 3}
       propertyPath: m_LocalPosition.z
