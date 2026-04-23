@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - Years ago, the world's greatest scientists had discovered a cure for cancer.
-  - This cure was celebrated around the world, but it had an unfortunate tied to
-    it.
+  - This cure was celebrated around the world, but it had an unfortunate effect tied
+    to it.
   - When exposed to plant life, the cure would bring them to life. Worse still, this
     would spread to other plants.
   - In a matter of days, plants across the world came to life, and wrought havoc

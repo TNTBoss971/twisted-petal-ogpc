@@ -45,15 +45,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*Almost there...*'
-  - '*After this stop is the final stretch to Astoria.*'
-  - '*I have a feeling this might be my greatest challenge yet.*'
-  - '*You''ve got this Skyler...*'
+  - With the last stretch of road cleared, you drive forward, towards the city in
+    the distance.
+  - You have reached Astoria, and your journey is at its end.
+  - The message of your good deeds has spread far and wide.
+  - The people of Astoria welcome you as one of your own, and you finally live in
+    peace.
+  - The End.
   dialoguePortraits:
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 00000000000000000000000000000000
-  altLinesOne: []
-  altLinesTwo: []
+  - {fileID: -7822595269035665099, guid: 23c957526baf3904c942068be1887927, type: 3}
+  - {fileID: -7822595269035665099, guid: 23c957526baf3904c942068be1887927, type: 3}
+  - {fileID: -7822595269035665099, guid: 23c957526baf3904c942068be1887927, type: 3}
+  - {fileID: -7822595269035665099, guid: 23c957526baf3904c942068be1887927, type: 3}
+  - {fileID: -7822595269035665099, guid: 23c957526baf3904c942068be1887927, type: 3}
+  decisions: 000000000a000000000000000000000000000000
+  altLinesOne:
+  - However, word of your selfishness has spread to the people of Astoria
+  - You are not allowed to live within the city, and you depart to once again roam
+    the earth in search of shelter.
+  - The End.
+  altLinesTwo:
+  - The tales of your various dealings are mixed; some good, some bad.
+  - But in the end, the people of Astoria allow you to live there nonetheless.
+  - The End.

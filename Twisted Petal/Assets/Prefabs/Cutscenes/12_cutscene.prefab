@@ -45,14 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '*Another gas station.*'
-  - '*Feel like it''s been a whlie since i''ve seen one of these.*'
-  - '*Looks like there''s nobody here.*'
-  - '*This one also has a communal supply cache. Looks pretty barren though, not
-    much in there...*'
-  - '*I might as well put some there for the next person.*'
-  - '[3 supplies lost]'
-  - '*I''d better rest up. I''ll need it for tomorrow when I head through the forest.*'
+  - '*Finally, a safe zone...*'
+  - '*That was quite the battle*'
+  - '*I''m honestly surprised this place isn''t swarming with plants. It''s not like
+    we''re that far away from the forest.* '
+  - '*Wait... seems like they have some kind of laser turret set up here.*'
+  - '*I bet I could mount that on my van, if nobody''s looking...*'
+  - '*No, what am I thinking, that would doom this sanctuary.*'
+  - '*I already have plenty of good weapons.*'
+  - '*Other people need it more than I do.*'
   dialoguePortraits:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
@@ -61,12 +62,10 @@ MonoBehaviour:
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
   - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  decisions: 00000000000000000000000007000000000000000000000000000000
+  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  decisions: 0000000000000000000000000000000008000000000000000000000000000000
   altLinesOne:
-  - '*Might as well take it if it''s just sitting there.*'
-  - '[1 supplies gained]'
-  - '*After all, I might need it. I''ll be driving through the forest tomorrow.*'
-  altLinesTwo:
-  - '*I might as well put some there for the next per-*'
-  - '*Oh, wait. I don''t exactly have much of anything to offer, do I?*'
-  - '*I uh, think I''ll just go to sleep now...*'
+  - '*Yeah, that''s a good idea... let me just...*'
+  - '[laser gun gained]'
+  - '*There we go. This is gonna be good... hope nobody saw me.*'
+  altLinesTwo: []
