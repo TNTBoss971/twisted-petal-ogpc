@@ -57,8 +57,8 @@ public class GameManagement : MonoBehaviour
     public bool paused;
     public GameObject pauseHue;
     private GameObject fadeBox;
-
     private string sceneToLoad;
+    private bool statsSaved;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -88,6 +88,8 @@ public class GameManagement : MonoBehaviour
         {
             shootHint.GetComponent<TMPro.TextMeshProUGUI>().text = "Left Click to shoot. \n W and S to move up and down.";
         }
+
+        statsSaved = false;
 
         StartWave();
 
@@ -307,15 +309,18 @@ public class GameManagement : MonoBehaviour
     public void EndWave()
     {
         // this wave/level is over, go to combat resolution
-
-        saveData.levelsBeaten = waveNumber + 1;
-        saveData.itemsLootedOverall += itemsLooted;
-        saveData.enemiesBeaten = enemiesBeaten;
-        saveData.enemiesBeatenOverall += enemiesBeaten;
-        saveData.itemsLooted = itemsLooted;
-        saveData.levelSummaries.Add(summaryCreator.CreateSummary(saveData, playerHealth, lastWeaponObtained));
-        saveData.currentHealth = playerHealth;
-        dataManager.SaveGame();
+        if (statsSaved == false)
+        {
+            saveData.levelsBeaten = waveNumber + 1;
+            saveData.itemsLootedOverall += itemsLooted;
+            saveData.enemiesBeaten = enemiesBeaten;
+            saveData.enemiesBeatenOverall += enemiesBeaten;
+            saveData.itemsLooted = itemsLooted;
+            saveData.levelSummaries.Add(summaryCreator.CreateSummary(saveData, playerHealth, lastWeaponObtained));
+            saveData.currentHealth = playerHealth;
+            dataManager.SaveGame();
+            statsSaved = true;
+        }
         sceneToLoad = "CombatResolution";
         fadeBox.GetComponent<Animator>().Play("FadeOut");
         Invoke(nameof(LoadSceneForDelay), 1f);

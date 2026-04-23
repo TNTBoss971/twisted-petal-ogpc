@@ -3777,7 +3777,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.6509434, g: 0.6417319, b: 0.6417319, a: 1}
     m_HighlightedColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
     m_PressedColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3800,7 +3800,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2035660945}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.004
+  m_Size: 0.079
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
