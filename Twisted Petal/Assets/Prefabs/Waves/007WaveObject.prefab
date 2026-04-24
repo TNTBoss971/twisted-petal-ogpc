@@ -47,7 +47,7 @@ MonoBehaviour:
   isBossBattle: 0
   length: 150
   maxEnemies: 25
-  spawnrate: 1
+  spawnrate: 2
   enemiesInWave:
   - {fileID: 1859193798442875194, guid: 6ef60437f7a9fa7489de312854884c42, type: 3}
   - {fileID: 1859193798442875194, guid: 8d9704df27be722498efc51b0520cf7d, type: 3}

@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBossBattle: 0
   length: 80
-  maxEnemies: 25
-  spawnrate: 1
+  maxEnemies: 10
+  spawnrate: 3
   enemiesInWave:
   - {fileID: 1859193798442875194, guid: 66ecdac19f2ff454b97f79c4702f779e, type: 3}
   - {fileID: 6516766992148424705, guid: 516696f1408b01a41869ca023cb8537e, type: 3}

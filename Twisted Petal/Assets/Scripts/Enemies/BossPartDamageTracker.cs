@@ -23,7 +23,7 @@ public class BossPartDamageTracker : MonoBehaviour
         manager = FindObjectsByType<BossManager>(FindObjectsSortMode.None)[0];
         if (damageType == EnemyBehavior.DamageType.Energy)
         {
-            damage = damage / 16;
+            damage = damage / 2;
         }
         
         //Debug.Log("Damaged");

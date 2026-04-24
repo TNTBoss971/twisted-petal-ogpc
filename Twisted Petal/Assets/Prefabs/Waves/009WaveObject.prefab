@@ -45,19 +45,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBossBattle: 0
-  length: 10
-  maxEnemies: 25
-  spawnrate: 1
+  length: 120
+  maxEnemies: 10
+  spawnrate: 0.25
   enemiesInWave:
-  - {fileID: 1859193798442875194, guid: da10f828601be214fb62227136b37c6f, type: 3}
+  - {fileID: 1859193798442875194, guid: f7def9c814be8c04ba71a240be4a2cf6, type: 3}
+  - {fileID: 1859193798442875194, guid: b97cf2d7b3bd1024c99cfac19a56be0b, type: 3}
   weaponsInWave:
   - {fileID: 6144256074545822952, guid: 1bdc729864b592347b23e294c87b1681, type: 3}
   - {fileID: 6144256074545822952, guid: 72b5b968fcbd1ac41b6089d539482685, type: 3}
   - {fileID: 815084102267353062, guid: 4f7b262a630dcb742ae45927e3760ebc, type: 3}
   enemyFrequency:
-  - 0.3
-  - 0.4
-  - 0.3
+  - 0.05
+  - 0.95
   weaponFrequency:
   - 0.35
   - 0.25
