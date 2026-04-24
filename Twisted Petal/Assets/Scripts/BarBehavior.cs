@@ -29,6 +29,8 @@ public class BarBehavior : MonoBehaviour
     {
         barTransform = gameObject.GetComponent<RectTransform>();
         startPos = barTransform.localPosition;
+        barSizeX = barTransform.sizeDelta.x;
+        barSizeY = barTransform.sizeDelta.y;
     }
 
     // Update is called once per frame

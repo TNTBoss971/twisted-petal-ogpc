@@ -5,6 +5,8 @@ public class StatsButton : MonoBehaviour
 {
     private Button button;
     public int buttonID;
+    public Transform frontTransform;
+    public Transform backTransform;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,7 +20,39 @@ public class StatsButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (buttonID == 1)
+        {
+            if (JournalStats.statsHidden)
+            {
+                transform.parent = backTransform;
+            }
+            else
+            {
+                transform.parent = frontTransform;
+            }
+        }
+        if (buttonID == 2)
+        {
+            if (WeaponsFound.weaponsFoundHidden)
+            {
+                transform.parent = backTransform;
+            }
+            else
+            {
+                transform.parent = frontTransform;
+            }
+        }
+        if (buttonID == 3)
+        {
+            if (LevelSummary.levelSummariesHidden)
+            {
+                transform.parent = backTransform;
+            }
+            else
+            {
+                transform.parent = frontTransform;
+            }
+        }
     }
 
     void TaskOnClick()

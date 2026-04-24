@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -49,7 +48,6 @@ public class GameManagement : MonoBehaviour
     [Header("Save Data")]
     public DataPersistanceManager dataManager;
     public DataManagement saveData;
-    public List<GameObject> weaponTypes;
     [Header("Summary")]
     public LevelSummaryCreator summaryCreator;
     public GameObject lastWeaponObtained;

@@ -56,7 +56,7 @@ public class MapManager : MonoBehaviour
             {
                 showError = true;
                 mapErrorText.GetComponent<TMPro.TextMeshProUGUI>().text = "Equip atleast 1 weapon from the inventory before entering a level.";
-                errorTimer = Time.time + 1.5f;
+                errorTimer = Time.time + 3.5f;
             }
             else
             {

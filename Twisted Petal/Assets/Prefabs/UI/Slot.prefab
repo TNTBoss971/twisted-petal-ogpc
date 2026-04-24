@@ -92,8 +92,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.6, y: -6}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -31.678, y: 31.3121}
+  m_SizeDelta: {x: 40.0656, y: 40.0656}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5488581980674533574
 CanvasRenderer:
@@ -167,8 +167,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 161, y: 4.4735}
-  m_SizeDelta: {x: 200, y: 91.053}
+  m_AnchoredPosition: {x: 30.9846, y: 35.5084}
+  m_SizeDelta: {x: 80.1312, y: 36.4809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7791328982075151081
 CanvasRenderer:
@@ -225,10 +225,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 27.85
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -303,8 +303,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110.17258, y: -193.05661}
-  m_SizeDelta: {x: 332.2041, y: 498.6232}
+  m_AnchoredPosition: {x: 10.6203, y: -43.6332}
+  m_SizeDelta: {x: 133.0996, y: 199.7764}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5333644850747403948
 CanvasRenderer:
@@ -378,8 +378,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 109.19812, y: -257.39178}
-  m_SizeDelta: {x: 274.0188, y: 332.5721}
+  m_AnchoredPosition: {x: 10.2299, y: -69.4095}
+  m_SizeDelta: {x: 109.7873, y: 133.247}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8141218852780553765
 CanvasRenderer:
@@ -436,10 +436,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 22.2
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
