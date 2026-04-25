@@ -57,6 +57,7 @@ public class GameManagement : MonoBehaviour
     private GameObject fadeBox;
     private string sceneToLoad;
     private bool statsSaved;
+    public ScrollGround[] backgroundControllers;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -212,6 +213,17 @@ public class GameManagement : MonoBehaviour
             waveLength = currentWave.length;
             nextWaveTime = Time.time + waveLength;    
         }
+
+        // set up backgrounds
+        ScrollGround frontBackgrounds = backgroundControllers[0];
+        frontBackgrounds.speed = currentWave.frontBackgroundSpeed;
+        frontBackgrounds.road0.GetComponent<SpriteRenderer>().sprite = currentWave.frontBackground;
+        frontBackgrounds.road1.GetComponent<SpriteRenderer>().sprite = currentWave.frontBackground;
+        ScrollGround backBackgrounds = backgroundControllers[1];
+        backBackgrounds.speed = currentWave.backBackgroundSpeed;
+        backBackgrounds.road0.GetComponent<SpriteRenderer>().sprite = currentWave.backBackground;
+        backBackgrounds.road1.GetComponent<SpriteRenderer>().sprite = currentWave.backBackground;
+        
     }
 
     // sets up weapons when the scene starts

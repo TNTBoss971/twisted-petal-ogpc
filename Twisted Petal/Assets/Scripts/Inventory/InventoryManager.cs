@@ -111,7 +111,7 @@ public class InventoryManager : MonoBehaviour
                     // clone the prefab
                     GameObject clone = Instantiate(buttonPrefab, transform.position, transform.rotation);
                     // set the parent
-                    clone.transform.SetParent(canvas.transform, false);
+                    clone.transform.SetParent(weaponsParent, false);
                     // set the id
                     clone.GetComponent<InventoryButton>().buttonID = i;
                     // set the item stored

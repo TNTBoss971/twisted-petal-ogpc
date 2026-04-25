@@ -57,6 +57,10 @@ MonoBehaviour:
   - {fileID: 3108472696131321336, guid: 91c5ef397d0ef494fb2d4a090cf7cdca, type: 3}
   - {fileID: 6144256074545822952, guid: 72b5b968fcbd1ac41b6089d539482685, type: 3}
   - {fileID: 3108472696131321336, guid: 9dca4b138e2c55d468ef210984f00749, type: 3}
+  frontBackground: {fileID: -1816282043, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
+  frontBackgroundSpeed: 0.5
+  backBackground: {fileID: -584516575, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
+  backBackgroundSpeed: 0.25
   enemyFrequency:
   - 0.75
   - 0.2

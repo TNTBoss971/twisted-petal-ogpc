@@ -54,6 +54,10 @@ MonoBehaviour:
   - {fileID: 815084102267353062, guid: b988f86b7bd1ef14496ab0d91ab3838b, type: 3}
   - {fileID: 6144256074545822952, guid: 3f91c8b135f01b346b1c2106099e2f4e, type: 3}
   - {fileID: 1692204540741050396, guid: d8c6e5f0efa4cb6428890499beaa69d0, type: 3}
+  frontBackground: {fileID: 1187371731, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
+  frontBackgroundSpeed: 0.9
+  backBackground: {fileID: -1166602974, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
+  backBackgroundSpeed: 0.8
   enemyFrequency:
   - 1
   weaponFrequency:

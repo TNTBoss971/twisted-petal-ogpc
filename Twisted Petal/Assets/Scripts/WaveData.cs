@@ -8,6 +8,12 @@ public class WaveData : MonoBehaviour
     public float spawnrate;
     public GameObject[] enemiesInWave;
     public GameObject[] weaponsInWave;
+    [Header("Backgrounds")]
+    public Sprite frontBackground;
+    public float frontBackgroundSpeed;
+    public Sprite backBackground;
+    public float backBackgroundSpeed;
+
     [Header("All frequencies must individually add up to 1")]
     public float[] enemyFrequency;
     public float[] weaponFrequency;

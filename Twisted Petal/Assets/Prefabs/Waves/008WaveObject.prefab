@@ -53,9 +53,13 @@ MonoBehaviour:
   - {fileID: 5354275259588418300, guid: 777a1035d54df634faff3d8e83617376, type: 3}
   - {fileID: 1859193798442875194, guid: 8f1565cf3b42d3e45a9f8533c4754abf, type: 3}
   weaponsInWave:
-  - {fileID: 6144256074545822952, guid: 1bdc729864b592347b23e294c87b1681, type: 3}
-  - {fileID: 6144256074545822952, guid: 72b5b968fcbd1ac41b6089d539482685, type: 3}
   - {fileID: 815084102267353062, guid: 4f7b262a630dcb742ae45927e3760ebc, type: 3}
+  - {fileID: 6144256074545822952, guid: 72b5b968fcbd1ac41b6089d539482685, type: 3}
+  - {fileID: 1692204540741050396, guid: d8c6e5f0efa4cb6428890499beaa69d0, type: 3}
+  frontBackground: {fileID: 1187371731, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
+  frontBackgroundSpeed: 0.9
+  backBackground: {fileID: -1166602974, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
+  backBackgroundSpeed: 0.8
   enemyFrequency:
   - 0.3
   - 0.2
