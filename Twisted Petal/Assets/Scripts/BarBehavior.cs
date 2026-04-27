@@ -45,7 +45,7 @@ public class BarBehavior : MonoBehaviour
         else if (barScaleLocation == ScaleLoc.LeftRight)
         {
             // scale from middle on the x axis
-            barTransform.sizeDelta = new Vector2((value / maxValue) * barSizeX, barSizeY);
+            barTransform.sizeDelta = new Vector2((value / (maxValue)) * barSizeX, barSizeY);
         }
 
         if (doGreenToRedTransition)
