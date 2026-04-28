@@ -318,6 +318,7 @@ public class GameManagement : MonoBehaviour
     }
     public void EndWave()
     {
+        Debug.Log("Comfirm" + Time.time);
         // this wave/level is over, go to combat resolution
         if (statsSaved == false)
         {

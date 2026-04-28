@@ -60,7 +60,7 @@ MonoBehaviour:
   - {fileID: 815084102267353062, guid: b216c538c3058674595692da67c194fa, type: 3}
   frontBackground: {fileID: 308371973, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
   frontBackgroundSpeed: 0.5
-  backBackground: {fileID: 308371973, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
+  backBackground: {fileID: 1704694968, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
   backBackgroundSpeed: 0.25
   enemyFrequency:
   - 0.175
