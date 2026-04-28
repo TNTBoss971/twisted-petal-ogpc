@@ -190,6 +190,7 @@ public class EnemyBehavior : MonoBehaviour
                 GameObject itemLooted = weaponPool[weaponIndex];
                 gameManager.saveData.ownedItems.Add(itemLooted);
                 itemPopup.displayPopup("You got a " + itemLooted.GetComponent<GunController>().weaponName + "!");
+                itemPopup.GetComponent<AudioSource>().Play();
                 gameManager.lastWeaponObtained = itemLooted;
             }
             gameManager.enemiesBeaten += 1;
