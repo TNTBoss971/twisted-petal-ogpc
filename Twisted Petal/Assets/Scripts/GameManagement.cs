@@ -334,6 +334,7 @@ public class GameManagement : MonoBehaviour
         sceneToLoad = "CombatResolution";
         fadeBox.GetComponent<Animator>().Play("FadeOut");
         Invoke(nameof(LoadSceneForDelay), 1f);
+        Debug.Log("Comfirm");
     }
     public void KillPlayer()
     {
