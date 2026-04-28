@@ -58,6 +58,12 @@ MonoBehaviour:
   - {fileID: -7822595269035665099, guid: 23c957526baf3904c942068be1887927, type: 3}
   - {fileID: -7822595269035665099, guid: 23c957526baf3904c942068be1887927, type: 3}
   - {fileID: -7822595269035665099, guid: 23c957526baf3904c942068be1887927, type: 3}
+  dialogueSounds:
+  - {fileID: 8300000, guid: 9742e12447cdee742a54a9cc5875ff1b, type: 3}
+  - {fileID: 8300000, guid: 9742e12447cdee742a54a9cc5875ff1b, type: 3}
+  - {fileID: 8300000, guid: 9742e12447cdee742a54a9cc5875ff1b, type: 3}
+  - {fileID: 8300000, guid: 9742e12447cdee742a54a9cc5875ff1b, type: 3}
+  - {fileID: 8300000, guid: 9742e12447cdee742a54a9cc5875ff1b, type: 3}
   decisions: 000000000a000000000000000000000000000000
   altLinesOne:
   - However, word of your selfishness has spread to the people of Astoria

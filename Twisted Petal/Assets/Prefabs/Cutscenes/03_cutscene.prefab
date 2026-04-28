@@ -52,13 +52,21 @@ MonoBehaviour:
   - '"Yeah, I knew that..."'
   - '[2 supplies gained]'
   dialoguePortraits:
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 375807072183942001, guid: a784882050e852044aefb851247d7d19, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -7377856051493675924, guid: a233803afc368bc46bc396b1a1902898, type: 3}
+  - {fileID: -1929201589514664032, guid: ef87a01cad8097f419f2b1c2afdb6254, type: 3}
+  - {fileID: 8400917998649679698, guid: 93cff7ad4912ef644be4d0139bc61cdb, type: 3}
+  - {fileID: 77772131673067015, guid: ecec089695f1a6a4d8abfe48f0ed8d7a, type: 3}
+  - {fileID: 77772131673067015, guid: ecec089695f1a6a4d8abfe48f0ed8d7a, type: 3}
+  - {fileID: -7822595269035665099, guid: 23c957526baf3904c942068be1887927, type: 3}
+  dialogueSounds:
+  - {fileID: 8300000, guid: 45f5d86f3063f294b9c17fe5f64c5ee0, type: 3}
+  - {fileID: 8300000, guid: 45f5d86f3063f294b9c17fe5f64c5ee0, type: 3}
+  - {fileID: 8300000, guid: d3eea4d9d7775184998653916f5e4d74, type: 3}
+  - {fileID: 8300000, guid: 45f5d86f3063f294b9c17fe5f64c5ee0, type: 3}
+  - {fileID: 8300000, guid: 45f5d86f3063f294b9c17fe5f64c5ee0, type: 3}
+  - {fileID: 8300000, guid: 9742e12447cdee742a54a9cc5875ff1b, type: 3}
   decisions: 00000000000000000000000002000000
   altLinesOne:
   - '"That''s too bad! I''m taking them."'
   - '[8 supplies gained]'
+  altLinesTwo: []

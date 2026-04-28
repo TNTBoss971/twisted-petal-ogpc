@@ -3,6 +3,9 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using System.Collections.Generic;
 using Unity.Profiling;
+using UnityEngine.Audio;
+
+[RequireComponent(typeof(AudioSource))]
 public class EnemyBehavior : MonoBehaviour
 {
     public enum DamageType
@@ -63,6 +66,8 @@ public class EnemyBehavior : MonoBehaviour
     public string walkAnimationName;
     public GameObject impactParticle;
 
+    private AudioSource audioSource;
+
     [Header("Logic")]
     private float leftBoundary;
     public bool isMoving = true;
@@ -110,6 +115,11 @@ public class EnemyBehavior : MonoBehaviour
             rb.linearVelocity = launchDirection.normalized * launchForce;
             rb.angularVelocity = 90;
         }
+
+
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.25f;
     }
 
     // Update is called once per frame
@@ -290,6 +300,7 @@ public class EnemyBehavior : MonoBehaviour
 
         if (invincibilityTimer <= Time.time || type == DamageType.Tick)
         {
+            audioSource.Play();
             health -= damage * armor;
             if (type != DamageType.Tick) // tick damage doesnt give i-frames
             {

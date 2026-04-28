@@ -5,6 +5,7 @@ public class CutsceneData : MonoBehaviour
 {
     public List<string> dialogueLines; // every dialogue line
     public List<Sprite> dialoguePortraits; // every dialogue portrait
+    public List<AudioClip> dialogueSounds;
     public List<decisionType> decisions; // every cutscene decision
     public enum decisionType
     {

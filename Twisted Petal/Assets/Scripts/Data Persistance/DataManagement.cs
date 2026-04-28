@@ -23,7 +23,7 @@ public class DataManagement : MonoBehaviour, IDataPersistance
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        soundsMuted = false;
     }
 
     // Update is called once per frame

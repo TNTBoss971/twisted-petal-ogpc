@@ -80,22 +80,14 @@ public class GunController : MonoBehaviour
         {
             Debug.Log("Attack action not assigned");
         }
-
-        // if sfx muted, volume is set to 0
-        if (saveData.soundsMuted == true)
-        {
-            audioSource.volume = 0;
-        }
-        else
-        {
-            audioSource.volume = 1;
-        }
     }
 
 
     // Update is called once per frame
     void Update()
     {
+
+
         if (state == FiringState.Preparing || isPrepairing)
         {
             if (nextFirePoint < Time.time)

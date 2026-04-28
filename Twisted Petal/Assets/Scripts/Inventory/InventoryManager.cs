@@ -30,10 +30,13 @@ public class InventoryManager : MonoBehaviour
 
     private GameObject fadeBox;
     private Sprite emptyImage;
+    private Camera cam;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        cam = Camera.main;
+
         weaponsParent = GameObject.Find("WeaponParent").transform;
         fadeBox = GameObject.Find("FadeBox");
         fadeBox.GetComponent<Animator>().Play("FadeIn");
@@ -77,7 +80,7 @@ public class InventoryManager : MonoBehaviour
             // set the item stored
             clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
             // set the position
-            clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 890);
+            clone.transform.localPosition = new Vector2(row * 160 + 50f, col * -175 + 75);
 
             row++;
             if (row > 9)
@@ -117,7 +120,7 @@ public class InventoryManager : MonoBehaviour
                     // set the item stored
                     clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
                     // set the position
-                    clone.transform.position = new Vector2(row * 160 + 100f, col * -175 + 890);
+                    clone.transform.localPosition = new Vector2(row * 160 + 50f, col * -175 + 75);
 
                     row++;
                     if (row > 9)

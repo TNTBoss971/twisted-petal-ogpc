@@ -53,12 +53,19 @@ MonoBehaviour:
   - '*Yeah, I''ll get it.*'
   - '[5 supplies lost, herbicide sprayer gained]'
   dialoguePortraits:
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
-  - {fileID: 8347262341446570855, guid: 867b9753e08974541b77701b9106fdf8, type: 3}
+  - {fileID: -7377856051493675924, guid: a233803afc368bc46bc396b1a1902898, type: 3}
+  - {fileID: -7377856051493675924, guid: a233803afc368bc46bc396b1a1902898, type: 3}
+  - {fileID: -7377856051493675924, guid: a233803afc368bc46bc396b1a1902898, type: 3}
+  - {fileID: 77772131673067015, guid: ecec089695f1a6a4d8abfe48f0ed8d7a, type: 3}
+  - {fileID: -7377856051493675924, guid: a233803afc368bc46bc396b1a1902898, type: 3}
+  - {fileID: -7822595269035665099, guid: 23c957526baf3904c942068be1887927, type: 3}
+  dialogueSounds:
+  - {fileID: 8300000, guid: 45f5d86f3063f294b9c17fe5f64c5ee0, type: 3}
+  - {fileID: 8300000, guid: 45f5d86f3063f294b9c17fe5f64c5ee0, type: 3}
+  - {fileID: 8300000, guid: 45f5d86f3063f294b9c17fe5f64c5ee0, type: 3}
+  - {fileID: 8300000, guid: 45f5d86f3063f294b9c17fe5f64c5ee0, type: 3}
+  - {fileID: 8300000, guid: 45f5d86f3063f294b9c17fe5f64c5ee0, type: 3}
+  - {fileID: 8300000, guid: 45f5d86f3063f294b9c17fe5f64c5ee0, type: 3}
   decisions: 000000000000000000000000050000000000000000000000
   altLinesOne:
   - '*No, I don''t think it''s worth it.*'

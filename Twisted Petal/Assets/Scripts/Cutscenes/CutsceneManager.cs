@@ -44,6 +44,7 @@ public class CutsceneManager : MonoBehaviour
             for (int i = 0; i < currentCutscene.dialogueLines.Count; i++)
             {
                 dialogue.dialogueLines.Add(currentCutscene.dialogueLines[i]);
+                dialogue.dialogueSounds.Add(currentCutscene.dialogueSounds[i]);
             }
             for (int i = 0; i < currentCutscene.dialoguePortraits.Count; i++)
             {
