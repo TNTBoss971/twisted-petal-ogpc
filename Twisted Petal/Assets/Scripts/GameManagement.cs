@@ -135,6 +135,7 @@ public class GameManagement : MonoBehaviour
     {
         if (currentWave.isBossBattle)
         {
+            Debug.Log(bossManager.health);
             if (bossManager.health <= 0)
             {
                 EndWave();

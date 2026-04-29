@@ -273,10 +273,10 @@ public class BossManager : MonoBehaviour
             }
             else if (attackStartTime + 1.00f / bossSpeed <= Time.time && !damageApplied)
             {
-                for (int i = 0; i < Random.Range(1, 3); i++)
+                for (int i = 0; i < Random.Range(5, 10); i++)
                 {
                     GameObject newMinion = Instantiate(minions[0]);
-                    newMinion.transform.position = new Vector3(-1 + 0.25f * i, -3, 0);
+                    newMinion.transform.position = new Vector3(-1 + 0.25f * i, -3 + 0.25f * i, 0);
                 }
                 damageApplied = true;
             }

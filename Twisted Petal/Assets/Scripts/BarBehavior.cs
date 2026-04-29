@@ -31,26 +31,32 @@ public class BarBehavior : MonoBehaviour
     {
         barTransform = gameObject.GetComponent<RectTransform>();
         startPos = barTransform.localPosition;
-        barSizeX = barTransform.sizeDelta.x;
-        barSizeY = barTransform.sizeDelta.y;
+        barSizeX = barTransform.localScale.x;
+        barSizeY = barTransform.localScale.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentSizeDeltaX = barTransform.sizeDelta.x;
-        currentSizeDeltaY = barTransform.sizeDelta.y;
+        currentSizeDeltaX = barTransform.localScale.x;
+        currentSizeDeltaY = barTransform.localScale.y;
 
         // scale the bar as directed
         if (barScaleLocation == ScaleLoc.UpDown)
         {
             // scale from middle on the y axis
-            barTransform.sizeDelta = new Vector2(barSizeX, (value / maxValue) * barSizeY);
+            barTransform.localScale = new Vector2(barSizeX, (value / maxValue) * barSizeY);
         }
         else if (barScaleLocation == ScaleLoc.LeftRight)
         {
             // scale from middle on the x axis
-            barTransform.sizeDelta = new Vector2(((maxValue * 2 - value) / maxValue) * barSizeX, barSizeY);
+            barTransform.localScale = new Vector2((value / maxValue) * barSizeX, barSizeY);
+            Debug.Log(barTransform.sizeDelta.x);
+        }
+        
+        if (doGreenToRedTransition)
+        {
+            gameObject.GetComponent<Image>().color = Color.HSVToRGB(((value / maxValue) * 130f) / 360f, 1f, 1f);
         }
 
         if (edgeObject != null)

@@ -17,6 +17,10 @@ public class ProgressVan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManagemer.currentWave.isBossBattle)
+        {
+            Destroy(gameObject);
+        }
         transform.position = new Vector2(rightX * (Time.time - startTime) / gameManagemer.waveLength, transform.position.y);
     }
 }
