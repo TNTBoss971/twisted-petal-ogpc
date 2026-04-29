@@ -23,6 +23,8 @@ public class BarBehavior : MonoBehaviour
     public Vector2 startPos;
 
     public GameObject edgeObject;
+    public float currentSizeDeltaX;
+    public float currentSizeDeltaY;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +38,9 @@ public class BarBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentSizeDeltaX = barTransform.sizeDelta.x;
+        currentSizeDeltaY = barTransform.sizeDelta.y;
+
         // scale the bar as directed
         if (barScaleLocation == ScaleLoc.UpDown)
         {
@@ -45,12 +50,7 @@ public class BarBehavior : MonoBehaviour
         else if (barScaleLocation == ScaleLoc.LeftRight)
         {
             // scale from middle on the x axis
-            barTransform.sizeDelta = new Vector2((value / (maxValue)) * barSizeX, barSizeY);
-        }
-
-        if (doGreenToRedTransition)
-        {
-            gameObject.GetComponent<Image>().color = Color.HSVToRGB(((value / maxValue) * 130f) / 360f, 1f, 1f);
+            barTransform.sizeDelta = new Vector2(((maxValue * 2 - value) / maxValue) * barSizeX, barSizeY);
         }
 
         if (edgeObject != null)

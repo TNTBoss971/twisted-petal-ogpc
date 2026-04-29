@@ -507,7 +507,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.3
+  m_fontSize: 20.35
   m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1928,7 +1928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7586dd51d5ee3469d610c648d1bd8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devSkipActive: 0
+  devSkipActive: 1
   cycleValue: 0
   playerHealth: 100
   playerMaxHealth: 100
@@ -1964,7 +1964,7 @@ MonoBehaviour:
   - {fileID: 9122227014563279572, guid: bd4052d48952092489ef2cec1ff66bb6, type: 3}
   - {fileID: 9122227014563279572, guid: e8ed3fc429dfe774a9f2eadcea56a0f6, type: 3}
   - {fileID: 9122227014563279572, guid: c418e4801ea1fa4478e38ddb0e2ec7ab, type: 3}
-  - {fileID: 9122227014563279572, guid: 0e4e374640378764fac60cea1b4580fb, type: 3}
+  - {fileID: 9122227014563279572, guid: af52120d52e70f74f854229913aaf488, type: 3}
   - {fileID: 9122227014563279572, guid: af52120d52e70f74f854229913aaf488, type: 3}
   - {fileID: 9122227014563279572, guid: 5fb5373ad909de346bf32e7382174422, type: 3}
   - {fileID: 9122227014563279572, guid: c8bf667abf40af347a009f294baa61fb, type: 3}
