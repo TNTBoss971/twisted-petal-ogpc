@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,6 +33,8 @@ public class CutsceneDecisionButton : MonoBehaviour
         repairedWall // repaired the wall at the gas station
     }
     public int moralityNumber; // number to track morality
+    private string path; // path for saving files
+    private string journalContent; // content in the journal.
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -323,6 +326,7 @@ public class CutsceneDecisionButton : MonoBehaviour
                     }
                 }
             }
+            
         }
         if (scenarioID == 9)
         {
@@ -345,6 +349,20 @@ public class CutsceneDecisionButton : MonoBehaviour
                         {
                             dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesOne[i]);
                         }
+                        path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "/my_journal.txt";
+
+                        journalContent += "Defeated " + saveData.enemiesBeatenOverall + " Enemies \n";
+                        journalContent += "Found " + saveData.itemsLootedOverall + " Items \n";
+                        for (int i = 0; i < saveData.levelSummaries.Count; i++)
+                        {
+                            journalContent += saveData.levelSummaries[i] + "\n";
+                        }
+                        for (int i = 0; i < saveData.weaponsFound.Count; i++)
+                        {
+                            journalContent += "Discovered " + saveData.weaponsFound[i].GetComponent<GunController>().weaponName + "\n";
+                        }
+                        File.WriteAllText(path, journalContent);
+                        Debug.Log("did it");
                         actionPerformed = true;
                     }
                 }
@@ -362,6 +380,20 @@ public class CutsceneDecisionButton : MonoBehaviour
                         {
                             dialogue.dialogueLines.Add(cutscenes.currentCutscene.altLinesTwo[i]);
                         }
+                        path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "/my_journal.txt";
+
+                        journalContent += "Defeated " + saveData.enemiesBeatenOverall + " Enemies \n";
+                        journalContent += "Found " + saveData.itemsLootedOverall + " Items \n";
+                        for (int i = 0; i < saveData.levelSummaries.Count; i++)
+                        {
+                            journalContent += saveData.levelSummaries[i] + "\n";
+                        }
+                        for (int i = 0; i < saveData.weaponsFound.Count; i++)
+                        {
+                            journalContent += "Discovered " + saveData.weaponsFound[i].GetComponent<GunController>().weaponName + "\n";
+                        }
+                        File.WriteAllText(path, journalContent);
+                        Debug.Log("did it");
                         actionPerformed = true;
                     }
                 }
@@ -369,6 +401,7 @@ public class CutsceneDecisionButton : MonoBehaviour
         }
         
         decisionText.GetComponent<TMPro.TextMeshProUGUI>().text = buttonText;
+        Debug.Log(scenarioID);
     }
 
     // This function allows for buttons to add

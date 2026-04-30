@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class MapManager : MonoBehaviour
 {
@@ -41,9 +42,10 @@ public class MapManager : MonoBehaviour
             }
         }
         mapPosition = saveData.levelsBeaten + 1;
-        if (mapPosition > 15)
+        if (mapPosition == 16)
         {
-            mapPosition = 15;
+            File.Delete(Application.persistentDataPath + "/saved_data.json");
+            SceneManager.LoadScene("TitleScreen");
         }
 
         worldMap.GetComponent<SpriteRenderer>().sprite = worldMapSprites[saveData.levelsBeaten];
