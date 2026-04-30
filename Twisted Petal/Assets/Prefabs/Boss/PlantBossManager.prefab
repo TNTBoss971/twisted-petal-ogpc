@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   gameManager: {fileID: 0}
+  barkParticle: {fileID: 2459748190825433269, guid: b74b88c14c55bca48912e5d4be52a7dd, type: 3}
   projectiles:
   - {fileID: 6684092658235471012, guid: 026256fb7004c464e9877766939c8f38, type: 3}
   - {fileID: 6684092658235471012, guid: db773b06eb0412c43a99456f59654b10, type: 3}

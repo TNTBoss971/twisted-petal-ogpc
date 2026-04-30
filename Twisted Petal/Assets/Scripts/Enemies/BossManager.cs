@@ -20,6 +20,7 @@ public class BossManager : MonoBehaviour
     private GameObject mainBody;
     private GameObject frontArm;
     private GameObject backArm;
+    public GameObject barkParticle;
 
     [Header("Spawnables")]
     public GameObject[] projectiles;

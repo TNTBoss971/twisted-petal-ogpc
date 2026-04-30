@@ -188,6 +188,7 @@ public class ProjectileBehavior : MonoBehaviour
                     else if (results[0].transform.GetComponent<BossPartDamageTracker>() != null)
                     {
                         results[0].transform.gameObject.GetComponent<BossPartDamageTracker>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
+                        SpawnBark(results[0].transform.GetComponent<BossPartDamageTracker>(), targetPosition);
                     }
                     damagePulse = false;
                 }
@@ -267,6 +268,13 @@ public class ProjectileBehavior : MonoBehaviour
             {
                 GameObject explosion = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
                 explosion.transform.position = transform.position + Vector3.forward * 5;
+                if (other.CompareTag("Enemy"))
+                {
+                    SpawnLeaves(other.GetComponent<EnemyBehavior>(), transform.position);
+                } else if (other.CompareTag("Boss"))
+                {
+                    SpawnBark(other.GetComponent<BossPartDamageTracker>(), transform.position);
+                }
                 SpawnLeaves(other.GetComponent<EnemyBehavior>(), transform.position);
                 Destroy(gameObject);
             } 
@@ -280,6 +288,7 @@ public class ProjectileBehavior : MonoBehaviour
                 else if (other.CompareTag("Boss"))
                 {
                     other.GetComponent<BossPartDamageTracker>().DamageSelf(damage, EnemyBehavior.DamageType.Bullet);
+                    SpawnBark(other.GetComponent<BossPartDamageTracker>(), transform.position);
                 }
 
                 if (pierce > 0)
@@ -300,6 +309,14 @@ public class ProjectileBehavior : MonoBehaviour
         {
             GameObject leafSystem = Instantiate(enemy.impactParticle); //, enemy.gameObject.transform);
             leafSystem.transform.position = new Vector3(spawnPos.x, spawnPos.y, enemy.gameObject.transform.position.z - 1f);
+        }
+    }
+    public void SpawnBark(BossPartDamageTracker enemy, Vector2 spawnPos)
+    {
+        for (int i = 0;i <= damage; i++)
+        {
+            GameObject barkSystem = Instantiate(enemy.impactParticle); //, enemy.gameObject.transform);
+            barkSystem.transform.position = new Vector3(spawnPos.x, spawnPos.y, enemy.gameObject.transform.position.z - 1f);
         }
     }
 }
