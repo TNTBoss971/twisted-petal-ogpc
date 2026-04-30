@@ -30,7 +30,7 @@ public class LevelSummaryCreator : MonoBehaviour
         {
             summary += "I made it through, but took a bit of damage";
         }
-        if ((playerHealth >= 20) && (playerHealth < 50))
+        if ((playerHealth >= 20) && (playerHealth < 60))
         {
             summary += "I made it through, but took some damage";
         }
