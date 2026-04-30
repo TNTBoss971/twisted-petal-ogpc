@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -43,7 +44,7 @@ public class GameManagement : MonoBehaviour
     public BarBehavior waveProgressionBar;
     public GameObject uiRoad;
     public BarBehavior healthBar;
-    public GameObject playerHealthText;
+    public GameObject munitionText;
     public GameObject shootHint;
     [Header("Save Data")]
     public DataPersistanceManager dataManager;
@@ -58,7 +59,8 @@ public class GameManagement : MonoBehaviour
     private string sceneToLoad;
     private bool statsSaved;
     public ScrollGround[] backgroundControllers;
-
+    [Header("Other")]
+    public GameObject enemySoundObject;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -192,7 +194,6 @@ public class GameManagement : MonoBehaviour
         }
         // update player health bar
         healthBar.value = playerHealth;
-
     }
     
     void StartWave()
@@ -248,6 +249,7 @@ public class GameManagement : MonoBehaviour
             numOfEquippedWeapons += 1;
             weaponButtons[i].SetActive(true);
             weaponButtons[i].GetComponent<Image>().sprite = equippedWeapons[i].GetComponent<GunController>().displayImage;
+            weaponButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = equippedWeapons[i].GetComponent<GunController>().ammoLeft.ToString() + "/" + equippedWeapons[i].GetComponent<GunController>().ammoPerRound.ToString();
         }
 
         // set active state
@@ -309,6 +311,8 @@ public class GameManagement : MonoBehaviour
         // update weapons
         weaponButtons[pastActiveWeaponId].transform.position = new Vector2(weaponButtons[pastActiveWeaponId].transform.position.x, 30);
         weaponButtons[activeWeaponId].transform.position = new Vector2(weaponButtons[activeWeaponId].transform.position.x, 50);
+
+        weaponButtons[activeWeaponId].GetComponentInChildren<TextMeshProUGUI>().text = equippedWeapons[activeWeaponId].GetComponent<GunController>().ammoLeft.ToString() + "/" + equippedWeapons[activeWeaponId].GetComponent<GunController>().ammoPerRound.ToString();
 
         if (pastActiveWeaponId != activeWeaponId)
         {

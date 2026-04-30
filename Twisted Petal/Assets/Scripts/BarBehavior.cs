@@ -51,7 +51,6 @@ public class BarBehavior : MonoBehaviour
         {
             // scale from middle on the x axis
             barTransform.localScale = new Vector2((value / maxValue) * barSizeX, barSizeY);
-            Debug.Log(barTransform.sizeDelta.x);
         }
         
         if (doGreenToRedTransition)

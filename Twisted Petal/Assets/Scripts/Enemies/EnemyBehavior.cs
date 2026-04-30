@@ -119,7 +119,7 @@ public class EnemyBehavior : MonoBehaviour
 
 
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0.25f;
+        audioSource.volume = 1f;
     }
 
     // Update is called once per frame
@@ -300,7 +300,14 @@ public class EnemyBehavior : MonoBehaviour
 
         if (invincibilityTimer <= Time.time || type == DamageType.Tick)
         {
-            audioSource.Play();
+            if(health <= damage * armor)
+            {
+                CreateSound();
+            }
+            else
+            {
+                audioSource.Play();
+            }
             health -= damage * armor;
             if (type != DamageType.Tick) // tick damage doesnt give i-frames
             {
@@ -398,4 +405,11 @@ public class EnemyBehavior : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void CreateSound()
+    {
+        GameObject soundObject = Instantiate(gameManager.enemySoundObject);
+        soundObject.transform.position = transform.position;
+        soundObject.GetComponent<AudioSource>().resource = audioSource.resource;
+        soundObject.GetComponent<AudioSource>().Play();
+    }
 }

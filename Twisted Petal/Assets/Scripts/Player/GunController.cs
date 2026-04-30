@@ -33,6 +33,8 @@ public class GunController : MonoBehaviour
     public int magSize = 1; // only utilized by missiles so far
     public int shotsRemaining = 1;
     public int burstSize; // only utilized by missiles so far
+    public int ammoPerRound = 10;
+    public int ammoLeft = 10;
     public GameObject ammoObject;
     private ProjectileBehavior ammoBehavior;
     public float speedRot = 0.5f; // less then or equal to 1
@@ -116,7 +118,7 @@ public class GunController : MonoBehaviour
             {
                 state = FiringState.Firing;
 
-                if (!isAnimationPlaying)
+                if (!isAnimationPlaying && ammoLeft > 0)
                 {
                     animator.Play(animationName);
                 }
@@ -124,7 +126,7 @@ public class GunController : MonoBehaviour
                 // don't shoot if the game is paused 
                 if (gameManager.paused == false)
                 {
-                    if (nextFirePoint <= Time.time && attackAction.IsPressed())
+                    if (nextFirePoint <= Time.time && attackAction.IsPressed() && ammoLeft > 0)
                     {
                         if (ammoBehavior.type == ProjectileBehavior.MunitionType.Basic)
                         {
@@ -145,6 +147,13 @@ public class GunController : MonoBehaviour
                         if (ammoBehavior.type == ProjectileBehavior.MunitionType.Arcing)
                         {
                             FireArcing();
+                        }
+                    }
+                    else
+                    {
+                        if (ammoLeft < 0)
+                        {
+                            ammoLeft = 0;
                         }
                     }
 
@@ -222,6 +231,7 @@ public class GunController : MonoBehaviour
         audioSource.Play();
 
         shotsRemaining -= 1;
+        ammoLeft -= 1;
         CheckMag();
     }
     void FireExplosive()
@@ -238,6 +248,7 @@ public class GunController : MonoBehaviour
         audioSource.Play();
 
         shotsRemaining -= 1;
+        ammoLeft -= 1;
         CheckMag();
     }
     void FireLaser()
@@ -250,6 +261,7 @@ public class GunController : MonoBehaviour
         nextFirePoint = Time.time + firingDelay;
 
         shotsRemaining -= 1;
+        ammoLeft -= 1;
         CheckMag();
     }
     void FireMissile()
@@ -261,6 +273,7 @@ public class GunController : MonoBehaviour
             clone.GetComponent<Rigidbody2D>().linearVelocity = directionVec * 10;
 
             burstSize++;
+            ammoLeft -= 1;
             nextFirePoint = Time.time + 0.1f;
         }
         else
@@ -280,6 +293,7 @@ public class GunController : MonoBehaviour
             audioSource.Play();
 
             shotsRemaining -= 1;
+            ammoLeft -= 1;
             CheckMag();
         }
     }

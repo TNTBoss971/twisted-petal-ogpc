@@ -53,6 +53,8 @@ MonoBehaviour:
   magSize: 1
   shotsRemaining: 1
   burstSize: 0
+  ammoPerRound: 20
+  ammoLeft: 20
   ammoObject: {fileID: 8538451525303065180, guid: 0ff6cf50e4f5ee84bac0bcdef42c874f, type: 3}
   speedRot: 0.5
   persistentProjectile: {fileID: 0}
@@ -237,7 +239,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.28, y: 0.23}
+  m_Size: {x: 0.875, y: 0.71875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
