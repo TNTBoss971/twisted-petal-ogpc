@@ -119,7 +119,7 @@ public class EnemyBehavior : MonoBehaviour
 
 
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 1f;
+        audioSource.volume = 0.1f;
     }
 
     // Update is called once per frame

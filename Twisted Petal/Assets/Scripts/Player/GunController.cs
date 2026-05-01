@@ -186,7 +186,7 @@ public class GunController : MonoBehaviour
             // advanced laser logic
             if (ammoBehavior.type == ProjectileBehavior.MunitionType.Laser)
             {
-                if (attackAction.IsPressed())
+                if (attackAction.IsPressed() && ammoLeft > 0)
                 {
                     if (persistentProjectile == null)
                     {
@@ -261,7 +261,10 @@ public class GunController : MonoBehaviour
         nextFirePoint = Time.time + firingDelay;
 
         shotsRemaining -= 1;
-        ammoLeft -= 1;
+        if (Time.time % 0.25 <= 0.01f)
+        {
+            ammoLeft -= 1;
+        }
         CheckMag();
     }
     void FireMissile()
