@@ -511,7 +511,7 @@ public class CutsceneDecisionButton : MonoBehaviour
                     if (saveData.supplies >= 5)
                     {
                         TakeSupplies(5);
-                        GiveItem(itemsIndex[7]);
+                        GiveItem(itemsIndex[4]);
                     }
                     else
                     {

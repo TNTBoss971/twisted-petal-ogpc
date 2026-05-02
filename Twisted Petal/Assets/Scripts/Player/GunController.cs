@@ -36,7 +36,7 @@ public class GunController : MonoBehaviour
     public int ammoPerRound = 10;
     public int ammoLeft = 10;
     public GameObject ammoObject;
-    private ProjectileBehavior ammoBehavior;
+    public ProjectileBehavior ammoBehavior;
     public float speedRot = 0.5f; // less then or equal to 1
     public GameObject persistentProjectile;
 

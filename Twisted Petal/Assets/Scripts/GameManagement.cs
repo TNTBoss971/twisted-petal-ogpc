@@ -360,5 +360,13 @@ public class GameManagement : MonoBehaviour
         activeWeaponId = id;
         equippedWeapons[activeWeaponId].SetActive(true);
         equippedWeapons[activeWeaponId].GetComponent<GunController>().WakeUp();
+	if (equippedWeapons[activeWeaponId].GetComponent<GunController>().ammoBehavior.type == ProjectileBehavior.MunitionType.Arcing) {
+	    weaponParent.transform.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+	}
+	else
+	{
+	    weaponParent.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+	}
+
     }
 }
