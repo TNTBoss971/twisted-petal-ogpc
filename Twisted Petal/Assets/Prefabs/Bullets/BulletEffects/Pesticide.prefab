@@ -190,10 +190,10 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 2e7c450fcd4f2ea408813ea3028894bd, type: 3}
   m_Resource: {fileID: 8300000, guid: 2e7c450fcd4f2ea408813ea3028894bd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
