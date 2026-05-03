@@ -53,9 +53,10 @@ MonoBehaviour:
   magSize: 5
   shotsRemaining: 5
   burstSize: 0
-  ammoPerRound: 30
-  ammoLeft: 30
+  ammoPerRound: 75
+  ammoLeft: 75
   ammoObject: {fileID: 4898352103702244452, guid: d957cb421c5bb4b43b4346fa08e9fbf1, type: 3}
+  ammoBehavior: {fileID: 0}
   speedRot: 0.5
   persistentProjectile: {fileID: 0}
   targetAngle: 0

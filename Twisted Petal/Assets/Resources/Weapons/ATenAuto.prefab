@@ -49,13 +49,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   firingDelay: 0.1
-  reloadTime: 1.5
+  reloadTime: 0.2
   magSize: 10
   shotsRemaining: 1
   burstSize: 0
-  ammoPerRound: 70
-  ammoLeft: 70
-  ammoObject: {fileID: 4898352103702244452, guid: d8b1c728f7552bb47a5ede21d90c98fd, type: 3}
+  ammoPerRound: 250
+  ammoLeft: 250
+  ammoObject: {fileID: 4898352103702244452, guid: 79badb452f0ec2b40a118a840123bdb9, type: 3}
+  ammoBehavior: {fileID: 0}
   speedRot: 0.5
   persistentProjectile: {fileID: 0}
   targetAngle: 0

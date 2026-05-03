@@ -47,11 +47,11 @@ MonoBehaviour:
   dialogueLines:
   - '*Seems like there''s some kind of makeshift market at this station. All bartering,
     of course.*'
-  - '*Hmm, this is interesting... someone''s selling a herbicide sprayer.*'
+  - '*Hmm, this is interesting... someone''s selling a telsa coil.*'
   - '*I could probably mount it onto my van and use it as a weapon against the plants...*'
   - '*It would probably cost me, maybe around 5 units of supply to buy it though.*'
   - '*Yeah, I''ll get it.*'
-  - '[5 supplies lost, herbicide sprayer gained]'
+  - '[5 supplies lost, telsa coil gained]'
   dialoguePortraits:
   - {fileID: -7377856051493675924, guid: a233803afc368bc46bc396b1a1902898, type: 3}
   - {fileID: -7377856051493675924, guid: a233803afc368bc46bc396b1a1902898, type: 3}
