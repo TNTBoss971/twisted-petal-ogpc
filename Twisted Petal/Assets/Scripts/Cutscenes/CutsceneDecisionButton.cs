@@ -35,6 +35,7 @@ public class CutsceneDecisionButton : MonoBehaviour
     public int moralityNumber; // number to track morality
     private string path; // path for saving files
     private string journalContent; // content in the journal.
+    private bool moralityCalculated; // has the morality number been calculated yet?
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,43 +48,48 @@ public class CutsceneDecisionButton : MonoBehaviour
         actionPerformed = false;
         custceneManager = FindAnyObjectByType<CutsceneManager>();
         moralityNumber = 0;
-        if (saveData.choicesMade.Contains(decisionsMade.tookMoreSupplies))
-        {
-            moralityNumber -= 2;
-        }
-        if (saveData.choicesMade.Contains(decisionsMade.didntGiveCharity))
-        {
-            moralityNumber -= 1;
-        }
-        if (saveData.choicesMade.Contains(decisionsMade.gaveCharity))
-        {
-            moralityNumber += 2;
-        }
-        if (saveData.choicesMade.Contains(decisionsMade.didntTakeMoreSupplies))
-        {
-            moralityNumber += 1;
-        }
-        if (saveData.choicesMade.Contains(decisionsMade.gaveToBarrenCache))
-        {
-            moralityNumber += 2;
-        }
-        if (saveData.choicesMade.Contains(decisionsMade.lootedBarrenCache))
-        {
-            moralityNumber -= 1;
-        }
-        if (saveData.choicesMade.Contains(decisionsMade.tookTurret))
-        {
-            moralityNumber -= 3;
-        }
-        if (saveData.choicesMade.Contains(decisionsMade.repairedWall))
-        {
-            moralityNumber += 3;
-        }
+        moralityCalculated = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (moralityCalculated == false)
+        {
+            if (saveData.choicesMade.Contains(decisionsMade.tookMoreSupplies))
+            {
+                moralityNumber -= 2;
+            }
+            if (saveData.choicesMade.Contains(decisionsMade.didntGiveCharity))
+            {
+                moralityNumber -= 1;
+            }
+            if (saveData.choicesMade.Contains(decisionsMade.gaveCharity))
+            {
+                moralityNumber += 2;
+            }
+            if (saveData.choicesMade.Contains(decisionsMade.didntTakeMoreSupplies))
+            {
+                moralityNumber += 1;
+            }
+            if (saveData.choicesMade.Contains(decisionsMade.gaveToBarrenCache))
+            {
+                moralityNumber += 2;
+            }
+            if (saveData.choicesMade.Contains(decisionsMade.lootedBarrenCache))
+            {
+                moralityNumber -= 1;
+            }
+            if (saveData.choicesMade.Contains(decisionsMade.tookTurret))
+            {
+                moralityNumber -= 3;
+            }
+            if (saveData.choicesMade.Contains(decisionsMade.repairedWall))
+            {
+                moralityNumber += 3;
+            }
+            moralityCalculated = true;
+        }
         try
         {
             // checks if there's a decision
@@ -401,7 +407,6 @@ public class CutsceneDecisionButton : MonoBehaviour
         }
         
         decisionText.GetComponent<TMPro.TextMeshProUGUI>().text = buttonText;
-        Debug.Log(scenarioID);
     }
 
     // This function allows for buttons to add
