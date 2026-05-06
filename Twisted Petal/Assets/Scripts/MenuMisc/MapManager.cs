@@ -10,15 +10,11 @@ public class MapManager : MonoBehaviour
     public static int mapPosition = 1;
     private DataManagement saveData;
     public DataPersistanceManager dataManager;
-    public bool showError = false;
-    private float errorTimer;
     public List<GameObject> startingWeapons;
     public GameObject playerMapIcon;
     public GameObject worldMap;
     public List<Sprite> worldMapSprites;
     public List<Vector2> pos;
-    public GameObject mapErrorText;
-
     private GameObject fadeBox;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,14 +29,6 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (showError == true)
-        {
-            if (errorTimer <= Time.time)
-            {
-                mapErrorText.GetComponent<TMPro.TextMeshProUGUI>().text = "";
-                showError = false;
-            }
-        }
         mapPosition = saveData.levelsBeaten + 1;
         if (mapPosition == 16)
         {
@@ -56,9 +44,7 @@ public class MapManager : MonoBehaviour
         {
             if (saveData.selectedItems.Count <= 0)
             {
-                showError = true;
-                mapErrorText.GetComponent<TMPro.TextMeshProUGUI>().text = "Equip atleast 1 weapon from the inventory before entering a level.";
-                errorTimer = Time.time + 3.5f;
+                
             }
             else
             {
