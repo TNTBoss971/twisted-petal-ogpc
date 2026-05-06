@@ -45,10 +45,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBossBattle: 0
-  length: 60
+  length: 50
+  maxEnemies: 25
+  spawnrate: 1
   enemiesInWave:
-  - {fileID: 1859193798442875194, guid: e5739132a0ae81648a31ed042d66698c, type: 3}
+  - {fileID: 5354275259588418300, guid: 777a1035d54df634faff3d8e83617376, type: 3}
+  - {fileID: 1859193798442875194, guid: c7346c99ebbfa144f98a89611adfaa0a, type: 3}
+  - {fileID: 1859193798442875194, guid: dd44fb6edae93c742ac1dca4a01207c6, type: 3}
+  - {fileID: 1859193798442875194, guid: fe4e96af2f9a33a4e9efac397e11653a, type: 3}
+  weaponsInWave:
+  - {fileID: 1692204540741050396, guid: d8c6e5f0efa4cb6428890499beaa69d0, type: 3}
+  - {fileID: 815084102267353062, guid: b216c538c3058674595692da67c194fa, type: 3}
+  - {fileID: 3108472696131321336, guid: 9dca4b138e2c55d468ef210984f00749, type: 3}
+  frontBackground: {fileID: 308371973, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
+  frontBackgroundSpeed: 0.5
+  backBackground: {fileID: 1704694968, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
+  backBackgroundSpeed: 0.25
   enemyFrequency:
-  - 1
-  - 0
-  - 0
+  - 0.25
+  - 0.3
+  - 0.25
+  - 0.2
+  weaponFrequency:
+  - 0.2
+  - 0.6
+  - 0.2

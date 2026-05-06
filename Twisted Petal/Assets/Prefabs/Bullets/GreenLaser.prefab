@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  damage: 1
+  damage: 2
   pierce: 0
   targetIndicator: {fileID: 0}
   type: 3
@@ -253,11 +253,12 @@ MonoBehaviour:
   targetLength: 0
   damagePulse: 0
   startingVelocity: {x: 0, y: 0}
-  offset: 0
+  magnitude: 0
   frequency: 0
   pastTargets: []
   positionInTargets: 0
   positionModifier: 1
+  validTargetsPresent: 0
   timer: 0
 --- !u!82 &1205893496768394710
 AudioSource:

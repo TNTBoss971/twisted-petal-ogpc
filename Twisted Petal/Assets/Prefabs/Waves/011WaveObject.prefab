@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2001043955609892121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 282040474871025790}
+  - component: {fileID: 9122227014563279572}
+  m_Layer: 0
+  m_Name: 011WaveObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &282040474871025790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001043955609892121}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.55359095, y: -0.42521995, z: 10.9401245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9122227014563279572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001043955609892121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 920e8f5dac2a9ad44b18daf2e69d50f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBossBattle: 0
+  length: 180
+  maxEnemies: 25
+  spawnrate: 2
+  enemiesInWave:
+  - {fileID: 1859193798442875194, guid: 66ecdac19f2ff454b97f79c4702f779e, type: 3}
+  - {fileID: 6516766992148424705, guid: 516696f1408b01a41869ca023cb8537e, type: 3}
+  - {fileID: 1859193798442875194, guid: cd627b6e79d0bba4f8dc057fd24a94a9, type: 3}
+  weaponsInWave:
+  - {fileID: 3108472696131321336, guid: 91c5ef397d0ef494fb2d4a090cf7cdca, type: 3}
+  - {fileID: 3108472696131321336, guid: 9dca4b138e2c55d468ef210984f00749, type: 3}
+  - {fileID: 815084102267353062, guid: b4db1509e63f41645a50f9f110865508, type: 3}
+  frontBackground: {fileID: 1187371731, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
+  frontBackgroundSpeed: 0.9
+  backBackground: {fileID: -1166602974, guid: ca7547de2a3706341bd3f2ca8dbee2ab, type: 3}
+  backBackgroundSpeed: 0.8
+  enemyFrequency:
+  - 0.35
+  - 0.25
+  - 0.4
+  weaponFrequency:
+  - 0.35
+  - 0.25
+  - 0.4

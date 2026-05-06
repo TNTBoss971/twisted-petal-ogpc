@@ -1,4 +1,3 @@
-using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -69,5 +68,10 @@ public class InventoryButton : MonoBehaviour
                 inventoryManager.selectedIDs.Add(buttonID);
             }
         }
+    }
+
+    public void DeleteSelf()
+    {
+        Destroy(gameObject);
     }
 }

@@ -4,9 +4,21 @@ public class WaveData : MonoBehaviour
 {
     public bool isBossBattle;
     public float length;
+    public int maxEnemies;
+    public float spawnrate;
     public GameObject[] enemiesInWave;
-    [Header("All frequencies must add up to 1")]
+    public GameObject[] weaponsInWave;
+    [Header("Backgrounds")]
+    public Sprite frontBackground;
+    public float frontBackgroundSpeed;
+    public Sprite backBackground;
+    public float backBackgroundSpeed;
+
+    [Header("All frequencies must individually add up to 1")]
     public float[] enemyFrequency;
+    public float[] weaponFrequency;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

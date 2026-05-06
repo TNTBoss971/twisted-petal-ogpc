@@ -6,33 +6,12 @@ public class CutsceneManager : MonoBehaviour
 {
     public Dialogue dialogue;
     public DialogueSprite portrait;
-    public List<string> cutsceneDialogueLines; // every dialogue line
-    public List<Sprite> cutsceneDialoguePortraits; // every dialogue portrait
-    public List<int> cutsceneDecisions; // every cutscene decision
+    public CutsceneData[] cutscenes; // a list of all the waves
+    public CutsceneData currentCutscene;
     // a dictionary containing the start point for dialogue in a given cutscene
-    Dictionary<int, int> cutsceneLinesStart = new Dictionary<int, int>
-    {
-        {1, 0},
-        {2, 3},
-        {3, 5},
-        {4, 8},
-        {5, 12},
-        {6, 15},
-        {7, 18}
-    };
-    // a dictionary containing the end point for dialogue in a given cutscene
-    Dictionary<int, int> cutsceneLinesEnd = new Dictionary<int, int>
-    {
-        {1, 3},
-        {2, 5},
-        {3, 8},
-        {4, 12},
-        {5, 15},
-        {6, 18},
-        {7, 21}
-    };
     private DataManagement saveData;
     private bool linesLoaded;
+    public GameObject SkipButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -51,16 +30,25 @@ public class CutsceneManager : MonoBehaviour
         // I HAVE TO DO THIS NONSENSE. WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY!?!?!?!?!?!?
         if (linesLoaded != true)
         {
-            dialogue.cutsceneDialogueCount = cutsceneLinesStart[saveData.levelsBeaten];
-            // take text from this script into the dialogue script
-            for (int i = cutsceneLinesStart[saveData.levelsBeaten]; i < cutsceneLinesEnd[saveData.levelsBeaten]; i++)
+            if (saveData.levelsBeaten == 0)
             {
-                dialogue.dialogueLines.Add(cutsceneDialogueLines[i]);
+                SkipButton.GetComponent<CanvasGroup>().alpha = 1;
+                SkipButton.GetComponent<CanvasGroup>().interactable = true;
             }
-            // take sprites from this script into the dialogue portrait script
-            for (int i = cutsceneLinesStart[saveData.levelsBeaten]; i < cutsceneLinesEnd[saveData.levelsBeaten]; i++)
+            else
             {
-                portrait.dialogueSprites.Add(cutsceneDialoguePortraits[i]);
+                SkipButton.GetComponent<CanvasGroup>().alpha = 0;
+                SkipButton.GetComponent<CanvasGroup>().interactable = false;
+            }
+            currentCutscene = cutscenes[saveData.levelsBeaten];
+            for (int i = 0; i < currentCutscene.dialogueLines.Count; i++)
+            {
+                dialogue.dialogueLines.Add(currentCutscene.dialogueLines[i]);
+                dialogue.dialogueSounds.Add(currentCutscene.dialogueSounds[i]);
+            }
+            for (int i = 0; i < currentCutscene.dialoguePortraits.Count; i++)
+            {
+                portrait.dialogueSprites.Add(currentCutscene.dialoguePortraits[i]);
             }
             linesLoaded = true;
         }

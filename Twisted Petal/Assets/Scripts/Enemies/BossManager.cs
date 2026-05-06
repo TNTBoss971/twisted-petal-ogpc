@@ -12,6 +12,7 @@ public class BossManager : MonoBehaviour
 
     [Header("Objects")]
     public GameObject bossObject;
+    public GameObject stunnedParticles;
     public Canvas canvasObject;
     public GameObject[] weakpoints;
     public GameObject[] bossParts;
@@ -19,6 +20,7 @@ public class BossManager : MonoBehaviour
     private GameObject mainBody;
     private GameObject frontArm;
     private GameObject backArm;
+    public GameObject barkParticle;
 
     [Header("Spawnables")]
     public GameObject[] projectiles;
@@ -51,6 +53,7 @@ public class BossManager : MonoBehaviour
     private bool damageApplied;
     private float fireTime;
     private float startingX;
+    public float bossSpeed;
 
     [Header("Properties")]
     public float maxHealth;
@@ -77,6 +80,8 @@ public class BossManager : MonoBehaviour
         {
             weakpoints = GameObject.FindGameObjectsWithTag("Weakpoint");
             bossParts = GameObject.FindGameObjectsWithTag("Boss");
+            stunnedParticles = GameObject.Find("Stunned");
+            stunnedParticles.SetActive(false);
             mainBody = bossParts[0];
             frontArm = bossParts[1];
             backArm = bossParts[2];
@@ -85,6 +90,7 @@ public class BossManager : MonoBehaviour
         }
 
         startingX = bossObject.transform.position.x;
+        bossObject.transform.position = new Vector2 (startingX, 0.8222481f);
 
         BarBehavior bossHealthBar = canvasObject.GetComponentInChildren<BarBehavior>();
         bossHealthBar.maxValue = maxHealth;
@@ -170,7 +176,8 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.Slam;
             attackStartTime = Time.time;
 
-            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            ResetDamage();
+
             damageApplied = false;
             // play slam animation
             bossObject.GetComponent<Animator>().Play("PlantBossSlam");
@@ -182,9 +189,7 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.FireProjectile;
             attackStartTime = Time.time;
 
-            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
-            backArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
-            mainBody.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            ResetDamage();
             damageApplied = false;
             fireTime = 0;
             // play firing animation
@@ -198,7 +203,7 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.SpawnMinions;
             attackStartTime = Time.time;
 
-            backArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            ResetDamage();
             damageApplied = false;
             // play spawning animation
             bossObject.GetComponent<Animator>().Play("PlantBossSpawnMinions");
@@ -210,7 +215,7 @@ public class BossManager : MonoBehaviour
             bossState = BossStates.Exposed;
             attackStartTime = Time.time;
 
-            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+            ResetDamage();
             damageApplied = false;
             // play exposed animation
             bossObject.GetComponent<Animator>().Play("PlantBossExposed");
@@ -222,7 +227,7 @@ public class BossManager : MonoBehaviour
         // intro
         if (bossState == BossStates.Intro)
         {
-            if (attackStartTime + 1.03f <= Time.time)
+            if (attackStartTime + 1.03f / bossSpeed <= Time.time)
             {
                 bossState = BossStates.None;
             }
@@ -231,18 +236,21 @@ public class BossManager : MonoBehaviour
         // slam
         if (bossState == BossStates.Slam)
         {
-            if (frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 2)
+            if (mainBody.GetComponent<BossPartDamageTracker>().damageThisAttack + 
+            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack + 
+            backArm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
             {
                 FinishAttack(true);
             }
-            else if (attackStartTime + 2.55f <= Time.time)
+            else if (attackStartTime + 2.55f / bossSpeed <= Time.time)
             {
                 FinishAttack(false);
             }
-            else if (attackStartTime + 0.52f <= Time.time && !damageApplied)
+            //                         0:42
+            else if (attackStartTime + 0.7f / bossSpeed <= Time.time && !damageApplied)
             {
                 // deal the damage of the attack
-                gameManager.playerHealth -= 10;
+                gameManager.playerHealth -= 5;
                 damageApplied = true;
             }
         }
@@ -250,7 +258,7 @@ public class BossManager : MonoBehaviour
         // exposed
         if (bossState == BossStates.Exposed)
         {
-            if (attackStartTime + 2.30f <= Time.time)
+            if (attackStartTime + 2.30f / bossSpeed <= Time.time)
             {
 
                 FinishAttack(false);
@@ -260,22 +268,16 @@ public class BossManager : MonoBehaviour
         // spawn minions
         if (bossState == BossStates.SpawnMinions)
         {
-            if (backArm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
+            if (attackStartTime + 2.40f / bossSpeed <= Time.time)
             {
-                // cancel the attack
-                FinishAttack(true);
-            }
-            if (attackStartTime + 1.40f <= Time.time)
-            {
-
                 FinishAttack(false);
             }
-            else if (attackStartTime + 1.00f <= Time.time && !damageApplied)
+            else if (attackStartTime + 1.00f / bossSpeed <= Time.time && !damageApplied)
             {
-                for (int i = 0; i < Random.Range(1, 3); i++)
+                for (int i = 0; i < Random.Range(5, 10); i++)
                 {
                     GameObject newMinion = Instantiate(minions[0]);
-                    newMinion.transform.position = new Vector3(-1 + 0.25f * i, -3, 0);
+                    newMinion.transform.position = new Vector3(-1 + 0.25f * i, -3 + 0.25f * i, 0);
                 }
                 damageApplied = true;
             }
@@ -284,29 +286,24 @@ public class BossManager : MonoBehaviour
         // fire projectile
         if (bossState == BossStates.FireProjectile)
         {
-            if (mainBody.GetComponent<BossPartDamageTracker>().damageThisAttack + 
-            frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack + 
-            backArm.GetComponent<BossPartDamageTracker>().damageThisAttack >= 20)
-            {
-                // cancel the attack
-                FinishAttack(true);
-            }
-            if (attackStartTime + 2.08f <= Time.time)
+            if (attackStartTime + 2.08f / bossSpeed <= Time.time)
             {
                 FinishAttack(false);
             } 
-            else if (attackStartTime + 1.00f + fireTime <= Time.time && attackStartTime + 1.44f >= Time.time)
+            //                                 0:46                                                               1:14
+            else if (attackStartTime + (0.76666666666f + fireTime) / bossSpeed <= Time.time && attackStartTime + 1.23333333f / bossSpeed >= Time.time)
             {
-                fireTime += 0.12f;
+                //              0:14
+                fireTime += 0.233333f;
                 GameObject projectile = Instantiate(projectiles[0]);
-                projectile.transform.position = new Vector3(3.5f, -0.75f, 0);
+                projectile.transform.position = new Vector3(3.5f, -0.75f, 0); // 50 = 30
                 projectile.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 30;
             }
-            else if (!damageApplied && attackStartTime + 1.44 <= Time.time)
+            else if (!damageApplied && attackStartTime + 1.44 / bossSpeed <= Time.time)
             {
                 GameObject projectile = Instantiate(projectiles[1]);
                 projectile.transform.position = new Vector3(3.5f, -0.75f, 0);
-                projectile.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 10;
+                projectile.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 30;
 
                 damageApplied = true;
             }
@@ -315,10 +312,13 @@ public class BossManager : MonoBehaviour
 
     public void Stunned()
     {
+        stunnedParticles.SetActive(true);
+
         // bossObject.transform.position = new Vector2 (startingX + ((Time.time - attackStartTime) % 0.3f - 0.15f) / 10, bossObject.transform.position.y);
         bossObject.transform.position = new Vector2(startingX + (float)Mathf.Sin(Time.time * 50) / 40, bossObject.transform.position.y);
-        if (attackStartTime + 2 <= Time.time)
+        if (attackStartTime + 2 / bossSpeed <= Time.time)
         {
+            stunnedParticles.SetActive(false);
             bossObject.transform.position = new Vector2(startingX, bossObject.transform.position.y);
             bossState = BossStates.None;
             
@@ -348,5 +348,12 @@ public class BossManager : MonoBehaviour
                 positionInAttackPattern = 0;
             }
         }
+    }
+
+    public void ResetDamage()
+    {
+        frontArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+        backArm.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
+        mainBody.GetComponent<BossPartDamageTracker>().damageThisAttack = 0;
     }
 }

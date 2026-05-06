@@ -1,7 +1,11 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using System.Collections.Generic;
+using Unity.Profiling;
+using UnityEngine.Audio;
 
+[RequireComponent(typeof(AudioSource))]
 public class EnemyBehavior : MonoBehaviour
 {
     public enum DamageType
@@ -16,7 +20,9 @@ public class EnemyBehavior : MonoBehaviour
     public enum EnemyType
     {
         Basic, //bush guy, can only attack by hitting the van, lot of them
-        Evergreen, //long range needle attack
+        Ranged, //long range needle attack
+        Stump,
+        Flung
     }
 
     public EnemyType type;
@@ -24,24 +30,31 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Targeting")]
     public Transform target;
     private GameObject player;
+    private PlayerController playerController;
     private GameManagement gameManager;
     private Rigidbody2D rb;
     private Vector2 movement;
     private bool hasLoot = false;
     public int lootFrequency; // the higher this number is the less likely it is for a loot drop
-    private ParticleSystem lootSparkles;
+    public GameObject lootSparkles;
 
     [Header("Attributes")]
     public float speed = 3f;
     public float maxHealth = 2f;
     public float health = 2f;
+    public float damage = 1f;
+    public float armor = 1f;
     public float poisonPerTick = 1f; // how much damage the enemy takes from poison each tick
     public bool dealsContactDamage;
+    public GameObject ammunition;
+    public float firingDelay;
 
     [Header("Status")]
     public float poison = 0;
     public bool hasNotTickedDamage = true;
     public float invincibilityTimer = 0f;
+    private float firingTimer;
+    public bool dealDamage = false;
 
     [Header("Display")]
     public Animator animator;
@@ -49,66 +62,88 @@ public class EnemyBehavior : MonoBehaviour
     public float introLength;
 
     public string attackAnimationName;
+    public float attackAnimationCycleLength;
     public string walkAnimationName;
+    public GameObject impactParticle;
+
+    private AudioSource audioSource;
 
     [Header("Logic")]
-    public float leftBoundary = 15;
+    private float leftBoundary;
     public bool isMoving = true;
     public bool isMinion;
     private float spawnTime;
-    
+
+    [Header("Item Looting")]
+    private DataManagement saveData;
+    private int rarityChance;
+    private ItemPopup itemPopup;
+
     void Start()
     {
         gameManager = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0];
         player = GameObject.Find("Player");
+        playerController = player.GetComponent<PlayerController>();
         target = player.transform;
-        rb = this.GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
 
         if (Random.Range(0, lootFrequency) == (lootFrequency - 1) && !isMinion)
         {
             hasLoot = true;
         }
-        lootSparkles = this.GetComponent<ParticleSystem>();
 
         health = maxHealth;
 
+        saveData = gameManager.GetComponent<DataManagement>();
+        itemPopup = FindObjectsByType<ItemPopup>(FindObjectsSortMode.None)[0];
+
         spawnTime = Time.time;
+
+        // flung
+        if (type == EnemyType.Flung)
+        {
+            //rb.linearVelocity = new Vector2 (speed * -5, speed * 3f);
+            float launchForce = 15f * speed;
+            float arcMultiplier = 0.5f;
+
+            // Calculate the launch direction: Forward direction + an upward arc component
+            Vector3 launchDirection = Vector3.left * speed + Vector3.up * arcMultiplier;
+
+            // Apply force
+            //rb.AddForce(launchDirection.normalized * launchForce, ForceMode2D.Impulse);
+            rb.linearVelocity = launchDirection.normalized * launchForce;
+            rb.angularVelocity = 90;
+        }
+
+
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.1f;
     }
 
     // Update is called once per frame
     void Update()
     {   
-        if (hasLoot == false)
+        if (hasLoot == true)
         {
-            if (lootSparkles != null)
-            {
-                Destroy(lootSparkles);
-            }
+            lootSparkles.SetActive(true);
         }
 
-        if (health < 1)
-        {
-            if (hasLoot == true)
-            {
-                GameManagement.itemsLooted += 1;
-            }
-            GameManagement.enemiesBeaten += 1;
-            gameManager.enemyCount -= 1;
-            Destroy(gameObject);
-        }
+        DeathLogic();
+        
 
-        Vector3 direction = target.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
-        direction.Normalize();
-        movement = direction;     
+        if (dealDamage && Time.time % attackAnimationCycleLength <= 0.1)
+        {
+            player.GetComponent<PlayerController>().DamageSelf(damage);
+        }
     }
 
     private void FixedUpdate()
     {
         if (!hasIntro)
         {
-            MoveCharacter(movement);
+            MoveLogic();
             BehaviorLogic();
 
             // in my testing, Time.time % 10f will never be exactly zero
@@ -132,21 +167,91 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+    void DeathLogic()
+    {
+        
+        if (health < 1)
+        {
+            if (hasLoot == true)
+            {
+                gameManager.itemsLooted += 1;
+                //adds looted items to the player's inventory
+                WaveData wave = gameManager.currentWave;
+                GameObject[] weaponPool = wave.weaponsInWave;
+                float selectedFreq = Random.Range(0.001f, 1);
+                float[] frequencies = wave.weaponFrequency;
+                int weaponIndex = 0;
+
+                float totalFreq = 0;
+                foreach (float freq in frequencies)
+                {
+                    totalFreq += freq;
+                    // if totalFreq is withen the selected range
+                    if (selectedFreq <= totalFreq)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        weaponIndex++;
+                    }
+                }
+
+                GameObject itemLooted = weaponPool[weaponIndex];
+                gameManager.saveData.ownedItems.Add(itemLooted);
+                itemPopup.displayPopup("You got a " + itemLooted.GetComponent<GunController>().weaponName + "!");
+                itemPopup.GetComponent<AudioSource>().Play();
+                gameManager.lastWeaponObtained = itemLooted;
+            }
+            gameManager.enemiesBeaten += 1;
+            gameManager.enemyCount -= 1;
+            Destroy(gameObject);
+        }
+    }
+
     void BehaviorLogic()
     {
-        if (type == EnemyType.Evergreen) {
-            if (transform.position.x > leftBoundary)
+        if (type == EnemyType.Ranged) {
+            if (transform.position.x < leftBoundary)
             {
+                if (isMoving)
+                {
+                    animator.Play(attackAnimationName);
+                }
                 isMoving = false;
+                if (firingTimer <= Time.time)
+                {
+                    firingTimer = Time.time + firingDelay;
+                    FireProjectile();
+                }
             }
         }
     }
 
-    void MoveCharacter(Vector2 direction)
+    void MoveLogic()
     {
-        if (isMoving == true)
+        // set z to y for proper layering
+        transform.position =  new Vector3 (transform.position.x, transform.position.y, transform.position.y);
+
+        Vector2 direction = target.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        if (type == EnemyType.Stump)
         {
-            rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
+            rb.rotation = angle;
+            rb.MovePosition(transform.position + (Vector3.left * speed * Time.deltaTime));
+            //transform.position = transform.position + (Vector3.left * speed * Time.deltaTime);
+        }
+        else if (type == EnemyType.Flung)
+        {
+            
+        }
+        else if (isMoving == true)
+        {
+            rb.rotation = angle;
+            Vector3 additionVector = speed * Time.deltaTime * direction;
+            rb.MovePosition(transform.position + additionVector);
         }
     }
         
@@ -175,29 +280,11 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            if (!dealsContactDamage)
-            {
-                isMoving = false;
-                animator.Play(attackAnimationName);
-            }
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // if the enemy doesnt deal contact damage and is far enough away
-            if (!dealsContactDamage && new Vector2(Mathf.Abs(gameObject.transform.position.x - collision.gameObject.transform.position.x), Mathf.Abs(gameObject.transform.position.y - collision.gameObject.transform.position.y)).magnitude > 0.75f)
-            {
-                isMoving = true;
-                animator.Play(walkAnimationName);
-            }
-        }
+    void FireProjectile()
+    {   
+        GameObject clone = Instantiate(ammunition);
+        clone.transform.position = transform.position;
+        clone.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 10;
     }
 
 
@@ -213,7 +300,15 @@ public class EnemyBehavior : MonoBehaviour
 
         if (invincibilityTimer <= Time.time || type == DamageType.Tick)
         {
-            health -= damage;
+            if(health <= damage * armor)
+            {
+                CreateSound();
+            }
+            else
+            {
+                audioSource.Play();
+            }
+            health -= damage * armor;
             if (type != DamageType.Tick) // tick damage doesnt give i-frames
             {
                 if (type == DamageType.Energy)
@@ -226,5 +321,95 @@ public class EnemyBehavior : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (type == EnemyType.Stump)
+            {
+                gameManager.playerHealth -= damage;            
+                gameManager.enemyCount -= 1;
+                Destroy(gameObject);
+            }   
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (type == EnemyType.Flung)
+            {
+                BreakFlung();
+            }
+            else if (!dealsContactDamage)
+            {
+                isMoving = false;
+                animator.Play(attackAnimationName);
+                dealDamage = true;
+            }
+            else
+            {
+                if (type == EnemyType.Stump)
+                {
+                    gameManager.playerHealth -= damage;            
+                    gameManager.enemyCount -= 1;
+                    Destroy(gameObject);
+                }
+                else if (playerController.invincibilityTimer <= Time.time && dealsContactDamage)
+                {
+                    gameManager.playerHealth -= damage;
+                    playerController.invincibilityTimer = Time.time + 0.3f;
+                }
+            }
+            
+        }
+        if (collision.gameObject.CompareTag("Boundary"))
+        {
+            if (type == EnemyType.Flung || type == EnemyType.Stump) {
+                gameManager.enemyCount -= 1;
+                Destroy(gameObject);
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // if the enemy doesnt deal contact damage and is far enough away
+            if (!dealsContactDamage && Mathf.Abs(gameObject.transform.position.x - collision.gameObject.transform.position.x) > 2.5f)
+            {
+                isMoving = true;
+                animator.Play(walkAnimationName);
+                dealDamage = false;
+            }
+        }
+    }
+
+    private void BreakFlung()
+    {
+        gameManager.playerHealth -= damage;
+
+        GetComponent<Collider2D>().enabled = false;
+        rb.simulated = false;
+        animator.Play(attackAnimationName);
+
+        Invoke(nameof(DestroyFlung), attackAnimationCycleLength);
+    }
+
+    private void DestroyFlung()
+    {
+        gameManager.enemyCount -= 1;
+        Destroy(gameObject);
+    }
+
+    private void CreateSound()
+    {
+        GameObject soundObject = Instantiate(gameManager.enemySoundObject);
+        soundObject.transform.position = transform.position;
+        soundObject.GetComponent<AudioSource>().resource = audioSource.resource;
+        soundObject.GetComponent<AudioSource>().Play();
     }
 }

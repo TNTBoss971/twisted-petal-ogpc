@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,13 @@ public class GameData
     public int enemiesBeaten;
     public int enemiesBeatenOverall;
     public List<int> selectedButtonIDs;
+    public List<String> levelSummaries;
+    public bool soundsMuted;
+    public List<GameObject> weaponsFound;
+    public float currentHealth;
+    public int supplies;
+    public List<CutsceneDecisionButton.decisionsMade> choicesMade;
+    public int maxHealth;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -21,12 +29,19 @@ public class GameData
     public GameData()
     {
         this.levelsBeaten = 0;
-        this.selectedItems = null;
-        ownedItems = null;
+        this.selectedItems = new List<GameObject>();
+        ownedItems = new List<GameObject>();
         itemsLooted = 0;
         itemsLootedOverall = 0;
         enemiesBeaten = 0;
         enemiesBeatenOverall = 0;
-        selectedButtonIDs = null;
+        selectedButtonIDs = new List<int>();
+        levelSummaries = new List<String>();
+        soundsMuted = false;
+        weaponsFound = new List<GameObject>();
+        currentHealth = 100;
+        supplies = 3;
+        choicesMade = new List<CutsceneDecisionButton.decisionsMade>();
+        maxHealth = 100;
     }
 }

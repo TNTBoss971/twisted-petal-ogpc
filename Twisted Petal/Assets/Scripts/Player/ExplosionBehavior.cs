@@ -1,4 +1,6 @@
 using System;
+using NUnit.Framework.Constraints;
+using TMPro;
 using UnityEngine;
 using static ProjectileBehavior;
 
@@ -11,6 +13,7 @@ public class ExplosionBehavior : MonoBehaviour
     public float maxSize;
     public float growthTime; // not utilized yet, the animations will have a growing explosion, so it will look wierd if the collision box also doen't grow
     public float damage;
+    public float gravityScale;
 
     public enum AreaType {
         Explosive,
@@ -19,6 +22,7 @@ public class ExplosionBehavior : MonoBehaviour
     }
     public AreaType type = AreaType.Explosive;
     private AudioSource audioSource;
+    private DataManagement saveData;
 
 
     // might also make a timer that deletes the collider before deleting the gameobject, this would also us to make the end part of the animation (smoke or something) not damage the enemies
@@ -29,6 +33,17 @@ public class ExplosionBehavior : MonoBehaviour
         deathTime = Time.time + lifetime;
         colliderDeathTime = Time.time + collisionTime;
         audioSource = gameObject.GetComponent<AudioSource>();
+        saveData = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0].GetComponent<DataManagement>();
+
+        // if sfx muted, volume is set to 0
+        if (saveData.soundsMuted == true)
+        {
+            audioSource.volume = 0;
+        }
+        else
+        {
+            audioSource.volume = 1;
+        }
 
         audioSource.Play();
     }
@@ -43,6 +58,11 @@ public class ExplosionBehavior : MonoBehaviour
         if (colliderDeathTime < Time.time)
         {
             this.GetComponent<Collider2D>().enabled = false;
+        }
+
+        if (transform.position.y > 1.115f)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - gravityScale * Time.deltaTime, 5);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -68,14 +88,13 @@ public class ExplosionBehavior : MonoBehaviour
         {
             if (type == AreaType.Explosive)
             {
-                other.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+                other.GetComponent<BossPartDamageTracker>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
             }
             if (type == AreaType.Poison)
             {
                 other.GetComponent<BossPartDamageTracker>().manager.poison += damage;
             }
         }
-
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -86,6 +105,7 @@ public class ExplosionBehavior : MonoBehaviour
             if (type == AreaType.Explosive)
             {
                 collision.gameObject.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
+                SpawnLeaves(collision.gameObject.GetComponent<EnemyBehavior>(), collision.transform.position);
             }
             if (type == AreaType.Poison)
             {
@@ -96,13 +116,21 @@ public class ExplosionBehavior : MonoBehaviour
         {
             if (type == AreaType.Explosive)
             {
-                collision.gameObject.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+                collision.gameObject.GetComponent<BossPartDamageTracker>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
             }
             if (type == AreaType.Poison)
             {
                 collision.gameObject.GetComponent<BossPartDamageTracker>().manager.poison += damage;
             }
         }
-        
+
+    }
+    private void SpawnLeaves(EnemyBehavior enemy, Vector2 spawnPos)
+    {
+        for (int i = 0; i <= damage; i++)
+        {
+            GameObject leafSystem = Instantiate(enemy.impactParticle); //, enemy.gameObject.transform);
+            leafSystem.transform.position = new Vector3(spawnPos.x, spawnPos.y, enemy.gameObject.transform.position.z - 1f);
+        }
     }
 }

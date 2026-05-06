@@ -9,6 +9,7 @@ public class Dialogue : MonoBehaviour
     private int dialogueLength; // the amount of characters in the current dialogue line
     private string displayedDialogue; // the text currently displayed in the dialogue box
     public List<string> dialogueLines; // every line of dialogue for this dialogue box
+    public List<AudioClip> dialogueSounds;
     private bool talking = false; // whether or not dialogue is being printed
     public static int currentLine = 0; // the current line of dialogue being printed
     private float dialogueDelay = 0f; // used to keep track of when new characters can be printed
@@ -17,6 +18,7 @@ public class Dialogue : MonoBehaviour
     public bool dialogueLocked;
     public DataPersistanceManager dataManager;
     public int cutsceneDialogueCount; // current dialogue line in the context of every dialogue line ingame
+    public AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,7 +60,7 @@ public class Dialogue : MonoBehaviour
                     else
                     {
                         dataManager.SaveGame();
-                        SceneManager.LoadScene("CombatResolution");
+                        SceneManager.LoadScene("WorldMap");
                     }
                 }
             }
@@ -71,6 +73,8 @@ public class Dialogue : MonoBehaviour
                 dialogueLength = dialogueLines[currentLine].Length;
                 if (dialogueDelay <= Time.time)
                 {
+                    audioSource.clip = dialogueSounds[currentLine];
+                    audioSource.Play();
                     displayedDialogue += dialogueLines[currentLine][currentCharacter];
                     currentCharacter++;
                     dialogueDelay = Time.time + textSpeed;

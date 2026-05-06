@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class DataManagement : MonoBehaviour, IDataPersistance
 {
@@ -11,11 +12,18 @@ public class DataManagement : MonoBehaviour, IDataPersistance
     public int enemiesBeaten;
     public int enemiesBeatenOverall;
     public List<int> selectedButtonIDs;
+    public List<String> levelSummaries;
+    public bool soundsMuted;
+    public List<GameObject> weaponsFound;
+    public float currentHealth;
+    public int supplies;
+    public List<CutsceneDecisionButton.decisionsMade> choicesMade;
+    public int maxHealth;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        soundsMuted = false;
     }
 
     // Update is called once per frame
@@ -34,6 +42,13 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         enemiesBeaten = data.enemiesBeaten;
         enemiesBeatenOverall = data.enemiesBeatenOverall;
         selectedButtonIDs = data.selectedButtonIDs;
+        levelSummaries = data.levelSummaries;
+        soundsMuted = data.soundsMuted;
+        weaponsFound = data.weaponsFound;
+        currentHealth = data.currentHealth;
+        supplies = data.supplies;
+        choicesMade = data.choicesMade;
+        maxHealth = data.maxHealth;
     }
 
     public void SaveData(ref GameData data)
@@ -46,5 +61,12 @@ public class DataManagement : MonoBehaviour, IDataPersistance
         data.enemiesBeaten = enemiesBeaten;
         data.enemiesBeatenOverall = enemiesBeatenOverall;
         data.selectedButtonIDs = selectedButtonIDs;
+        data.levelSummaries = levelSummaries;
+        data.soundsMuted = soundsMuted;
+        data.weaponsFound = weaponsFound;
+        data.currentHealth = currentHealth;
+        data.supplies = supplies;
+        data.choicesMade = choicesMade;
+        data.maxHealth = maxHealth;
     }
 }

@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3b88e068ffe1a43856dff62790faa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testing: 1
+  testing: 0
   bossPrefab: {fileID: 8639554469198242578, guid: 1bed0b0def2d5564d9e9cb41af69c7b5, type: 3}
   canvasPrefab: {fileID: 8724778410921523659, guid: 470b95de9b7399644a0ecfa1ffa416fc, type: 3}
   bossObject: {fileID: 0}
+  stunnedParticles: {fileID: 0}
   canvasObject: {fileID: 0}
   weakpoints: []
   bossParts:
@@ -55,6 +56,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   gameManager: {fileID: 0}
+  barkParticle: {fileID: 2459748190825433269, guid: b74b88c14c55bca48912e5d4be52a7dd, type: 3}
   projectiles:
   - {fileID: 6684092658235471012, guid: 026256fb7004c464e9877766939c8f38, type: 3}
   - {fileID: 6684092658235471012, guid: db773b06eb0412c43a99456f59654b10, type: 3}
@@ -65,8 +67,9 @@ MonoBehaviour:
   attackPattern: 0100000002000000010000000300000004000000
   positionInAttackPattern: 0
   attackStartTime: 0
-  maxHealth: 100
-  health: 100
+  bossSpeed: 0.5
+  maxHealth: 375
+  health: 375
   poison: 0
   hasNotTickedDamage: 1
   poisonPerTick: 1

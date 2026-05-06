@@ -43,8 +43,9 @@ public class ProjectileBehavior : MonoBehaviour
     public int positionInTargets; // Arcing
     public int positionModifier = 1; // Arcing
     public bool validTargetsPresent = false; // Arcing
-
+    
     public float timer;
+    private DataManagement saveData;
 
     private AudioSource audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -56,6 +57,17 @@ public class ProjectileBehavior : MonoBehaviour
 
         player = GameObject.Find("Player");
         startingPosition = transform.position;
+        saveData = FindObjectsByType<GameManagement>(FindObjectsSortMode.None)[0].GetComponent<DataManagement>();
+
+        // if sfx muted, volume is set to 0
+        if (saveData.soundsMuted == true)
+        {
+            audioSource.volume = 0;
+        }
+        else
+        {
+            audioSource.volume = 1;
+        }
     
         if (type == MunitionType.Missile)
         {
@@ -66,9 +78,6 @@ public class ProjectileBehavior : MonoBehaviour
             audioSource.Play();
 
         }
-        
-
-        
     }
 
     // Update is called once per frame
@@ -79,6 +88,7 @@ public class ProjectileBehavior : MonoBehaviour
             if (transform.position.x > targetPosition.x)
             {
                 GameObject explosion = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+                explosion.transform.position = transform.position + Vector3.forward * 5;
                 Destroy(targetIndicator);
                 Destroy(gameObject);
             }
@@ -122,6 +132,15 @@ public class ProjectileBehavior : MonoBehaviour
                     }
                     positionInTargets += positionModifier;
 
+                    if (positionInTargets >= pastTargets.Count)
+                    {
+                        positionInTargets = pastTargets.Count - 1;
+                    }
+                    if (positionInTargets <= 0)
+                    {
+                        positionInTargets = 0;
+                    }
+
                     if (pastTargets[positionInTargets] == null)
                     {
                         pastTargets.RemoveAt(positionInTargets);
@@ -130,7 +149,6 @@ public class ProjectileBehavior : MonoBehaviour
                     {
                         transform.position = pastTargets[positionInTargets].transform.position;
                     }
-
                     if (timer < Time.time)
                     {
                         Destroy(gameObject);
@@ -164,11 +182,13 @@ public class ProjectileBehavior : MonoBehaviour
                 {
                     if (results[0].transform.GetComponent<EnemyBehavior>() != null)
                     {
-                        results[0].transform.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Fire);
+                        results[0].transform.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
+                        SpawnLeaves(results[0].transform.GetComponent<EnemyBehavior>(), targetPosition);
                     }
                     else if (results[0].transform.GetComponent<BossPartDamageTracker>() != null)
                     {
-                        results[0].transform.gameObject.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+                        results[0].transform.gameObject.GetComponent<BossPartDamageTracker>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
+                        SpawnBark(results[0].transform.GetComponent<BossPartDamageTracker>(), targetPosition);
                     }
                     damagePulse = false;
                 }
@@ -220,6 +240,7 @@ public class ProjectileBehavior : MonoBehaviour
                     pastTargets.Add(targetEnemy);
                     transform.position = targetEnemy.transform.position;
                     targetEnemy.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Energy);
+                    SpawnLeaves(targetEnemy.GetComponent<EnemyBehavior>(), transform.position);
                     validTargetsPresent = true;
                 }
 
@@ -235,16 +256,26 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //Debug.Log(other.name);
         if (other.CompareTag("Boundary"))
         {
             Destroy(gameObject);
         }
 
-        if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Boss") || other.CompareTag("EnemyProjectile"))
         {
             if (type == MunitionType.Missile) 
             {
                 GameObject explosion = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+                explosion.transform.position = transform.position + Vector3.forward * 5;
+                if (other.CompareTag("Enemy"))
+                {
+                    SpawnLeaves(other.GetComponent<EnemyBehavior>(), transform.position);
+                } else if (other.CompareTag("Boss"))
+                {
+                    SpawnBark(other.GetComponent<BossPartDamageTracker>(), transform.position);
+                }
+                SpawnLeaves(other.GetComponent<EnemyBehavior>(), transform.position);
                 Destroy(gameObject);
             } 
             else if (type == MunitionType.Basic)
@@ -252,10 +283,12 @@ public class ProjectileBehavior : MonoBehaviour
                 if (other.CompareTag("Enemy"))
                 {
                     other.GetComponent<EnemyBehavior>().DamageSelf(damage, EnemyBehavior.DamageType.Bullet);
+                    SpawnLeaves(other.GetComponent<EnemyBehavior>(), transform.position);
                 }
-                else
+                else if (other.CompareTag("Boss"))
                 {
-                    other.GetComponent<BossPartDamageTracker>().DamageSelf(damage);
+                    other.GetComponent<BossPartDamageTracker>().DamageSelf(damage, EnemyBehavior.DamageType.Bullet);
+                    SpawnBark(other.GetComponent<BossPartDamageTracker>(), transform.position);
                 }
 
                 if (pierce > 0)
@@ -270,4 +303,21 @@ public class ProjectileBehavior : MonoBehaviour
         }
 
     }
+    public void SpawnLeaves(EnemyBehavior enemy, Vector2 spawnPos)
+    {
+        for (int i = 0;i <= damage; i++)
+        {
+            GameObject leafSystem = Instantiate(enemy.impactParticle); //, enemy.gameObject.transform);
+            leafSystem.transform.position = new Vector3(spawnPos.x, spawnPos.y, enemy.gameObject.transform.position.z - 1f);
+        }
+    }
+    public void SpawnBark(BossPartDamageTracker enemy, Vector2 spawnPos)
+    {
+        for (int i = 0;i <= damage; i++)
+        {
+            GameObject barkSystem = Instantiate(enemy.impactParticle); //, enemy.gameObject.transform);
+            barkSystem.transform.position = new Vector3(spawnPos.x, spawnPos.y, enemy.gameObject.transform.position.z - 1f);
+        }
+    }
 }
+

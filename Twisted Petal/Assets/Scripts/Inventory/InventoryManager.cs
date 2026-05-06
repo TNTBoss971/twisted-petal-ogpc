@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
-using UnityEditor.Overlays;
 using UnityEngine.Rendering;
 using Unity.VisualScripting;
+using System;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -20,14 +20,32 @@ public class InventoryManager : MonoBehaviour
     public Canvas canvas;
     public SlotDisplayLogic[] displays;
     public int rarityChance;
-    
+    public GameObject supplyCounter;
+    private int buttonCount; // how many buttons get made
+    public List<GameObject> currentButtons; // list of buttons in the scene
+    private int tempButtonsCount; // used in a loop that deletes buttons
+    public GameObject pageLabel; // label used to track the current page of the inventory.
+
+    private Transform weaponsParent;
+
+    private GameObject fadeBox;
+    private Sprite emptyImage;
+    private Camera cam;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        cam = Camera.main;
+
+        weaponsParent = GameObject.Find("WeaponParent").transform;
+        fadeBox = GameObject.Find("FadeBox");
+        fadeBox.GetComponent<Animator>().Play("FadeIn");
+
         inventoryWeaponTypes = weaponTypes;
         saveData = this.GetComponent<DataManagement>();
         selectedItems = saveData.selectedItems;
         selectedIDs = saveData.selectedButtonIDs;
+        emptyImage = displays[0].displayImage;
         if (saveData.ownedItems.Count <= 0)
         {
             ownedItems = startingWeapons;
@@ -42,25 +60,80 @@ public class InventoryManager : MonoBehaviour
         int row = 0;
         int col = 0;
 
-        for (int i = 0; i < ownedItems.Count; i++)
+        if (ownedItems.Count > 20)
+        {
+            buttonCount = 20;
+        }
+        else
+        {
+            buttonCount = ownedItems.Count;
+        }
+
+        for (int i = 0; i < buttonCount; i++)
         {
             // clone the prefab
             GameObject clone = Instantiate(buttonPrefab, transform.position, transform.rotation);
             // set the parent
-            clone.transform.SetParent(canvas.transform, false);
+            clone.transform.SetParent(weaponsParent, false);
             // set the id
             clone.GetComponent<InventoryButton>().buttonID = i;
             // set the item stored
             clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
             // set the position
-            clone.transform.position = new Vector2(row * 175 + 100f, col * -175 + 750);
+            clone.transform.localPosition = new Vector2(row * 75 + 85, col * -125 + 75);
 
-            // 
             row++;
-            if (row > 10)
+            if (row > 9)
             {
                 col++;
                 row = 0;
+            }
+            currentButtons.Add(clone);
+        }
+
+    }
+
+    public void GenerateButtons(int amountOfButtons)
+    {
+        if ((ownedItems.Count - amountOfButtons) > 0)
+        {
+            tempButtonsCount = currentButtons.Count;
+            for (int i = 0; i < tempButtonsCount; i++)
+            {
+                currentButtons[0].GetComponent<InventoryButton>().DeleteSelf();
+                currentButtons.Remove(currentButtons[0]);
+            }
+
+            int row = 0;
+            int col = 0;
+
+            for (int i = amountOfButtons; i < (amountOfButtons + 20); i++)
+            {
+                try
+                {
+                    // clone the prefab
+                    GameObject clone = Instantiate(buttonPrefab, transform.position, transform.rotation);
+                    // set the parent
+                    clone.transform.SetParent(weaponsParent, false);
+                    // set the id
+                    clone.GetComponent<InventoryButton>().buttonID = i;
+                    // set the item stored
+                    clone.GetComponent<InventoryButton>().itemStored = ownedItems[i];
+                    // set the position
+                    clone.transform.localPosition = new Vector2(row * 75 + 85, col * -125 + 75);
+
+                    row++;
+                    if (row > 9)
+                    {
+                        col++;
+                        row = 0;
+                    }
+                    currentButtons.Add(clone);
+                }
+                catch(ArgumentOutOfRangeException)
+                {
+                    
+                }
             }
         }
     }
@@ -84,10 +157,14 @@ public class InventoryManager : MonoBehaviour
             }
             else
             {
-                displays[i].displayImage = null;
-                displays[i].displayName = null;
-                displays[i].displayDiscription = null;
+                displays[i].displayImage = emptyImage;
+                displays[i].displayName = "Empty";
+                displays[i].displayDiscription = "Useless. Probably should put a weapon here.";
             }
         }
+
+        supplyCounter.GetComponent<TMPro.TextMeshProUGUI>().text = "Supplies: " + saveData.supplies;
+
+        pageLabel.GetComponent<TMPro.TextMeshProUGUI>().text = "Page: " + (PageButtonInventory.page + 1) + "/" + (PageButtonInventory.maxPages + 1);
     }
 }

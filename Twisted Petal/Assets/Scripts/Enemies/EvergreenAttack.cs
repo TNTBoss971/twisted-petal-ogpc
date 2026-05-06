@@ -25,6 +25,8 @@ public class EvergreenAtack : MonoBehaviour
     //tree shoot
     void shoot()
     {
-        Instantiate(bullet, bulletPos.position, Quaternion.identity);
+        GameObject projectile = Instantiate(bullet);
+        projectile.transform.position = this.transform.position;
+        projectile.GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * 10;
     }
 }

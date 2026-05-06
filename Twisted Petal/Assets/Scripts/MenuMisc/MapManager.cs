@@ -3,49 +3,60 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class MapManager : MonoBehaviour
 {
     public static int mapPosition = 1;
     private DataManagement saveData;
-    public bool showError = false;
-    private float errorTimer;
+    public DataPersistanceManager dataManager;
     public List<GameObject> startingWeapons;
+    public GameObject playerMapIcon;
+    public GameObject worldMap;
+    public List<Sprite> worldMapSprites;
+    public List<Vector2> pos;
+    private GameObject fadeBox;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         saveData = this.GetComponent<DataManagement>();
+        playerMapIcon.SetActive(false);
+        fadeBox = GameObject.Find("FadeBox");
+        fadeBox.GetComponent<Animator>().Play("FadeIn");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (showError == true)
-        {
-            if (errorTimer <= Time.time)
-            {
-                showError = false;
-            }
-        }
         mapPosition = saveData.levelsBeaten + 1;
-        if (mapPosition > 7)
+        if (mapPosition == 16)
         {
-            mapPosition = 7;
+            File.Delete(Application.persistentDataPath + "/saved_data.json");
+            SceneManager.LoadScene("TitleScreen");
         }
+
+        worldMap.GetComponent<SpriteRenderer>().sprite = worldMapSprites[saveData.levelsBeaten];
+        playerMapIcon.transform.localPosition = pos[mapPosition - 1];
 
         // Pressing enter on the map takes you into a level
         if (Input.GetKey("return"))
         {
             if (saveData.selectedItems.Count <= 0)
             {
-                showError = true;
-                errorTimer = Time.time + 1f;
+                
             }
             else
             {
-                SceneManager.LoadScene("Combat");
+                playerMapIcon.SetActive(true);
+                fadeBox.GetComponent<Animator>().Play("FadeOut");
+                Invoke(nameof(EnterCombat), 1.4f);
             }
         }
+    }
+
+    public void EnterCombat()
+    {
+        SceneManager.LoadScene("Combat");
     }
 }

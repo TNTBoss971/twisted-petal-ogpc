@@ -17,11 +17,26 @@ public class JournalStats : MonoBehaviour
     {
         if (statsHidden == false)
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = JournalManager.statDisplayed[statID];
+            try
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = JournalManager.statDisplayed[statID];
+            }
+            catch (KeyNotFoundException)
+            {
+                
+            }
+            
         }
         else
         {
-            GetComponent<TMPro.TextMeshProUGUI>().text = "";
+            if (showOverallStats == false)
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = JournalManager.statDisplayed[statID];
+            }
+            else
+            {
+                GetComponent<TMPro.TextMeshProUGUI>().text = "";
+            }
         }
     }
 }

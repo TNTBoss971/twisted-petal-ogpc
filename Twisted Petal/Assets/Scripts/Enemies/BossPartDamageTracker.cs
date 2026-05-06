@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class BossPartDamageTracker : MonoBehaviour
 {
@@ -6,10 +7,12 @@ public class BossPartDamageTracker : MonoBehaviour
     public float damageThisAttack;
     public BossManager manager;
     public bool isWeakPoint;
+    public GameObject impactParticle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //manager = FindObjectsByType<BossManager>(FindObjectsSortMode.None)[0];
+        manager = FindObjectsByType<BossManager>(FindObjectsSortMode.None)[0];
+        impactParticle = manager.barkParticle;
     }
 
     // Update is called once per frame
@@ -17,11 +20,16 @@ public class BossPartDamageTracker : MonoBehaviour
     {
 
     }
-    public void DamageSelf(float damage)
+    public void DamageSelf(float damage, EnemyBehavior.DamageType damageType)
     {
         manager = FindObjectsByType<BossManager>(FindObjectsSortMode.None)[0];
+
+        if (damageType == EnemyBehavior.DamageType.Energy)
+        {
+            damage = damage / 2;
+        }
         
-        Debug.Log("Damaged");
+        //Debug.Log("Damaged");
         totalDamage += damage;
         damageThisAttack += damage;
         if (isWeakPoint)

@@ -54,6 +54,11 @@ public class EnemyProjectileBehavior : MonoBehaviour
 
         }
 
+        if (this.GetComponent<Rigidbody2D>().linearVelocity.magnitude < 3)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -75,9 +80,10 @@ public class EnemyProjectileBehavior : MonoBehaviour
             }
         }
     }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             gameManager.playerHealth -= damage;
             Destroy(gameObject);
